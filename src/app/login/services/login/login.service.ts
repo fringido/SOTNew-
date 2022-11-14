@@ -9,7 +9,7 @@ export class LoginService {
   
   constructor(private http: HttpClient) { }
 
-  private apiUrl = environment.apiUrl;
+  private url = environment.url;
   user: any
   private subLogin: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
@@ -19,12 +19,12 @@ export class LoginService {
 
   // TODO: LoginModel
   Login(model: any) {
-    return this.http.post(this.apiUrl + 'api/permisos/obtenerUsuarioPorCredencial', model);
+    return this.http.post(this.url + 'api/permisos/obtenerUsuarioPorCredencial', model);
   }
   
   // TODO: LoginModel
   Autorizacion(model: any) {
-    return this.http.post(this.apiUrl + 'api/Permisos/Autorizacion',model);
+    return this.http.post(this.url + 'api/Permisos/Autorizacion',model);
   }
 
   setLogin(data: any): void {
@@ -34,6 +34,6 @@ export class LoginService {
 
   CambioContrasena(model: any)
   {
-    return this.http.put(this.apiUrl + 'api/permisos/Contrasena', model);
+    return this.http.put(this.url + 'api/permisos/Contrasena', model);
   }
 }
