@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/libs/animate/animate.css",
+              "src/styles.scss",
+              "src/SotCss.scss"
             ],
             "scripts": []
           },
