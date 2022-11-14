@@ -46,10 +46,9 @@ $SOTNew-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-<<<<<<< HEAD
 /**
   ---------------------------------------------------------------------------------------------
-  -------------------------------Estilos generales personalizados------------------------------
+  -------------------------------Estilos generales personalizados pre refactorizado------------
   ---------------------------------------------------------------------------------------------
 */
 
@@ -1137,7 +1136,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 background: #801336;
 box-shadow:  0px 2px 6px #801335c6, 0px -2px 6px #801335c6;
 }
-=======
+
+/**
+  ---------------------------------------------------------------------------------------------
+  -------------------------------Estilos generales personalizados post refactorizado-----------
+  ---------------------------------------------------------------------------------------------
+*/
+
 //* Variables para colores
 $wine : #801336;
 $grey: #495057;
@@ -1151,4 +1156,3 @@ $grey: #495057;
 
 
 //* Estilos de modales
->>>>>>> b817df5375fd01569f0a22961df02dc11c60a686
