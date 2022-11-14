@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subscription, of } from 'rxjs';
+import { MenuButtons } from './models/menu-buttons.enum';
 import { LoginService } from './services/login/login.service';
 
 @Component({
@@ -45,6 +46,15 @@ export class LoginComponent implements OnInit {
   intentos = 0;
 
   showCortina = true;
+
+  showCocinaButton = false;
+  showBarButton = false;
+  showChecadorButton = false;
+
+  isCocinaFirstTap = false;
+  isBarFirstTap = false;
+  isChecadorFirstTap = false;
+
   behaviorCortina = true;
   AsignarHabitaciones!: any;
   CobrarHabitaciones!: any;
@@ -86,13 +96,13 @@ export class LoginComponent implements OnInit {
     this.timeTnterval = setInterval(async () => {
       // TODO: fingerptintService
       // if (this.fingerService.devices.length) {
-        this.fingerButtonColor = 'btn-redBold fingerButtonClass';
-        this.mensajeScannerDetectado = '';
+      this.fingerButtonColor = 'btn-redBold fingerButtonClass';
+      this.mensajeScannerDetectado = '';
       // }
       // else {
-        this.fingerButtonColor = 'btn-gray fingerButtonClass';
-        this.fingerButtonLogo = 'icon-manita_fingerprint';
-        this.mensajeScannerDetectado = 'No se encontro el lector de huellas.';
+      this.fingerButtonColor = 'btn-gray fingerButtonClass';
+      this.fingerButtonLogo = 'icon-manita_fingerprint';
+      this.mensajeScannerDetectado = 'No se encontro el lector de huellas.';
       // }
     }, 1500) as any;
   }
@@ -176,7 +186,7 @@ export class LoginComponent implements OnInit {
           this.intentos++;
 
           if (this.intentos >= 3)
-          1
+            1
           //   $('#btnRestablecerContrasena').show();
 
           // $('#usuarioContrasenaIncorrectos').show();

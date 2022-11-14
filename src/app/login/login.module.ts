@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from './services/login/login.service';
+import { MenuButtonDirective } from './directives/menuButton/menu-button.directive';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
+    MenuButtonDirective,
   ],
   imports: [
     CommonModule,

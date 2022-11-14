@@ -41,19 +41,43 @@
     <div class="hide-buttons">
         <div class="d-flex flex-column justify-content-center ">
             <div class="div-sot-button-cocina mb-3">
-                <button class="sot-button-cocina sot-login-boton" (click)="RedirectRestaurante(false ,0)">
+                <button 
+                    class="sot-button-cocina sot-login-boton animated slideInLeft" 
+                    [ngClass]="{'show-button': showCocinaButton}"
+                    (updateIsShowing)="showCocinaButton = $event"
+                    (updateIsFirstTap)="isCocinaFirstTap = $event"
+                    [type]="'COCINA'"
+                    [isShowing]="showCocinaButton"
+                    appMenuButton
+                >
                     <div class="icon-login"><i class="icon-cocina"></i></div>
                     <div class="font-2-5vh">Cocina</div>
                 </button>
             </div>
             <div class="mb-3">
-                <button class="sot-button-bar sot-login-boton mr-2" (click)="RedirectRestaurante(false ,1)">
+                <button 
+                    class="sot-button-bar sot-login-boton mr-2 animated slideInLeft" 
+                    [ngClass]="{'show-button': showBarButton}"
+                    (updateIsShowing)="showBarButton = $event"
+                    (updateIsFirstTap)="isBarFirstTap = $event"
+                    [type]="'BAR'"
+                    [isShowing]="showBarButton"
+                    appMenuButton
+                >
                     <div class="icon-login"><i class="icon-bar"></i></div>
                     <div class="font-2-5vh">Bar</div>
                 </button>
             </div>
             <div class="mb-3">
-                <button class="sot-button-checador sot-login-boton ml-5" (click)="habilitarChecador()">
+                <button 
+                    class="sot-button-checador sot-login-boton ml-5 animated slideInLeft" 
+                    [ngClass]="{'show-button': showChecadorButton}"
+                    (updateIsShowing)="showChecadorButton = $event"
+                    (updateIsFirstTap)="isChecadorFirstTap = $event"
+                    [type]="'CHECADOR'"
+                    [isShowing]="showChecadorButton"
+                    appMenuButton
+                >
                     <div class="icon-login"><i class="fas fa-user"></i></div>
                     <div class="font-2-5vh">Checador</div>
                 </button>
@@ -68,12 +92,6 @@
                 <i [ngClass]=" fingerButtonLogo "></i>
               </div>
             </div>
-
-            <!-- <div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeScannerDetectado !== '' ">
-              <span class="text-danger font-2-5vh">
-                {{ mensajeScannerDetectado }}
-              </span>
-            </div> -->
 
             <div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeResultadoLogin !== '' ">
               <span class="text-danger font-2-5vh">

@@ -8,6 +8,10 @@ body {
     margin-left: -6.5vw;
 }
 
+.show-button {
+    margin-left: 6vw;
+}
+
 .sot-login-boton {
     width: 16vh;
     height: 15vh;
@@ -309,5 +313,9 @@ body {
     .hide-buttons {
         margin-top: -8vh;
         margin-left: -10vw;
+    }
+
+    .show-button {
+        margin-left: 9vw;
     }
 }
