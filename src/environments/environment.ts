@@ -4,12 +4,7 @@
 
 export const environment = {
   production: false,
-  // apiUrl          : 'https://hydra.gmm.local:4455/',
-  // fingerprintAPI  : 'http://hydra.gmm.local:3000/',
-  // socketServer    : 'http://hydra.gmm.local:3100/'
-  apiUrl          : 'http://calixto.gmm.local:8070/',
-  fingerprintAPI  : 'http://calixto.gmm.local:8081/',
-  socketServer    : 'http://calixto.gmm.local:4100/'
+  url : ''
 };
 
 /*
