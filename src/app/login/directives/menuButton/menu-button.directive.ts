@@ -31,62 +31,56 @@ export class MenuButtonDirective implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const el = this.element.nativeElement;
-    console.log(this.isShowing)
     const click = this.renderer.listen(
       el, 'click', 
-      () => {this.selectButton(this.type, this.isShowing ? 3: 2)}
+      () => {this.selectButton(this.type, this.isShowing ? 'redirect': 'show')}
     );
-    const tap = this.renderer.listen(
-      el, 'tap', 
-      () => {this.selectButton(this.type, this.isShowing ? 3: 2)}
+    const touchend = this.renderer.listen(
+      el, 'touchend', 
+      () => {this.selectButton(this.type, this.isShowing ? 'redirect': 'show')}
     );
     const mouseenter = this.renderer.listen(
       el, 'mouseenter', 
-      () => {this.selectButton(this.type, 2)}
+      () => {this.selectButton(this.type, 'show')}
     );
     const mouseleave = this.renderer.listen(
       el, 'mouseleave', 
-      () => {this.selectButton(this.type, 1)}
+      () => {this.selectButton(this.type, 'hide')}
     );
     // Si es tablet eliminar listener de click
     if(window.innerWidth <= 1025) {
       click();
       return;
     }
-    // Si es pc o lap eliminar listener de tap
-    tap();
+    // Si es pc o lap eliminar listener de touchend
+    touchend();
   }
 
-  selectButton(menuItem: MenuButtons, state: 1 | 2 | 3) {
-    // TODO: no funciona tap de redireccion
-    if (state === 2) {
+  selectButton(menuItem: MenuButtons, state: 'hide' | 'show' | 'redirect') {
+    if (state === 'show') {
       this.updateIsShowing.next(true);
       this.updateIsFirstTap.next(true);
+      return;
     }
-    if (state === 1) {
+    if (state === 'hide') {
       this.updateIsShowing.next(false);
       this.updateIsFirstTap.next(false);
+      return
     }
     const options: { [key in MenuButtons]: () => void } = {
       BAR: () => {
-        if (state === 3) {
           this.router.navigate(['/cocina-bar']);
           return;
-        }
       },
       CHECADOR: () => {
-        if (state === 3) {
           this.router.navigate(['/cocina-bar']);
           return;
-        }
       },
       COCINA: () => {
-        if (state === 3) {
           this.router.navigate(['/cocina-bar']);
           return;
-        }
       },
     }
-    return options[menuItem] ? options[menuItem]() : options[menuItem];
+    return options[menuItem] ? options[menuItem]() : console.error('Opcion no implementada');
   }
 }

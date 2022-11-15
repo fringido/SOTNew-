@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Subscription, of } from 'rxjs';
@@ -24,15 +25,23 @@ export class LoginComponent implements OnInit {
   fingerButtonLogo: string = 'icon-manita_fingerprint';
   checador              !: boolean
   constructor(
-    private loginService: LoginService,
+    private readonly loginService: LoginService,
     //  private utilitiesService: UtilitiesService,
     //  private fingerService: FingerPrintService,
     //  private socketService: SocketsService,
     //  private modal: ModalService,
-    private router: Router) {
+    private readonly router: Router,
+    private readonly fb: FormBuilder
+    ) {
     localStorage.removeItem("userstr");
     localStorage.removeItem("valorVerificarStr");
   }
+
+  loginForm = this.fb.group({
+    name: ['', [Validators.required]],
+    password: ['', [Validators.required]]
+  });
+  showPassword: boolean = false;
 
   //  TODO: LoginModel
   loginModel: any = {
@@ -171,6 +180,7 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(`/login/checador`);
   }
   SessionOpen() {
+    console.log(this.loginForm.value)
     // $('#usuarioNull').hide();
     // $('#PassNull').hide();
     // $('#usuarioContrasenaIncorrectos').hide();
@@ -293,8 +303,6 @@ export class LoginComponent implements OnInit {
   }
 
   verContrasena() {
-    // $('#passwordLogin').attr('type', function (index, attr) {
-    //   return attr == 'text' ? 'password' : 'text';
-    // })
+    this.showPassword = !this.showPassword
   }
 }
