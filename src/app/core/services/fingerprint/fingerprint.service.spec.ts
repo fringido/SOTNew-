@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-import { UtilitiesService } from './utilities.service';
+import { FingerprintService } from './fingerprint.service';
 
 
-describe('UtilitiesService', () => {
-  let service: UtilitiesService;
+describe('FingerprintService', () => {
+  let service: FingerprintService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UtilitiesService);
+    service = TestBed.inject(FingerprintService);
   });
 
   it('should be created', () => {
