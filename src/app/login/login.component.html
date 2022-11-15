@@ -86,10 +86,10 @@
     </div>
 
     <div class="div-form-login">
-        <form (ngSubmit)="SessionOpen()" autocomplete="off" [formGroup]="loginForm" class="card shadow">
+        <form (ngSubmit)="login()" autocomplete="off" [formGroup]="loginForm" class="card shadow">
             <div class="d-flex justify-content-center mb-4vh">
-              <div [ngClass]="[fingerButtonColor, 'd-flex', 'justify-content-center', 'finger-button-login']">
-                <i [ngClass]=" fingerButtonLogo "></i>
+              <div [ngClass]="['btn-gray fingerButtonClass', 'd-flex', 'justify-content-center', 'finger-button-login']">
+                <i [ngClass]="'icon-manita_fingerprint'"></i>
               </div>
             </div>
 
@@ -127,7 +127,7 @@
                             formControlName="password"
                             placeholder="Ingresa una Contraseña"
                     >
-                        <span class="fa fa-eye text-secondary ojo font-3vh"   (click)="verContrasena()"></span>
+                        <span class="fa fa-eye text-secondary ojo font-3vh"   (click)="'TODO'"></span>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@
             </div>
         </form>
         <div class="d-flex justify-content-center">
-            <button id="btnRestablecerContrasena" class="btn btn-warning dis-none-login" (click)="RedirectRestablecerContrasenaModal()">
+            <button id="btnRestablecerContrasena" class="btn btn-warning dis-none-login" (click)="'TODO'">
                 <div class="font-2-5vh">Restablecer contraseña</div>
             </button>
         </div>
@@ -157,7 +157,7 @@
                   </div>
 
                   <div class="mb-3 d-flex justify-content-center">
-                    <button class="button-entrar-login" (click)="RedirectHotel()">
+                    <button class="button-entrar-login" (click)="'TODO'">
                     <div class="font-12vh"><i class="icon-hotel_carita"></i></div>
                     <div class="font-3vh">V Sur</div>
                     </button>
@@ -181,12 +181,12 @@
                             </div>
 
                             <div>
-                                <button type="button" class="btn-modal-details btn-redBold mr-8vh" data-dismiss="modal" (click)="RedirectSalirModalRestablecerContrasena()" >
+                                <button type="button" class="btn-modal-details btn-redBold mr-8vh" data-dismiss="modal" (click)="'TODO'" >
                                     <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
                                     <div class="size-txt font-2vh">Salir</div>
                                 </button>
                                 <!-- TODO: child_huella.OpenModalAutorizarRestablecimientoPassword('retablecerPassword') -->
-                                <button  class="btn-modal-details btn-green"(click)="stopFingerprintServices();" >
+                                <button  class="btn-modal-details btn-green"(click)="'TODO'" >
                                     <div class="font-3vh"><i class="fas fa-check"></i></div>
                                     <div class="size-txt font-2vh">Aceptar</div>
                                 </button>
@@ -200,21 +200,4 @@
         </div>
     </div>
 
-    <div  class="modal fade modal-huella"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="myLargeModalLabel"
-          aria-hidden="true"
-          data-backdrop="static"
-          data-keyboard="false"
-    >
-      <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
-          <div class="modal-content modal-accesando-margin w-100vh">
-            <div class="modal-body">
-                <div #child_huella></div>
-              <!-- <app-huella #child_huella></app-huella> -->
-            </div>
-          </div>
-      </div>
-    </div>
 </div>
