@@ -69,18 +69,22 @@ export class MenuButtonDirective implements AfterViewInit {
     }
     const options: { [key in MenuButtons]: () => void } = {
       BAR: () => {
-          this.router.navigate(['/cocina-bar']);
+          this.changeRoute('/cocina-bar');
           return;
       },
       CHECADOR: () => {
-          this.router.navigate(['/cocina-bar']);
+          this.changeRoute('/cocina-bar');
           return;
       },
       COCINA: () => {
-          this.router.navigate(['/cocina-bar']);
+          this.changeRoute('/cocina-bar');
           return;
       },
     }
     return options[menuItem] ? options[menuItem]() : console.error('Opcion no implementada');
+  }
+
+  changeRoute(path: string) {
+    this.router.navigate([path]);
   }
 }
