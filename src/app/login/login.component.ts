@@ -11,6 +11,7 @@ import { LoginService } from './services/login/login.service';
 export class LoginComponent implements OnInit {
 
   mensajeResultadoLogin: string = '';
+  isFingerScannerDetected: boolean = false;
   usuarioLogin: string = '';
   constructor(
     private readonly loginService: LoginService,

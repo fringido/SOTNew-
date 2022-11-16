@@ -198,6 +198,13 @@ input{
     border-radius: 10px;
 }
 
+.fingerButtonActive {
+    background-color: $wine;
+    .icon-manita_fingerprint {
+        color: white;
+    }
+}
+
 .pass-margin {
     margin: 0px -5vh 0px 0px;
 }
@@ -241,6 +248,6 @@ input{
     }
 
     .div-form-login {
-        margin-top: -45vh;
+        margin-top: -46vh;
     }
 }

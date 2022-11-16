@@ -88,7 +88,7 @@
     <div class="div-form-login">
         <form (ngSubmit)="login()" autocomplete="off" [formGroup]="loginForm" class="card shadow">
             <div class="d-flex justify-content-center mb-4vh">
-              <div [ngClass]="['btn-gray fingerButtonClass', 'd-flex', 'justify-content-center', 'finger-button-login', 'shadow']">
+              <div class="btn-gray d-flex justify-content-center finger-button-login shadow" [ngClass]="{'fingerButtonActive': isFingerScannerDetected}">
                 <i [ngClass]="'icon-manita_fingerprint'"></i>
               </div>
             </div>
