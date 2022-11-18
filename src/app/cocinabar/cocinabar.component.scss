@@ -1,0 +1,36 @@
+@import '../../styles.scss';
+
+.black-header {
+    color:  #FFFFFF;;
+    height: 10vh;
+    background-color: $strong-grey;
+    border: 1px solid $grey;
+
+}
+
+input {
+    height: 5vh;
+    color:  #FFFFFF;
+    margin: -15px;
+    border-bottom: 1px solid  #FFFFFF;;
+}
+
+input::placeholder {
+    color:  #FFFFFF;
+}
+
+.commands-body{
+    height: 80vh;
+}
+
+.to-do{
+    background-color: $strong-grey;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.to-send {
+    background-color: $dark-grey;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

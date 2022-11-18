@@ -69,7 +69,7 @@ export class MenuButtonDirective implements AfterViewInit {
     }
     const options: { [key in MenuButtons]: () => void } = {
       BAR: () => {
-          this.changeRoute('/cocina-bar');
+          this.changeRoute('/cocina-bar/bar');
           return;
       },
       CHECADOR: () => {
@@ -77,7 +77,7 @@ export class MenuButtonDirective implements AfterViewInit {
           return;
       },
       COCINA: () => {
-          this.changeRoute('/cocina-bar');
+          this.changeRoute('/cocina-bar/cocina');
           return;
       },
     }

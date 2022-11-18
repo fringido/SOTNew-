@@ -1,0 +1,19 @@
+<div class="d-flex flex-row shadow rounded mx-5 my-3 justify-content-around" [ngStyle]="{'background-color': color}">
+    <div class="col-2 d-flex flex-column align-items-center justify-content-center">
+        <p class="mt-2">{{time}}</p>
+        <p class="h3">88</p>
+        <p class="mb-3">Preparación</p>
+    </div>
+    <div class="vertical-divider"></div>
+    <div class="col-6 d-flex flex-column align-self-center justify-content-center p-1">
+        <div *ngFor="let item of items" class="border border-light rounded my-1 p-1 shadowed">
+            <p class="h4 m-0">{{ item.quantity }} {{ item.name | uppercase }}</p>
+            <p class="m-0">{{ item.quantity }} {{ item.name | uppercase }}</p>
+        </div>
+    </div>
+    <div class="vertical-divider"></div>
+    <div class="col-2 d-flex flex-column align-items-center justify-content-center">
+        <p class="h6">Habitación</p>
+        <p class="h4">601</p>
+    </div>
+</div>
