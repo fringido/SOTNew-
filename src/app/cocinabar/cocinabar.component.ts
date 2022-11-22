@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { CocinabarService } from './services/cocinabar/cocinabar.service';
 
@@ -14,11 +14,15 @@ export class CocinabarComponent implements OnInit {
 
   constructor(
     private readonly cocinabarService: CocinabarService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
     console.log((this.activatedRoute.data as BehaviorSubject<any>).value);
   }
 
+  goBack() {
+    this.router.navigate(['login'])
+  }
 }

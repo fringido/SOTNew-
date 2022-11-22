@@ -20,7 +20,7 @@ input::placeholder {
     font-weight: 100;
 }
 
-h2 {
+h5 {
     margin-bottom: 0;
 }
 
@@ -39,3 +39,7 @@ h2 {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+.spacer {
+    flex: 1 1 auto;
+  }
