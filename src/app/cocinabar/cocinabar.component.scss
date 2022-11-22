@@ -1,7 +1,8 @@
 @import '../../styles.scss';
 
 .black-header {
-    color:  #FFFFFF;;
+    color: #FFFFFF;
+    ;
     height: 10vh;
     background-color: $strong-grey;
     border: 1px solid $grey;
@@ -10,13 +11,14 @@
 
 input {
     height: 5vh;
-    color:  #FFFFFF;
+    color: #FFFFFF;
     margin: -15px;
-    border-bottom: 1px solid  #FFFFFF;;
+    border-bottom: 1px solid #FFFFFF;
+    ;
 }
 
 input::placeholder {
-    color:  #FFFFFF;
+    color: #FFFFFF;
     font-weight: 100;
 }
 
@@ -24,11 +26,11 @@ h5 {
     margin-bottom: 0;
 }
 
-.commands-body{
+.commands-body {
     height: 80vh;
 }
 
-.to-do{
+.to-do {
     background-color: $strong-grey;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -42,4 +44,24 @@ h5 {
 
 .spacer {
     flex: 1 1 auto;
+}
+
+/*
+    Personalizacion del scrollbar
+*/
+::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: $dark-grey;
+    /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(196, 201, 196, 0.101);
+    border-radius: 20px; 
+    opacity: 0.1;
+    /* color of the scroll thumb */
 }

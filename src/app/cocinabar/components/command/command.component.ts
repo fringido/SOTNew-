@@ -12,7 +12,7 @@ export class CommandComponent implements OnInit {
   color: any;
 
   items = [
-    {name: 'fruta', quantity: 2},
+    {name: 'fruta fruta fruta fruta fruta fruta fruta', quantity: 2},
     {name: 'fruta', quantity: 2},
     {name: 'fruta', quantity: 2},
     {name: 'fruta', quantity: 2},

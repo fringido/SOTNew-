@@ -1,4 +1,4 @@
-:host{
+:host {
     color: #FFFFFF;
 }
 
@@ -17,8 +17,9 @@
     font-size: 0.9em;
 }
 
-.lead {
-    font-size: 0.7em;
+.normal {
+    font-size: 0.7rem;
+    font-weight: 100;
 }
 
 .clock-container {
@@ -26,4 +27,24 @@
     height: 4vh;
     background: #FFFFFF;
     border-radius: 15px;
+}
+
+.itemTitle {
+    font-size: 1rem;
+}
+
+// Ipad mini
+@media (max-width: 1025px) and (orientation: landscape) {
+    .clock-container {
+        padding-top: .5vh;
+    }
+
+    .itemTitle {
+        font-size: 1.5rem;
+    }
+
+    .normal {
+        font-size: 1rem;
+        font-weight: 100;
+    }
 }
