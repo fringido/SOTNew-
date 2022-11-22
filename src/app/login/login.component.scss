@@ -46,7 +46,7 @@
     font-family: 'Rubik', sans-serif;
     color: #707070;
     font-weight: 600;
-    font-size: 14pt;
+    font-size: 9pt;
     margin: 0;
   }
 
@@ -93,7 +93,7 @@
 .div-form-login {
     display: flex;
     justify-content: center;
-    margin-top: -42vh;
+    margin-top: -44vh;
 }
 
 .color-title{
@@ -106,16 +106,13 @@ input{
 
 .card {
     width: 24vw;
-    height: 60vh;
-    padding: 30px;
+    height: 64vh;
+    padding: 25px;
     border: none;
 }
 
 .ojo {
-
-    padding-top: 4.61px;
     border-radius: 0px 10px 10px 0px !important;
-    padding: 4.64px;
 }
 
 .principal-login {
@@ -140,8 +137,8 @@ input{
     left: 70px;
 }
 
-.mb-2-rem {
-    margin-bottom: 2rem;
+.logo-login {
+    height: 8vh;
 }
 
 .title-login {
@@ -241,7 +238,15 @@ input{
         width: 9vw;
     }
 
+    .labelTitle {
+        font-size: 14pt;
+    }
+
     .div-form-login {
         margin-top: -46vh;
+    }
+
+    .header {
+        margin-bottom: 3rem;
     }
 }
