@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandComponent implements OnInit {
 
-  time: number = 10;
+  time: number = 10.28;
 
   color: any;
 
   items = [
+    {name: 'fruta', quantity: 2},
+    {name: 'fruta', quantity: 2},
+    {name: 'fruta', quantity: 2},
     {name: 'fruta', quantity: 2},
   ]
 
