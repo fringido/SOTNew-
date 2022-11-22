@@ -1,4 +1,6 @@
-<div class="d-flex flex-row shadow rounded mx-5 my-3 justify-content-around" [ngStyle]="{'background-color': color}">
+<div class="d-flex flex-row rounded mx-5 my-3 justify-content-around" 
+    [ngStyle]="{'background-color': color, 'box-shadow': '1px 1px 5px' + color}"
+>
     <div class="col-2 d-flex flex-column align-items-center justify-content-center">
         <p class="mt-2 clock-container text-center">
             <span [ngStyle]="{ 'color': color }">

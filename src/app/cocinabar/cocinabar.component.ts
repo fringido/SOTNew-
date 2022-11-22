@@ -12,7 +12,11 @@ export class CocinabarComponent implements OnInit {
 
   serviceName$ = this.activatedRoute.data;
 
-  commands: {name: string, amount: number, timeStart: number, specifications: string}[] = []
+  commands: {name: string, amount: number, timeStart: number, specifications: string}[] = [
+    {name: 'Tacos', amount: 5, timeStart: 1, specifications: 'Sin chile'},
+    {name: 'Enchiladas', amount: 5, timeStart: 14, specifications: 'Sin Salsa, los puros totopos'},
+    {name: 'Fruta', amount: 2, timeStart: 20, specifications: 'Sin chile'},
+  ];
 
   constructor(
     private readonly cocinabarService: CocinabarService,
