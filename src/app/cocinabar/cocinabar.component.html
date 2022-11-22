@@ -20,9 +20,11 @@
 
     <div class="d-flex commands-body">
         <div class="col to-do justify-content-center">
-            <app-command appCommandColor time="7"></app-command>
-            <app-command appCommandColor time="11"></app-command>
-            <app-command appCommandColor time="16"></app-command>
+            <app-command 
+                *ngFor="let command of commands" 
+                appCommandColor 
+                [time]="command.timeStart"
+            ></app-command>
         </div>
         <div class="col to-send"></div>
     </div>

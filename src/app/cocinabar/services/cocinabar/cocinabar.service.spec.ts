@@ -6,7 +6,13 @@ describe('CocinabarService', () => {
   let service: CocinabarService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        CocinabarService
+      ],
+      imports: [
+      ]
+    });
     service = TestBed.inject(CocinabarService);
   });
 

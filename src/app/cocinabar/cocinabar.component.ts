@@ -12,6 +12,8 @@ export class CocinabarComponent implements OnInit {
 
   serviceName$ = this.activatedRoute.data;
 
+  commands: {name: string, amount: number, timeStart: number, specifications: string}[] = []
+
   constructor(
     private readonly cocinabarService: CocinabarService,
     private readonly activatedRoute: ActivatedRoute,
