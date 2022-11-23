@@ -55,7 +55,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /**
   *--------------------------------------------------------------------------------------------
-  *------------------------------Estilos generales personalizados post refactorizado-----------
+  *------------------------------Estilos generales personalizados post factorizado-----------
   *---------------------------------------------------------------------------------------------
 */
 
@@ -66,13 +66,25 @@ $grey: #495057;
 
 
 //* Estilos de botones
-.box_botton-modal{
 
-  & .botton-modal{
+.botton-aceptar{
 
-  }
 }
 
 
-
 //* Estilos de modales
+.modal{
+
+  & .modal-tittle{
+
+  }
+  & .modal-body{
+
+  }
+  & .box_button-modal{
+
+    & .button-modal{
+
+    }
+  }
+}

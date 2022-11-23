@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
 
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
+  { path: 'hotel', loadChildren: () => import('./hotel/hotel.module').then((m) => m.HotelModule) },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: '**', component: PageNotFoundComponent },
 ];
