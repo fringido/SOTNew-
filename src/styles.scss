@@ -47,11 +47,11 @@ $SOTNew-theme: mat.define-light-theme((
 //* Importacion de boostrap
 /*  You can add global styles to this file, and also import other style files */
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Rubik, "Helvetica Neue", sans-serif; }
 
 /**
   *--------------------------------------------------------------------------------------------
@@ -62,7 +62,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //* Variables para colores
 $wine : #801336;
 $grey: #495057;
-
+$strong-grey: #3C3C3C;
+$dark-grey: #373737;
+$green-success: #0AC917B3;
+$yellow-warn: #FFD500;
 
 
 //* Estilos de botones
@@ -76,3 +79,10 @@ $grey: #495057;
 
 
 //* Estilos de modales
+
+//* Estilos de formularios
+input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}

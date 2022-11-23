@@ -27,7 +27,7 @@ describe('MenuButtonDirective', () => {
     ).nativeElement;
   });
 
-  it('should create an instance of ', () => {
+  it('should has "slideInLeft" class', () => {
     expect(button.classList.contains('slideInLeft')).toBe(true);
   });
 

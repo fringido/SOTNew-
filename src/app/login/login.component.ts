@@ -11,6 +11,7 @@ import { LoginService } from './services/login/login.service';
 export class LoginComponent implements OnInit {
 
   mensajeResultadoLogin: string = '';
+  isFingerScannerDetected: boolean = false;
   usuarioLogin: string = '';
   constructor(
     private readonly loginService: LoginService,
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   });
   showPassword: boolean = false;
 
-  showCortina = true;
+  showCurtain = true;
 
   showCocinaButton = false;
   showBarButton = false;
@@ -35,12 +36,19 @@ export class LoginComponent implements OnInit {
   isBarFirstTap = false;
   isChecadorFirstTap = false;
 
-  behaviorCortina = true;
+  behaviorCurtain = true;
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showCurtain = false;
+    }, 2000)
   }
 
   login() {
     console.log(this.loginForm.value)
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
 }
