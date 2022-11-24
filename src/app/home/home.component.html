@@ -1,6 +1,10 @@
-<app-sidebar></app-sidebar>
-<main>
-  <div class="container pt-4">
-      <p>hola</p>
-  </div>
-</main>
+
+<div class="row" [@openClose]="(isOpen$ | async) ? 'open' : 'closed'">
+  <app-sidebar style="width: 16%;"></app-sidebar>
+  <main class="content" style="padding-left: 16%;">
+    <div>
+        <p (click)="toggle()">holasdadsadsasdasdasdasdadsa</p>
+    </div>
+  </main>
+</div>
+

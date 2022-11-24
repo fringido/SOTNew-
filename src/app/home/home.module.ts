@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeService } from './services/home/home.service';
 
 
 @NgModule({
@@ -14,6 +15,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
+  ],
+  providers: [
+    HomeService
   ]
 })
 export class HomeModule { }

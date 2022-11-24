@@ -1,43 +1,137 @@
 @import '../../../../styles.scss';
 
+:host{
+}
 
-/* Sidebar */
 .sidebar {
-    display: flex;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    display: sticky;
+    position: absolute;
+    height: 97vh;
+    width: 15%;
     border-top-right-radius: 25px;
     margin-top: 1vh;
-    // padding: 58px 0 0;
-    /* Height of navbar */
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 240px;
-    z-index: 600;
 }
 
-@media (max-width: 991.98px) {
-    .sidebar {
-        width: 100%;
-    }
+.nav-item {
+    height: 3vh;
 }
 
-.sidebar .active {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-}
-
-.sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-    /* Scrollable contents if viewport is shorter than content. */
+.others-menu {
+    height: 20vh;
+    margin-bottom: 0;
+    // width: 95%;
 }
 
 .wine {
     color: $wine;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.menu-box {
+    width: 55px;
+    height: 55px;
+    border-bottom-style: solid 1px $wine;
+}
+
+.menu-icon {
+    font-size: 25px;
+}
+
+.shadowed {
+    box-shadow: 0px 0px 9px #00000073;
+}
+
+.divider {
+    height: 1px;
+    width: 80%;
+    margin-top: 5%;
+    background-color: $wine;
+}
+
+.search-text {
+    font-weight: 100;
+}
+
+.room-type__count {
+    font-weight: 800;
+}
+
+.room-type__item {
+    cursor: pointer;
+    border-radius: 5px !important;
+}
+
+.room-type__item:hover {
+    color: white;
+}
+
+
+.success {
+    color: $green-item;
+}
+
+.success:hover {
+    background-color: $green-item;
+}
+
+.danger {
+    color: $red-danger;
+}
+
+.danger:hover {
+    background-color: $red-danger;
+}
+
+.warn {
+    color: $yellow-warn;
+}
+
+.warn:hover {
+    background-color: $yellow-warn;
+}
+
+.orange {
+    color: $orange-item;
+}
+
+.orange:hover {
+    background-color: $orange-item;
+}
+
+.blue {
+    color: $blue-item;
+}
+
+.blue:hover {
+    background-color: $blue-item;
+}
+
+.purple {
+    color: $purple-item;
+}
+
+.purple:hover {
+    background-color: $purple-item;
+}
+
+.grey-item {
+    color: $grey-item;
+}
+
+.grey-item:hover {
+    background-color: $grey-item;
+}
+
+.item-disabled {
+    background-color: $grey-item;
+    color: white;
+}
+
+
+
+input {
+    margin-right: -20px;
 }
