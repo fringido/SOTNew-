@@ -1,4 +1,10 @@
+
 .content {
-    // width: calc(100% - 17rem);
-    // transition: all .4s;
+    padding-left: 16%;
+}
+
+@media (max-width: 1025px) and (orientation: landscape) {
+    .content {
+        padding-left: 23%;
+    }
 }

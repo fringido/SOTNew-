@@ -1,9 +1,14 @@
 
-<div class="row" [@openClose]="(isOpen$ | async) ? 'open' : 'closed'">
-  <app-sidebar style="width: 16%;"></app-sidebar>
-  <main class="content" style="padding-left: 16%;">
+<div class="row" [@openClose]="(isOpen$ | async) ? 'open' : 'closed'" style="width: 100%;">
+  <app-sidebar></app-sidebar>
+  <app-sidebar-hidden [@openClose]="!(isOpen$ | async) ? 'open' : 'closed'"></app-sidebar-hidden>
+  <main class="content">
     <div>
         <p (click)="toggle()">holasdadsadsasdasdasdasdadsa</p>
+        <button></button>
+        <p-dialog header="Title" [(visible)]="display" appNgmodal>
+          Content
+      </p-dialog>
     </div>
   </main>
 </div>

@@ -7,13 +7,14 @@ import { HomeService } from './services/home/home.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
+    // si no oculta del todo u oculta de más, recordar recargar la pantalla al cambiar de resolución
     trigger('openClose', [
-      // ...
       state('open', style({
         'margin-left': '0px',
       })),
       state('closed', style({
-        'margin-left': '-240px',
+        // TODO: cambiar porcentaje a vw
+        'margin-left': window.innerWidth < 1025 ? '-23%' : '-15%',
       })),
       transition('open => closed', [
         animate('0.3s')
@@ -25,6 +26,8 @@ import { HomeService } from './services/home/home.service';
   ]
 })
 export class HomeComponent implements OnInit {
+
+  display = true;
 
   constructor(
     private readonly homeService: HomeService

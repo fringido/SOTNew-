@@ -1,15 +1,14 @@
 @import '../../../../styles.scss';
 
-:host{
-}
-
 .sidebar {
     display: sticky;
     position: absolute;
-    height: 97vh;
+    height: 99vh;
     width: 15%;
     border-top-right-radius: 25px;
     margin-top: 1vh;
+    margin-left: -10px;
+    overflow: hidden;
 }
 
 .nav-item {
@@ -17,9 +16,8 @@
 }
 
 .others-menu {
-    height: 20vh;
+    height: 21vh;
     margin-bottom: 0;
-    // width: 95%;
 }
 
 .wine {
@@ -134,4 +132,15 @@
 
 input {
     margin-right: -20px;
+}
+
+@media (max-width: 1025px) and (orientation: landscape) {
+    .sidebar {
+        overflow: auto;
+        width: 23%;
+    }
+
+    input{
+        font-size: small;
+    }
 }
