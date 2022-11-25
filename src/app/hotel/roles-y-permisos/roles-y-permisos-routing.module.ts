@@ -6,7 +6,7 @@ import { CrearModificarPermisosComponent } from './vistas/crear-modificar-permis
 
 const routes: Routes = [
   {path: '', component:RolesYPermisosComponent},
-  {path: ':accion', component: CrearModificarPermisosComponent}
+  {path: 'crear', component: CrearModificarPermisosComponent}
 ];
 
 @NgModule({
