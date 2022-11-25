@@ -64,8 +64,13 @@ $wine : #801336;
 $grey: #495057;
 $strong-grey: #3C3C3C;
 $dark-grey: #373737;
-$green-success: #0AC917B3;
+$green-item: #0AC917;
 $yellow-warn: #FFD500;
+$red-danger: #fd0022;
+$orange-item: #db932f;
+$blue-item: #008deb;
+$purple-item: #a703fb;
+$grey-item: #707070;
 
 
 //* Estilos de botones
@@ -85,4 +90,8 @@ input {
   border: none;
   background: transparent;
   border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+input:focus {
+  outline: none;
 }
