@@ -1,0 +1,31 @@
+<div class="h-100">
+    <div class="black-header d-flex flex-row justify-content-center align-items-center">
+        <i class="fa-sharp fa-solid fa-circle-left fa-xl pointer mx-2" style="cursor: pointer;" (click)="goBack()"></i>
+        <span class="spacer"></span>
+        <input type="text" [placeholder]="'Buscar en '+(serviceName$ | async)!['path']"
+            class="col-3 h-50 w-25 text-center">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="spacer"></span>
+    </div>
+    <div class="black-header d-flex flex-row align-items-center">
+        <h2 class="col-6 text-center">
+            Por Preparar
+            <i class="icon-cocina fa-xl"></i>
+        </h2>
+        <h2 class="col-6 text-center">
+            Por Entregar
+            <i class="icon-porentregar fa-xl"></i>
+        </h2>
+    </div>
+
+    <div class="d-flex commands-body">
+        <div class="col to-do justify-content-center">
+            <app-command 
+                *ngFor="let command of commands" 
+                appCommandColor 
+                [time]="command.timeStart"
+            ></app-command>
+        </div>
+        <div class="col to-send"></div>
+    </div>
+</div>

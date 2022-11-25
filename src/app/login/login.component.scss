@@ -1,13 +1,4 @@
-body {
-    background-color: white !important;
-    min-height: 50vh;
-}
-
-input {
-    border: none;
-    background: transparent;
-    border-bottom: 1px solid rgb(0, 0, 0);
-}
+@import '../../styles.scss';
 
 .hide-buttons {
     margin-top: -8vh;
@@ -19,12 +10,6 @@ input {
 }
 
 .sot-login-boton {
-    width: 16vh;
-    height: 15vh;
-}
-
-.sot-checador-boton {
-    background-color: #058E6E;
     width: 16vh;
     height: 15vh;
 }
@@ -57,62 +42,73 @@ input {
     border-radius: 10px;
 }
 
-.btn-modal-details {
+.labelTitle {
+    font-family: 'Rubik', sans-serif;
+    color: #707070;
+    font-weight: 600;
+    font-size: 18pt;
+    margin: 0;
+  }
+
+  .font-2-5vh,
+  .font-2-5vh::placeholder{
+    font-size: 2.5vh ;
+  }
+
+  .line-h-5vh{
+    line-height: 5vh;
+  }
+
+  .btn-modal-details {
     width: 12vh;
     height: 11vh;
-}
 
+    border-radius: 10px;
+    opacity: 1;
+    color: white;
+    border: 1px solid transparent;
+  }
 
-.background-img {
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+  .btn-modal-details:disabled{
+    color: #e8e7e7;
+    background: #808080 !important;
+    box-shadow: 0px 3px 6px #3d403d80;
+    cursor: not-allowed;
+  }
+
+  .btn-green {
+    background: #0AC917;
+    box-shadow: 0px 3px 6px #0AC91780;
+  }
+
+  .mb-4vh{
+    margin-bottom: 4vh ;
+  }
+
+  .font-3vh,
+  .font-3vh::placeholder{
+    font-size: 3vh ;
+  }
 
 .div-form-login {
     display: flex;
     justify-content: center;
-    margin-top: -42vh;
+    margin-top: -37vh;
 }
 
-.loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif') 50% 50% no-repeat rgb(249, 249, 249);
-}
-
-#clickme {
-    cursor: pointer
-}
-
-.sotformcontrol {
-    background-color: #C6C5C5;
-    border: 1px solid #C6C5C5;
-    border-radius: 10px 10px 10px 10px !important;
-    padding: 0 10px;
-    width: 100%;
-    margin-left: 50px;
-
+.color-title{
+    color: #707070;
 }
 
 .card {
     width: 24vw;
-    height: 60vh;
-    padding: 30px;
+    height: 59vh;
+    padding: 25px;
     border: none;
-    background: #f1f1f1;
 }
 
 .ojo {
-
-    padding-top: 4.61px;
     border-radius: 0px 10px 10px 0px !important;
-    padding: 4.64px;
 }
 
 .principal-login {
@@ -126,7 +122,7 @@ input {
     background-color: white;
 }
 
-.fondo-login {
+.background-login {
     height: 111%
 }
 
@@ -138,22 +134,21 @@ input {
 }
 
 .logo-login {
-    height: 68px;
-    width: 20vh;
+    height: 8vh;
 }
 
-.titulo-login {
+.title-login {
     font-size: 8vh;
     color: white;
     font-family: 'Rubik', sans-serif;
 }
 
-.contenido-login {
+.content-login {
     position: relative;
     height: 11vh;
 }
 
-.cortina-login {
+.curtain-login {
     height: 100%;
     overflow: hidden;
     top: 0;
@@ -162,7 +157,7 @@ input {
     display: block;
 }
 
-.cortina-login-2 {
+.curtain-login-2 {
     height: 100%;
     overflow: hidden;
     position: absolute;
@@ -178,29 +173,23 @@ input {
     width: 100%;
 }
 
-.margin-100 {
-    margin-top: 100 !important;
-}
-
-#usuarioContrasenaIncorrectos {
-    margin: 0vh 6vh;
-}
-
 .icon-login {
     font-size: 6vh;
-}
-
-.div-input-login {
-    width: 50vh;
 }
 
 .finger-button-login {
     width: 6vw;
     height: 12vh;
     font-size: 9vh;
-    color: white;
-    box-shadow: 0px 3px 6px #00000029;
+    color: $wine;
     border-radius: 10px;
+}
+
+.fingerButtonActive {
+    background-color: $wine;
+    .icon-manita_fingerprint {
+        color: white;
+    }
 }
 
 .pass-margin {
@@ -210,29 +199,6 @@ input {
 .text-error {
     color: red;
     display: none;
-}
-
-.dis-none-login {
-    display: none;
-    padding: 1vh 3vh;
-}
-
-.button-entrar-login {
-    background-color: #AD1F17;
-    border: none;
-    box-shadow: 0px 3px 6px #71130E;
-    color: white;
-    border-radius: 20px;
-    width: 24vh;
-}
-
-.reestablecer-pass-modal-content {
-    width: 100vh;
-}
-
-.txt-accesando-margin {
-    margin: auto;
-    width: 50%;
 }
 
 .svg-style-login {
@@ -246,85 +212,6 @@ input {
     fill: rgba(224, 67, 58, .50);
     filter: url(#shadow);
 }
-
-.mensaje-bienvenida {
-    margin: 1vh 0vh 2vh;
-    font-size: 7vh;
-}
-
-.w-90vh {
-    width: 90vh;
-}
-
-/********** Dispositivos Moviles **********/
-@media (max-width: 769px) {
-    .sot-login-boton {
-        width: 25vw;
-        height: 30vw;
-    }
-
-    .sot-login-boton .icon-login {
-        font-size: 8vh;
-        font-size: 10vw;
-    }
-
-    .sot-login-boton .font-2-5vh {
-        font-size: 4vw;
-    }
-
-    .finger-button-login {
-        width: 25vw;
-        height: 25vw;
-    }
-
-    .icon-manita_fingerprint {
-        font-size: 15vw;
-    }
-
-    .titulo-login {
-        width: 80vw;
-    }
-
-    .div-input-login {
-        width: 60vw;
-    }
-
-    input,
-    input::placeholder {
-        font-size: 5vw;
-    }
-
-    .ojo {
-        padding: 0px;
-        font-size: 4vw;
-    }
-
-    .btn-modal-details {
-        width: 20vw;
-        height: 20vw;
-    }
-
-    .btn-modal-details.mr-8vh {
-        margin-right: 12vw;
-    }
-
-    .btn-modal-details .font-3vh {
-        font-size: 6vw;
-    }
-
-    .btn-modal-details .font-2vh {
-        font-size: 3vw;
-    }
-
-    .w-90vh {
-        width: 70vh !important;
-    }
-
-    .modal-body {
-        padding: 3vw;
-    }
-}
-
 
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
@@ -347,7 +234,15 @@ input {
         width: 9vw;
     }
 
+    .labelTitle {
+        font-size: 14pt;
+    }
+
     .div-form-login {
-        margin-top: -45vh;
+        margin-top: -46vh;
+    }
+
+    .header {
+        margin-bottom: 3rem;
     }
 }

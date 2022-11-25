@@ -1,0 +1,146 @@
+@import '../../../../styles.scss';
+
+.sidebar {
+    display: sticky;
+    position: absolute;
+    height: 99vh;
+    width: 15%;
+    border-top-right-radius: 25px;
+    margin-top: 1vh;
+    margin-left: -10px;
+    overflow: hidden;
+}
+
+.nav-item {
+    height: 3vh;
+}
+
+.others-menu {
+    height: 21vh;
+    margin-bottom: 0;
+}
+
+.wine {
+    color: $wine;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.menu-box {
+    width: 55px;
+    height: 55px;
+    border-bottom-style: solid 1px $wine;
+}
+
+.menu-icon {
+    font-size: 25px;
+}
+
+.shadowed {
+    box-shadow: 0px 0px 9px #00000073;
+}
+
+.divider {
+    height: 1px;
+    width: 80%;
+    margin-top: 5%;
+    background-color: $wine;
+}
+
+.search-text {
+    font-weight: 100;
+}
+
+.room-type__count {
+    font-weight: 800;
+}
+
+.room-type__item {
+    cursor: pointer;
+    border-radius: 5px !important;
+}
+
+.room-type__item:hover {
+    color: white;
+}
+
+
+.success {
+    color: $green-item;
+}
+
+.success:hover {
+    background-color: $green-item;
+}
+
+.danger {
+    color: $red-danger;
+}
+
+.danger:hover {
+    background-color: $red-danger;
+}
+
+.warn {
+    color: $yellow-warn;
+}
+
+.warn:hover {
+    background-color: $yellow-warn;
+}
+
+.orange {
+    color: $orange-item;
+}
+
+.orange:hover {
+    background-color: $orange-item;
+}
+
+.blue {
+    color: $blue-item;
+}
+
+.blue:hover {
+    background-color: $blue-item;
+}
+
+.purple {
+    color: $purple-item;
+}
+
+.purple:hover {
+    background-color: $purple-item;
+}
+
+.grey-item {
+    color: $grey-item;
+}
+
+.grey-item:hover {
+    background-color: $grey-item;
+}
+
+.item-disabled {
+    background-color: $grey-item;
+    color: white;
+}
+
+
+
+input {
+    margin-right: -20px;
+}
+
+@media (max-width: 1025px) and (orientation: landscape) {
+    .sidebar {
+        overflow: auto;
+        width: 23%;
+    }
+
+    input{
+        font-size: small;
+    }
+}

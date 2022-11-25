@@ -1,0 +1,135 @@
+<nav class="d-lg-block sidebar bg-white shadow">
+    <div class="">
+        <div class="w-100 d-flex justify-content-end">
+            <i class="fas fa-times-circle mx-3 mt-3 wine" (click)="toggle()"></i>
+        </div>
+        <div class="d-flex justify-content-around mt-4">
+            <div class="shadowed menu-box d-flex flex-column justify-content-center align-items-center rounded">
+                <i class="fas fa-home wine menu-icon"></i>
+                <div class="divider"></div>
+            </div>
+            <div class="shadowed menu-box d-flex flex-column justify-content-center align-items-center rounded">
+                <i class="far fa-user wine menu-icon"></i>
+                <div class="divider"></div>
+
+            </div>
+            <div class="menu-box d-flex flex-column justify-content-center align-items-center rounded">
+                <i class="fas fa-bars wine menu-icon"></i>
+                <div class="divider"></div>
+
+            </div>
+        </div>
+        <div class="list-group list-group-flush m-3">
+            <div class="my-4">
+                <input type="text" [placeholder]="'Buscar tipo de habitación'" class="text-center w-100 search-text">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm success">
+                <span class="me-3 room-type__count">10</span>
+                <span class="me-3">Libre</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm success">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Por cobrar</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-cobrar"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm success">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Preparada</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-car"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm danger">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Ocupada</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-pareja-ocupada"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm danger">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Room service</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-roomservice"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm warn">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Sucia</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-sucia"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm orange">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Media Sucia</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-sucia"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm blue">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Limpieza</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-limpieza"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm blue">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Supervisión</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-search"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm purple">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Reservar</span>
+                <span class="spacer"></span>
+                <i class="icon-calendar"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm purple">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Preparada y Reservada</span>
+                <span class="spacer"></span>
+                <i class="icon-calendar"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm purple">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Bloqueada</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-candado"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm grey-item">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Mantenimiento</span>
+                <span class="spacer"></span>
+                <i class="far fa-check-circle icon-mantenimiento"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm grey-item">
+                <span class="me-3 room-type__count">05</span>
+                <span class="me-3">Alertas</span>
+                <span class="spacer"></span>
+                <i class="fas fa-clock"></i>
+            </div>
+        </div>
+        <div class="list-group list-group-flush m-3 shadow p-1 others-menu">
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm active">
+                <span class="me-3">Vincular video</span>
+                <span class="spacer"></span>
+                <i class="fas fa-video"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm item-disabled">
+                <span class="me-3">Taxi</span>
+                <span class="spacer"></span>
+                <i class="demo-icon icon-car"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm item-disabled">
+                <span class="me-3 room-type__count">2</span>
+                <span class="me-3">Mesas</span>
+                <span class="spacer"></span>
+                <i class="demo-icon icon-menu"></i>
+            </div>
+            <span class="spacer"></span>
+            <div class="text-center mb-2">
+                <img src="./assets/img/logo_GlobalMaster.png" alt="GM LOGO" width="80">
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,14 +1,14 @@
-<div *ngIf="behaviorCortina" (click)="showCortina = !showCortina" id="cortina" class="animated fadeInDown principal-login"
-    [ngClass]="{'fadeOutUp': !showCortina}">
-    <img class="fondo-login" src="./assets/img/fondoIndex.svg" alt="Motel Logo">
+<div *ngIf="behaviorCurtain" (click)="showCurtain = !showCurtain" id="curtain" class="animated fadeInDown principal-login"
+    [ngClass]="{'fadeOutUp': !showCurtain}">
+    <img class="background-login" src="./assets/img/fondoIndex.svg" alt="Motel Logo">
     <div class="logo-cont-login">
-        <img class="logo-login" src="./assets/img/sot_logo.svg" alt="Motel Logo">
-        <h2 class="titulo-login">Sistema de gestion hotelera</h2>
+        <img src="./assets/img/sot_logo.svg" alt="Motel Logo">
+        <h2 class="title-login">Sistema de gestion hotelera</h2>
     </div>
 </div>
 
-<div class="contenido-login">
-    <div class="cortina-login">
+<div class="content-login">
+    <div class="curtain-login">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="size-100">
             <defs>
                 <filter id="shadow">
@@ -19,7 +19,7 @@
             class="svg-style-login"></path>
         </svg>
     </div>
-    <div class="cortina-login-2">
+    <div class="curtain-login-2">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="size-100">
             <defs>
                 <filter id="shadow">
@@ -32,10 +32,10 @@
     </div>
 </div>
 
-<div class="margin-100">
-    <div class="w-100 d-flex flex-column align-items-center mb-5">
-        <img class="logo-login " src="./assets/img/sot_logo_dark.svg" alt="Motel Logo">
-        <h1 class="idle">SISTEMA DE GESTIÓN HOTELERA</h1>
+<div>
+    <div class="w-100 d-flex flex-column align-items-center header">
+        <img class="logo-login mb-3" src="./assets/img/sot_logo_dark.svg" alt="Motel Logo">
+        <h1 class="color-title">SISTEMA DE GESTIÓN HOTELERA</h1>
     </div>
 
     <div class="hide-buttons">
@@ -88,7 +88,7 @@
     <div class="div-form-login">
         <form (ngSubmit)="login()" autocomplete="off" [formGroup]="loginForm" class="card shadow">
             <div class="d-flex justify-content-center mb-4vh">
-              <div [ngClass]="['btn-gray fingerButtonClass', 'd-flex', 'justify-content-center', 'finger-button-login']">
+              <div class="btn-gray d-flex justify-content-center finger-button-login shadow" [ngClass]="{'fingerButtonActive': isFingerScannerDetected}">
                 <i [ngClass]="'icon-manita_fingerprint'"></i>
               </div>
             </div>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="d-flex justify-content-center mb-4vh">
-                    <div class="div-input-login">
+                    <div class="w-100">
                         <p class="text-center w-100 labelTitle">USUARIO</p>
                         <input  type="text"
                                 class="text-center font-2-5vh w-100 line-h-5vh"
@@ -118,8 +118,8 @@
                     </div>
             </div>
 
-            <div class="d-flex justify-content-center">
-                <div class="div-input-login">
+            <div class="d-flex justify-content-center mb-4vh">
+                <div class="w-100">
                     <p class="text-center w-100 labelTitle">CONTRASEÑA</p>
                     <input  [type]="showPassword ? 'text' : 'password'"
                             class="text-center pass-margin font-2-5vh w-100 line-h-5vh"
@@ -127,23 +127,18 @@
                             formControlName="password"
                             placeholder="Ingresa una Contraseña"
                     >
-                        <span class="fa fa-eye text-secondary ojo font-3vh"   (click)="'TODO'"></span>
+                        <span class="fa fa-eye text-secondary ojo font-3vh" (click)="toggleShowPassword()"></span>
                 </div>
             </div>
 
             <div class="text-center p-3vh">
                 <button type="submit" class="btn-modal-details btn-green" data-dismiss="modal">
                     <div class="txt-pass font-3vh"><i class="fas fa-check"></i></div>
-                    <div class="size-txt font-2vh">Aceptar</div>
+                    <div class="size-txt font-2-5vh text-nowrap">Aceptar</div>
                 </button>
 
             </div>
         </form>
-        <div class="d-flex justify-content-center">
-            <button id="btnRestablecerContrasena" class="btn btn-warning dis-none-login" (click)="'TODO'">
-                <div class="font-2-5vh">Restablecer contraseña</div>
-            </button>
-        </div>
 
     </div>
 
@@ -186,7 +181,7 @@
                                     <div class="size-txt font-2vh">Salir</div>
                                 </button>
                                 <!-- TODO: child_huella.OpenModalAutorizarRestablecimientoPassword('retablecerPassword') -->
-                                <button  class="btn-modal-details btn-green"(click)="'TODO'" >
+                                <button  class="btn-modal-details btn-green"(click)="login()" >
                                     <div class="font-3vh"><i class="fas fa-check"></i></div>
                                     <div class="size-txt font-2vh">Aceptar</div>
                                 </button>
