@@ -11,6 +11,8 @@ import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { AgregarEditarRolComponent } from './modals/roles-y-permisos/agregar-editar-rol/agregar-editar-rol.component';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import { CoreModule } from '../core/core.module';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -26,7 +28,7 @@ import { CoreModule } from '../core/core.module';
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
-
+    OverlayPanelModule
   ],
   providers: [
     HomeService,

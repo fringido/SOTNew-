@@ -21,8 +21,10 @@ $gray-background: #e4e4e4;
 //* Texto
 $color-text: #212529;
 
-
-//* Shadows
-
-$shadow-modal-tittle:0 0 3pt #00000045;
+//* Border-radius
 $border-radius-tittle: 10px;
+$border-button:5px;
+//* Shadows
+$shadow-modal-tittle:0 0 3pt #00000045;
+$shadow-boton: 10px 10px 13px #e1e1e1, -6px -2px 9px #e1e1e1;
+
