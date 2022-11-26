@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomeService } from './services/home/home.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit {
   display = true;
 
   constructor(
-    private readonly homeService: HomeService
+    private readonly homeService: HomeService,
+    private readonly router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -40,5 +42,10 @@ export class HomeComponent implements OnInit {
 
   toggle() {
     this.homeService.toggleSidenav();
+  }
+
+  openModal(ruta: string){
+    this.display = !this.display
+
   }
 }

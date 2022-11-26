@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import '../../library.scss';
 
 .black-header {
     color: #FFFFFF;
@@ -61,7 +61,7 @@ h5 {
 
 ::-webkit-scrollbar-thumb {
     background-color: rgba(196, 201, 196, 0.101);
-    border-radius: 20px; 
+    border-radius: 20px;
     opacity: 0.1;
     /* color of the scroll thumb */
 }

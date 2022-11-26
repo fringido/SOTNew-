@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: 'cocina-bar', loadChildren: () => import('./cocinabar/cocinabar.module').then((m) => m.CocinabarModule) },
-  { path: 'home', loadChildren: () => import('./home/home.module').then((m) => m.HomeModule) },
+  { path: 'hotel', loadChildren: () => import('./home/home.module').then((m) => m.HomeModule) },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: '**', component: PageNotFoundComponent },
 ];

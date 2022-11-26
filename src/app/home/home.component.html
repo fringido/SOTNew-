@@ -5,9 +5,9 @@
   <main class="content">
     <div>
         <p (click)="toggle()">holasdadsadsasdasdasdasdadsa</p>
-        <button></button>
-        <p-dialog header="Title" [(visible)]="display" appNgmodal>
-          Content
+        <button (click)="openModal('rolesYPermisos')">roles de canela</button>
+        <p-dialog [header]="'Crear Rol'" [draggable]="false" [(visible)]="display" appNgmodal>
+          <app-agregar-editar-rol></app-agregar-editar-rol>
       </p-dialog>
     </div>
   </main>

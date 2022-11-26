@@ -1,0 +1,32 @@
+<div class="modal-body">
+  <div class="input-rol">
+    <label>Username</label>
+    <span class="p-input-icon-right">
+      <i class="fa-regular fa-user"></i>
+      <input type="text" pInputText >
+    </span>
+  </div>
+  <div class="permisos">
+    <div class="permisos-select_menu">
+      <i class="fas fa-house-chimney-window"></i>
+      <i class="fab fa-android"></i>
+      <i class="fab fa-buffer"></i>
+      <i class="fab fa-cc-amazon-pay"></i>
+    </div>
+    <div class="permisos-select_buttons">
+      <div ngbDropdown class="d-inline-block">
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            Toggle dropdown
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Action - 1</button>
+            <button ngbDropdownItem>Another Action</button>
+            <button ngbDropdownItem>Something else is here</button>
+          </div>
+        </div>
+      </div>
+      <p-toggleButton [(ngModel)]="checked2" onLabel="Hola" offLabel="hola" ></p-toggleButton>
+    </div>
+  </div>
+</div>
