@@ -1,8 +1,17 @@
 @import '../../styles.scss';
 
+.font-2vh, .font-2vh::placeholder {
+    font-size: 2vh;
+    font-weight: 300;
+}
+
+.font-3vh, .font-3vh::placeholder {
+    font-size: 3vh;
+}
+
 .hide-buttons {
     margin-top: -8vh;
-    margin-left: -6.5vw;
+    margin-left: -6.8vw;
 }
 
 .show-button {
@@ -213,11 +222,17 @@
     filter: url(#shadow);
 }
 
+.accept-button__icon {
+    font-weight: 900;
+    -webkit-text-stroke: 1.5px white;
+
+}
+
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
     .hide-buttons {
         margin-top: -8vh;
-        margin-left: -10vw;
+        margin-left: -10.4vw;
     }
 
     .show-button {

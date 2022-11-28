@@ -1,0 +1,69 @@
+@import '../../../../styles.scss';
+
+.shadowed {
+    box-shadow: 0px 0px 9px #00000073;
+}
+
+.home-button {
+    width: 55px;
+    height: 55px;
+    margin-left: 0.3vh;
+}
+
+.typeroom_button {
+    border-radius: 0px 10px 10px 0px;
+    width: 3.2vw;
+    height: 4vh;
+}
+
+.sidebar-hidden__buttons {
+    height: 100vh
+}
+
+.wine {
+    color: $wine;
+}
+
+
+.search-text {
+    font-weight: 100;
+}
+
+.room-type__count {
+    font-weight: 800;
+}
+
+.room-type__item {
+    cursor: pointer;
+    border-radius: 5px !important;
+    overflow: hidden;
+}
+
+.success {
+    background-color: $green-item;
+}
+.danger {
+    background-color: $red-danger;
+}
+.warn {
+    background-color: $yellow-warn;
+}
+.orange {
+    background-color: $orange-item;
+}
+.blue {
+    background-color: $blue-item;
+}
+.purple {
+    background-color: $purple-item;
+}
+.grey-item {
+    background-color: $grey-item;
+}
+
+// Ipad mini
+@media (max-width: 1025px) and (orientation: landscape) {
+    .typeroom_button {
+        width: 6.2vw;
+    }
+}

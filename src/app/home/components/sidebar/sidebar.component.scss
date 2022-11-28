@@ -43,10 +43,64 @@
 }
 
 .divider {
-    height: 1px;
-    width: 80%;
-    margin-top: 5%;
+    height: 2px;
+    width: 2vw;
+    // margin-top: 1vh;
     background-color: $wine;
+}
+
+.type-text__wrapper {
+    position: relative;
+}
+
+.scroll-text {
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    /* animation properties */
+    -moz-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+
+    -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite;
+    animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+    from {
+        -moz-transform: translateX(50%);
+    }
+
+    to {
+        -moz-transform: translateX(-50%);
+    }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+    from {
+        -webkit-transform: translateX(50%);
+    }
+
+    to {
+        -webkit-transform: translateX(-50%);
+    }
+}
+
+@keyframes my-animation {
+    from {
+        -moz-transform: translateX(50%);
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+
+    to {
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
 }
 
 .search-text {
@@ -60,6 +114,7 @@
 .room-type__item {
     cursor: pointer;
     border-radius: 5px !important;
+    overflow: hidden;
 }
 
 .room-type__item:hover {
@@ -136,11 +191,10 @@ input {
 
 @media (max-width: 1025px) and (orientation: landscape) {
     .sidebar {
-        overflow: auto;
         width: 23%;
     }
 
-    input{
+    input {
         font-size: small;
     }
 }

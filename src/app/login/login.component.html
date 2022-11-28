@@ -1,5 +1,5 @@
-<div *ngIf="behaviorCurtain" (click)="showCurtain = !showCurtain" id="curtain" class="animated fadeInDown principal-login"
-    [ngClass]="{'fadeOutUp': !showCurtain}">
+<div *ngIf="behaviorCurtain" (click)="showCurtain = !showCurtain" id="curtain"
+    class="animated fadeInDown principal-login" [ngClass]="{'fadeOutUp': !showCurtain}">
     <img class="background-login" src="./assets/img/fondoIndex.svg" alt="Motel Logo">
     <div class="logo-cont-login">
         <img src="./assets/img/sot_logo.svg" alt="Motel Logo">
@@ -16,7 +16,7 @@
                 </filter>
             </defs>
             <path d="M0.00,49.99 C150.00,150.00 273.36,-30.29 502.48,66.41 L500.00,0.00 L0.00,0.00 Z"
-            class="svg-style-login"></path>
+                class="svg-style-login"></path>
         </svg>
     </div>
     <div class="curtain-login-2">
@@ -27,7 +27,7 @@
                 </filter>
             </defs>
             <path d="M-0.90,0.30 C89.95,-14.50 355.19,223.31 493.45,-11.54 L501.35,-6.60 L-9.93,-23.39 Z"
-            class="svg-style-login2"></path>
+                class="svg-style-login2"></path>
         </svg>
     </div>
 </div>
@@ -41,43 +41,28 @@
     <div class="hide-buttons">
         <div class="d-flex flex-column justify-content-center ">
             <div class="div-sot-button-cocina mb-3">
-                <button 
-                    class="sot-button-cocina sot-login-boton animated slideInLeft" 
-                    [ngClass]="{'show-button': showCocinaButton}"
-                    (updateIsShowing)="showCocinaButton = $event"
-                    (updateIsFirstTap)="isCocinaFirstTap = $event"
-                    [type]="'COCINA'"
-                    [isShowing]="showCocinaButton"
-                    appMenuButton
-                >
+                <button class="sot-button-cocina sot-login-boton animated slideInLeft"
+                    [ngClass]="{'show-button': showCocinaButton}" (updateIsShowing)="showCocinaButton = $event"
+                    (updateIsFirstTap)="isCocinaFirstTap = $event" [type]="'COCINA'" [isShowing]="showCocinaButton"
+                    appMenuButton>
                     <div class="icon-login"><i class="icon-cocina"></i></div>
                     <div class="font-2-5vh">Cocina</div>
                 </button>
             </div>
             <div class="mb-3">
-                <button 
-                    class="sot-button-bar sot-login-boton mr-2 animated slideInLeft" 
-                    [ngClass]="{'show-button': showBarButton}"
-                    (updateIsShowing)="showBarButton = $event"
-                    (updateIsFirstTap)="isBarFirstTap = $event"
-                    [type]="'BAR'"
-                    [isShowing]="showBarButton"
-                    appMenuButton
-                >
+                <button class="sot-button-bar sot-login-boton mr-2 animated slideInLeft"
+                    [ngClass]="{'show-button': showBarButton}" (updateIsShowing)="showBarButton = $event"
+                    (updateIsFirstTap)="isBarFirstTap = $event" [type]="'BAR'" [isShowing]="showBarButton"
+                    appMenuButton>
                     <div class="icon-login"><i class="icon-bar"></i></div>
                     <div class="font-2-5vh">Bar</div>
                 </button>
             </div>
             <div class="mb-3">
-                <button 
-                    class="sot-button-checador sot-login-boton ml-5 animated slideInLeft" 
-                    [ngClass]="{'show-button': showChecadorButton}"
-                    (updateIsShowing)="showChecadorButton = $event"
-                    (updateIsFirstTap)="isChecadorFirstTap = $event"
-                    [type]="'CHECADOR'"
-                    [isShowing]="showChecadorButton"
-                    appMenuButton
-                >
+                <button class="sot-button-checador sot-login-boton ml-5 animated slideInLeft"
+                    [ngClass]="{'show-button': showChecadorButton}" (updateIsShowing)="showChecadorButton = $event"
+                    (updateIsFirstTap)="isChecadorFirstTap = $event" [type]="'CHECADOR'"
+                    [isShowing]="showChecadorButton" appMenuButton>
                     <div class="icon-login"><i class="fas fa-user"></i></div>
                     <div class="font-2-5vh">Checador</div>
                 </button>
@@ -88,53 +73,52 @@
     <div class="div-form-login">
         <form (ngSubmit)="login()" autocomplete="off" [formGroup]="loginForm" class="card shadow">
             <div class="d-flex justify-content-center mb-4vh">
-              <div class="btn-gray d-flex justify-content-center finger-button-login shadow" [ngClass]="{'fingerButtonActive': isFingerScannerDetected}">
-                <i [ngClass]="'icon-manita_fingerprint'"></i>
-              </div>
+                <div class="btn-gray d-flex justify-content-center finger-button-login shadow"
+                    [ngClass]="{'fingerButtonActive': isFingerScannerDetected}">
+                    <i [ngClass]="'icon-manita_fingerprint'"></i>
+                </div>
             </div>
 
             <div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeResultadoLogin !== '' ">
-              <span class="text-danger font-2-5vh">
-                {{ mensajeResultadoLogin }}
-              </span>
+                <span class="text-danger font-2-5vh">
+                    {{ mensajeResultadoLogin }}
+                </span>
             </div>
 
-            <div class="d-flex justify-content-center mb-2vh" >
+            <div class="d-flex justify-content-center mb-2vh">
                 <div>
-                    <label id="usuarioContrasenaIncorrectos" class="text-error font-2-5vh">Usuario o contraseña incorrecto favor de validar</label>
-                    <label id="usuarioNull" class="text-error font-2-5vh" >Favor de ingresar un usuario</label>
-                    <label id="PassNull" class="text-error font-2-5vh" >Favor de ingresar su contraseña</label>
+                    <label id="usuarioContrasenaIncorrectos" class="text-error font-2-5vh">Usuario o contraseña
+                        incorrecto favor de validar</label>
+                    <label id="usuarioNull" class="text-error font-2-5vh">Favor de ingresar un usuario</label>
+                    <label id="PassNull" class="text-error font-2-5vh">Favor de ingresar su contraseña</label>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center mb-4vh">
-                    <div class="w-100">
-                        <p class="text-center w-100 labelTitle">USUARIO</p>
-                        <input  type="text"
-                                class="text-center font-2-5vh w-100 line-h-5vh"
-                                formControlName="name"
-                                placeholder="Ingresa un Usuario"
-                        >
-                    </div>
+                <div class="w-100">
+                    <p class="text-center w-100 labelTitle">USUARIO</p>
+                    <input type="text" class="text-center font-2-5vh w-100 line-h-5vh" formControlName="name"
+                        placeholder="Ingresa un Usuario">
+                </div>
             </div>
 
             <div class="d-flex justify-content-center mb-4vh">
                 <div class="w-100">
                     <p class="text-center w-100 labelTitle">CONTRASEÑA</p>
-                    <input  [type]="showPassword ? 'text' : 'password'"
-                            class="text-center pass-margin font-2-5vh w-100 line-h-5vh"
-                            id ="passwordLogin"
-                            formControlName="password"
-                            placeholder="Ingresa una Contraseña"
-                    >
-                        <span class="fa fa-eye text-secondary ojo font-3vh" (click)="toggleShowPassword()"></span>
+                    <input [type]="showPassword ? 'text' : 'password'"
+                        class="text-center pass-margin font-2-5vh w-100 line-h-5vh" id="passwordLogin"
+                        formControlName="password" placeholder="Ingresa una Contraseña">
+                    <span class="fa fa-eye text-secondary ojo font-3vh" (click)="toggleShowPassword()"></span>
                 </div>
             </div>
 
             <div class="text-center p-3vh">
-                <button type="submit" class="btn-modal-details btn-green" data-dismiss="modal">
-                    <div class="txt-pass font-3vh"><i class="fas fa-check"></i></div>
-                    <div class="size-txt font-2-5vh text-nowrap">Aceptar</div>
+                <button type="submit" data-dismiss="modal"
+                    class="btn-modal-details btn-green">
+                    <div class="font-3vh">
+                        <i class="fas fa-check accept-button__icon"></i>
+                    </div>
+                    <div class="size-txt font-2vh">Aceptar</div>
                 </button>
 
             </div>
@@ -142,57 +126,5 @@
 
     </div>
 
-    <div class="modal fade" id="SelectModal">
-        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
-            <div class="modal-content w-90vh">
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <div class="d-flex justify-content-center">
-                    <div class="mensaje-bienvenida">{{ 'Bienvenido '+ usuarioLogin | titlecase }}</div>
-                  </div>
-
-                  <div class="mb-3 d-flex justify-content-center">
-                    <button class="button-entrar-login" (click)="'TODO'">
-                    <div class="font-12vh"><i class="icon-hotel_carita"></i></div>
-                    <div class="font-3vh">V Sur</div>
-                    </button>
-                  </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade reestablecer-pass-margin" id="restablecerContrasenaModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
-            <div class="modal-content reestablecer-pass-modal-content">
-                <div class="modal-body">
-                    <div>
-                        <div class="text-center">
-
-                            <div class="mb-4vh txt-pass font-4vh">
-                                <b>¿Desea restablecer su contraseña?</b>
-                            </div>
-
-                            <div>
-                                <button type="button" class="btn-modal-details btn-redBold mr-8vh" data-dismiss="modal" (click)="'TODO'" >
-                                    <div class="font-3vh"><i class="icon-icon-metro-exit"></i></div>
-                                    <div class="size-txt font-2vh">Salir</div>
-                                </button>
-                                <!-- TODO: child_huella.OpenModalAutorizarRestablecimientoPassword('retablecerPassword') -->
-                                <button  class="btn-modal-details btn-green"(click)="login()" >
-                                    <div class="font-3vh"><i class="fas fa-check"></i></div>
-                                    <div class="size-txt font-2vh">Aceptar</div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
