@@ -1,0 +1,13 @@
+
+<!-- TODO: acomodar fecha y hora del nav menu -->
+<mat-toolbar class="d-flex justify-content-end toolbar shadow" >
+    <img src="./assets/img/motelv_Logo.png" alt="Motel Logo">
+    <div class="px-0 data-head">
+        <div class="clock-box d-flex flex-column align-items-center shadow">
+            <span id="dia">{{fecha|date:'d'}}</span>
+            <span id="diaLetra">{{fecha|date:'EEEE'}}</span>
+            <span id="mes" class="text-capitalize">{{fecha|date:'MMMM'}}, {{fecha|date:'YYYY'}}</span>
+            <span id="reloj">{{time|date:'HH:mm'}}</span>
+        </div>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,38 @@
+@import '../../../../styles.scss';
+
+.toolbar {
+    height: 12vh;
+}
+
+.clock-box
+{
+  border-radius: 8px;
+  font-family: 'epilogueFont', Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  height: 10vh;
+}
+
+.clock-box #dia
+{
+  color: $wine;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.clock-box #diaLetra
+{
+  color: #cf4a5c;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.clock-box #mes
+{
+  color: #a5a5a5;
+  font-weight: 400;
+}
+
+.clock-box #reloj
+{
+  color: #ef9690;
+}

@@ -1,16 +1,27 @@
 
-<div class="row" [@openCloseSidenav]="(isOpen$ | async) ? 'open' : 'closed'" style="width: 100%;">
-  <app-sidebar></app-sidebar>
-  <app-sidebar-hidden 
-    class="col"
-    [@openCloseSidenavButtons]="!(isOpen$ | async) ? 'open' : 'closed'"
-    ></app-sidebar-hidden>
-  <main class="content col">
-      <p (click)="toggle()">Texto</p>
-      <button>Boton</button>
-        <!-- <p-dialog header="Title" [(visible)]="display" appNgmodal>
-          Content
-      </p-dialog> -->
-  </main>
-</div>
-
+  <app-nav-menu></app-nav-menu>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer 
+    #sidenav 
+    class="sidenav" 
+    mode="side" 
+    *ngIf="(showSidenav | async); else hiddenSidenav"
+    appSidenav
+  >
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+  <ng-template #hiddenSidenav>
+    <mat-drawer  class="bg-dark"
+        mode="side" 
+        class="bg-transparent sidebar-hidden"
+        appSidenav 
+      >
+      <app-sidebar-hidden></app-sidebar-hidden>
+    </mat-drawer>
+  </ng-template>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container>

@@ -1,62 +1,9 @@
-<nav class="bg-transparent d-flex align-items-start justify-content-center flex-column sidebar-hidden__buttons">
-    <div class="bg-white d-flex justify-content-center align-items-center rounded shadowed home-button my-1 ml-2" (click)="toggleSidenav()">
+<nav class="bg-transparent d-flex align-items-start justify-content-center flex-column">
+    <div class="bg-white d-flex justify-content-center align-items-center rounded shadowed home-button my-1 ml-2" (click)="toggle()">
         <i class="fas fa-home fa-xl wine menu-icon mb-1"></i>
     </div>
-    <div class="success text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle"></i>
+    <div *ngFor="let roomType of roomTypes" [ngClass]="roomType.color" class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
+        <span>{{roomType.count}}</span>
+        <i [ngClass]="roomType.icon"></i>
     </div>
-    <div class="success text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-cobrar"></i>
-    </div>
-    <div class="success text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-car"></i>
-    </div>
-    <div class="danger text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-pareja-ocupada"></i>
-    </div>
-    <div class="danger text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-roomservice fa-2xs"></i>
-    </div>
-    <div class="warn text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-sucia"></i>
-    </div>
-    <div class="orange text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-sucia"></i>
-    </div>
-    <div class="blue text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-limpieza"></i>
-    </div>
-    <div class="blue text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-search"></i>
-    </div>
-    <div class="purple text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="icon-calendar"></i>
-    </div>
-    <div class="purple text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="icon-calendar"></i>
-    </div>
-    <div class="purple text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-candado"></i>
-    </div>
-    <div class="grey-item text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="far fa-check-circle icon-mantenimiento"></i>
-    </div>
-    <div class="grey-item text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span>10</span>
-        <i class="fas fa-clock"></i>
-    </div>
-
 </nav>

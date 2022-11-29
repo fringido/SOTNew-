@@ -1,13 +1,7 @@
 @import '../../../../styles.scss';
 
 .sidebar {
-    display: sticky;
-    position: absolute;
     height: 99vh;
-    width: 15%;
-    border-top-right-radius: 25px;
-    margin-top: 1vh;
-    margin-left: -10px;
     overflow: hidden;
 }
 
@@ -189,11 +183,8 @@ input {
     margin-right: -20px;
 }
 
+// Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
-    .sidebar {
-        width: 23%;
-    }
-
     input {
         font-size: small;
     }
