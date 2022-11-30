@@ -8,7 +8,7 @@ import { HomeService } from '../../services/home/home.service';
 })
 export class SidebarHiddenComponent implements OnInit {
 
-  roomTypes = [
+  statusRooms = [
     { name: 'Libre', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle', isTextScrollable: false },
     { name: 'Por cobrar', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle icon-cobrar', isTextScrollable: true },
     { name: 'Preparada', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle icon-car', isTextScrollable: false },

@@ -2,15 +2,15 @@
     <div class="bg-white d-flex justify-content-center align-items-center rounded shadowed home-button my-1 ml-2" (click)="toggle()">
         <i class="fas fa-home fa-xl wine menu-icon mb-1"></i>
     </div>
-    <div *ngFor="let roomType of roomTypes" [ngClass]="roomType.color" class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
-        <span class="ml-3">{{roomType.count}}</span>
-        <div *ngIf="roomType.isTextScrollable; else notAnimated" class="d-none type-text__wrapper w-50 room-type__item nav-item">
-            <span class="scroll-text">{{roomType.name}}</span>
+    <div *ngFor="let statusRoom of statusRooms" [ngClass]="statusRoom.color" class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
+        <span class="ml-3">{{statusRoom.count}}</span>
+        <div *ngIf="statusRoom.isTextScrollable; else notAnimated" class="d-none type-text__wrapper w-50 room-type__item nav-item">
+            <span class="scroll-text">{{statusRoom.name}}</span>
         </div>
         <ng-template #notAnimated>
-            <span class="d-none">{{roomType.name}}</span>
+            <span class="d-none">{{statusRoom.name}}</span>
         </ng-template>
         <!-- <span class="spacer"></span> -->
-        <i [ngClass]="roomType.icon" class="mr-3"></i>
+        <i [ngClass]="statusRoom.icon" class="mr-3"></i>
     </div>
 </nav>

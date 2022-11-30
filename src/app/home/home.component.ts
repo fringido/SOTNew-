@@ -20,7 +20,4 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
-  toggle() {
-    this.homeService.toggleSidenav();
-  }
 }
