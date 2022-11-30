@@ -18,6 +18,15 @@ export class CocinabarComponent implements OnInit {
     {name: 'Fruta', amount: 2, timeStart: 20, specifications: 'Sin chile'},
   ];
 
+  isValidNumber(e: KeyboardEvent) {
+    e = e || window.event;
+    let charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+    let charStr = String.fromCharCode(charCode);
+    if (!charStr.match(/^[0-9]+$/)) {
+      e.preventDefault();
+    }
+  }
+
   constructor(
     private readonly cocinabarService: CocinabarService,
     private readonly activatedRoute: ActivatedRoute,

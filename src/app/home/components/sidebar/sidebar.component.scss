@@ -1,13 +1,7 @@
 @import '../../../../styles.scss';
 
 .sidebar {
-    display: sticky;
-    position: absolute;
     height: 99vh;
-    width: 15%;
-    border-top-right-radius: 25px;
-    margin-top: 1vh;
-    margin-left: -10px;
     overflow: hidden;
 }
 
@@ -43,10 +37,64 @@
 }
 
 .divider {
-    height: 1px;
-    width: 80%;
-    margin-top: 5%;
+    height: 2px;
+    width: 2vw;
+    // margin-top: 1vh;
     background-color: $wine;
+}
+
+.type-text__wrapper {
+    position: relative;
+}
+
+.scroll-text {
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    /* animation properties */
+    -moz-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+
+    -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite;
+    animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+    from {
+        -moz-transform: translateX(50%);
+    }
+
+    to {
+        -moz-transform: translateX(-50%);
+    }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+    from {
+        -webkit-transform: translateX(50%);
+    }
+
+    to {
+        -webkit-transform: translateX(-50%);
+    }
+}
+
+@keyframes my-animation {
+    from {
+        -moz-transform: translateX(50%);
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+
+    to {
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
 }
 
 .search-text {
@@ -60,67 +108,39 @@
 .room-type__item {
     cursor: pointer;
     border-radius: 5px !important;
+    overflow: hidden;
 }
 
 .room-type__item:hover {
     color: white;
 }
 
-
-.success {
-    color: $green-item;
+.txt-success:hover {
+    @include bg-success;
 }
 
-.success:hover {
-    background-color: $green-item;
+.txt-danger:hover {
+    @include bg-danger;
 }
 
-.danger {
-    color: $red-danger;
+.txt-warn:hover {
+    @include bg-warn;
 }
 
-.danger:hover {
-    background-color: $red-danger;
+.txt-orange:hover {
+    @include bg-orange;
 }
 
-.warn {
-    color: $yellow-warn;
+.txt-blue:hover {
+    @include bg-blue;
 }
 
-.warn:hover {
-    background-color: $yellow-warn;
+.txt-purple:hover {
+    @include bg-purple;
 }
 
-.orange {
-    color: $orange-item;
-}
-
-.orange:hover {
-    background-color: $orange-item;
-}
-
-.blue {
-    color: $blue-item;
-}
-
-.blue:hover {
-    background-color: $blue-item;
-}
-
-.purple {
-    color: $purple-item;
-}
-
-.purple:hover {
-    background-color: $purple-item;
-}
-
-.grey-item {
-    color: $grey-item;
-}
-
-.grey-item:hover {
-    background-color: $grey-item;
+.txt-grey-item:hover {
+    @include bg-grey-item;
 }
 
 .item-disabled {
@@ -128,19 +148,13 @@
     color: white;
 }
 
-
-
 input {
     margin-right: -20px;
 }
 
+// Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
-    .sidebar {
-        overflow: auto;
-        width: 23%;
-    }
-
-    input{
+    input {
         font-size: small;
     }
 }
