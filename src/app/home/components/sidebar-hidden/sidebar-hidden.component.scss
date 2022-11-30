@@ -12,8 +12,81 @@
 
 .typeroom_button {
     border-radius: 0px 10px 10px 0px;
-    width: 3.2vw;
+    width: 3.3vw;
     height: 4vh;
+    margin-right: 1vw;
+    cursor: pointer;
+
+}
+
+.type-text__wrapper {
+    position: relative;
+}
+
+.nav-item {
+    height: 3vh;
+}
+
+.typeroom_button:hover{
+    width: 10vw;
+    .d-none {
+        display: block !important;
+    }
+}
+
+.scroll-text {
+    // margin-bottom: 1vh;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    /* animation properties */
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+
+    -moz-animation: my-animation 7s linear infinite;
+    -webkit-animation: my-animation 7s linear infinite;
+    animation: my-animation 7s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+    from {
+        -moz-transform: translateX(50%);
+    }
+
+    to {
+        -moz-transform: translateX(-50%);
+    }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+    from {
+        -webkit-transform: translateX(50%);
+    }
+
+    to {
+        -webkit-transform: translateX(-50%);
+    }
+}
+
+@keyframes my-animation {
+    from {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+    to {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
 
 .wine {

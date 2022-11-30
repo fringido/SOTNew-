@@ -11,6 +11,8 @@ export class SidenavDirective implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.drawer.toggle();
+    setTimeout(() => {
+      this.drawer.toggle();
+    }, 500)
   }
 }
