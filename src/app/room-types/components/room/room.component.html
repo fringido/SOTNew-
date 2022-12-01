@@ -1,19 +1,105 @@
-<mat-card class="p-0">
-    <mat-card-content class="d-flex align-items-center justify-content-center">
-        <div class="d-flex flex-column">
+<mat-card
+    class="p-0 my-1"
+    [ngStyle]="{'box-shadow' : '0px 3px 5px 1px ' + bgColor}"
+    [ngSwitch]="status"
+>
+    <mat-card-content 
+        class="d-flex align-items-center justify-content-around" 
+        *ngSwitchCase="
+            status === AvailableRoomStatus.LIBRE ||
+            status === AvailableRoomStatus.SUCIA ||
+            status === AvailableRoomStatus.MEDIA_SUCIA ?
+            status : ''"
+    >
+        <div class="d-flex flex-column text-center">
             <div class="row">
-                <span>d</span>
+                <span class="text-nowrap">{{status}}</span>
             </div>
             <div class="row">
-                <span>d</span>
+                <span class="room-number">{{roomNumber}}</span>
             </div>
             <div class="row">
-                <span>d</span>
+                <span>{{statusTimer|timer}}</span>
             </div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex flex-column">
             <div class="row">
-                <i class="far fa-check-circle"></i>
+                <i [ngClass]="[icon, textColor]" class="fa fa-2xl reduce-ml"></i>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content 
+        class="d-flex align-items-center justify-content-around" 
+        *ngSwitchCase="AvailableRoomStatus.PREPARADA"
+    >
+        <div class="d-flex flex-column text-center">
+            <div class="row">
+                <span>{{status}}</span>
+            </div>
+            <div class="row bottom-spacer">
+                <span class="room-number">{{roomNumber}}</span>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="row">
+                <i [ngClass]="[icon, textColor]" class="fa fa-xl reduce-ml"></i>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content 
+        class="d-flex align-items-center justify-content-around" 
+        *ngSwitchCase="AvailableRoomStatus.OCUPADA"
+    >
+        <div class="d-flex flex-column text-center">
+            <div class="row">
+                <span>{{matricula}}</span>
+            </div>
+            <div class="row">
+                <span class="room-number">{{roomNumber}}</span>
+            </div>
+            <div class="row">
+                <span class="text-nowrap reduce-mr">
+                    {{tarifa|slice:0:1}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{duracionTarifa|timer}}
+                </span>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="row">
+                <i [ngClass]="[icon, textColor]" class="fa fa-2xl"></i>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-content 
+        class="d-flex align-items-center justify-content-around" 
+        *ngSwitchCase="
+            status === AvailableRoomStatus.EN_LIMPEZA ||
+            status === AvailableRoomStatus.EN_SUPERVISION ?
+            status : ''"
+    >
+        <div class="d-flex flex-column">
+            <div class="row" [ngClass]="{'reduce-ml':areMoreCamaristas()}">
+                <span class="text-nowrap reduce-mb">
+                    {{(camaristaOCamaristas || supervisor)+''|cutString:12}}
+                </span>
+            </div>
+            <div class="row">
+                <div class="col reduce-my">
+                    <span class="room-number" [ngClass]="{'reduce-ml':areMoreCamaristas()}">{{roomNumber}}</span>
+                </div>
+                <div class="col">
+                    <div class="d-flex flex-column reduce-mr">
+                        <div class="row">
+                            <i [ngClass]="[icon, textColor]" class="fa fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col" [ngClass]="{'reduce-ml':areMoreCamaristas()}">
+                    <span>{{statusTimer|timer}}</span>
+                </div>
             </div>
         </div>
     </mat-card-content>

@@ -1,24 +1,372 @@
-<p>room-types works!</p>
-<div class="row d-flex justify-content-around w-100 ml-2">
-    <div class="d-flex col-4 flex-wrap">
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
+<div class="row d-flex justify-content-start align-items-start w-100 ml-2">
+    <div class="d-flex flex-column col-4 flex-wrap">
+        <!-- TODO: acomodar el texto en el resto -->
+        <div class="row">
+            <h4>Junior Villa</h4>
+        </div>
+        <div class="row">
+            <app-room 
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+                ></app-room>
+            <app-room 
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.OCUPADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'" 
+            ></app-room>
+            <app-room
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.MEDIA_SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.EN_LIMPEZA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                class="col-xl-3 col-sm-6 px-1 my-1"
+                [status]="statusRoom.EN_SUPERVISION"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [supervisor]="'Luis Mario '"
+                [tarifa]="'Pie'"
+            ></app-room>
+        </div>
     </div>
     <div class="d-flex col-4 flex-wrap">
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
+        <div class="row">
+            <h4>Twin Suite</h4>
+        </div>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.PREPARADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.OCUPADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'" 
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.MEDIA_SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_LIMPEZA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_SUPERVISION"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [supervisor]="'Luis Mario '"
+            [tarifa]="'Pie'"
+        ></app-room>
     </div>
     <div class="d-flex col-4 flex-wrap">
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
-        <app-room class="col-xl-3 col-sm-6 px-1 my-1"></app-room>
+        <div class="row">
+            <h4>Pool & Spa</h4>
+        </div>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.PREPARADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.OCUPADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'" 
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.MEDIA_SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_LIMPEZA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="'Luis Mario Hernández García'"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_SUPERVISION"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [supervisor]="'Luis Mario Hernández García'"
+            [tarifa]="'Pie'"
+        ></app-room>
+    </div>
+    <div class="d-flex col-4 flex-wrap">
+        <div class="row">
+            <h4>Pool & Spa</h4>
+        </div>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.PREPARADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.OCUPADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'" 
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.MEDIA_SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_LIMPEZA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_SUPERVISION"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [supervisor]="'Luis Mario '"
+            [tarifa]="'Pie'"
+        ></app-room>
+    </div>
+    <div class="d-flex col-4 flex-wrap">
+        <div class="row">
+            <h4>Pool Villa</h4>
+        </div>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.LIBRE"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+            ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.PREPARADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room 
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.OCUPADA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'" 
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.MEDIA_SUCIA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_LIMPEZA"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [camaristaOCamaristas]="2"
+            [tarifa]="'Pie'"
+        ></app-room>
+        <app-room
+            class="col-xl-3 col-sm-6 px-1 my-1"
+            [status]="statusRoom.EN_SUPERVISION"
+            [statusTimer]="3700"
+            [roomNumber]="2"
+            [matricula]="'ABC-123'"
+            [supervisor]="'Luis Mario '"
+            [tarifa]="'Pie'"
+        ></app-room>
     </div>
 </div>

@@ -1,0 +1,41 @@
+.room-number  {
+    margin: -1vh auto;
+    font-weight: 900;
+    font-size: 3vh;
+}
+
+mat-card {
+    height: 7vh;
+}
+
+.bottom-spacer {
+    margin-bottom: 2vh;
+}
+
+.reduce-my {
+    margin-bottom: -2vh;
+    margin-top: -0.4vh;
+}
+
+.reduce-mb {
+    margin-bottom: -0.5vh;
+}
+
+.reduce-ml {
+    margin-left: -1.8vw;
+}
+
+.reduce-mr {
+    margin-right: -2vw;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+
+@media (max-width: 1025px) and (orientation: landscape) {
+    mat-card {
+        height: 9vh;
+    }
+}
