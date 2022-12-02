@@ -5,6 +5,7 @@ import { RoomComponent } from './components/room/room.component';
 import { MaterialModule } from '../core/modules/material/material.module';
 import { TimerPipe } from '../core/pipes/timer/timer.pipe';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 
 
@@ -17,7 +18,8 @@ import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
     CommonModule,
     MaterialModule,
     TimerPipe,
-    CutStringPipe
+    CutStringPipe,
+    NgxMasonryModule
   ],
   exports: [
     RoomTypesComponent,
