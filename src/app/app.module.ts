@@ -5,7 +5,6 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    CoreModule,
     NgbModule,
   ],
   providers: [],

@@ -2,7 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from './services/home/home.service';
-
+import { ModalService } from '../core/services/modal.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -28,14 +28,16 @@ import { HomeService } from './services/home/home.service';
 })
 export class HomeComponent implements OnInit {
 
-  display = true;
+  display = false;
 
   constructor(
     private readonly homeService: HomeService,
+    private modal: ModalService,
     private readonly router: Router,
   ) { }
 
   ngOnInit(): void {
+
   }
 
   isOpen$ = this.homeService.isSidenavOpen$;
@@ -45,7 +47,8 @@ export class HomeComponent implements OnInit {
   }
 
   openModal(ruta: string){
-    this.display = !this.display
-
+    //this.display = true
+    // this.modal.open()
+    this.router.navigateByUrl(`hotel/${ruta}`);
   }
 }

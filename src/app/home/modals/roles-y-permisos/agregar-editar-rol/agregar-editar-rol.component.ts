@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalComponent } from 'src/app/core/components/modal/modal.component';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 interface City {
   name: string,
@@ -186,19 +188,24 @@ export class AgregarEditarRolComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modal: ModalService
   ) {
     this.formularioBotones = new FormGroup({})
     this.form = new FormGroup({})
   }
 
   ngOnInit(): void {
+    this.modal.open();
+
+    var modalPermisos = document.getElementById("agregarPermisoModal");
     this.contador()
   }
 
 
   contador() {
     let form: any = {}
+
     let menus = this.formulario.permisos.map(permiso => {
       return permiso.menuId
     })
@@ -261,6 +268,10 @@ export class AgregarEditarRolComponent implements OnInit {
       })
     })
 
+    this.formulario.permisos.map( d => {
+      form[d.id] = new FormControl(d.valor)
+    })
+
     this.formularioBotones = new FormGroup(form)
 
     this.form = this.fb.group({
@@ -271,14 +282,22 @@ export class AgregarEditarRolComponent implements OnInit {
 
   }
 
-  condicional(id: number){
-    if(this.separador[this.menu -1].repeticion[id] > 1){
-
-    }
-  }
-
   selectMenu(numero: number) {
     this.menu = numero
   }
+
+  selectPermiso(id:number){
+
+    // let cod = String(id)
+
+    // let valor =  this.form.getFormGroup()
+
+    // console.log(valor)
+
+    // this.form.controls['permisos'].patchValue({
+    //   id: !valor
+    // })
+  }
+
 
 }

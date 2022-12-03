@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from './components/layout/layout.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'rolesYPermisos' ,loadChildren: () => import('./modals/roles-y-permisos/roles-y-permisos.module').then((m) => m.RolesYPermisosModule) }
+  {
+    path: '', component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'rolesYPermisos',
+        loadChildren: () => import('./modals/roles-y-permisos/roles-y-permisos.module').then((m) => m.RolesYPermisosModule)
+      }
+    ]
+  },
 ];
 
 @NgModule({

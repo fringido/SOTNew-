@@ -73,7 +73,7 @@
 }
 
 .pi {
-  font-size: 1rem;
+  font-size: .8rem;
 }
 
 .p-link {
@@ -789,12 +789,13 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
 
 .p-dropdown {
   background: #ffffff;
-  border: 1px solid #ced4da;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid #ced4da; */
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-  border-radius: 6px;
+  /* border-radius: 6px; */
 }
 .p-dropdown:not(.p-disabled):hover {
-  border-color: #3B82F6;
+  border-color: #a30303;
 }
 .p-dropdown:not(.p-disabled).p-focus {
   outline: 0 none;
@@ -1150,24 +1151,26 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 }
 
 .p-inputtext {
+  text-align: center;
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
   color: #495057;
   background: #ffffff;
-  padding: 0.75rem 0.75rem;
-  border: 1px solid #ced4da;
+  padding: 3px 15px;
+  /* border: 1px solid #ced4da; */
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   appearance: none;
-  border-radius: 6px;
+  /* border-radius: 6px; */
 }
 .p-inputtext:enabled:hover {
-  border-color: #3B82F6;
+  border-color: #862f4a;
 }
 .p-inputtext:enabled:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #BFDBFE;
-  border-color: #3B82F6;
+  /* box-shadow: 0 0 0 0.2rem #862f4a; */
+  border-color: #862f4a;
 }
 .p-inputtext.ng-dirty.ng-invalid {
   border-color: #e24c4c;
@@ -1529,13 +1532,13 @@ p-password.p-password-clearable.p-password-mask .p-password-clear-icon {
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 .p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
-  border-color: #3B82F6;
+  border-color: #862f4a;
 }
 .p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #BFDBFE;
-  border-color: #3B82F6;
+  box-shadow: 0 0 0 0.2rem #febfbf;
+  border-color: #862f4a;
 }
 .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
   width: 12px;
@@ -1544,12 +1547,12 @@ p-password.p-password-clearable.p-password-mask .p-password-clear-icon {
   background-color: #ffffff;
 }
 .p-radiobutton .p-radiobutton-box.p-highlight {
-  border-color: #3B82F6;
-  background: #3B82F6;
+  border-color: #801336;
+  background: #801336;
 }
 .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
-  border-color: #1D4ED8;
-  background: #1D4ED8;
+  border-color: #862f4a;
+  background: #862f4a;
   color: #ffffff;
 }
 
@@ -1967,8 +1970,8 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-radius: 2rem;
 }
 .p-button.p-button-icon-only {
-  width: 3rem;
-  padding: 0.75rem 0;
+  width: 2rem;
+  padding: 5px;
 }
 .p-button.p-button-icon-only .p-button-icon-left,
 .p-button.p-button-icon-only .p-button-icon-right {
@@ -2112,21 +2115,21 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 
 .p-button.p-button-success, .p-buttonset.p-button-success > .p-button, .p-splitbutton.p-button-success > .p-button {
   color: #ffffff;
-  background: #22C55E;
-  border: 1px solid #22C55E;
+  background: #801336;
+  border: 1px solid #801336;
 }
 .p-button.p-button-success:enabled:hover, .p-buttonset.p-button-success > .p-button:enabled:hover, .p-splitbutton.p-button-success > .p-button:enabled:hover {
-  background: #16A34A;
+  background: #862f4a;
   color: #ffffff;
-  border-color: #16A34A;
+  border-color: #862f4a;
 }
 .p-button.p-button-success:enabled:focus, .p-buttonset.p-button-success > .p-button:enabled:focus, .p-splitbutton.p-button-success > .p-button:enabled:focus {
   box-shadow: 0 0 0 0.2rem #BBF7D0;
 }
 .p-button.p-button-success:enabled:active, .p-buttonset.p-button-success > .p-button:enabled:active, .p-splitbutton.p-button-success > .p-button:enabled:active {
-  background: #15803D;
+  background: #862f4a;
   color: #ffffff;
-  border-color: #15803D;
+  border-color: #862f4a;
 }
 .p-button.p-button-success.p-button-outlined, .p-buttonset.p-button-success > .p-button.p-button-outlined, .p-splitbutton.p-button-success > .p-button.p-button-outlined {
   background-color: transparent;
@@ -2259,21 +2262,21 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 
 .p-button.p-button-danger, .p-buttonset.p-button-danger > .p-button, .p-splitbutton.p-button-danger > .p-button {
   color: #ffffff;
-  background: #EF4444;
-  border: 1px solid #EF4444;
+  background: #801336;
+  border: 1px solid #801336;
 }
 .p-button.p-button-danger:enabled:hover, .p-buttonset.p-button-danger > .p-button:enabled:hover, .p-splitbutton.p-button-danger > .p-button:enabled:hover {
-  background: #DC2626;
+  background: #862f4a;
   color: #ffffff;
-  border-color: #DC2626;
+  border-color: #862f4a;
 }
 .p-button.p-button-danger:enabled:focus, .p-buttonset.p-button-danger > .p-button:enabled:focus, .p-splitbutton.p-button-danger > .p-button:enabled:focus {
   box-shadow: 0 0 0 0.2rem #FECACA;
 }
 .p-button.p-button-danger:enabled:active, .p-buttonset.p-button-danger > .p-button:enabled:active, .p-splitbutton.p-button-danger > .p-button:enabled:active {
-  background: #B91C1C;
+  background: #862f4a;
   color: #ffffff;
-  border-color: #B91C1C;
+  border-color: #862f4a;
 }
 .p-button.p-button-danger.p-button-outlined, .p-buttonset.p-button-danger > .p-button.p-button-outlined, .p-splitbutton.p-button-danger > .p-button.p-button-outlined {
   background-color: transparent;
@@ -4395,9 +4398,11 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   margin-left: 1rem;
 }
 
+
 .p-dialog {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   pointer-events: auto;
   max-height: 90%;
   transform: scale(1);
@@ -4410,14 +4415,15 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-bottom: 0 none;
     background: #e4e4e4;
     /* color: #343a40; */
-    padding: 1.5rem;
+    padding: 10px;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
 }
 .p-dialog .p-dialog-header .p-dialog-title {
   font-weight: 700;
-  font-family: Epilogue,sans-serif;
+  font-family: "Epilogue",sans-serif;
   font-size: 20pt;
+  margin: 0 auto;
   color: #9b9898;
 }
 .p-dialog .p-dialog-header .p-dialog-header-icon {

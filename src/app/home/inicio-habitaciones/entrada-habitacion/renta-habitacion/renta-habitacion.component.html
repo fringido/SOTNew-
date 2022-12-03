@@ -1,0 +1,80 @@
+<div class="">
+  <div class="">
+    <form class="form-container">
+      <div class="form-left">
+        <div class="titulo">
+          <b></b>
+          <div class="form-component">
+            <label>TARIFA</label>
+            <p-dropdown placeholder="Selecciona una tarifa"></p-dropdown>
+          </div>
+          <div class="form-component">
+            <label>TARJETA DE LEALTAD</label>
+            <span class="p-input-icon-right">
+              <i class="fa-solid fa-address-card"></i>
+              <input type="text" pInputText  placeholder="Código de Tarjeta">
+            </span>
+          </div>
+          <div class="form-component">
+            <p>RESERVACIÓN</p>
+          </div>
+          <div class="form-component">
+            <div class="radio-button">
+              <p-radioButton></p-radioButton>
+              <label>&nbsp; A PIE</label>
+            </div>
+          </div>
+          <hr>
+          <div class="form-component">
+            <span class="p-input-icon-right">
+              <i class="fa-solid fa-car"></i>
+              <input type="text" pInputText  placeholder="Matricula">
+            </span>
+          </div>
+          <div class="form-component">
+            <span class="p-input-icon-right">
+              <i class="fa-solid fa-check"></i>
+              <input type="text" pInputText  placeholder="Marca">
+            </span>
+          </div>
+          <div class="form-component">
+            <span class="p-input-icon-right">
+              <i class="fa-solid fa-check"></i>
+              <input type="text" pInputText  placeholder="Modelo">
+            </span>
+          </div>
+          <div class="form-component">
+            <span class="p-input-icon-right">
+              <i class="fa-solid fa-brush"></i>
+              <input type="text" pInputText  placeholder="Color">
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-rigth">
+        <div class="form-component">
+          <label >Persona extra</label>
+          <div class="form-component_contador">
+            <div class="divisor-form-l">
+              <p-inputNumber  [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" decrementButtonClass="p-button-danger"
+              incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" ></p-inputNumber>
+              <p>$0.00</p>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+
+        </div>
+        <div class="form-component">
+
+        </div>
+        <div class="form-component">
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

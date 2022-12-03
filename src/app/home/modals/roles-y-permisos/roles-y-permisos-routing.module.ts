@@ -6,8 +6,12 @@ import { ListaDeRolesComponent } from './lista-de-roles/lista-de-roles.component
 
 
 const routes: Routes = [
-  {path: '' , component: ListaDeRolesComponent},
-  {path: 'crear',component: AgregarEditarRolComponent}
+  {path: '' , component: RolesYPermisosComponent,
+  children:[
+    {path: '', component: AgregarEditarRolComponent},
+    //{path: 'crear',component: AgregarEditarRolComponent}
+  ]
+},
 ];
 
 @NgModule({

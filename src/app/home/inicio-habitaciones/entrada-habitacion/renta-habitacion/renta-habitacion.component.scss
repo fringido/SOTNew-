@@ -1,0 +1,75 @@
+@import './../../../../../library.scss';
+
+.form-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  & .form-left{
+    border-radius: $border-radius-tittle;
+    box-shadow: $shadow-boton;
+    padding: 35px;
+    margin: 20px;
+
+    & p{
+      color: $wine;
+      font-weight: 600;
+    }
+  }
+
+  & .form-rigth{
+    border-radius: $border-radius-tittle;
+    box-shadow: $shadow-boton;
+    padding: 25px;
+    margin: 20px;
+
+
+  }
+}
+
+.form-component_contador{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 20vw;
+  & .divisor-form-l{
+    width: 53%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & p{
+      margin: 0;
+      margin-left: 10px;
+      color: $grey;
+    }
+  }
+
+  & .divisor-form-r{
+    width: 47%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    & p{
+      margin: 0;
+      margin-left: 5px;
+      color: $grey;
+      border-bottom: 1px solid;
+    }
+  }
+}
+
+.form-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.radio-button{
+  display: flex;
+}
+
+

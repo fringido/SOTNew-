@@ -4,19 +4,21 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 20px 70px;
-  width: 20vw;
+  width: 26vw;
+  height: 12vh;
   margin: 15px auto;
+  justify-content: center;
   border-radius: $border-radius-tittle;
   box-shadow: $shadow-modal-tittle;
+  font-family: $font-principal;
 }
 
 .permisos {
   border-radius: $border-radius-tittle;
   box-shadow: $shadow-modal-tittle;
   margin: 10px;
-  padding: 5px;
-  width: 75vw;
+  padding: 5px 25px;
+  width: 60vw;
 
   & .permisos-select_menu {
     display: flex;
@@ -25,11 +27,15 @@
     margin-bottom: 3px;
     flex-direction: row;
     justify-content: space-evenly;
+
     & i {
-      padding: 5px;
+      width: 45px;
+      height: 45px;
       cursor: pointer;
-      font-size: 40px;
+      font-size: 30px;
       color: $wine;
+      text-align: center;
+      border-bottom: 2px solid;
     }
   }
 
@@ -43,10 +49,14 @@
     justify-content: center;
     width: 100%;
     flex-wrap: wrap;
-}
+    border-radius: $border-button;
+    box-shadow: $shadow-modal-tittle;
+  }
+
   .permisos-select_buttons {
     margin: 2px;
     padding: 4px;
+
     & .botton-desplegable {
       border-radius: $border-button;
       box-shadow: $shadow-modal-tittle;
@@ -61,10 +71,12 @@
       align-items: center;
       justify-content: flex-end;
     }
-    & .activate{
+
+    & .activate {
       background-color: $wine;
-      color:#fff;
+      color: #fff;
     }
+
     & i {
       font-size: 20px;
     }
@@ -79,27 +91,67 @@
   border-radius: $border-button;
   box-shadow: $shadow-modal-tittle;
   margin: 2px 8px;
-  & .activate{
+
+  &:hover{
+    background-color: $wine-hover;
+    color: #fff;
+  }
+
+  & .activate {
     width: 180px;
-  background-color: $wine;
-  border: none;
-  color: #fff;
-  border-radius: $border-button;
-  box-shadow: $shadow-modal-tittle;
-  margin: 2px 8px;
+    background-color: $wine;
+    border: none;
+    color: #fff;
+    border-radius: $border-button;
+    box-shadow: $shadow-modal-tittle;
+    margin: 2px 8px;
   }
 }
-.activate{
+
+.activate {
   border-radius: $border-button;
-  box-shadow: $shadow-boton;
+  box-shadow: $shadow-modal-tittle;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 6px;
+  transition: all 0.4s;
+  border-bottom: none !important;
+
 }
 
-.container-button_opcions{
+.container-button_opcions {
   display: flex;
   flex-direction: column;
 }
 
-.content-buttton_toggle{
+.content-buttton_toggle {
   display: flex;
   flex-direction: column;
+}
+
+.button-select-all {
+  border-radius: $border-button;
+  box-shadow: $shadow-modal-tittle;
+  color: $grey-item;
+  width: 80%;
+  background-color: #fff;
+  border: none;
+  font-size: 25px;
+  margin: 5px 20px;
+  padding: 0 10px;
+  font-weight: 500;
+  & .activate {
+    color: #fff;
+    background-color: $wine;
+  }
+}
+
+.icon-arrow{
+  color: $wine;
+  position: relative;
+  top: 33px;
+  left: 40px;
+  & i{
+    font-size: 15px !important;
+  }
 }

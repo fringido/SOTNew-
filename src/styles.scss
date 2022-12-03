@@ -43,6 +43,42 @@ $SOTNew-theme: mat.define-light-theme(
   )
 );
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #303d41;
+}
+
+@font-face {
+  font-family: 'epilogueFont';
+  src: url('./assets/libs/font/Epilogue-Regular.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-Light.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-Bold.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-Black.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-ExtraBold.ttf') format('truetype');
+
+  font-family: 'rubikFont';
+  src: url('./assets/libs/font/Rubik-Regular.ttf'),
+       url('./assets/libs/font/Rubik-Bold.ttf'),
+       url('./assets/libs/font/Rubik-Light.ttf');
+
+}
+
 //? Include theme styles for core and each component used in your app.
 //? Alternatively, you can import and @include the theme mixins for each component
 //? that you are using.
@@ -60,7 +96,8 @@ body {
 
 body {
   margin: 0;
-  font-family: Rubik, "Helvetica Neue", sans-serif;
+  font-family: 'epilogueFont', Arial, Helvetica, sans-serif;
+  background: #f1f1f1
 
 }
 
@@ -93,6 +130,7 @@ input {
   border: none;
   background: transparent;
   border-bottom: 1px solid rgb(0, 0, 0);
+  width: 100%;
 }
 
 label{
@@ -104,6 +142,12 @@ label{
 
 input:focus {
   outline: none;
+}
+
+hr{
+  background-color: $grey-item;
+  color: $grey-item !important;
+  border: 2px solid !important;
 }
 
 /* Importing Bootstrap SCSS file. */

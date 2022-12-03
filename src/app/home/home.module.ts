@@ -10,28 +10,29 @@ import { SidebarHiddenComponent } from './components/sidebar-hidden/sidebar-hidd
 import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { AgregarEditarRolComponent } from './modals/roles-y-permisos/agregar-editar-rol/agregar-editar-rol.component';
 import {ToggleButtonModule} from 'primeng/togglebutton';
-import { CoreModule } from '../core/core.module';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
-
+import { EntradaHabitacionModule } from './inicio-habitaciones/entrada-habitacion/entrada-habitacion.module';
+import { LayoutComponent } from './components/layout/layout.component';
 @NgModule({
-  declarations: [
-    HomeComponent,
-    SidebarComponent,
-    SidebarHiddenComponent,
-    AgregarEditarRolComponent,
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    PrimengModule,
-    ToggleButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CoreModule,
-    OverlayPanelModule
-  ],
-  providers: [
-    HomeService,
-  ]
+    declarations: [
+        HomeComponent,
+        SidebarComponent,
+        SidebarHiddenComponent,
+        AgregarEditarRolComponent,
+        LayoutComponent,
+    ],
+    providers: [
+        HomeService,
+    ],
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        PrimengModule,
+        ToggleButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        OverlayPanelModule,
+        EntradaHabitacionModule
+    ],
 })
 export class HomeModule { }

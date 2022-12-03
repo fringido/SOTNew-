@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { RolesYPermisosRoutingModule } from './roles-y-permisos-routing.module';
 import { RolesYPermisosComponent } from './roles-y-permisos.component';
 import { ListaDeRolesComponent } from './lista-de-roles/lista-de-roles.component';
@@ -14,7 +13,8 @@ import { ListaDeRolesComponent } from './lista-de-roles/lista-de-roles.component
   ],
   imports: [
     CommonModule,
-    RolesYPermisosRoutingModule
+    RolesYPermisosRoutingModule,
+
   ]
 })
 export class RolesYPermisosModule { }

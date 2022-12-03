@@ -2,14 +2,16 @@
 <div class="row" [@openClose]="(isOpen$ | async) ? 'open' : 'closed'" style="width: 100%;">
   <app-sidebar></app-sidebar>
   <app-sidebar-hidden [@openClose]="!(isOpen$ | async) ? 'open' : 'closed'"></app-sidebar-hidden>
+  <p-dialog [(visible)]="display">
+    <app-renta-habitacion></app-renta-habitacion>
+    <router-outlet></router-outlet>
+  </p-dialog>
   <main class="content">
     <div>
         <p (click)="toggle()">holasdadsadsasdasdasdasdadsa</p>
         <button (click)="openModal('rolesYPermisos')">roles de canela</button>
-        <p-dialog [header]="'Crear Rol'" [draggable]="false" [(visible)]="display" appNgmodal>
-          <app-agregar-editar-rol></app-agregar-editar-rol>
-      </p-dialog>
     </div>
   </main>
 </div>
+
 
