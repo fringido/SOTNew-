@@ -30,9 +30,9 @@
             "styles": [
               "src/assets/libs/animate/animate.css",
               "src/styles.scss",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
+              "src/assets/libs/primeNG/primeicons/primeicons.css",
+              "src/assets/libs/primeNG/primeng/resources/themes/lara-light-blue/theme.css",
+              "src/assets/libs/primeNG/primeng/resources/primeng.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/assets/libs/cssFontello/fontello.css"
             ],
