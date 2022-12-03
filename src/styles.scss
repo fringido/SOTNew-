@@ -109,21 +109,14 @@ body {
 
 //* Estilos de botones
 
-.botton-aceptar {
-}
+
 
 //* Estilos Cuerpo Modal
-
-.modal-body{
-  margin: 5px;
-  color: $color-text;
-  & .modal-body_content{
-
-  }
-  & .modal-body_footer{
-
-  }
+hr{
+  color: $grey-item !important;
 }
+
+
 
 //* Estilos de formularios
 input {
@@ -142,6 +135,28 @@ label{
 
 input:focus {
   outline: none;
+}
+
+// Rangos de z-index
+$lvl1: 10;
+$lvl2: 20;
+$lvl3: 30;
+$lvl4: 40;
+$lvl5: 50;
+$lvl6: 60;
+$lvl7: 70;
+$lvl8: 80;
+$lvl9: 90;
+$lvl10: 100;
+
+
+// Mixins para color de fondos
+@mixin bg-success {
+  background-color: $green-item;
+}
+
+@mixin bg-danger {
+  background-color: $red-danger;
 }
 
 @mixin bg-warn {
@@ -237,7 +252,3 @@ input:focus {
 .txt-grey-item {
   @include txt-grey-item;
 }
-hr{
-  color: $grey-item !important;
-}
-/* Importing Bootstrap SCSS file. */

@@ -25,6 +25,8 @@ import { SidenavDirective } from './directives/sidenav.directive';
     SidebarHiddenComponent,
     NavMenuComponent,
     SidenavDirective,
+    LayoutComponent,
+    AgregarEditarRolComponent,
   ],
   imports: [
     CommonModule,
@@ -33,9 +35,7 @@ import { SidenavDirective } from './directives/sidenav.directive';
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
-    AgregarEditarRolComponent,
     ToggleButtonModule,
-    LayoutComponent,
     OverlayPanelModule,
     EntradaHabitacionModule
   ],
