@@ -4,7 +4,7 @@
     </div>
     <div *ngFor="let statusRoom of statusRooms" [ngClass]="statusRoom.color" class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
         <span class="ml-3">{{statusRoom.count}}</span>
-            <span class="d-none w-8">{{statusRoom.name|cutString:7}}</span>
+            <span class="d-none wrelative">{{statusRoom.name|cutString:7}}</span>
         <i [ngClass]="statusRoom.icon"></i>
     </div>
 </nav>
