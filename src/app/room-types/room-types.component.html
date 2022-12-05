@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-start flex-wrap">
-    <div class="row col-xl-4 col-6">
+<div class="rooms-container">
+    <div class="row col-xl-4 col-1 rooms-group">
         <div class="ml-2">
             <h6 class="mt-4 mb-1">Junior Villa</h6>
             <div class="d-flex justify-content-start flex-wrap">
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-    <div class="row col-xl-4 col-6">
+    <div class="row col-xl-4 col-1 rooms-group">
         <div class="ml-2">
             <h6 class="mt-4 mb-1">Twin Suite</h6>
             <div class="d-flex justify-content-start flex-wrap">
@@ -134,7 +134,94 @@
             </div>
         </div>
     </div>
-    <div class="row col-xl-4 col-6">
+    <div class="row col-xl-4 col-1 rooms-group">
+        <div class="ml-2">
+            <h6 class="mt-4 mb-1">Junior Suite</h6>
+            <div class="d-flex justify-content-start flex-wrap">
+                <app-room 
+                *ngFor="let item of [].constructor(14)"
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+                ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.OCUPADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'" 
+            ></app-room>
+            <app-room
+                [status]="statusRoom.MEDIA_SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_LIMPEZA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_SUPERVISION"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [supervisor]="'Luis Mario Hernandez Garcia'"
+                [tarifa]="'Pie'"
+            ></app-room>
+            </div>
+        </div>
+    </div>
+    <div class="row col-xl-4 col-1 rooms-group">
+        <div class="ml-2">
+            <h6 class="mt-4 mb-1">Pool Villa</h6>
+            <div class="d-flex justify-content-start flex-wrap">
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            </div>
+        </div>
+    </div>
+    <div class="row col-xl-4 col-1 rooms-group">
         <div class="ml-2">
             <h6 class="mt-4 mb-1">Pool & Spa</h6>
             <div class="d-flex justify-content-start flex-wrap">
@@ -221,98 +308,13 @@
             </div>
         </div>
     </div>
-    <div class="row col-xl-4 col-6">
-        <div class="ml-2">
-            <h6 class="mt-4 mb-1">Junior Suite</h6>
-            <div class="d-flex justify-content-start flex-wrap">
-                <app-room 
-                *ngFor="let item of [].constructor(14)"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                [status]="statusRoom.OCUPADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                [status]="statusRoom.SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'" 
-            ></app-room>
-            <app-room
-                [status]="statusRoom.MEDIA_SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                [status]="statusRoom.EN_LIMPEZA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                [status]="statusRoom.EN_SUPERVISION"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [supervisor]="'Luis Mario Hernandez Garcia'"
-                [tarifa]="'Pie'"
-            ></app-room>
-            </div>
-        </div>
-    </div>
-    <div class="row col-xl-4 col-6">
-        <div class="ml-2">
-            <h6 class="mt-4 mb-1">Pool Villa</h6>
-            <div class="d-flex justify-content-start flex-wrap">
-            <app-room 
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            </div>
-        </div>
-    </div>
-    <div class="row col-xl-4 col-6">
+    <div class="row col-xl-4 col-1 rooms-group">
         <div class="ml-2">
             <h6 class="mt-4 mb-1">Sky Suite</h6>
             <div class="d-flex justify-content-start flex-wrap">
             <app-room 
+            *ngFor="let item of [].constructor(18)"
+
                 [status]="statusRoom.LIBRE"
                 [statusTimer]="3700"
                 [roomNumber]="2"
