@@ -16,6 +16,7 @@ import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MaterialModule } from '../core/modules/material/material.module';
 import { SidenavDirective } from './directives/sidenav.directive';
+import { RoomTypesModule } from '../room-types/room-types.module';
 
 
 @NgModule({
@@ -32,6 +33,8 @@ import { SidenavDirective } from './directives/sidenav.directive';
     CommonModule,
     HomeRoutingModule,
     PrimengModule,
+    MaterialModule,
+    RoomTypesModule,
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,

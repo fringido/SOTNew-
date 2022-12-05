@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
   isAdminMenuSelected = false;
   isBurguerMenuSelected = false;
 
-  roomTypes = [
+  statusRooms = [
     { name: 'Libre', count: 10, color: 'txt-success', icon: 'far fa-check-circle', isTextScrollable: false },
     { name: 'Por cobrar', count: 10, color: 'txt-success', icon: 'far fa-check-circle icon-cobrar', isTextScrollable: false },
     { name: 'Preparada', count: 10, color: 'txt-success', icon: 'far fa-check-circle icon-car', isTextScrollable: false },

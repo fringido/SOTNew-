@@ -27,10 +27,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
-  toggle() {
-    this.homeService.toggleSidenav();
-  }
-
   openModal(ruta: string){
     //this.display = true
     // this.modal.open()

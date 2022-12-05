@@ -34,16 +34,16 @@
                 <input type="text" [placeholder]="'Buscar tipo de habitación'" class="text-center w-100 search-text">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <div *ngFor="let roomType of roomTypes" class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm" [ngClass]="roomType.color">
-                <span class="me-3 room-type__count">{{roomType.count}}</span>
-                <div *ngIf="roomType.isTextScrollable; else notAnimated" class="type-text__wrapper w-100 room-type__item nav-item">
-                    <span class="me-3 scroll-text">{{roomType.name}}</span>
+            <div *ngFor="let statusRoom of statusRooms" class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm" [ngClass]="statusRoom.color">
+                <span class="me-3 room-type__count">{{statusRoom.count}}</span>
+                <div *ngIf="statusRoom.isTextScrollable; else notAnimated" class="type-text__wrapper w-100 room-type__item nav-item">
+                    <span class="me-3 scroll-text">{{statusRoom.name}}</span>
                 </div>
                 <ng-template #notAnimated>
-                    <span class="me-3 ">{{roomType.name}}</span>
+                    <span class="me-3 ">{{statusRoom.name}}</span>
                 </ng-template>
                 <span class="spacer"></span>
-                <i [ngClass]="roomType.icon"></i>
+                <i [ngClass]="statusRoom.icon"></i>
             </div>
         </div>
         <div class="list-group list-group-flush m-3 shadow p-1 others-menu">
