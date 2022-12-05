@@ -1,2147 +1,334 @@
-<!-- <ngx-masonry 
-    [options]="roomsLayoutOptions"
-    [ordered]="true"
-    class="w-100"
->
-    <div ngxMasonryItem  class="d-flex flex-column col-3 flex-wrap">
-        <div class="row">
-            <h4>Junior Villa</h4>
-        </div>
-        <div class="row">
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.OCUPADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'" 
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.MEDIA_SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_LIMPEZA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_SUPERVISION"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [supervisor]="'Luis Mario '"
-                [tarifa]="'Pie'"
-            ></app-room>
-        </div>
-    </div>
-    <div ngxMasonryItem  class="d-flex flex-column col-3 flex-wrap">
-        <div class="row">
-            <h4>Twin Suite</h4>
-        </div>
-        <div class="row">
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.OCUPADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'" 
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.MEDIA_SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_LIMPEZA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_SUPERVISION"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [supervisor]="'Luis Mario '"
-                [tarifa]="'Pie'"
-            ></app-room>
-        </div>
-    </div>
-    <div ngxMasonryItem  class="d-flex flex-column col-3 flex-wrap">
-        <div class="row">
-            <h4>Pool & Spa</h4>
-        </div>
-        <div class="row">
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.OCUPADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'" 
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.MEDIA_SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_LIMPEZA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="'Luis Mario Hernández García'"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_SUPERVISION"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [supervisor]="'Luis Mario Hernández García'"
-                [tarifa]="'Pie'"
-            ></app-room>
-        </div>
-    </div>
-    <div ngxMasonryItem  class="d-flex flex-column col-3 flex-wrap">
-        <div class="row">
-            <h4>Pool & Spa</h4>
-        </div>
-        <div class="row">
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.OCUPADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'" 
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.MEDIA_SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_LIMPEZA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_SUPERVISION"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [supervisor]="'Luis Mario '"
-                [tarifa]="'Pie'"
-            ></app-room>
-        </div>
-    </div>
-    <div ngxMasonryItem  class="d-flex flex-column col-3 flex-wrap">
-        <div class="row">
-            <h4>Pool Villa</h4>
-        </div>
-        <div class="row">
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.LIBRE"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-                ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.PREPARADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room 
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.OCUPADA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'" 
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.MEDIA_SUCIA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_LIMPEZA"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [camaristaOCamaristas]="2"
-                [tarifa]="'Pie'"
-            ></app-room>
-            <app-room
-                class="col-xl-3 col-sm-6 px-1 my-1"
-                [status]="statusRoom.EN_SUPERVISION"
-                [statusTimer]="3700"
-                [roomNumber]="2"
-                [matricula]="'ABC-123'"
-                [supervisor]="'Luis Mario '"
-                [tarifa]="'Pie'"
-            ></app-room>
-        </div>
-    </div>
-</ngx-masonry> -->
-<!-- TODO: REFACTOR DE HABITACIONES -->
-<div class="d-flex justify-content-start container>">
-    <div class="row">
-        <div class="col-12 ml-2">
+<div class="d-flex justify-content-start flex-wrap">
+    <div class="row col-xl-4 col-6">
+        <div class="ml-2">
             <h6 class="mt-4 mb-1">Junior Villa</h6>
-            <div class="d-flex justify-content-start flex-wrap-reverse">
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-196 paint-purple id-estado-5 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Sky-001 </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">1</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> sky-001
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-purple estilo-icon-in"><i
-                                class="icon-calendar"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-vencida roomCard-197 paint-red id-estado-7 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <div
-                            class="text-center alert-blink-box animated flash slower infinite alert-red">
-                            <i class="icon-clock"></i></div>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                1D20:30 </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">2</div>
-                            <!---->
-                            <div class="font-10px"> Vencida </div>
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-red estilo-icon-in"><i
-                                class="icon-pareja-ocupada"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-198 paint-yellow id-estado-8 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Sucia </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">3</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-yellow estilo-icon-in"><i
-                                class="icon-sucia"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-199 paint-yellow id-estado-8 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Sucia </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">4</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-yellow estilo-icon-in"><i
-                                class="icon-sucia"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-200 paint-blue id-estado-10 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                03:21 </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">5</div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> AMALNALLI
-                                RUBI OLIVARES </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-blue estilo-icon-in"><i
-                                class="icon-search"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-201 paint-red id-estado-7 tipo-19"><span
-                         class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                H 09:32 </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">6</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> H 09:32
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-red estilo-icon-in"><i
-                                class="icon-pareja-ocupada"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-202 paint-red id-estado-7 tipo-19"><span
-                         class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                H 03:33 </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">7</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> H 03:33
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-red estilo-icon-in"><i
-                                class="icon-pareja-ocupada"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-203 paint-green id-estado-3 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Preparada </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">8</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> Preparada
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="icon-car"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-204 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">9</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:22
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-205 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">10</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:00
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-206 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">11</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:59
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-207 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">12</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:56
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-208 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">13</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 23:15
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-209 paint-gray id-estado-11 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Mantenimiento </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">14</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust">
-                                MANTENIMIENTO </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-gray estilo-icon-in"><i
-                                class="icon-mantenimiento"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-210 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">15</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:38
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-211 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">16</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 23:44
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-212 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">17</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:35
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-213 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">18</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:34
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-214 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">20</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 00:21
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-215 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">21</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:37
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-216 paint-green id-estado-3 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Preparada </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">22</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> Preparada
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="icon-car"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-217 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">23</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:34
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-218 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">24</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:32
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-219 paint-green id-estado-1 tipo-19">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">25</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:33
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <!---->
+            <div class="d-flex justify-content-start flex-wrap">
+            <app-room
+                *ngFor="let item of [].constructor(18)"
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.OCUPADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'" 
+            ></app-room>
+            <app-room
+                [status]="statusRoom.MEDIA_SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_LIMPEZA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_SUPERVISION"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [supervisor]="'Luis Mario '"
+                [tarifa]="'Pie'"
+            ></app-room>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 ml-2">
+    <div class="row col-xl-4 col-6">
+        <div class="ml-2">
             <h6 class="mt-4 mb-1">Twin Suite</h6>
-            <div class="d-flex justify-content-start flex-wrap-reverse">
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-221 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">101</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 21:06
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-222 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">102</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:38
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-223 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">103</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:26
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-224 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">104</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 00:21
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-225 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">105</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 00:33
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-226 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">106</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 21:53
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-227 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">107</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 00:52
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-228 paint-green id-estado-1 tipo-20">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">108</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:15
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <!---->
+            <div class="d-flex justify-content-start flex-wrap">
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.OCUPADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'" 
+            ></app-room>
+            <app-room
+                [status]="statusRoom.MEDIA_SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_LIMPEZA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_SUPERVISION"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [supervisor]="'Luis Mario '"
+                [tarifa]="'Pie'"
+            ></app-room>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 ml-2">
-            <h6 class="mt-4 mb-1">Pool &amp; Spa</h6>
-            <div class="d-flex justify-content-start flex-wrap-reverse">
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-229 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">201</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 01:39
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-230 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">202</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:12
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-235 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">301</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:16
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-236 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">302</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:03
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-241 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">401</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:26
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-242 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">402</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 23:36
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-247 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">501</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:28
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-248 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">502</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:28
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-253 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">601</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:26
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-254 paint-green id-estado-1 tipo-21">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">602</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:37
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <!---->
+    <div class="row col-xl-4 col-6">
+        <div class="ml-2">
+            <h6 class="mt-4 mb-1">Pool & Spa</h6>
+            <div class="d-flex justify-content-start flex-wrap">
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.OCUPADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'" 
+            ></app-room>
+            <app-room
+                [status]="statusRoom.MEDIA_SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_LIMPEZA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_SUPERVISION"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [supervisor]="'Luis Mario '"
+                [tarifa]="'Pie'"
+            ></app-room>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 ml-2">
+    <div class="row col-xl-4 col-6">
+        <div class="ml-2">
             <h6 class="mt-4 mb-1">Junior Suite</h6>
-            <div class="d-flex justify-content-start flex-wrap-reverse">
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-231 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">203</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:25
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-232 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">204</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:14
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-233 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">205</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:03
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-234 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">206</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:11
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-237 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">303</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 12:43
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-238 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">304</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:12
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-239 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">305</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 23:54
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-240 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">306</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:12
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-243 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">403</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 00:46
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-244 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">404</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:13
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-245 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">405</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:25
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-246 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">406</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:13
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-249 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">503</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:14
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-250 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">504</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 03:25
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-251 paint-green id-estado-3 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Preparada </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">505</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> Preparada
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="icon-car"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-252 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">506</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 04:27
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-255 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">603</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 01:46
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-256 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">604</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 21:58
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-257 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">605</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 22:57
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-258 paint-green id-estado-1 tipo-22">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">606</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:57
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <!---->
+            <div class="d-flex justify-content-start flex-wrap">
+                <app-room 
+                *ngFor="let item of [].constructor(14)"
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+                ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.OCUPADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'" 
+            ></app-room>
+            <app-room
+                [status]="statusRoom.MEDIA_SUCIA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_LIMPEZA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room
+                [status]="statusRoom.EN_SUPERVISION"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [supervisor]="'Luis Mario Hernandez Garcia'"
+                [tarifa]="'Pie'"
+            ></app-room>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 ml-2">
+    <div class="row col-xl-4 col-6">
+        <div class="ml-2">
             <h6 class="mt-4 mb-1">Pool Villa</h6>
-            <div class="d-flex justify-content-start flex-wrap-reverse">
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-220 paint-green id-estado-1 tipo-23">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">19</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:28
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-270 paint-green id-estado-1 tipo-23">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">26</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 22:57
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <!---->
+            <div class="d-flex justify-content-start flex-wrap">
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 ml-2">
+    <div class="row col-xl-4 col-6">
+        <div class="ml-2">
             <h6 class="mt-4 mb-1">Sky Suite</h6>
-            <div class="d-flex justify-content-start flex-wrap-reverse">
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-259 paint-green id-estado-1 tipo-24">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">701</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:25
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <div class="div-room-card mr-1">
-                    <div
-                        class="d-flex justify-content-between roomCard roomCard-260 paint-green id-estado-1 tipo-24">
-                        <span class="span-usuario-card"></span>
-                        <!---->
-                        <div>
-                            <div class="limitDescription font-10px label-state">
-                                Libre </div>
-                            <!---->
-                            <!---->
-                            <div class="numero-habitacion">702</div>
-                            <!---->
-                            <div
-                                class="position-absolute font-10px label-state pie-adjust"> 20:25
-                            </div>
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                            <!---->
-                        </div>
-                        <!---->
-                        <div class="icon-green estilo-icon-in"><i
-                                class="far fa-check-circle"></i></div>
-                    </div>
-                </div>
-                <!---->
+            <div class="d-flex justify-content-start flex-wrap">
+            <app-room 
+                [status]="statusRoom.LIBRE"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
+            <app-room 
+                [status]="statusRoom.PREPARADA"
+                [statusTimer]="3700"
+                [roomNumber]="2"
+                [matricula]="'ABC-123'"
+                [camaristaOCamaristas]="2"
+                [tarifa]="'Pie'"
+            ></app-room>
             </div>
         </div>
     </div>
-    <!---->
 </div>
