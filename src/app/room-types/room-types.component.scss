@@ -7,10 +7,10 @@ h6 {
 .rooms-container {
   display: flex;
   flex-flow: column wrap;
-  height: 88vh;
   align-content: space-around;
   /* Your container needs a fixed height, and it 
-     * needs to be taller than your tallest column. */
+  * needs to be taller than your tallest column. */
+  height: 88vh;
 }
 
 .rooms-group {

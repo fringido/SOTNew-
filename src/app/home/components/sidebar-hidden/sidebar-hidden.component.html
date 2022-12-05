@@ -4,13 +4,7 @@
     </div>
     <div *ngFor="let statusRoom of statusRooms" [ngClass]="statusRoom.color" class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
         <span class="ml-3">{{statusRoom.count}}</span>
-        <div *ngIf="statusRoom.isTextScrollable; else notAnimated" class="d-none type-text__wrapper w-50 room-type__item nav-item">
-            <span class="scroll-text">{{statusRoom.name}}</span>
-        </div>
-        <ng-template #notAnimated>
-            <span class="d-none">{{statusRoom.name}}</span>
-        </ng-template>
-        <!-- <span class="spacer"></span> -->
-        <i [ngClass]="statusRoom.icon" class="mr-3"></i>
+            <span class="d-none w-8">{{statusRoom.name|cutString:7}}</span>
+        <i [ngClass]="statusRoom.icon"></i>
     </div>
 </nav>

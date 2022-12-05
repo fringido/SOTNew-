@@ -17,6 +17,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MaterialModule } from '../core/modules/material/material.module';
 import { SidenavDirective } from './directives/sidenav.directive';
 import { RoomTypesModule } from '../room-types/room-types.module';
+import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { RoomTypesModule } from '../room-types/room-types.module';
     ReactiveFormsModule,
     ToggleButtonModule,
     OverlayPanelModule,
-    EntradaHabitacionModule
+    EntradaHabitacionModule,
+    CutStringPipe
   ],
   providers: [
     HomeService
