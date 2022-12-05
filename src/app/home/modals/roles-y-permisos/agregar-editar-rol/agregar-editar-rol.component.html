@@ -1,0 +1,56 @@
+<form [formGroup]="form" id="agregarPermisoModal">
+  <div class="modal-body">
+      <!-- INPUT PARA PODER GUARDAR EL NOMBRE -->
+    <div class="input-rol">
+      <label>NOMBRE DE ROL</label>
+      <span class="p-input-icon-right">
+        <i class="fa-regular fa-user"></i>
+        <input formControlName="nombre" type="text" >
+      </span>
+    </div>
+    <div class="permisos">
+      <!-- MENU DE BOTONES  -->
+      <div class="permisos-select_menu">
+        <i class="fa-sharp fa-solid fa-house " (click)="selectMenu(1)" [class.activate]="menu == 1"></i>
+        <i class="fa-regular fa-user" (click)="selectMenu(2)" [class.activate]="menu == 2"></i>
+        <i class="fa-solid fa-bars" (click)="selectMenu(3)" [class.activate]="menu == 3"></i>
+        <i class="fa-solid fa-hand-holding-dollar" (click)="selectMenu(4)" [class.activate]="menu == 4"></i>
+      </div>
+      <!-- CAJA DONDE SE CREAN TODOS LOS BOTONES -->
+      <div formGroupName="permisos" class="body-permisos" *ngIf="separadorTotal[menu - 1].modal.length > 0 || separadorTotal[menu - 1].button.length > 0">
+        <div class="permisos-select_buttons" *ngFor="let boton of separadorTotal[menu - 1].modal" >
+          <!-- BOTON DEL MODAL -->
+          <button class="botton-desplegable" [ngStyle]="{color: boton.color}" type="text" pButton label="Basic"
+            (click)="op.toggle($event)">
+            <div class="icon-arrow">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <i [class]="boton.icon"></i>
+            {{boton.nombre}}
+          </button>
+          <!-- MODAL -->
+          <p-overlayPanel #op [showCloseIcon]="false">
+            <ng-template pTemplate class="container-button_opcions">
+              <div class="content-buttton_toggle">
+                <button *ngFor="let permiso of boton.permisos" (click)="selectPermiso(permiso.id)" formControlName="{{boton.id}}" class="button--inside_desplegable" [class.activate]="permiso.valor">{{permiso.nombre}}</button>
+                <br>
+                <button class="button--inside_desplegable">Seleccionar todo</button>
+              </div>
+            </ng-template>
+          </p-overlayPanel>
+        </div>
+        <div class="permisos-select_buttons" *ngFor="let boton of separadorTotal[menu - 1].button" >
+          <!-- BOTON SENCILLO  -->
+          <button class="botton-desplegable" [ngStyle]="{color: boton.color}" [class.activate]="boton.valor" formControlName="{{boton.id}}">
+            <i [class]="boton.icon"></i>
+            {{boton.nombre}}
+          </button>
+        </div>
+          <button class="button-select-all" >
+            TODOS LOS ESTADOS
+          </button>
+      </div>
+
+    </div>
+  </div>
+</form>

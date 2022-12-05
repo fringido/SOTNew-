@@ -4,10 +4,11 @@
   *---------------------------------------------------------------------------------------
 */
 
+
 //* Importacion de Angular material
 //? Custom Theming for Angular Material
 //*?For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 //? Plus imports for other components in your app.
 //? Include the common styles for Angular Material. We include this here so that you only
@@ -17,8 +18,9 @@
 @include mat.core();
 
 // * Importacion Font aweson
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
 
+@import '/src/library.scss';
 
 //? Define the palettes for your theme using the Material Design palettes available in palette.scss
 //? (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -31,13 +33,51 @@ $SOTNew-warn: mat.define-palette(mat.$red-palette);
 
 //? Create the theme object. A theme consists of configurations for individual
 //? theming systems such as "color" or "typography".
-$SOTNew-theme: mat.define-light-theme((
-  color: (
-    primary: $SOTNew-primary,
-    accent: $SOTNew-accent,
-    warn: $SOTNew-warn,
+$SOTNew-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $SOTNew-primary,
+      accent: $SOTNew-accent,
+      warn: $SOTNew-warn,
+    ),
   )
-));
+);
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #303d41;
+}
+
+@font-face {
+  font-family: 'epilogueFont';
+  src: url('./assets/libs/font/Epilogue-Regular.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-Light.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-Bold.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-Black.ttf') format('truetype'),
+       url('./assets/libs/font/Epilogue-ExtraBold.ttf') format('truetype');
+
+  font-family: 'rubikFont';
+  src: url('./assets/libs/font/Rubik-Regular.ttf'),
+       url('./assets/libs/font/Rubik-Bold.ttf'),
+       url('./assets/libs/font/Rubik-Light.ttf');
+
+}
 
 //? Include theme styles for core and each component used in your app.
 //? Alternatively, you can import and @include the theme mixins for each component
@@ -47,49 +87,50 @@ $SOTNew-theme: mat.define-light-theme((
 //* Importacion de boostrap
 /*  You can add global styles to this file, and also import other style files */
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Rubik, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: 'epilogueFont', Arial, Helvetica, sans-serif;
+  background: #f1f1f1
+
+}
 
 /**
   *--------------------------------------------------------------------------------------------
-  *------------------------------Estilos generales personalizados post refactorizado-----------
+  *------------------------------Estilos generales personalizados post factorizado-----------
   *---------------------------------------------------------------------------------------------
 */
 
-//* Variables para colores
-$wine : #801336;
-$grey: #495057;
-$strong-grey: #3C3C3C;
-$dark-grey: #373737;
-$green-item: #0AC917;
-$yellow-warn: #FFD500;
-$red-danger: #fd0022;
-$orange-item: #db932f;
-$blue-item: #008deb;
-$purple-item: #a703fb;
-$grey-item: #707070;
-
-
 //* Estilos de botones
-.box_botton-modal{
 
-  & .botton-modal{
 
-  }
+
+//* Estilos Cuerpo Modal
+hr{
+  color: $grey-item !important;
 }
 
 
-
-//* Estilos de modales
 
 //* Estilos de formularios
 input {
   border: none;
   background: transparent;
   border-bottom: 1px solid rgb(0, 0, 0);
+  width: 100%;
+}
+
+label{
+  font-family: 'Rubik',sans-serif;
+  color: $grey-item;
+  font-size: 14pt;
+  font-weight: 700;
 }
 
 input:focus {
@@ -107,6 +148,7 @@ $lvl7: 70;
 $lvl8: 80;
 $lvl9: 90;
 $lvl10: 100;
+
 
 // Mixins para color de fondos
 @mixin bg-success {
