@@ -121,6 +121,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isIpad = window.innerWidth <= 1025;
   }
 
   @HostListener('window:resize', ['$event'])
