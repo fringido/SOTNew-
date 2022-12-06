@@ -12,9 +12,12 @@ export class CutStringPipe implements PipeTransform {
     }
     const formattedText = text.slice(0, maxLength);
     if(formattedText.endsWith(' ')) {
-      return formattedText.slice(0, formattedText.length -1)+ '...'
+      // todo: extrañamente Luis mario hernandez garcia no borra el ultimo espacio
+      const textWithoutLastSpace = 
+      formattedText.slice(0, formattedText.length-1);
+      return textWithoutLastSpace + '...';
     }
-    return formattedText + '...';
+    return formattedText + '...'
   }
 
 }
