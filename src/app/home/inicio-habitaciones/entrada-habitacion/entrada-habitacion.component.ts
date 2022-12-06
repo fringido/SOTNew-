@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-entrada-habitacion',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntradaHabitacionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modal:ModalService,
+
+  ) {
+  }
 
   ngOnInit(): void {
+
+  }
+
+  ngafterViewInit(): void {
+    this.modal.open()
+
   }
 
 }

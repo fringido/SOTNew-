@@ -675,7 +675,7 @@ p-cascadeselect.p-cascadeselect-clearable .p-cascadeselect-clear-icon {
   width: 22px;
   height: 22px;
   color: #495057;
-  border-radius: 6px;
+  border-radius: 11px;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 .p-checkbox .p-checkbox-box .p-checkbox-icon {
@@ -684,21 +684,21 @@ p-cascadeselect.p-cascadeselect-clearable .p-cascadeselect-clear-icon {
   font-size: 14px;
 }
 .p-checkbox .p-checkbox-box.p-highlight {
-  border-color: #3B82F6;
-  background: #3B82F6;
+  border-color: #801336;
+  background: #801336;
 }
 .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
-  border-color: #3B82F6;
+  border-color: #862f4a;
 }
 .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #BFDBFE;
-  border-color: #3B82F6;
+  box-shadow: 0 0 0 0.2rem #862f4a;
+  border-color: #801336;
 }
 .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-  border-color: #1D4ED8;
-  background: #1D4ED8;
+  border-color: #801336;
+  background: #801336;
   color: #ffffff;
 }
 
@@ -800,8 +800,8 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
 .p-dropdown:not(.p-disabled).p-focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #BFDBFE;
-  border-color: #3B82F6;
+  box-shadow: 0px 58px 79px -17px rgba(128,19,54,0.5);
+  border-color: #a30303;
 }
 .p-dropdown.p-dropdown-clearable .p-dropdown-label {
   padding-right: 1.75rem;
@@ -819,7 +819,7 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
 }
 .p-dropdown .p-dropdown-trigger {
   background: transparent;
-  color: #6c757d;
+  color: #801336;
   width: 3rem;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -866,8 +866,8 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
   border-radius: 0;
 }
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-  color: #1D4ED8;
-  background: #EFF6FF;
+  color: #801336;
+  background: #ffadc652;
 }
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
   color: #495057;
@@ -1169,12 +1169,13 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 .p-inputtext:enabled:focus {
   outline: 0 none;
   outline-offset: 0;
-  /* box-shadow: 0 0 0 0.2rem #862f4a; */
+  /* box-shadow: 0 2px 0 0.2rem #862f4a; */
   border-color: #862f4a;
 }
 .p-inputtext.ng-dirty.ng-invalid {
   border-color: #e24c4c;
 }
+
 .p-inputtext.p-inputtext-sm {
   font-size: 0.875rem;
   padding: 0.65625rem 0.65625rem;
@@ -1185,8 +1186,9 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 }
 
 .p-float-label > label {
-  left: 0.75rem;
+  left: 5.75rem;
   color: #6c757d;
+  font-size: 12pt;
   transition-duration: 0.2s;
 }
 
@@ -1970,8 +1972,8 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-radius: 2rem;
 }
 .p-button.p-button-icon-only {
-  width: 2rem;
-  padding: 5px;
+  width: 1.5rem;
+  padding: 0px;
 }
 .p-button.p-button-icon-only .p-button-icon-left,
 .p-button.p-button-icon-only .p-button-icon-right {
@@ -4404,7 +4406,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   flex-direction: row;
   justify-content: center;
   pointer-events: auto;
-  max-height: 90%;
+  max-height: 95% !important;
   transform: scale(1);
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -4452,11 +4454,10 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 .p-dialog .p-dialog-content {
   background: #ffffff;
   color: #212529;
-  padding: 0 1.5rem 2rem 1.5rem;
+  padding: 0 1.5rem 0.8rem 1.5rem;
 }
 .p-dialog .p-dialog-content:last-of-type {
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-radius: 15px;
 }
 .p-dialog .p-dialog-footer {
   border-top: 0 none;

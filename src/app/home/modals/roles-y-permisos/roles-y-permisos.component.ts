@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-roles-y-permisos',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RolesYPermisosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modal: ModalService
+  ) { }
 
   ngOnInit(): void {
+    this.modal.open()
+  }
+
+  ngAfterViewInit(){
+    this.modal.open()
   }
 
 }

@@ -23,5 +23,11 @@
     <button type="button" mat-button (click)="toggle()">
       Toggle sidenav
     </button>
+    <button type="button" (click)="openModal('rolesYPermisos')">roles Y permisos</button>
+    <button type="button" (click)="openModal('rentaHabitacion')">Renta Habitacion</button>
+    <!-- <a routerLink="./rolesYPermisos" routerLinkActive="active">rutas</a> -->
+    <p-dialog [(visible)]="display" [closable]="false" [draggable]="false" [showHeader]="false">
+      <router-outlet></router-outlet>
+  </p-dialog>
   </div>
 </mat-drawer-container>

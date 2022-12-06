@@ -1,3 +1,6 @@
+<div class="header-modal">
+  Roles y permisos
+</div>
 <form [formGroup]="form" id="agregarPermisoModal">
   <div class="modal-body">
       <!-- INPUT PARA PODER GUARDAR EL NOMBRE -->
@@ -54,3 +57,17 @@
     </div>
   </div>
 </form>
+<div class="modal-footer-content">
+  <button class="button-modal button-salir" (click)="salir()">
+    <div class="icon">
+      <i class="fa-solid fa-rotate-left"></i>
+    </div>
+    <div class="text">Salir</div>
+  </button>
+  <button class="button-modal button-aceptar">
+    <div class="icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div class="text">Aceptar</div>
+  </button>
+</div>

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from 'src/app/core/components/modal/modal.component';
 import { ModalService } from 'src/app/core/services/modal.service';
+import {Location} from '@angular/common';
+
 
 interface City {
   name: string,
@@ -189,7 +191,8 @@ export class AgregarEditarRolComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private modal: ModalService
+    private modal: ModalService,
+    private location:Location
   ) {
     this.formularioBotones = new FormGroup({})
     this.form = new FormGroup({})
@@ -197,10 +200,10 @@ export class AgregarEditarRolComponent implements OnInit {
 
   ngOnInit(): void {
     this.modal.open();
-
-    var modalPermisos = document.getElementById("agregarPermisoModal");
+    this.modal.showHeader(true)
     this.contador()
   }
+
 
 
   contador() {
@@ -297,6 +300,11 @@ export class AgregarEditarRolComponent implements OnInit {
     // this.form.controls['permisos'].patchValue({
     //   id: !valor
     // })
+  }
+
+  salir(){
+    this.modal.close()
+    this.location.back()
   }
 
 

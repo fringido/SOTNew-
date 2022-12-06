@@ -4,27 +4,98 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  height: 100%;
+  overflow: auto;
+  font-family: $font-secundaria;
 
   & .form-left{
     border-radius: $border-radius-tittle;
     box-shadow: $shadow-boton;
-    padding: 35px;
-    margin: 20px;
+    padding: 14px 40px 5px;
+    margin: 18px;
+    height: auto;
+
+    & .titulo h1{
+      text-align: center;
+      color: $color-text;
+      font-size: 27px;
+      font-weight: 700;
+    }
 
     & p{
       color: $wine;
       font-weight: 600;
+      border-bottom: 1px solid $wine;
+      margin: 0;
     }
   }
 
   & .form-rigth{
     border-radius: $border-radius-tittle;
     box-shadow: $shadow-boton;
-    padding: 25px;
-    margin: 20px;
+    padding: 7px 20px;
+    margin: 18px;
+    height: auto;
 
+    & .form-component {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 5px;
+
+      & h2{
+        color: $grey-item;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+
+    & .titulo-rigth{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      & h1{
+        text-align: center;
+        color: $color-text;
+        font-size: 27px;
+        font-weight: 700;
+      }
+
+      & .info-habitacion{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & .number{
+          color: $wine;
+        font-size: 20px;
+        font-weight: 700;
+        }
+        & .tipo{
+          color: $color-text;
+          font-weight: 600;
+        }
+      }
+    }
+
+
+
+    & .total{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: $red-danger;
+      text-align: center;
+      font-size: 4vh;
+      font-weight: bolder;
+    }
 
   }
+}
+
+.text-area{
+  margin-top: 17px;
 }
 
 .form-component_contador{
@@ -42,6 +113,7 @@
       margin: 0;
       margin-left: 10px;
       color: $grey;
+      font-size: 18px;
     }
   }
 
@@ -52,11 +124,14 @@
     align-items: center;
     justify-content: flex-end;
 
+
     & p{
       margin: 0;
       margin-left: 5px;
-      color: $grey;
-      border-bottom: 1px solid;
+      color: $red-danger;
+      border-bottom: 1px solid $color-text;
+      font-size: 18px;
+      font-weight: 100;
     }
   }
 }
@@ -65,7 +140,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .radio-button{
