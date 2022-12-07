@@ -1,11 +1,6 @@
 @import '../../../../library.scss';
 @import'../../../../styles.scss';
 
-.sidebar {
-    height: 99vh;
-    overflow: hidden;
-}
-
 .nav-item {
     height: 3vh;
 }
@@ -13,10 +8,6 @@
 .others-menu {
     height: 21vh;
     margin-bottom: 0;
-}
-
-.wine {
-    color: $wine;
 }
 
 .spacer {
@@ -29,19 +20,8 @@
     border-bottom-style: solid 1px $wine;
 }
 
-.menu-icon {
-    font-size: 25px;
-}
-
 .shadowed {
     box-shadow: 0px 0px 9px #00000073;
-}
-
-.divider {
-    height: 2px;
-    width: 2vw;
-    // margin-top: 1vh;
-    background-color: $wine;
 }
 
 .type-text__wrapper {

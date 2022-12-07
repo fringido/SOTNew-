@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { HomeService } from 'src/app/home/services/home/home.service';
 
 @Component({
   selector: 'app-rooms-menu',
@@ -9,10 +8,6 @@ import { HomeService } from 'src/app/home/services/home/home.service';
 export class RoomsMenuComponent implements OnInit {
 
   isIpadMini!: boolean;
-
-  isHomeMenuSelected = true;
-  isAdminMenuSelected = false;
-  isBurguerMenuSelected = false;
 
   statusRooms = [{ 
     name: 'Libre', 
@@ -116,7 +111,6 @@ export class RoomsMenuComponent implements OnInit {
   }]
 
   constructor(
-    private readonly homeService: HomeService,
     private readonly renderer: Renderer2
   ) { }
 
@@ -127,31 +121,6 @@ export class RoomsMenuComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.isIpadMini = window.innerWidth <= 1025;
-  }
-
-  toggle() {
-    this.homeService.toggleSidenav();
-  }
-
-  selectMenu(state: 'home' | 'admin' | 'burguer') {
-    if (state === 'home') {
-      this.isHomeMenuSelected = true;
-      this.isAdminMenuSelected = false;
-      this.isBurguerMenuSelected = false;
-      return;
-    }
-    if (state === 'admin') {
-      this.isHomeMenuSelected = false;
-      this.isAdminMenuSelected = true;
-      this.isBurguerMenuSelected = false;
-      return;
-    }
-    if (state === 'burguer') {
-      this.isHomeMenuSelected = false;
-      this.isAdminMenuSelected = false;
-      this.isBurguerMenuSelected = true;
-      return;
-    }
   }
 
   isAnimated(el: HTMLSpanElement): boolean {
