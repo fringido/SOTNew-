@@ -1,0 +1,7 @@
+<nav class="d-lg-block sidebar bg-white shadow">
+
+    <ng-container [ngSwitch]="sidebarState$ | async">
+        <app-rooms-menu *ngSwitchCase="'home'"></app-rooms-menu>
+        <app-room-details *ngSwitchCase="'roomSelected'"></app-room-details>
+    </ng-container>
+</nav>

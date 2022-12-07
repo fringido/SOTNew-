@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeService } from './services/home/home.service';
 import { AgregarEditarRolComponent } from './modals/roles-y-permisos/agregar-editar-rol/agregar-editar-rol.component';
 import {ToggleButtonModule} from 'primeng/togglebutton';
@@ -18,12 +17,12 @@ import { MaterialModule } from '../core/modules/material/material.module';
 import { SidenavDirective } from './directives/sidenav.directive';
 import { RoomTypesModule } from '../room-types/room-types.module';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
+import { SidebarModule } from '../sidebar/sidebar.module';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    SidebarComponent,
     SidebarHiddenComponent,
     NavMenuComponent,
     SidenavDirective,
@@ -42,7 +41,8 @@ import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
     ToggleButtonModule,
     OverlayPanelModule,
     EntradaHabitacionModule,
-    CutStringPipe
+    CutStringPipe,
+    SidebarModule
   ],
   providers: [
     HomeService

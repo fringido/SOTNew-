@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../home/services/home/home.service';
+import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
 @Component({
   selector: 'app-room-types',
@@ -728,6 +729,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   constructor(
     private readonly homeService: HomeService,
     private readonly renderer: Renderer2,
+    private readonly sidebarService: SidebarService
   ) { }
 
   ngOnInit(): void {
@@ -774,7 +776,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
     // Mostrar sidenav para ver los detalles del cuarto seleccionado
     this.homeService.toggleSidenav(true);
-
+    // mostrar los detalles en el sidebar
+    this.sidebarService.setSidebarState('roomSelected', room);
   }
 
   unselectRoom() {

@@ -5,13 +5,13 @@ import { RoomComponent } from './components/room/room.component';
 import { MaterialModule } from '../core/modules/material/material.module';
 import { TimerPipe } from '../core/pipes/timer/timer.pipe';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
-
-
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
 
 @NgModule({
   declarations: [
     RoomTypesComponent,
-    RoomComponent
+    RoomComponent,
+    RoomDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +21,7 @@ import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
   ],
   exports: [
     RoomTypesComponent,
+    RoomDetailsComponent
   ]
 })
 export class RoomTypesModule { }

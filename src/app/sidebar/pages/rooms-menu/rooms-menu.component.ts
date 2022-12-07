@@ -1,12 +1,12 @@
-import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
-import { HomeService } from '../../services/home/home.service';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { HomeService } from 'src/app/home/services/home/home.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  selector: 'app-rooms-menu',
+  templateUrl: './rooms-menu.component.html',
+  styleUrls: ['./rooms-menu.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class RoomsMenuComponent implements OnInit {
 
   isIpadMini!: boolean;
 
