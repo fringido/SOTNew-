@@ -14,6 +14,9 @@ export class NavMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.time = new Date();
+    }, 1000);
   }
 
   ToggleNav() {

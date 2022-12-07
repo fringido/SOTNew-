@@ -57,9 +57,9 @@
     -webkit-transform: translateX(50%);
     transform: translateX(50%);
 
-    -moz-animation: my-animation 15s linear infinite;
-    -webkit-animation: my-animation 15s linear infinite;
-    animation: my-animation 15s linear infinite;
+    -moz-animation: my-animation 5s linear infinite;
+    -webkit-animation: my-animation 5s linear infinite;
+    animation: my-animation 5s linear infinite;
 }
 
 /* for Firefox */
@@ -157,5 +157,12 @@ input {
 @media (max-width: 1025px) and (orientation: landscape) {
     input {
         font-size: small;
+    }
+}
+
+// Pantalla normal
+@media (min-width: 1026px) and (orientation: landscape) {
+    .type-text__wrapper {
+        margin-top: 5px;
     }
 }
