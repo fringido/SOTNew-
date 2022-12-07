@@ -22,6 +22,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   statusRoom = RoomStatusEnum;
   isShowingSidenav!: boolean;
   isShowingSidenavSubs!: Subscription;
+  sidenavStateSubs!: Subscription;
 
   @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef>;
 
@@ -737,10 +738,16 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.isShowingSidenavSubs = this.homeService.showSidenav$.subscribe(
       (isShowing) => this.isShowingSidenav = isShowing
     )
+    this.sidenavStateSubs = this.sidebarService.sidebarState$.subscribe((state) => {
+      if(state !== 'roomSelected') {
+        this.unselectRoom();
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.isShowingSidenavSubs.unsubscribe();
+    this.sidenavStateSubs.unsubscribe();
   }
 
   marginXSkySuite(index: number) {
