@@ -6,8 +6,8 @@ export class HomeService {
   private showSidenav = new BehaviorSubject<boolean>(true);
   showSidenav$ = this.showSidenav.asObservable();
 
-  toggleSidenav() {
-    this.showSidenav.next(!this.showSidenav.value);
+  toggleSidenav(show?: boolean) {
+    this.showSidenav.next(show ?? !this.showSidenav.value);
   }
 
 }

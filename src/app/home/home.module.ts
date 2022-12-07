@@ -46,7 +46,7 @@ import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
   ],
   providers: [
     HomeService
-  ]
+  ],
 })
 
 export class HomeModule { }
