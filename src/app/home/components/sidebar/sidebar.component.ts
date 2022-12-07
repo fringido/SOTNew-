@@ -8,7 +8,7 @@ import { HomeService } from '../../services/home/home.service';
 })
 export class SidebarComponent implements OnInit {
 
-  isIpad!: boolean;
+  isIpadMini!: boolean;
 
   isHomeMenuSelected = true;
   isAdminMenuSelected = false;
@@ -121,12 +121,12 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isIpad = window.innerWidth <= 1025;
+    this.isIpadMini = window.innerWidth <= 1025;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isIpad = window.innerWidth <= 1025;
+    this.isIpadMini = window.innerWidth <= 1025;
   }
 
   toggle() {

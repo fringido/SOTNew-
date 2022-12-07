@@ -40,6 +40,13 @@ h6 {
   order: 3;
 }
 
+// @media screen and (min-width: 1025px) {
+//   .rooms-group:nth-child(6) {
+//     margin-top: 6vh;
+//     margin-left: -58.5vh;
+//   }
+// }
+
 
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
