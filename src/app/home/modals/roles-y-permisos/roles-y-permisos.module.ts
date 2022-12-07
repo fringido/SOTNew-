@@ -9,12 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {InputTextModule} from 'primeng/inputtext';
+
 @NgModule({
   declarations: [
     RolesYPermisosComponent,
     ListaDeRolesComponent,
     AgregarEditarRolComponent
-
   ],
   imports: [
     CommonModule,
@@ -24,7 +25,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     ReactiveFormsModule,
     ToggleButtonModule,
     OverlayPanelModule,
-
+    InputTextModule
   ]
 })
 export class RolesYPermisosModule { }

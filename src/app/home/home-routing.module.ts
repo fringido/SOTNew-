@@ -6,10 +6,6 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
-      // {
-      //   path: '',
-      //   component: HomeComponent
-      // },
       {
         path: 'rolesYPermisos',
         loadChildren: () => import('./modals/roles-y-permisos/roles-y-permisos.module').then((m) => m.RolesYPermisosModule)

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {DialogModule} from 'primeng/dialog';
 
 
 @NgModule({
@@ -30,8 +31,9 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     FormsModule,
     ReactiveFormsModule,
     CheckboxModule,
-    InputTextareaModule
+    InputTextareaModule,
+    DialogModule
   ],
-  exports:[RentaHabitacionComponent]
+  exports:[]
 })
 export class EntradaHabitacionModule { }

@@ -1,15 +1,7 @@
-import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ModalComponent } from 'src/app/core/components/modal/modal.component';
-import { ModalService } from 'src/app/core/services/modal.service';
 import {Location} from '@angular/common';
 
-
-interface City {
-  name: string,
-  code: string
-}
 
 @Component({
   selector: 'app-agregar-editar-rol',
@@ -21,15 +13,15 @@ interface City {
 export class AgregarEditarRolComponent implements OnInit {
 
   menu: number = 1;
-
   separador: any[] = []
-
   separadorTotal: any[] = []
 
-  form: FormGroup;
-  formularioBotones: FormGroup;
+  display = true
 
-  formulario = {
+  form: any;
+  formularioBotones: any;
+
+  formulario={
     id: 1,
     nombre: '',
     rolId: 1,
@@ -191,38 +183,31 @@ export class AgregarEditarRolComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private modal: ModalService,
     private location:Location
   ) {
-    this.formularioBotones = new FormGroup({})
-    this.form = new FormGroup({})
+    this.contador();
   }
 
   ngOnInit(): void {
-    this.modal.open();
-    this.modal.showHeader(true)
-    this.contador()
   }
-
-
 
   contador() {
     let form: any = {}
 
-    let menus = this.formulario.permisos.map(permiso => {
+    let menus = this.formulario.permisos.map((permiso) => {
       return permiso.menuId
     })
 
-    let menusId = menus.filter((item, index) => {
+    let menusId = menus.filter((item: any, index: any) => {
       return menus.indexOf(item) === index;
     })
 
-    menusId.forEach(dato => {
+    menusId.forEach((dato: any) => {
       let separacion = dato
       let repeticion:any = {}
       let permisos: any[] = []
 
-      this.formulario.permisos.forEach(dato2 => {
+      this.formulario.permisos.forEach((dato2) => {
         if (separacion == dato2.menuId) {
           repeticion[dato2.accesoId] = (repeticion[dato2.accesoId] || 0) + 1;
           permisos.push(dato2)
@@ -271,7 +256,7 @@ export class AgregarEditarRolComponent implements OnInit {
       })
     })
 
-    this.formulario.permisos.map( d => {
+    this.formulario.permisos.map( (d) => {
       form[d.id] = new FormControl(d.valor)
     })
 
@@ -281,7 +266,6 @@ export class AgregarEditarRolComponent implements OnInit {
       nombre: [this.formulario.nombre, Validators.required],
       permisos: this.formularioBotones
     })
-
 
   }
 
@@ -303,7 +287,6 @@ export class AgregarEditarRolComponent implements OnInit {
   }
 
   salir(){
-    this.modal.close()
     this.location.back()
   }
 

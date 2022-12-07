@@ -1,7 +1,6 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalService } from 'src/app/core/services/modal.service';
+import { Location } from '@angular/common';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-renta-habitacion',
@@ -11,13 +10,12 @@ import { ModalService } from 'src/app/core/services/modal.service';
 export class RentaHabitacionComponent implements OnInit {
 
   form: any;
+  display = true
 
   constructor(
-    private modal:ModalService,
     private location:Location,
     private fb: FormBuilder
   ) {
-    this.modal.open()
     this.formCreate();
   }
 
@@ -31,7 +29,7 @@ export class RentaHabitacionComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.modal.open()
+
   }
 
   formCreate(){
@@ -76,7 +74,6 @@ export class RentaHabitacionComponent implements OnInit {
   }
 
   salir(){
-    this.modal.close()
     this.location.back()
   }
 }
