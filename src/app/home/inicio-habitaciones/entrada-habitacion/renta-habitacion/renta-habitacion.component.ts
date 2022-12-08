@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-renta-habitacion',
@@ -14,6 +15,7 @@ export class RentaHabitacionComponent implements OnInit {
 
   constructor(
     private location:Location,
+    private readonly router: Router,
     private fb: FormBuilder
   ) {
     this.formCreate();
@@ -75,5 +77,9 @@ export class RentaHabitacionComponent implements OnInit {
 
   salir(){
     this.location.back()
+  }
+
+  aceptar(){
+    this.router.navigate([`/hotel/rentaHabitacion/pagoRenta`]);
   }
 }

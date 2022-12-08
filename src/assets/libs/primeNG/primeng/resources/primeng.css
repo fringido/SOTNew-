@@ -264,11 +264,11 @@ p-checkbox {
 }
 
 .p-colorpicker-panel .p-colorpicker-color {
-    background: transparent url("./images/color.png") no-repeat left top; 
+    background: transparent url("./images/color.png") no-repeat left top;
 }
 
 .p-colorpicker-panel .p-colorpicker-hue {
-   background: transparent url("./images/hue.png") no-repeat left top; 
+   background: transparent url("./images/hue.png") no-repeat left top;
 }
 .p-inputtext {
     margin: 0;
@@ -332,6 +332,7 @@ p-checkbox {
 .p-float-label .p-inputwrapper-focus ~ label,
 .p-float-label .p-inputwrapper-filled ~ label {
     top: -.75rem;
+    left: 5.5rem;
     font-size: 12px;
 }
 
@@ -470,7 +471,7 @@ p-radiobutton {
     border-radius: 100%;
     transform: scale(0);
 }
-  
+
 .p-ink-active {
     animation: ripple 0.4s linear;
 }
@@ -478,8 +479,8 @@ p-radiobutton {
 .p-ripple-disabled .p-ink {
     display: none !important;
 }
-  
-@keyframes ripple {  
+
+@keyframes ripple {
     100% {
         opacity: 0;
         transform: scale(2.5);

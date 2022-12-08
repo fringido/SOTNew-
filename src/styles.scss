@@ -114,6 +114,13 @@ body {
 //* Estilos Cuerpo Modal
 hr{
   color: $grey-item !important;
+  border-top: 2px solid !important;
+  width: 80% !important;
+  margin: .3rem 0 !important;
+}
+
+textarea {
+  resize: none;
 }
 
 .header-modal{
@@ -132,19 +139,20 @@ hr{
 }
 
 .modal-footer-content{
-  border-top: 2px solid #dee2e6;
-  padding-top: 10px;
+  padding-top: 11px;
   display: flex;
   flex-direction: row;
+  width: 100%;
   justify-content: center;
+  margin-top: 10px;
 
   & .button-modal{
     border: none;
     border-radius: 10px;
     color: #fff;
-    height: 10vh;
-    width: 5vw;
-    margin: 0 5px;
+    width: 4rem;
+    height: 3.9rem;
+    margin: 0 1.5rem 0 0;
 
     & .icon{
       font-size: 3vh;

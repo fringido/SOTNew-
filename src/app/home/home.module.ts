@@ -13,7 +13,7 @@ import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MaterialModule } from '../core/modules/material/material.module';
 import { SidenavDirective } from './directives/sidenav.directive';
-
+import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -22,6 +22,7 @@ import { SidenavDirective } from './directives/sidenav.directive';
     NavMenuComponent,
     SidenavDirective,
     LayoutComponent,
+    DarEntradaHabitacionComponent
   ],
   imports: [
     CommonModule,

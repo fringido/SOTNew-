@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
@@ -12,6 +13,9 @@ const routes: Routes = [
       },{
         path: 'rentaHabitacion',
         loadChildren: () => import('./inicio-habitaciones/entrada-habitacion/entrada-habitacion.module').then((m) => m.EntradaHabitacionModule)
+      },{
+        path: 'entradaDeHabitacion',
+        component: DarEntradaHabitacionComponent
       }
     ]
   },

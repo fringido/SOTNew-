@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="display" [closable]="false" [draggable]="false" [showHeader]="false">
+<p-dialog [(visible)]="display" [breakpoints]="{'1025': '77vw','960px': '94vw', '640px': '100vw'}" [style]="{width: '55vw'}" [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
   <div class="">
     <div class="">
       <form class="form-container" [formGroup]="form">
@@ -71,7 +71,7 @@
           </div>
           <div class="form-component ">
             <span class="p-float-label text-area">
-              <textarea formControlName="comentario" id="float-input" rows="3" cols="30" pInputTextarea></textarea>
+              <textarea formControlName="comentario" id="float-input" rows="3" cols="35" pInputTextarea></textarea>
               <label for="float-input">Comentarios</label>
             </span>
           </div>
@@ -165,7 +165,7 @@
           </div>
           <div class="form-component">
             <div class="form-component_contador">
-              <div class="divisor-form-l">
+              <div class="divisor-form-l" class="">
                 <h2>DESCUENTOS TARJETA DE LEALTAD</h2>
               </div>
               <div class="divisor-form-r">
@@ -181,18 +181,20 @@
       </form>
     </div>
   </div>
-  <div class="modal-footer-content">
-    <button class="button-modal button-salir" (click)="salir()">
-      <div class="icon">
-        <i class="fa-solid fa-rotate-left"></i>
-      </div>
-      <div class="text">Salir</div>
-    </button>
-    <button class="button-modal button-aceptar" [disabled]="form.invalid">
-      <div class="icon">
-        <i class="fa-solid fa-check"></i>
-      </div>
-      <div class="text">Aceptar</div>
-    </button>
-  </div>
+  <ng-template pTemplate="footer">
+    <div class="modal-footer-content">
+      <button class="button-modal button-salir" (click)="salir()">
+        <div class="icon">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div class="text">Salir</div>
+      </button>
+      <button (click)="aceptar()" class="button-modal button-aceptar" [disabled]="form.invalid">
+        <div class="icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="text">Aceptar</div>
+      </button>
+    </div>
+  </ng-template>
 </p-dialog>

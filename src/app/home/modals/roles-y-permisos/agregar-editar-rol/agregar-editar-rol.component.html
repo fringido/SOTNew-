@@ -1,12 +1,18 @@
-<p-dialog [(visible)]="display" [closable]="false" [draggable]="false" [showHeader]="false">
-  <div class="header-modal">Roles y permisos</div>
+<p-dialog header="Roles y permisos" [(visible)]="display" [closable]="false"
+[modal]="true" [draggable]="false" [showHeader]="true">
+
+  <!-- <div class="header-modal">Roles y permisos</div> -->
   <form [formGroup]="form" id="agregarPermisoModal">
     <div class="modal-body">
       <!-- INPUT PARA PODER GUARDAR EL NOMBRE -->
       <div class="input-rol">
         <label>NOMBRE DE ROL</label>
         <span class="p-input-icon-right">
-          <i class="fa-regular fa-user"></i>
+          <i *ngIf="form.controls.nombre.touched == false && form.controls.nombre.value == ''" style="color: #495057;"
+                class="fa-regular fa-user"></i>
+              <i *ngIf="form.controls.nombre.status == 'INVALID' && form.controls.nombre.touched == true"
+                class="fa-regular fa-user" style="color: red;"></i>
+              <i *ngIf="form.controls.nombre.status == 'VALID'" class="fa-regular fa-user" style="color: #0AC917;"></i>
           <input formControlName="nombre" type="text" pInputText placeholder="NOMBRE DE ROL">
         </span>
       </div>
@@ -63,18 +69,20 @@
       </div>
     </div>
   </form>
-  <div class="modal-footer-content">
-    <button class="button-modal button-salir" (click)="salir()">
-      <div class="icon">
-        <i class="fa-solid fa-rotate-left"></i>
-      </div>
-      <div class="text">Salir</div>
-    </button>
-    <button class="button-modal button-aceptar">
-      <div class="icon">
-        <i class="fa-solid fa-check"></i>
-      </div>
-      <div class="text">Aceptar</div>
-    </button>
-  </div>
+  <ng-template pTemplate="footer">
+    <div class="modal-footer-content">
+      <button class="button-modal button-salir" (click)="salir()">
+        <div class="icon">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div class="text">Salir</div>
+      </button>
+      <button class="button-modal button-aceptar">
+        <div class="icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="text">Aceptar</div>
+      </button>
+    </div>
+  </ng-template>
 </p-dialog>

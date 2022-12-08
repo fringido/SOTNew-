@@ -793,6 +793,7 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
   /* border: 1px solid #ced4da; */
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   /* border-radius: 6px; */
+  width: 100%;
 }
 .p-dropdown:not(.p-disabled):hover {
   border-color: #a30303;
@@ -884,6 +885,10 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
   color: #343a40;
   background: #ffffff;
   font-weight: 700;
+}
+
+p-dropdown.p-element.p-inputwrapper.p-inputwrapper-filled.ng-valid.ng-touched.ng-dirty {
+  width: 100%;
 }
 
 p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
@@ -1021,6 +1026,7 @@ p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
 .p-inputgroup > .p-float-label > .p-component {
   border-radius: 0;
   margin: 0;
+
 }
 .p-inputgroup > .p-component + .p-inputgroup-addon,
 .p-inputgroup > .p-element + .p-inputgroup-addon,
@@ -1092,6 +1098,18 @@ p-inputnumber.ng-dirty.ng-invalid > .p-inputnumber > .p-inputtext {
   border-color: #e24c4c;
 }
 
+p-inputnumber.p-element.p-inputwrapper.p-inputwrapper-filled.ng-valid.ng-touched.ng-dirty {
+  width: 100%;
+}
+
+p-inputnumber.p-element.p-inputwrapper.p-inputwrapper-filled{
+  width: 100%;
+}
+
+span.p-inputnumber.p-component {
+  width: 100%;
+}
+
 p-inputnumber.p-inputnumber-clearable .p-inputnumber-input {
   padding-right: 2.5rem;
 }
@@ -1153,15 +1171,17 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 .p-inputtext {
   text-align: center;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
-  color: #495057;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14pt;
+  font-weight: 300;
+  color: #707070;
   background: #ffffff;
-  padding: 3px 15px;
+  padding: 3px 0px;
   /* border: 1px solid #ced4da; */
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   appearance: none;
   /* border-radius: 6px; */
+  width: 100%;
 }
 .p-inputtext:enabled:hover {
   border-color: #862f4a;
@@ -1186,7 +1206,7 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 }
 
 .p-float-label > label {
-  left: 5.75rem;
+  left: 5rem;
   color: #6c757d;
   font-size: 12pt;
   transition-duration: 0.2s;
@@ -4415,6 +4435,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 }
 .p-dialog .p-dialog-header {
   border-bottom: 0 none;
+  z-index: inherit;
     background: #e4e4e4;
     /* color: #343a40; */
     padding: 10px;
@@ -4453,8 +4474,12 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 }
 .p-dialog .p-dialog-content {
   background: #ffffff;
+
   color: #212529;
-  padding: 0 1.5rem 0.8rem 1.5rem;
+  padding: 10px 1.5rem 0.8rem 1.5rem;
+  margin-top: -12px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 .p-dialog .p-dialog-content:last-of-type {
   border-radius: 15px;
@@ -4463,14 +4488,14 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-top: 0 none;
   background: #ffffff;
   color: #495057;
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 0 1rem 1rem 1rem;
   text-align: right;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 .p-dialog .p-dialog-footer button {
-  margin: 0 0.5rem 0 0;
-  width: auto;
+  margin: 0 1.5rem 0 0;
+  /* width: auto; */
 }
 .p-dialog.p-confirm-dialog .p-confirm-dialog-icon {
   font-size: 2rem;

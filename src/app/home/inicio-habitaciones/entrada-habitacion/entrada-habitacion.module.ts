@@ -13,13 +13,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {DialogModule} from 'primeng/dialog';
+import { PagoTarjetaComponent } from './pago-renta-habitacion/pago-tarjeta/pago-tarjeta.component';
+import { PagoMixtoComponent } from './pago-renta-habitacion/pago-mixto/pago-mixto.component';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 @NgModule({
   declarations: [
     EntradaHabitacionComponent,
     RentaHabitacionComponent,
-    PagoRentaHabitacionComponent
+    PagoRentaHabitacionComponent,
+    PagoTarjetaComponent,
+    PagoMixtoComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +37,8 @@ import {DialogModule} from 'primeng/dialog';
     ReactiveFormsModule,
     CheckboxModule,
     InputTextareaModule,
-    DialogModule
+    DialogModule,
+    InputMaskModule
   ],
   exports:[]
 })

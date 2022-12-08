@@ -1,0 +1,18 @@
+<div class="content-form">
+  <form [formGroup]="form" class="form-container">
+    <label>TIPO TARJETA</label>
+    <div class="tarjeta-content">
+      <i class="fa-brands fa-cc-visa tarjeta-icon-visa" (click)="selectCard(1)" [class.activate]="form.controls['tipoTarjeta'].value== 1" ></i>
+      <i class="fa-brands fa-cc-mastercard tarjeta-icon-mc" (click)="selectCard(2)" [class.activate]="form.controls['tipoTarjeta'].value== 2"></i>
+      <i class="fa-brands fa-cc-amex tarjeta-icon-ax" (click)="selectCard(3)" [class.activate]="form.controls['tipoTarjeta'].value == 3"></i>
+    </div>
+    <label>NÚMERO DE TARJETA</label>
+    <p-inputMask minlength="4" mask="9-9-9-9" formControlName="numeroTarjeta" type="text" pInputText placeholder="Últimos 4 Dígitos">
+    </p-inputMask>
+      <label>NÚMERO DE APROBACIÓN</label>
+    <input maxlength="4" mask="9999" minlength="4" formControlName="numeroAprobacion" type="text" pInputText placeholder="Número de Aprobación">
+    <label>PROPINA</label>
+    <p-inputNumber formControlName="propina" mode="decimal" prefix="$"[minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+  </form>
+
+</div>
