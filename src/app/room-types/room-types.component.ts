@@ -48,7 +48,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.PREPARADA,
           statusTimer: 3700,
           roomNumber: 2,
           matricula: 'ABC-123',
@@ -58,7 +58,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.OCUPADA,
           statusTimer: 3700,
           roomNumber: 3,
           matricula: 'ABC-123',
@@ -68,7 +68,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.SUCIA,
           statusTimer: 3700,
           roomNumber: 4,
           matricula: 'ABC-123',
@@ -78,7 +78,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.MEDIA_SUCIA,
           statusTimer: 3700,
           roomNumber: 5,
           matricula: 'ABC-123',
@@ -88,7 +88,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.EN_LIMPIEZA,
           statusTimer: 3700,
           roomNumber: 6,
           matricula: 'ABC-123',
@@ -98,7 +98,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.EN_SUPERVISION,
           statusTimer: 3700,
           roomNumber: 7,
           matricula: 'ABC-123',
@@ -770,7 +770,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       return;
     }
     if (this.isIpadMini) {
-      return '-13.5vh';
+      return '-0.5vh';
     }
     return '6vh';
   }

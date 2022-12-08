@@ -5,11 +5,13 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './components/modal/modal.component';
 import { HomeComponent } from '../home/home.component';
+import { MessageModalAutoclosableComponent } from './components/message-modal-autoclosable/message-modal-autoclosable.component';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     ModalComponent,
+    MessageModalAutoclosableComponent,
   ],
   imports: [
     CommonModule,

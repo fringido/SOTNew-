@@ -1,5 +1,9 @@
-import { AfterViewInit, Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2} from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
+import { take } from 'rxjs';
+import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
+import { RoomStatusEnum } from '../../enums/room-status.enum';
 
 @Component({
   selector: 'app-room-details',
@@ -8,30 +12,50 @@ import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.servic
 })
 export class RoomDetailsComponent implements OnInit {
 
+  readonly AvailableRoomStatus = RoomStatusEnum;
+  display: boolean = false;
   public isCollapsed = {
-    data: true,
-    details: true,
-    roomService: true
+    data: false,
+    details: false,
+    roomService: false
   };
 
-  selectedRoom$ = this.sidebarService.selectedRoom$;
+  selectedRoom!: any;
 
   constructor(
     private readonly sidebarService: SidebarService,
-    private readonly renderer: Renderer2
+    private readonly renderer: Renderer2,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
-    this.sidebarService.selectedRoom$.subscribe((room) => console.log({room}))
+    this.sidebarService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+      this.selectedRoom = room
+    });
   }
 
   exit() {
     this.sidebarService.setSidebarState('home')
   }
 
-  updateCollapsed(att: 'data' | 'details' | 'roomService') {
-    console.log(this.isCollapsed[att])
-    this.isCollapsed[att] = !this.isCollapsed[att]
-    this.isCollapsed = {...this.isCollapsed};
+  entrada() {
+    const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
+      data: {
+        message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
+      },
+    });
   }
+
+  preparar() {
+    const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
+      modal: true,
+      closable: false,
+      data: {
+        message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
+      },
+      width: '420px',
+      
+    });
+  }
+
 }

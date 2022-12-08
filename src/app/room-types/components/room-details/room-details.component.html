@@ -1,122 +1,245 @@
 <div class="w-100 d-flex justify-content-end">
     <i class="fas fa-times-circle mx-3 my-3 wine" (click)="exit()"></i>
 </div>
+<div class="room-details">
 
-<div class="titulo d-flex container">
-    <b>Datos de Habitación</b>
+    <div class="titulo d-flex container">
+        <b>Datos de Habitación</b>
+        <span class="spacer"></span>
+            <i  
+                class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
+                (click)="isCollapsed.data = ! isCollapsed.data"
+                *ngIf="isCollapsed.data"
+            >
+            </i>
+            <i 
+                class="fas fa-chevron-circle-up color-red-obs me-2 wine"
+                (click)="isCollapsed.data = ! isCollapsed.data"
+                *ngIf="!isCollapsed.data"
+            >
+            </i>
+    </div>
+    <div [(ngbCollapse)]="isCollapsed.data" *ngIf="selectedRoom">
+        <div>
+            <div class="label-static text-center">HABITACIÓN</div>
+            <div class="label-dynamic text-center container">
+                {{'JUNIOR SUITE'}}
+                <span class="wine">{{'2'}}</span>
+            </div>
+        </div>
+        <div>
+            <div class="label-static text-center">ESTADO</div>
+            <div class="label-dynamic text-center container">{{'texto'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">ENTRADA</div>
+            <div class="label-dynamic text-center container">{{'texto'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">AUTOMOVIL</div>
+            <div class="label-dynamic text-center container">{{'texto'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">TARJETA V</div>
+            <div class="label-dynamic text-center container">{{'texto'}}</div>
+        </div>
+    </div>
+    <div class="titulo d-flex container mt-3">
+        <b>Detalles</b>
+        <span class="spacer"></span>
+            <i  
+                class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
+                (click)="isCollapsed.details = ! isCollapsed.details"
+                *ngIf="isCollapsed.details"
+            >
+            </i>
+            <i 
+                class="fas fa-chevron-circle-up color-red-obs me-2 wine"
+                (click)="isCollapsed.details = ! isCollapsed.details"
+                *ngIf="!isCollapsed.details"
+            >
+            </i>
+    </div>
+    <div [(ngbCollapse)]="isCollapsed.details" *ngIf="selectedRoom">
+        <div>
+            <div class="label-static text-center">HABITACIÓN</div>
+            <div class="label-dynamic text-center container">
+                {{'$00.00'}}
+            </div>
+        </div>
+        <div>
+            <div class="label-static text-center">PERSONAS EXTRAS</div>
+            <div class="label-dynamic text-center container">{{'0'}}</div>
+            <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">HOSPEDAJES EXTRAS</div>
+            <div class="label-dynamic text-center container">{{'0'}}</div>
+            <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">HORAS EXTRAS</div>
+            <div class="label-dynamic text-center container">{{'texto'}}</div>
+            <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">CORTESÍAS</div>
+            <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+        </div>
+        <div>
+            <div class="label-static text-center">PAQUETES</div>
+            <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+        </div>
+    </div>
+    <div class="titulo d-flex container mt-3">
+        <b>Room Service</b>
+        <span class="spacer"></span>
+            <i  
+                class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
+                (click)="isCollapsed.roomService = ! isCollapsed.roomService"
+                *ngIf="isCollapsed.roomService"
+            >
+            </i>
+            <i 
+                class="fas fa-chevron-circle-up color-red-obs me-2 wine"
+                (click)="isCollapsed.roomService = ! isCollapsed.roomService"
+                *ngIf="!isCollapsed.roomService"
+            >
+            </i>
+    </div>
+    <div [(ngbCollapse)]="isCollapsed.roomService" *ngIf="selectedRoom">
+        <div>
+            <div class="label-static text-center">SERVICIO DE RESTAURANTE</div>
+            <div class="label-dynamic text-center container">
+                {{'$00.00'}}
+            </div>
+        </div>
+        <div>
+            <div class="label-static text-center">OTROS</div>
+            <div class="label-dynamic text-center container">
+                {{'$00.00'}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="list-group d-flex align-items-center list-group-flush m-3 p-1 others-menu">
+    <ng-container [ngSwitch]="selectedRoom.status">
+        <ng-container *ngSwitchCase="AvailableRoomStatus.LIBRE">
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="entrada()">
+                <span class="me-3">Entrada de habitación</span>
+                <i class="far fa-check-circle icon-pareja-ocupada"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+                <span class="me-3">Mantenimiento</span>
+                <i class="far icon-mantenimiento"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Cancelar Habitación</span>
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Room Service</span>
+                <i class="icon icon-roomservice"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-wine text-white">
+                <span class="me-3">Salida</span>
+                <i class="fas icon-icon-metro-exit"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="AvailableRoomStatus.PREPARADA">
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="preparar()">
+                <span class="me-3">Entrada de habitación</span>
+                <i class="far fa-check-circle icon-pareja-ocupada"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Cancelar Entrada</span>
+                <i class="fas fa-times-circle"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="AvailableRoomStatus.OCUPADA">
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="preparar()">
+                <span class="me-3">Extras</span>
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white">
+                <span class="me-3">Cambio de habitación</span>
+                <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Room Service</span>
+                <i class="icon icon-roomservice"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Cancelar Entrada</span>
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+                <span class="me-3">Imprimir Ticket</span>
+                <i class="fa-solid fa-print"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-wine text-white">
+                <span class="me-3">Salida</span>
+                <i class="fas icon-icon-metro-exit"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="
+            selectedRoom.status === AvailableRoomStatus.SUCIA ||
+            selectedRoom.status === AvailableRoomStatus.MEDIA_SUCIA ?
+            selectedRoom.status : ''"
+        >
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-blue text-white">
+                <span class="me-3">Enviar a limpieza</span>
+                <i class="icon-limpieza"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Reportar matrícula</span>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Camaristas en turno</span>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+                <span class="me-3">Mantenimiento</span>
+                <i class="far icon-mantenimiento"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="AvailableRoomStatus.EN_LIMPIEZA">
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm active text-white">
+                <span class="me-3">Enviar Supervisor</span>
+                <i class="icon-search"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white">
+                <span class="me-3">Cambiar Camarista</span>
+                <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Cancelar Limpieza</span>
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+                <span class="me-3">Camaristas en turno</span>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="AvailableRoomStatus.EN_SUPERVISION">
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="preparar()">
+                <span class="me-3">Liberar Habitación</span>
+                <i class="far fa-check-circle icon-pareja-ocupada"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white">
+                <span class="me-3">Cambiar Supervisor</span>
+                <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-blue text-white">
+                <span class="me-3">Enviar a limpieza</span>
+                <i class="icon-limpieza"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+                <span class="me-3">Camaristas en turno</span>
+            </div>
+        </ng-container>
+    </ng-container>
     <span class="spacer"></span>
-        <i  
-            class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
-            (click)="isCollapsed.data = ! isCollapsed.data"
-            *ngIf="isCollapsed.data"
-        >
-        </i>
-        <i 
-            class="fas fa-chevron-circle-up color-red-obs me-2 wine"
-            (click)="isCollapsed.data = ! isCollapsed.data"
-            *ngIf="!isCollapsed.data"
-        >
-        </i>
-</div>
-<div [(ngbCollapse)]="isCollapsed.data" *ngIf="(selectedRoom$ | async) as selectedRoom">
-	<div>
-        <div class="label-static text-center">HABITACIÓN</div>
-        <div class="label-dynamic text-center container">
-            {{'JUNIOR SUITE'}}
-            <span class="wine">{{'2'}}</span>
-        </div>
-    </div>
-    <div>
-        <div class="label-static text-center">ESTADO</div>
-        <div class="label-dynamic text-center container">{{'texto'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">ENTRADA</div>
-        <div class="label-dynamic text-center container">{{'texto'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">AUTOMOVIL</div>
-        <div class="label-dynamic text-center container">{{'texto'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">TARJETA V</div>
-        <div class="label-dynamic text-center container">{{'texto'}}</div>
-    </div>
-</div>
-<div class="titulo d-flex container mt-3">
-    <b>Detalles</b>
-    <span class="spacer"></span>
-        <i  
-            class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
-            (click)="isCollapsed.details = ! isCollapsed.details"
-            *ngIf="isCollapsed.details"
-        >
-        </i>
-        <i 
-            class="fas fa-chevron-circle-up color-red-obs me-2 wine"
-            (click)="isCollapsed.details = ! isCollapsed.details"
-            *ngIf="!isCollapsed.details"
-        >
-        </i>
-</div>
-<div [(ngbCollapse)]="isCollapsed.details" *ngIf="(selectedRoom$ | async) as selectedRoom">
-	<div>
-        <div class="label-static text-center">HABITACIÓN</div>
-        <div class="label-dynamic text-center container">
-            {{'$00.00'}}
-        </div>
-    </div>
-    <div>
-        <div class="label-static text-center">PERSONAS EXTRAS</div>
-        <div class="label-dynamic text-center container">{{'0'}}</div>
-        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">HOSPEDAJES EXTRAS</div>
-        <div class="label-dynamic text-center container">{{'0'}}</div>
-        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">HORAS EXTRAS</div>
-        <div class="label-dynamic text-center container">{{'texto'}}</div>
-        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">CORTESÍAS</div>
-        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
-    </div>
-    <div>
-        <div class="label-static text-center">PAQUETES</div>
-        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
-    </div>
-</div>
-<div class="titulo d-flex container mt-3">
-    <b>Room Service</b>
-    <span class="spacer"></span>
-        <i  
-            class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
-            (click)="isCollapsed.roomService = ! isCollapsed.roomService"
-            *ngIf="isCollapsed.roomService"
-        >
-        </i>
-        <i 
-            class="fas fa-chevron-circle-up color-red-obs me-2 wine"
-            (click)="isCollapsed.roomService = ! isCollapsed.roomService"
-            *ngIf="!isCollapsed.roomService"
-        >
-        </i>
-</div>
-<div [(ngbCollapse)]="isCollapsed.roomService" *ngIf="(selectedRoom$ | async) as selectedRoom">
-	<div>
-        <div class="label-static text-center">SERVICIO DE RESTAURANTE</div>
-        <div class="label-dynamic text-center container">
-            {{'$00.00'}}
-        </div>
-    </div>
-	<div>
-        <div class="label-static text-center">OTROS</div>
-        <div class="label-dynamic text-center container">
-            {{'$00.00'}}
-        </div>
+    <div class="text-center mb-2">
+        <img src="./assets/img/logo_GlobalMaster.png" alt="GM LOGO" width="80">
     </div>
 </div>

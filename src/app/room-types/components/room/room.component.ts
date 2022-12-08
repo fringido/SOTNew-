@@ -53,7 +53,7 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.ORANGE;
       this.icon = RoomIconsEnum.SUCIA;
     },
-    [RoomStatusEnum.EN_LIMPEZA]: () => {
+    [RoomStatusEnum.EN_LIMPIEZA]: () => {
       this.bgColor = BgColorEnum.BLUE;
       this.textColor = TextColorEnum.BLUE;
       this.icon = RoomIconsEnum.LIMPIEZA;

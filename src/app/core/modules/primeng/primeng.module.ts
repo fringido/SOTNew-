@@ -3,6 +3,7 @@ import {DialogModule, Dialog} from 'primeng/dialog';
 import { NgmodalDirective } from '../../directives/ngmodal.directive';
 import {SidebarModule} from 'primeng/sidebar';
 import {AccordionModule} from 'primeng/accordion';
+import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 
 
 @NgModule({
@@ -12,12 +13,13 @@ import {AccordionModule} from 'primeng/accordion';
   imports: [
     DialogModule
   ],
-  providers:[Dialog],
+  providers:[Dialog, DialogService],
   exports: [
     DialogModule,
     NgmodalDirective,
     SidebarModule,
-    AccordionModule
+    AccordionModule,
+    DynamicDialogModule
   ]
 })
 export class PrimengModule { }

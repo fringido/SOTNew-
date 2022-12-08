@@ -5,6 +5,7 @@
     #sidenav
     class="sidenav"
     mode="side"
+    disableClose="true"
     *ngIf="(showSidenav | async); else hiddenSidenav"
     appSidenav
   >
@@ -13,6 +14,7 @@
   <ng-template #hiddenSidenav>
     <mat-drawer  class="bg-dark"
         mode="side"
+        disableClose="true"
         class="bg-transparent sidebar-hidden"
         appSidenav
       >

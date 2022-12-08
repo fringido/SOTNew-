@@ -176,6 +176,10 @@ $lvl10: 100;
   background-color: $purple-item;
 }
 
+@mixin bg-wine {
+  background-color: $wine;
+}
+
 @mixin bg-grey-item {
   background-color: $grey-item;
 }
@@ -202,6 +206,9 @@ $lvl10: 100;
 }
 .sot-bg-purple {
   @include bg-purple;
+}
+.sot-bg-wine {
+  @include bg-wine;
 }
 .sot-bg-grey-item {
   @include bg-grey-item;
@@ -253,3 +260,9 @@ $lvl10: 100;
 .txt-grey-item {
   @include txt-grey-item;
 }
+
+// Estilos genericos para modal
+// .hideDialogHeader .p-dialog-content {
+//   border-radius: 15px !important;
+//   padding: 1rem 1rem !important;
+// }

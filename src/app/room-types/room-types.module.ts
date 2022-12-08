@@ -8,6 +8,7 @@ import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { BootstrapModule } from '../core/modules/bootstrap/bootstrap.module';
+import { MessageModalAutoclosableComponent } from '../core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BootstrapModule } from '../core/modules/bootstrap/bootstrap.module';
     TimerPipe,
     CutStringPipe,
     PrimengModule,
-    BootstrapModule
+    BootstrapModule,
+    MessageModalAutoclosableComponent
   ],
   exports: [
     RoomTypesComponent,
