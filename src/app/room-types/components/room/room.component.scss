@@ -1,0 +1,139 @@
+// .room-number  {
+//     margin: -1vh auto;
+//     font-weight: 900;
+//     font-size: 3vh;
+// }
+
+// mat-card {
+//     height: 7vh;
+// }
+
+// .bottom-spacer {
+//     margin-bottom: 2vh;
+// }
+
+// .reduce-my {
+//     margin-bottom: -2vh;
+//     margin-top: -0.4vh;
+// }
+
+// .reduce-mb {
+//     margin-bottom: -0.5vh;
+// }
+
+// .reduce-ml {
+//     margin-left: -1.8vw;
+// }
+
+// .reduce-mr {
+//     margin-right: -2vw;
+// }
+
+// .spacer {
+//     flex: 1 1 auto;
+// }
+
+
+// @media (max-width: 1025px) and (orientation: landscape) {
+//     mat-card {
+//         height: 9vh;
+//     }
+// }
+
+.rooms-container2 .div-room-card,
+.rooms-container .div-room-card {
+  margin-top: 0.5vh;
+  margin-right: 0.5vh;
+  flex-grow: inherit;
+  width: auto;
+}
+
+.d-flex-pool-spa .div-room-card {
+  margin-top: 0.5vh;
+  margin-right: 0.5vh;
+  flex-grow: inherit;
+  width: auto;
+}
+
+.d-flex-junior-suit .div-room-card {
+  margin-top: 0.5vh;
+  margin-right: 0.5vh;
+  flex-grow: inherit;
+  width: auto;
+}
+
+.roomCard {
+  position: relative;
+  background-color: #fff;
+  padding: 6px;
+  line-height: 1.1;
+  // box-shadow: 0 8px 5px #ebeaea;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  width: 95px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.roomCard .span-usuario-card {
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #ffffff;
+  padding: 3px;
+  border-radius: 5px;
+  border: currentColor 3px solid;
+  z-index: 10;
+  display: none;
+}
+
+.limitDescription {
+  max-width: 60px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.label-state {
+  color: #707070;
+}
+.font-10px, .font-10px::placeholder {
+  font-size: 10px;
+}
+
+.numero-habitacion {
+  font-family: epilogueFont,Arial,Helvetica,sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: #000;
+}
+
+.pie-adjust {
+  width: 70px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.position-absolute {
+  position: absolute!important;
+}
+.label-state {
+  color: #707070;
+}
+.font-10px, .font-10px::placeholder {
+  font-size: 10px;
+}
+
+.estilo-icon-in {
+  font-size: 19px;
+  margin-top: 7px;
+}
+
+.mr-1, .mx-1 {
+  margin-right: 0.25rem!important;
+}

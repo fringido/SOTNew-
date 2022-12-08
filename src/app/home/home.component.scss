@@ -1,6 +1,6 @@
 @import '../../styles.scss';
 
-:host{
+:host {
   overflow: hidden;
 }
 
@@ -27,29 +27,22 @@
   z-index: $lvl1;
 }
 
-// Ipad mini
-@media (max-width: 1025px) and (orientation: landscape) {
+.example-container {
+  width: 100%;
+  height: 88vh;
 }
 
-.example-container {
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .example-sidenav-content {
-    display: flex;
-    height: 90vh;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .example-sidenav {
-    padding: 20px;
-  }
+.example-sidenav-content {
+  height: 90vh;
+}
 
-  
+.example-sidenav {
+  padding: 20px;
+}
+
+// Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
   .sidenav {
-      width: 23vw;
+    width: 23vw;
   }
 }

@@ -1,0 +1,85 @@
+h6 {
+  font-weight: 600;
+}
+
+
+/* Render items as columns */
+.rooms-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-around;
+  // margin: auto 3vw;
+  /* Your container needs a fixed height, and it 
+  * needs to be taller than your tallest column. */
+  height: 88vh;
+}
+
+.rooms-group {
+  width: 34%;
+}
+
+/* Force new columns */
+.rooms-container::before,
+.rooms-container::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 2;
+}
+
+/* Re-order items into rows */
+.rooms-group:nth-child(3n+1) {
+  order: 1;
+}
+
+.rooms-group:nth-child(3n+2) {
+  order: 2;
+}
+
+.rooms-group:nth-child(3n) {
+  order: 3;
+}
+
+// @media screen and (min-width: 1025px) {
+//   .rooms-group:nth-child(6) {
+//     margin-top: 6vh;
+//     margin-left: -58.5vh;
+//   }
+// }
+
+
+// Ipad mini
+@media (max-width: 1025px) and (orientation: landscape) {
+  .rooms-container {
+    flex-flow: row wrap;
+    justify-content: end;
+    height: 100%;
+  }
+
+  .rooms-group {
+    width: 50%;
+  }
+
+  /* Re-order items into rows */
+  .rooms-group:nth-child(1) {
+    order: 1;
+  }
+
+  .rooms-group:nth-child(2) {
+    order: 2;
+  }
+
+  .rooms-group:nth-child(3) {
+    order: 1;
+  }
+  .rooms-group:nth-child(4) {
+    order: 3;
+  }
+  .rooms-group:nth-child(5) {
+    order: 2;
+  }
+  .rooms-group:nth-child(6) {
+    order: 3;
+  }
+
+}

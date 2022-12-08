@@ -8,12 +8,12 @@ import { HomeService } from '../../services/home/home.service';
 })
 export class SidebarHiddenComponent implements OnInit {
 
-  roomTypes = [
+  statusRooms = [
     { name: 'Libre', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle', isTextScrollable: false },
     { name: 'Por cobrar', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle icon-cobrar', isTextScrollable: true },
-    { name: 'Preparada', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle icon-car', isTextScrollable: false },
+    { name: 'Preparada', count: 10, color: 'sot-bg-success', icon: 'far fa-check-circle icon-car mr3px fa-xs', isTextScrollable: false },
     { name: 'Ocupada', count: 10, color: 'sot-bg-danger', icon: 'far fa-check-circle icon-pareja-ocupada', isTextScrollable: false },
-    { name: 'Room service', count: 10, color: 'sot-bg-danger', icon: 'far fa-check-circle icon-roomservice fa-2xs', isTextScrollable: true },
+    { name: 'Room service', count: 10, color: 'sot-bg-danger', icon: 'far fa-check-circle icon-roomservice fa-2xs mr5px', isTextScrollable: true },
     { name: 'Sucia', count: 10, color: 'sot-bg-warn', icon: 'far fa-check-circle icon-sucia', isTextScrollable: false },
     { name: 'Media Sucia', count: 10, color: 'sot-bg-orange', icon: 'far fa-check-circle icon-sucia', isTextScrollable: true },
     { name: 'Limpieza', count: 10, color: 'sot-bg-blue', icon: 'far fa-check-circle icon-limpieza', isTextScrollable: false },

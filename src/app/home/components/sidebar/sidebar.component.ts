@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { delay, switchMap, tap } from 'rxjs';
+import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { HomeService } from '../../services/home/home.service';
 
 @Component({
@@ -9,32 +8,125 @@ import { HomeService } from '../../services/home/home.service';
 })
 export class SidebarComponent implements OnInit {
 
+  isIpadMini!: boolean;
+
   isHomeMenuSelected = true;
   isAdminMenuSelected = false;
   isBurguerMenuSelected = false;
 
-  roomTypes = [
-    { name: 'Libre', count: 10, color: 'txt-success', icon: 'far fa-check-circle', isTextScrollable: false },
-    { name: 'Por cobrar', count: 10, color: 'txt-success', icon: 'far fa-check-circle icon-cobrar', isTextScrollable: false },
-    { name: 'Preparada', count: 10, color: 'txt-success', icon: 'far fa-check-circle icon-car', isTextScrollable: false },
-    { name: 'Ocupada', count: 10, color: 'txt-danger', icon: 'far fa-check-circle icon-pareja-ocupada', isTextScrollable: false },
-    { name: 'Room service', count: 10, color: 'txt-danger', icon: 'far fa-check-circle icon-roomservice fa-2xs', isTextScrollable: true },
-    { name: 'Sucia', count: 10, color: 'txt-warn', icon: 'far fa-check-circle icon-sucia', isTextScrollable: false },
-    { name: 'Media Sucia', count: 10, color: 'txt-orange', icon: 'far fa-check-circle icon-sucia', isTextScrollable: true },
-    { name: 'Limpieza', count: 10, color: 'txt-blue', icon: 'far fa-check-circle icon-limpieza', isTextScrollable: false },
-    { name: 'Supervisión', count: 10, color: 'txt-blue', icon: 'far fa-check-circle icon-search', isTextScrollable: false },
-    { name: 'Reservar', count: 10, color: 'txt-purple', icon: 'icon-calendar', isTextScrollable: false },
-    { name: 'Preparada y Reservada', count: 10, color: 'txt-purple', icon: 'icon-calendar', isTextScrollable: true },
-    { name: 'Bloqueada', count: 10, color: 'txt-purple', icon: 'far fa-check-circle icon-candado', isTextScrollable: false },
-    { name: 'Mantenimiento', count: 10, color: 'txt-grey-item', icon: 'far fa-check-circle icon-mantenimiento', isTextScrollable: true },
-    { name: 'Alertas', count: 10, color: 'txt-grey-item', icon: 'fas fa-clock', isTextScrollable: false },
-  ]
+  statusRooms = [{ 
+    name: 'Libre', 
+    count: 10,
+    color: 'txt-success', 
+    icon: 'far fa-check-circle', 
+    isTextScrollable: false,
+    iconExtraMargin: '-5px'
+  }, { 
+    name: 'Por cobrar',
+    count: 10, 
+    color: 'txt-success',
+    icon: 'far fa-check-circle icon-cobrar',
+    isTextScrollable: false,
+    iconExtraMargin: '-8px' 
+  }, { 
+    name: 'Preparada',
+    count: 10,
+    color: 'txt-success',
+    icon: 'far fa-check-circle icon-car fa-sm',
+    isTextScrollable: false,
+    iconExtraMargin: '-6px',
+    class: 'reduce'
+  }, { 
+    name: 'Ocupada',
+    count: 10,
+    color: 'txt-danger',
+    icon: 'far fa-check-circle icon-pareja-ocupada',
+    isTextScrollable: false,
+    iconExtraMargin: '-10px'
+  }, { 
+    name: 'Room service',
+    count: 10,
+    color: 'txt-danger',
+    icon: 'far fa-check-circle icon-roomservice fa-2xs',
+    isTextScrollable: false,
+    iconExtraMargin: '-3px' 
+  }, { 
+    name: 'Sucia',
+    count: 10,
+    color: 'txt-warn',
+    icon: 'far fa-check-circle fa-sm icon-sucia',
+    isTextScrollable: false,
+    iconExtraMargin: '-8px'
+  }, {
+    name: 'Media Sucia',
+    count: 10,
+    color: 'txt-orange',
+    icon: 'far fa-check-circle fa-sm icon-sucia',
+    isTextScrollable: false,
+    iconExtraMargin: '-8px'
+  }, {
+    name: 'Limpieza',
+    count: 10,
+    color: 'txt-blue',
+    icon: 'far fa-check-circle icon-limpieza',
+    isTextScrollable: false,
+    iconExtraMargin: '-10px'
+  }, {
+    name: 'Supervisión', 
+    count: 10, 
+    color: 'txt-blue',
+    icon: 'far fa-check-circle icon-search',
+    isTextScrollable: false,
+    iconExtraMargin: '-10px'
+  }, {
+    name: 'Reservar',
+    count: 10,
+    color: 'txt-purple',
+    icon: 'icon-calendar',
+    isTextScrollable: false,
+    iconExtraMargin: '-7px'
+  }, {
+    name: 'Preparada y Reservada',
+    count: 10,
+    color: 'txt-purple',
+    icon: 'icon-calendar',
+    isTextScrollable: true,
+    iconExtraMargin: '-7px'
+  }, { 
+    name: 'Bloqueada',
+    count: 10,
+    color: 'txt-purple',
+    icon: 'far fa-check-circle icon-candado',
+    isTextScrollable: false,
+    iconExtraMargin: '-10px'
+  }, {
+    name: 'Mantenimiento',
+    count: 10,
+    color: 'txt-grey-item',
+    icon: 'far fa-check-circle icon-mantenimiento fa-sm',
+    isTextScrollable: false,
+    iconExtraMargin: '-8px'
+  }, {
+    name: 'Alertas',
+    count: 10,
+    color: 'txt-grey-item',
+    icon: 'fas fa-clock',
+    isTextScrollable: false,
+    iconExtraMargin: '-8px'
+  }]
 
   constructor(
-    private readonly homeService: HomeService
+    private readonly homeService: HomeService,
+    private readonly renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
+    this.isIpadMini = window.innerWidth <= 1025;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isIpadMini = window.innerWidth <= 1025;
   }
 
   toggle() {
@@ -60,5 +152,18 @@ export class SidebarComponent implements OnInit {
       this.isBurguerMenuSelected = true;
       return;
     }
+  }
+
+  isAnimated(el: HTMLSpanElement): boolean {
+    return el.classList.contains('scroll-text');
+  }
+
+  addAnimation(text: HTMLSpanElement, isTextScrollable: boolean) {
+    if(isTextScrollable) {
+      this.renderer.addClass(text, 'scroll-text')
+    }
+  }
+  removeAnimation(text: HTMLSpanElement, isTextScrollable: boolean) {
+    this.renderer.removeClass(text, 'scroll-text')
   }
 }

@@ -1,0 +1,88 @@
+<div
+    class="div-room-card mx-1"
+    [ngSwitch]="status"
+>
+    <div 
+        class="d-flex justify-content-between roomCard" 
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
+        *ngSwitchCase="
+            status === AvailableRoomStatus.LIBRE ||
+            status === AvailableRoomStatus.SUCIA ||
+            status === AvailableRoomStatus.MEDIA_SUCIA ?
+            status : ''"
+    >
+        <span class="span-usuario-card"></span>
+        <div>
+            <div class="limitDescription font-10px label-state">
+                {{status}} 
+            </div>
+            <div class="numero-habitacion">{{roomNumber}}</div>
+            <div class="position-absolute font-10px label-state pie-adjust"> 
+                {{statusTimer|timer}}
+            </div>
+        </div>
+        <div class="estilo-icon-in">
+
+            <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
+        </div>
+    </div>
+    <div 
+        class="d-flex justify-content-between roomCard" 
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
+        *ngSwitchCase="AvailableRoomStatus.PREPARADA"
+    >
+        <span class="span-usuario-card"></span>
+        <div>
+            <div class="limitDescription font-10px label-state">
+                {{status}} 
+            </div>
+            <div class="numero-habitacion">{{roomNumber}}</div>
+        </div>
+        <div class="estilo-icon-in">
+            <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
+        </div>
+    </div>
+    <div 
+        class="d-flex justify-content-between roomCard" 
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
+        *ngSwitchCase="AvailableRoomStatus.OCUPADA"
+    >
+        <span class="span-usuario-card"></span>
+        <div>
+            <div class="limitDescription font-10px label-state">
+                {{matricula}} 
+            </div>
+            <div class="numero-habitacion">{{roomNumber}}</div>
+            <div class="position-absolute font-10px label-state pie-adjust">
+                {{tarifa|slice:0:1}}    {{duracionTarifa|timer}}
+            </div>
+        </div>
+        <div class="estilo-icon-in">
+            <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
+        </div>
+    </div>
+    <div 
+        class="d-flex justify-content-between roomCard"
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
+        *ngSwitchCase="
+            status === AvailableRoomStatus.EN_LIMPEZA ||
+            status === AvailableRoomStatus.EN_SUPERVISION ?
+            status : ''"
+    >
+        <span class="span-usuario-card"></span>
+        <div>
+            <div class="limitDescription font-10px label-state">
+                {{(camaristaOCamaristas || supervisor)+''|cutString:10}} 
+            </div>
+            <div class="numero-habitacion">
+                {{roomNumber}}
+            </div>
+            <div class="position-absolute font-10px label-state pie-adjust"> 
+                {{statusTimer|timer}}
+            </div>
+        </div>
+        <div class="estilo-icon-in">
+            <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
+        </div>
+    </div>
+</div>

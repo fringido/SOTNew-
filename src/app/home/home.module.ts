@@ -14,6 +14,13 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MaterialModule } from '../core/modules/material/material.module';
 import { SidenavDirective } from './directives/sidenav.directive';
 import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
+import { RoomTypesModule } from '../room-types/room-types.module';
+import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
+import { EntradaHabitacionModule } from './inicio-habitaciones/entrada-habitacion/entrada-habitacion.module';
+import { FormsModule } from '@angular/forms';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -29,8 +36,14 @@ import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitaci
     HomeRoutingModule,
     PrimengModule,
     MaterialModule,
+    RoomTypesModule,
+    FormsModule,
+    MaterialModule,
     ToggleButtonModule,
     OverlayPanelModule,
+    EntradaHabitacionModule,
+    MatSidenavModule,
+    CutStringPipe
   ],
   providers: [
     HomeService,

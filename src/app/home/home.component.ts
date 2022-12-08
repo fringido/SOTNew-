@@ -20,10 +20,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-  toggle() {
-    this.homeService.toggleSidenav();
-  }
-
   openModal(ruta: string){
     this.router.navigate([`/hotel/${ruta}`]);
   }
