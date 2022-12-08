@@ -1,7 +1,5 @@
-import { AfterViewInit, Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { HomeService } from './services/home/home.service';
-import { MatDrawer } from '@angular/material/sidenav';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { ModalService } from '../core/services/modal.service';
 @Component({

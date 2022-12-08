@@ -6,6 +6,8 @@ import { MaterialModule } from '../core/modules/material/material.module';
 import { TimerPipe } from '../core/pipes/timer/timer.pipe';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { PrimengModule } from '../core/modules/primeng/primeng.module';
+import { BootstrapModule } from '../core/modules/bootstrap/bootstrap.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { RoomDetailsComponent } from './components/room-details/room-details.com
     MaterialModule,
     TimerPipe,
     CutStringPipe,
+    PrimengModule,
+    BootstrapModule
   ],
   exports: [
     RoomTypesComponent,

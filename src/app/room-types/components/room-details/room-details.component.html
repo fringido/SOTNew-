@@ -1,5 +1,122 @@
 <div class="w-100 d-flex justify-content-end">
-    <i class="fas fa-times-circle mx-3 mt-3 wine" (click)="unselectRoom()"></i>
+    <i class="fas fa-times-circle mx-3 my-3 wine" (click)="exit()"></i>
 </div>
-    <p>room-details works!</p>
-    <input type="text" value="JUNIOr suite 2" disabled>
+
+<div class="titulo d-flex container">
+    <b>Datos de Habitación</b>
+    <span class="spacer"></span>
+        <i  
+            class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
+            (click)="isCollapsed.data = ! isCollapsed.data"
+            *ngIf="isCollapsed.data"
+        >
+        </i>
+        <i 
+            class="fas fa-chevron-circle-up color-red-obs me-2 wine"
+            (click)="isCollapsed.data = ! isCollapsed.data"
+            *ngIf="!isCollapsed.data"
+        >
+        </i>
+</div>
+<div [(ngbCollapse)]="isCollapsed.data" *ngIf="(selectedRoom$ | async) as selectedRoom">
+	<div>
+        <div class="label-static text-center">HABITACIÓN</div>
+        <div class="label-dynamic text-center container">
+            {{'JUNIOR SUITE'}}
+            <span class="wine">{{'2'}}</span>
+        </div>
+    </div>
+    <div>
+        <div class="label-static text-center">ESTADO</div>
+        <div class="label-dynamic text-center container">{{'texto'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">ENTRADA</div>
+        <div class="label-dynamic text-center container">{{'texto'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">AUTOMOVIL</div>
+        <div class="label-dynamic text-center container">{{'texto'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">TARJETA V</div>
+        <div class="label-dynamic text-center container">{{'texto'}}</div>
+    </div>
+</div>
+<div class="titulo d-flex container mt-3">
+    <b>Detalles</b>
+    <span class="spacer"></span>
+        <i  
+            class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
+            (click)="isCollapsed.details = ! isCollapsed.details"
+            *ngIf="isCollapsed.details"
+        >
+        </i>
+        <i 
+            class="fas fa-chevron-circle-up color-red-obs me-2 wine"
+            (click)="isCollapsed.details = ! isCollapsed.details"
+            *ngIf="!isCollapsed.details"
+        >
+        </i>
+</div>
+<div [(ngbCollapse)]="isCollapsed.details" *ngIf="(selectedRoom$ | async) as selectedRoom">
+	<div>
+        <div class="label-static text-center">HABITACIÓN</div>
+        <div class="label-dynamic text-center container">
+            {{'$00.00'}}
+        </div>
+    </div>
+    <div>
+        <div class="label-static text-center">PERSONAS EXTRAS</div>
+        <div class="label-dynamic text-center container">{{'0'}}</div>
+        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">HOSPEDAJES EXTRAS</div>
+        <div class="label-dynamic text-center container">{{'0'}}</div>
+        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">HORAS EXTRAS</div>
+        <div class="label-dynamic text-center container">{{'texto'}}</div>
+        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">CORTESÍAS</div>
+        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+    </div>
+    <div>
+        <div class="label-static text-center">PAQUETES</div>
+        <div class="label-dynamic text-center container">{{'$0.00'}}</div>
+    </div>
+</div>
+<div class="titulo d-flex container mt-3">
+    <b>Room Service</b>
+    <span class="spacer"></span>
+        <i  
+            class="fas fa-chevron-circle-down color-red-obs me-2 wine" 
+            (click)="isCollapsed.roomService = ! isCollapsed.roomService"
+            *ngIf="isCollapsed.roomService"
+        >
+        </i>
+        <i 
+            class="fas fa-chevron-circle-up color-red-obs me-2 wine"
+            (click)="isCollapsed.roomService = ! isCollapsed.roomService"
+            *ngIf="!isCollapsed.roomService"
+        >
+        </i>
+</div>
+<div [(ngbCollapse)]="isCollapsed.roomService" *ngIf="(selectedRoom$ | async) as selectedRoom">
+	<div>
+        <div class="label-static text-center">SERVICIO DE RESTAURANTE</div>
+        <div class="label-dynamic text-center container">
+            {{'$00.00'}}
+        </div>
+    </div>
+	<div>
+        <div class="label-static text-center">OTROS</div>
+        <div class="label-dynamic text-center container">
+            {{'$00.00'}}
+        </div>
+    </div>
+</div>

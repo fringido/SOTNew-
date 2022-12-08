@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SidebarService } from 'src/app/sidebar/services/sidebar/sidebar.service';
+import { AfterViewInit, Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-room-details',
@@ -8,14 +8,30 @@ import { SidebarService } from 'src/app/sidebar/services/sidebar/sidebar.service
 })
 export class RoomDetailsComponent implements OnInit {
 
+  public isCollapsed = {
+    data: true,
+    details: true,
+    roomService: true
+  };
+
+  selectedRoom$ = this.sidebarService.selectedRoom$;
+
   constructor(
-    private readonly sidebarService: SidebarService
+    private readonly sidebarService: SidebarService,
+    private readonly renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
+    this.sidebarService.selectedRoom$.subscribe((room) => console.log({room}))
   }
 
-  unselectRoom() {
+  exit() {
     this.sidebarService.setSidebarState('home')
+  }
+
+  updateCollapsed(att: 'data' | 'details' | 'roomService') {
+    console.log(this.isCollapsed[att])
+    this.isCollapsed[att] = !this.isCollapsed[att]
+    this.isCollapsed = {...this.isCollapsed};
   }
 }

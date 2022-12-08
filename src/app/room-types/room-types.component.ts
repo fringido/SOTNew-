@@ -778,7 +778,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   selectRoom(room: any) {
     // Agregar sombra a los elementos que no fueron seleccionados
     this.roomsRef
-      .toArray()
+      ?.toArray()
       .filter((roomEl) => roomEl.nativeElement.id !== 'room_' + room.roomNumber)
       .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
     // Mostrar sidenav para ver los detalles del cuarto seleccionado
@@ -789,7 +789,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   unselectRoom() {
     this.roomsRef
-      .toArray()
+      ?.toArray()
       .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
   }
 }
