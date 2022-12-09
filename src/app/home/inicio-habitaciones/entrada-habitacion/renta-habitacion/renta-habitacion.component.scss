@@ -17,10 +17,10 @@
     align-items: center;
     border-radius: $border-radius-tittle;
     box-shadow: $shadow-boton;
-    padding: 7px 15px;
+    padding: 7px 0px;
     margin: 0.2rem 1rem;
     height: auto;
-    width: 50%;
+    width: 100%;
 
 
     & .form-component {
@@ -54,7 +54,7 @@
     padding: 7px 23px;
     margin: 0.2rem 1rem;
     height: auto;
-    width: 50%;
+    width: 100%;
 
     & .form-component {
     display: flex;

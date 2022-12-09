@@ -1,6 +1,5 @@
-<p-dialog [(visible)]="display" [breakpoints]="{'1024': '85vw','960px': '94vw', '640px': '100vw'}" [style]="{width: '89vww'}" [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
-  <div class="">
-    <div class="">
+<p-dialog [(visible)]="display"  [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
+
       <form class="form-container" [formGroup]="form">
         <div class="form-left">
           <div class="titulo">
@@ -179,8 +178,6 @@
           </div>
         </div>
       </form>
-    </div>
-  </div>
   <ng-template pTemplate="footer">
     <div class="modal-footer-content">
       <button class="button-modal button-salir" (click)="salir()">
