@@ -141,10 +141,6 @@
     color: white;
 }
 
-input {
-    margin-right: -20px;
-}
-
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
     input {
@@ -163,5 +159,12 @@ input {
 @media (min-width: 1026px) and (orientation: landscape) {
     .type-text__wrapper {
         margin-top: 5px;
+    }
+}
+
+// Pantalla 
+@media (max-width: 1700px) and (orientation: landscape) {
+    input::placeholder {
+        font-size: 10pt;   
     }
 }

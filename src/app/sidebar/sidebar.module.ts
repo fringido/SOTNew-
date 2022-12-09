@@ -6,6 +6,8 @@ import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
 import { RoomsMenuComponent } from './pages/rooms-menu/rooms-menu.component';
 import { RoomTypesModule } from '../room-types/room-types.module';
 import { SidebarService } from './services/sidebar/sidebar.service';
+import { PrimengModule } from '../core/modules/primeng/primeng.module';
+import { MaterialModule } from '../core/modules/material/material.module';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { SidebarService } from './services/sidebar/sidebar.service';
   imports: [
     CommonModule,
     CutStringPipe,
-    RoomTypesModule
+    RoomTypesModule,
+    PrimengModule,
+    MaterialModule
   ],
   exports: [
     SidebarComponent,

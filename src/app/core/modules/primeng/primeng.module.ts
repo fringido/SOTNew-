@@ -4,6 +4,13 @@ import { NgmodalDirective } from '../../directives/ngmodal.directive';
 import {SidebarModule} from 'primeng/sidebar';
 import {AccordionModule} from 'primeng/accordion';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputMaskModule } from 'primeng/inputmask';
 
 
 @NgModule({
@@ -19,7 +26,14 @@ import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
     NgmodalDirective,
     SidebarModule,
     AccordionModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    DropdownModule,
+    InputTextModule,
+    RadioButtonModule,
+    InputNumberModule,
+    CheckboxModule,
+    InputTextareaModule,
+    InputMaskModule
   ]
 })
 export class PrimengModule { }

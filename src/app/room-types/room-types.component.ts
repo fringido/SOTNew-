@@ -93,7 +93,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           roomNumber: 6,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
+          camaristaOCamaristas: 'Luis Mario Hernández García',
           supervisor: null,
           duracionTarifa: 10000
         },
