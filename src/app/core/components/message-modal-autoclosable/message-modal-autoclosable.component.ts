@@ -22,10 +22,9 @@ export class MessageModalAutoclosableComponent implements OnInit {
     this.config.showHeader = false;
     this.config.closable = false;
     this.config.width = '420px';
-    this.config.styleClass = 'hideDialogHeader';
     setTimeout(() => {
       this.ref.close();
-    }, 1500)
+    }, 3000)
   }
 
 }

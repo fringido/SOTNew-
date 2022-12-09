@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { take } from 'rxjs';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
@@ -25,7 +26,8 @@ export class RoomDetailsComponent implements OnInit {
   constructor(
     private readonly sidebarService: SidebarService,
     private readonly renderer: Renderer2,
-    public dialogService: DialogService
+    private readonly router: Router,
+    public dialogService: DialogService,
   ) { }
 
   ngOnInit(): void {
@@ -47,15 +49,12 @@ export class RoomDetailsComponent implements OnInit {
   }
 
   preparar() {
-    const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
-      modal: true,
-      closable: false,
-      data: {
-        message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
-      },
-      width: '420px',
-      
-    });
+    // const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
+    //   data: {
+    //     message: 'TODO: PREPARAR'
+    //   },
+    // });
+    this.router.navigate(['hotel', 'rentaHabitacion'])
   }
 
 }
