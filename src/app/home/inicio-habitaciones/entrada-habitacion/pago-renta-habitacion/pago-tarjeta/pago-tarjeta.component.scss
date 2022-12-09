@@ -1,19 +1,17 @@
 @import '../../../../../../library.scss';
 
 .content-form{
-  width: 27vw;
-  height: 37vh;
+  width: 100%;
 }
 .form-container{
-  width: 27vw;
   display: flex;
   height: 100%;
   flex-direction: column;
-  align-items: center;
-  margin-top: -8px;
   flex-wrap: nowrap;
-  padding: 0 40px;
+
   justify-content: space-between;
+  text-align: center;
+  align-items: center;
 
   & .tarjeta-content {
     width: 100%;
