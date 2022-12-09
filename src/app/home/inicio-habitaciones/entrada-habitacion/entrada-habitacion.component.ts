@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entrada-habitacion.component.scss']
 })
 export class EntradaHabitacionComponent implements OnInit {
+  display = true
 
-  constructor() { }
+  constructor(
+  ) {
+  }
 
   ngOnInit(): void {
+    this.display = true
   }
 
 }

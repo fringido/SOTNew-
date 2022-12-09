@@ -8,12 +8,23 @@ import { RentaHabitacionComponent } from './renta-habitacion/renta-habitacion.co
 import { PagoRentaHabitacionComponent } from './pago-renta-habitacion/pago-renta-habitacion.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import {CheckboxModule} from 'primeng/checkbox';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {DialogModule} from 'primeng/dialog';
+import { PagoTarjetaComponent } from './pago-renta-habitacion/pago-tarjeta/pago-tarjeta.component';
+import { PagoMixtoComponent } from './pago-renta-habitacion/pago-mixto/pago-mixto.component';
+import {InputMaskModule} from 'primeng/inputmask';
+
 
 @NgModule({
   declarations: [
     EntradaHabitacionComponent,
     RentaHabitacionComponent,
-    PagoRentaHabitacionComponent
+    PagoRentaHabitacionComponent,
+    PagoTarjetaComponent,
+    PagoMixtoComponent
   ],
   imports: [
     CommonModule,
@@ -21,8 +32,14 @@ import {InputNumberModule} from 'primeng/inputnumber';
     DropdownModule,
     InputTextModule,
     RadioButtonModule,
-    InputNumberModule
+    InputNumberModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CheckboxModule,
+    InputTextareaModule,
+    DialogModule,
+    InputMaskModule
   ],
-  exports:[RentaHabitacionComponent]
+  exports:[]
 })
 export class EntradaHabitacionModule { }

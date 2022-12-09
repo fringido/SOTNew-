@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './components/layout/layout.component';
+import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   {
-    path: '', component: LayoutComponent,
+    path: '', component: HomeComponent,
     children: [
-      {
-        path: '',
-        component: HomeComponent
-      },
       {
         path: 'rolesYPermisos',
         loadChildren: () => import('./modals/roles-y-permisos/roles-y-permisos.module').then((m) => m.RolesYPermisosModule)
+      },{
+        path: 'rentaHabitacion',
+        loadChildren: () => import('./inicio-habitaciones/entrada-habitacion/entrada-habitacion.module').then((m) => m.EntradaHabitacionModule)
+      },{
+        path: 'entradaDeHabitacion',
+        component: DarEntradaHabitacionComponent
       }
     ]
   },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,5 +1,4 @@
-
-  <app-nav-menu></app-nav-menu>
+<app-nav-menu></app-nav-menu>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer
     #sidenav
@@ -21,7 +20,13 @@
       <app-sidebar-hidden></app-sidebar-hidden>
     </mat-drawer>
   </ng-template>
-  <div class="mx-3">
-    <app-room-types></app-room-types>
+  <div class="example-sidenav-content">
+    <button type="button" (click)="openModal('entradaDeHabitacion')">Entrada a habitacion</button>
+    <button type="button" (click)="openModal('rolesYPermisos')">roles Y permisos</button>
+    <button type="button" (click)="openModal('rentaHabitacion')">Renta Habitacion</button>
+    <div class="mx-3">
+      <app-room-types></app-room-types>
+    </div>
   </div>
 </mat-drawer-container>
+<router-outlet></router-outlet>

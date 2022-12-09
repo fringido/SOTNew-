@@ -115,8 +115,70 @@ body {
 //* Estilos Cuerpo Modal
 hr{
   color: $grey-item !important;
+  border-top: 2px solid !important;
+  width: 80% !important;
+  margin: .3rem 0 !important;
 }
 
+textarea {
+  resize: none;
+}
+
+.header-modal{
+  margin: 0 -24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  border-bottom: 0 none;
+  background: #e4e4e4;
+  color: $color-title-grey;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: $font-principal;
+}
+
+.modal-footer-content{
+  padding-top: 11px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+
+  & .button-modal{
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    width: 4rem;
+    height: 3.9rem;
+    margin: 0 1.5rem 0 0;
+
+    & .icon{
+      font-size: 3vh;
+    }
+    & .text{
+      font-size: 2vh;
+    }
+  }
+
+  button:disabled{
+    background-color: $grey-item;
+    cursor: not-allowed;
+  }
+
+
+}
+
+.button-salir{
+  background-color: $wine;
+  box-shadow: 0 3px 6px #80133680;
+
+}
+.button-aceptar{
+  background-color: $green-item;
+}
 
 
 //* Estilos de formularios
@@ -127,10 +189,17 @@ input {
   width: 100%;
 }
 
+textarea {
+  border-radius: 14px;
+  box-shadow: 0 0 3pt rgb(0 0 0 / 48%);
+  border: none;
+}
+
+
 label{
   font-family: 'Rubik',sans-serif;
   color: $grey-item;
-  font-size: 14pt;
+  font-size: 13pt;
   font-weight: 700;
 }
 

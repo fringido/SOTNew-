@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./roles-y-permisos.component.scss']
 })
 export class RolesYPermisosComponent implements OnInit {
+  display = true
 
-  constructor() { }
+  constructor(
+  ) {
+  }
 
   ngOnInit(): void {
+    this.display = true
   }
 
 }

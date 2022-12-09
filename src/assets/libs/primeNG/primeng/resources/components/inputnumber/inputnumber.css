@@ -1,6 +1,7 @@
 p-inputnumber,
 .p-inputnumber {
     display: inline-flex;
+    width: 100%;
 }
 
 .p-inputnumber-button {

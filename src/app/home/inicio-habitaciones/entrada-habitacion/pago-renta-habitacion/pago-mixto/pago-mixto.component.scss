@@ -1,0 +1,84 @@
+@import '../../../../../../library.scss';
+
+.content-form-array{
+  max-width: 89vw;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  & .button_add{
+    box-shadow: 0 0 5pt;
+    border-radius: $border-radius-tittle;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+
+    &.desactivar{
+      box-shadow: 0 0 5pt rgb(99, 87, 87);
+      border-radius: 10px;
+      color: rgb(116, 100, 100);
+      cursor: not-allowed;
+    }
+
+    & i{
+      padding: 9px 11px;
+    }
+  }
+}
+
+.tarjeta-icon-visa{
+  cursor: pointer;
+  &.activate{
+    color: $blue-visa;
+  }
+}
+.tarjeta-icon-mc{
+  cursor: pointer;
+
+  &.activate{
+    color: $orange-mc;
+  }
+}
+.tarjeta-icon-ax{
+  cursor: pointer;
+
+  &.activate{
+    color: $blue-AE;
+  }
+}
+
+.tarjeta-efectivo{
+  cursor: pointer;
+
+  &.activate{
+    color: $green-money;
+  }
+}
+
+.individual-formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px 15px;
+
+  & .tarjeta-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: 22px;
+}
+
+
+}
+
+.form-condicional {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
