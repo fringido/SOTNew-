@@ -6,7 +6,7 @@
     </div>
     <div class="content-dropdown">
       <label>TARIFA</label>
-      <p-dropdown scrollHeight="147px" [showClear]="true" placeholder="Seleccione la forma de pago"
+      <p-dropdown scrollHeight="160px" [showClear]="true" placeholder="Seleccione la forma de pago"
         [options]="tiposDePago" [formControl]="tipoDePago" optionLabel="name" optionValue="value"></p-dropdown>
     </div>
     <div class="content-forms">
@@ -18,7 +18,7 @@
       <div *ngIf="tipoDePago.value== 4" class="cortesia">
         <label>CORTESÍA</label>
         <span class="p-float-label text-area">
-          <textarea formControlName="observacion" id="float-input" rows="5" cols="35" pInputTextarea></textarea>
+          <textarea formControlName="observacion" id="float-input" rows="5" cols="26" pInputTextarea></textarea>
           <label for="float-input">Observaciones</label>
         </span>
       </div>
@@ -28,7 +28,7 @@
           <input formControlName="empleado" type="text" pInputText placeholder="Ingresa Empleado">
         </div>
         <span class="p-float-label text-area">
-          <textarea formControlName="observacion" id="float-input" rows="4" cols="35" pInputTextarea></textarea>
+          <textarea formControlName="observacion" id="float-input" rows="4" cols="26" pInputTextarea></textarea>
           <label for="float-input">Observaciones</label>
         </span>
       </div>
@@ -36,7 +36,7 @@
     <div class="modal-footer-content">
       <button class="button-modal button-salir" (click)="salir()">
         <div class="icon">
-          <i class="fa-solid fa-rotate-left"></i>
+          <i class="fas icon-icon-metro-exit"></i>
         </div>
         <div class="text">Salir</div>
       </button>

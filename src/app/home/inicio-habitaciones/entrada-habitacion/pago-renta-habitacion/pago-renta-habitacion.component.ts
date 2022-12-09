@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-pago-renta-habitacion',
   templateUrl: './pago-renta-habitacion.component.html',
@@ -23,7 +23,8 @@ export class PagoRentaHabitacionComponent implements OnInit {
 ];
 
   constructor(
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private location:Location,
   ) {
 
     this.formoCreate();
@@ -78,7 +79,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
   }
 
   salir(){
-
+    this.location.back()
   }
 
 }

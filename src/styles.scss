@@ -148,12 +148,13 @@ textarea {
   margin-top: 10px;
 
   & .button-modal{
-    border: none;
+    width: 12vh;
+    height: 11vh;
     border-radius: 10px;
+    opacity: 1;
     color: #fff;
-    width: 4rem;
-    height: 3.9rem;
-    margin: 0 1.5rem 0 0;
+    border: 1px solid transparent;
+    margin-left: 1rem;
 
     & .icon{
       font-size: 3vh;

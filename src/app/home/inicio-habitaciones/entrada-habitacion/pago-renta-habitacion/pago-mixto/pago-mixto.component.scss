@@ -1,7 +1,8 @@
 @import '../../../../../../library.scss';
 
 .content-form-array{
-  max-width: 89vw;
+  margin: 0 -30px;
+  max-width: 95vw;
 }
 
 .form-container {
@@ -26,7 +27,7 @@
     }
 
     & i{
-      padding: 9px 11px;
+      padding: 11px 13px;
     }
   }
 }
