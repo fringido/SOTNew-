@@ -1,18 +1,13 @@
-import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
-import { HomeService } from '../../services/home/home.service';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  selector: 'app-rooms-menu',
+  templateUrl: './rooms-menu.component.html',
+  styleUrls: ['./rooms-menu.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class RoomsMenuComponent implements OnInit {
 
   isIpadMini!: boolean;
-
-  isHomeMenuSelected = true;
-  isAdminMenuSelected = false;
-  isBurguerMenuSelected = false;
 
   statusRooms = [{ 
     name: 'Libre', 
@@ -116,7 +111,6 @@ export class SidebarComponent implements OnInit {
   }]
 
   constructor(
-    private readonly homeService: HomeService,
     private readonly renderer: Renderer2
   ) { }
 
@@ -127,31 +121,6 @@ export class SidebarComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.isIpadMini = window.innerWidth <= 1025;
-  }
-
-  toggle() {
-    this.homeService.toggleSidenav();
-  }
-
-  selectMenu(state: 'home' | 'admin' | 'burguer') {
-    if (state === 'home') {
-      this.isHomeMenuSelected = true;
-      this.isAdminMenuSelected = false;
-      this.isBurguerMenuSelected = false;
-      return;
-    }
-    if (state === 'admin') {
-      this.isHomeMenuSelected = false;
-      this.isAdminMenuSelected = true;
-      this.isBurguerMenuSelected = false;
-      return;
-    }
-    if (state === 'burguer') {
-      this.isHomeMenuSelected = false;
-      this.isAdminMenuSelected = false;
-      this.isBurguerMenuSelected = true;
-      return;
-    }
   }
 
   isAnimated(el: HTMLSpanElement): boolean {

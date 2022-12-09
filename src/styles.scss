@@ -245,6 +245,10 @@ $lvl10: 100;
   background-color: $purple-item;
 }
 
+@mixin bg-wine {
+  background-color: $wine;
+}
+
 @mixin bg-grey-item {
   background-color: $grey-item;
 }
@@ -271,6 +275,9 @@ $lvl10: 100;
 }
 .sot-bg-purple {
   @include bg-purple;
+}
+.sot-bg-wine {
+  @include bg-wine;
 }
 .sot-bg-grey-item {
   @include bg-grey-item;

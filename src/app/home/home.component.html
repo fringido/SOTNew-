@@ -1,10 +1,22 @@
 <app-nav-menu></app-nav-menu>
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #sidenav class="sidenav" mode="side" *ngIf="(showSidenav | async); else hiddenSidenav" appSidenav>
-    <app-sidebar></app-sidebar>
+  <mat-drawer
+    #sidenav
+    class="sidenav"
+    mode="side"
+    disableClose="true"
+    *ngIf="(showSidenav | async); else hiddenSidenav"
+    appSidenav
+  >
+  <app-sidebar></app-sidebar>
   </mat-drawer>
   <ng-template #hiddenSidenav>
-    <mat-drawer class="bg-dark" mode="side" class="bg-transparent sidebar-hidden" appSidenav>
+    <mat-drawer  class="bg-dark"
+        mode="side"
+        disableClose="true"
+        class="bg-transparent sidebar-hidden"
+        appSidenav
+      >
       <app-sidebar-hidden></app-sidebar-hidden>
     </mat-drawer>
   </ng-template>

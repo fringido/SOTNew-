@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import {DialogModule, Dialog} from 'primeng/dialog';
 import { NgmodalDirective } from '../../directives/ngmodal.directive';
 import {SidebarModule} from 'primeng/sidebar';
-
+import {AccordionModule} from 'primeng/accordion';
+import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 
 
 @NgModule({
@@ -12,11 +13,13 @@ import {SidebarModule} from 'primeng/sidebar';
   imports: [
     DialogModule
   ],
-  providers:[Dialog],
+  providers:[Dialog, DialogService],
   exports: [
     DialogModule,
     NgmodalDirective,
-    SidebarModule
+    SidebarModule,
+    AccordionModule,
+    DynamicDialogModule
   ]
 })
 export class PrimengModule { }

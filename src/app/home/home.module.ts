@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeService } from './services/home/home.service';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
@@ -16,15 +15,14 @@ import { SidenavDirective } from './directives/sidenav.directive';
 import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 import { RoomTypesModule } from '../room-types/room-types.module';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
+import { SidebarModule } from '../sidebar/sidebar.module';
 import { EntradaHabitacionModule } from './inicio-habitaciones/entrada-habitacion/entrada-habitacion.module';
 import { FormsModule } from '@angular/forms';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    SidebarComponent,
     SidebarHiddenComponent,
     NavMenuComponent,
     SidenavDirective,
@@ -42,12 +40,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ToggleButtonModule,
     OverlayPanelModule,
     EntradaHabitacionModule,
-    MatSidenavModule,
-    CutStringPipe
+    CutStringPipe,
+    SidebarModule
   ],
   providers: [
-    HomeService,
-  ]
+    HomeService
+  ],
 })
 
 export class HomeModule { }
