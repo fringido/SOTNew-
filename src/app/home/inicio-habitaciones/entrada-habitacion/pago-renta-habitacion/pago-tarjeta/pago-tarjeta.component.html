@@ -9,7 +9,7 @@
     <p-inputMask minlength="4" mask="9-9-9-9" formControlName="numeroTarjeta" type="text" pInputText placeholder="Últimos 4 Dígitos">
     </p-inputMask>
       <label>NÚMERO DE APROBACIÓN</label>
-    <input maxlength="4" mask="9999" minlength="4" formControlName="numeroAprobacion" type="text" pInputText placeholder="Número de Aprobación">
+    <p-inputMask  mask="9 9 9 9" minlength="4" formControlName="numeroAprobacion" type="text" pInputText placeholder="Número de Aprobación"></p-inputMask>
     <label>PROPINA</label>
     <p-inputNumber formControlName="propina" mode="decimal" prefix="$"[minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
   </form>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { FormArray, FormBuilder, FormGroup, MinValidator, Validators } from '@angular/forms';
+import { controlFormMixto } from 'src/app/core/directives/controlFormMixto';
 @Component({
   selector: 'app-pago-mixto',
   templateUrl: './pago-mixto.component.html',
@@ -11,6 +11,7 @@ export class PagoMixtoComponent implements OnInit {
   @Input() totalPagar: number = 0;
 
   @Output() newItemEvent = new EventEmitter<FormGroup>();
+
 
   form!: FormGroup
   contador:number = 2;
@@ -26,10 +27,13 @@ export class PagoMixtoComponent implements OnInit {
   ngOnInit(): void {
     this.createForm()
     this.iniciarArrayForm()
+
     setTimeout(() => {
       this.newItemEvent.emit(this.form)
-    }, 0);
+    }, 1);
   }
+
+
 
   iniciarArrayForm(){
     let total = this.totalPagar /2
@@ -54,9 +58,33 @@ export class PagoMixtoComponent implements OnInit {
       tipoDePago:[3],
       totalPagar:[this.totalPagar],
       mixto: this.fb.array([])
+    },{
+      validators: controlFormMixto.totalValidator
     })
 
     this.form.valueChanges.subscribe(d =>{
+      let suma = 0
+      let indice=null
+      let contador = this.mixtoField.value.length
+
+      for(let i = 0; i < contador; i++){
+
+        if(!this.mixtoField.at(i).get('importe')?.pristine){
+          indice = i
+        }
+        this.mixtoField.at(i).get('importe')?.markAsPristine();
+
+        suma = suma + this.mixtoField.at(i).get('importe')?.value
+      }
+
+      if (suma > this.totalPagar){
+        if (indice != null){
+          this.mixtoField.at(indice).patchValue({
+            importe: 0
+          })
+          indice = null
+          }
+        }
       this.newItemEvent.emit(this.form)
     })
   }
@@ -82,17 +110,20 @@ export class PagoMixtoComponent implements OnInit {
   crearMixto(){
 
     return this.fb.group({
-      importe:[0, Validators.required],
-      tipoTarjeta: [1, Validators.required],
-      numeroTarjeta:['', Validators.required],
-      numeroAprobacion:['', Validators.required],
+      importe:[0, [Validators.required, controlFormMixto.isNotCero]],
+      tipoTarjeta: [1, [Validators.required]],
+      numeroTarjeta:['', [Validators.required]],
+      numeroAprobacion:['', [Validators.required]],
       propina:[0]
     })
+
+
 
   }
 
   selectCard(i:number,tipo:number){
     this.mixtoField.at(i).patchValue({
+      total:this.totalPagar,
       tipoTarjeta: tipo
     })
 
