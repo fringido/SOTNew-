@@ -51,10 +51,6 @@
     position: absolute;
     white-space: nowrap;
     /* animation properties */
-    -moz-transform: translateX(50%);
-    -webkit-transform: translateX(50%);
-    transform: translateX(50%);
-
     -moz-animation: my-animation 5s linear infinite;
     -webkit-animation: my-animation 5s linear infinite;
     animation: my-animation 5s linear infinite;
@@ -62,37 +58,47 @@
 
 /* for Firefox */
 @-moz-keyframes my-animation {
-    from {
-        -moz-transform: translateX(50%);
+    0% {
+        -moz-transform: translateX(0%);
     }
 
-    to {
+    50% {
         -moz-transform: translateX(-50%);
+    }
+
+    100% {
+        -moz-transform: translateX(0%);
     }
 }
 
 /* for Chrome */
 @-webkit-keyframes my-animation {
-    from {
-        -webkit-transform: translateX(50%);
+    0% {
+        -webkit-transform: translateX(0%);
     }
-
-    to {
+    50% {
         -webkit-transform: translateX(-50%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
     }
 }
 
 @keyframes my-animation {
-    from {
-        -moz-transform: translateX(50%);
-        -webkit-transform: translateX(50%);
-        transform: translateX(50%);
+    0% {
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
     }
-
-    to {
+    50% {
         -moz-transform: translateX(-50%);
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
+    }
+    100% {
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
     }
 }
 

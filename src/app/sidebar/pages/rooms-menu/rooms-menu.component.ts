@@ -14,21 +14,21 @@ export class RoomsMenuComponent implements OnInit {
     count: 10,
     color: 'txt-success', 
     icon: 'far fa-check-circle', 
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-5px'
   }, { 
     name: 'Por cobrar',
     count: 10, 
     color: 'txt-success',
     icon: 'far fa-check-circle icon-cobrar',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-8px' 
   }, { 
     name: 'Preparada',
     count: 10,
     color: 'txt-success',
     icon: 'far fa-check-circle icon-car fa-sm',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-6px',
     class: 'reduce'
   }, { 
@@ -36,49 +36,49 @@ export class RoomsMenuComponent implements OnInit {
     count: 10,
     color: 'txt-danger',
     icon: 'far fa-check-circle icon-pareja-ocupada',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-10px'
   }, { 
     name: 'Room service',
     count: 10,
     color: 'txt-danger',
     icon: 'far fa-check-circle icon-roomservice fa-2xs',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-3px' 
   }, { 
     name: 'Sucia',
     count: 10,
     color: 'txt-warn',
     icon: 'far fa-check-circle fa-sm icon-sucia',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-8px'
   }, {
     name: 'Media Sucia',
     count: 10,
     color: 'txt-orange',
     icon: 'far fa-check-circle fa-sm icon-sucia',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-8px'
   }, {
     name: 'Limpieza',
     count: 10,
     color: 'txt-blue',
     icon: 'far fa-check-circle icon-limpieza',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-10px'
   }, {
     name: 'Supervisión', 
     count: 10, 
     color: 'txt-blue',
     icon: 'far fa-check-circle icon-search',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-10px'
   }, {
     name: 'Reservar',
     count: 10,
     color: 'txt-purple',
     icon: 'icon-calendar',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-7px'
   }, {
     name: 'Preparada y Reservada',
@@ -92,21 +92,21 @@ export class RoomsMenuComponent implements OnInit {
     count: 10,
     color: 'txt-purple',
     icon: 'far fa-check-circle icon-candado',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-10px'
   }, {
     name: 'Mantenimiento',
     count: 10,
     color: 'txt-grey-item',
     icon: 'far fa-check-circle icon-mantenimiento fa-sm',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-8px'
   }, {
     name: 'Alertas',
     count: 10,
     color: 'txt-grey-item',
     icon: 'fas fa-clock',
-    isTextScrollable: true,
+    isTextScrollable: false,
     iconExtraMargin: '-8px'
   }]
 
