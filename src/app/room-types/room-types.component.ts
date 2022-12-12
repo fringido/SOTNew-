@@ -766,11 +766,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   marginYSkySuite(index: number) {
     // Si es sky suite reacomodar para poner como tercer fila y segunda columna a solicitud de UX
-    if(index < this.roomsByType.length -1) {
+    if(index < this.roomsByType.length -1 || this.isIpadMini) {
       return;
-    }
-    if (this.isIpadMini) {
-      return '-0.5vh';
     }
     return '6vh';
   }
