@@ -32,8 +32,9 @@
   height: 88vh;
 }
 
-.example-sidenav-content {
+.sidenav-content {
   height: 90vh;
+  overflow: auto;
 }
 
 .example-sidenav {

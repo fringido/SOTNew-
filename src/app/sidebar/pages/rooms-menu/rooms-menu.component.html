@@ -1,13 +1,11 @@
 <div class="list-group list-group-flush mx-3 mt-1">
     <div class="my-2">
-        <!-- <input type="text" [placeholder]="'Buscar tipo de habitación'" class="text-center w-100 search-text"> -->
         <span class="p-input-icon-right">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input formControlName="matricula" type="text" pInputText [placeholder]="'Buscar tipo de habitación'">
         </span>
     </div>
-    <!-- TODO cambiar la lista de bootstrap a material -->
-    <!-- <div 
+    <div
         *ngFor="let statusRoom of statusRooms"
         class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center shadow-sm"
         [ngClass]="statusRoom.color"
@@ -35,49 +33,22 @@
             [ngClass]="statusRoom.icon"
             [ngStyle]="{'margin-right': statusRoom.iconExtraMargin}">
         </i>
-    </div> -->
-    <mat-nav-list>
-        <a mat-list-item>
-            <mat-icon mat-list-icon>folder_shared</mat-icon>
-            <span class="spacer"></span>
-            <span>Solicitudes</span>
-        </a>
-        <a mat-list-item>
-            <mat-icon mat-list-icon>cloud_download</mat-icon>
-            <span class="spacer"></span>
-            <span>Descargar Incidencias</span>
-        </a>
-        <a mat-list-item>
-            <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
-            <span class="spacer"></span>
-            <span>Incidencias solicitadas</span>
-        </a>
-        <a mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            <span class="spacer"></span>
-            <span>Incidencias atendidas</span>
-        </a>
-        <a mat-list-item>
-            <mat-icon mat-list-icon>person_outline</mat-icon>
-            <span class="spacer"></span>
-            <span>Usuarios</span>
-        </a>
-    </mat-nav-list>
+    </div>
 </div>
 <div class="list-group d-flex align-items-center list-group-flush m-3 p-1 others-menu">
     <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center shadow-sm active">
-        <span class="me-3">Vincular video</span>
+        <span class="me-3 others-menu_text">Vincular video</span>
         <span class="spacer"></span>
         <i class="fas fa-video"></i>
     </div>
     <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center shadow-sm item-disabled">
-        <span class="me-3">Taxi</span>
+        <span class="me-3 others-menu_text">Taxi</span>
         <span class="spacer"></span>
         <i class="demo-icon icon-car"></i>
     </div>
     <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center shadow-sm item-disabled">
         <span class="me-3 room-type__count">2</span>
-        <span class="me-3">Mesas</span>
+        <span class="me-3 others-menu_text">Mesas</span>
         <span class="spacer"></span>
         <i class="demo-icon icon-menu"></i>
     </div>

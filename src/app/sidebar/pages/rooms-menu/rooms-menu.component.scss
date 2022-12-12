@@ -22,6 +22,12 @@
     width: 11vw;
 }
 
+.others-menu_text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .spacer {
     flex: 1 1 auto;
 }
@@ -102,6 +108,7 @@
     cursor: pointer;
     border-radius: 5px !important;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .room-type__item:hover {
