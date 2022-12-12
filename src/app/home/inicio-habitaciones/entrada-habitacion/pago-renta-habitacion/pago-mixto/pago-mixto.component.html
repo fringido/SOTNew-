@@ -13,12 +13,13 @@
           <i class="fa-solid fa-money-bill tarjeta-efectivo" (click)="selectCard(i,4)" [class.activate]="pago.value.tipoTarjeta == 4"></i>
         </div>
         <label>IMPORTE:</label>
-        <p-inputNumber formControlName="importe" mode="decimal" prefix="$"[minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+        <p-inputNumber formControlName="importe"  mode="decimal" prefix="$" [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
         <div *ngIf="pago.value.tipoTarjeta != 4" class="form-condicional">
           <label>NÚMERO DE TARJETA</label>
-          <input maxlength="4" minlength="4" formControlName="numeroTarjeta" type="text" pInputText placeholder="Últimos 4 Dígitos">
+          <p-inputMask minlength="4" mask="9-9-9-9" formControlName="numeroTarjeta" type="text" pInputText placeholder="Últimos 4 Dígitos">
+          </p-inputMask>
           <label>NÚMERO DE APROBACIÓN</label>
-          <input maxlength="4" minlength="4" formControlName="numeroAprobacion" type="text" pInputText placeholder="Número de Aprobación">
+          <p-inputMask  mask="9 9 9 9" minlength="4" formControlName="numeroAprobacion" type="text" pInputText placeholder="Número de Aprobación"></p-inputMask>
           <label>PROPINA</label>
           <p-inputNumber formControlName="propina" mode="decimal" prefix="$"[minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
         </div>
