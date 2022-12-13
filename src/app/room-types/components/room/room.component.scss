@@ -1,3 +1,6 @@
+@import '../../../../styles.scss';
+
+
 .rooms-container2 .div-room-card,
 .rooms-container .div-room-card {
   margin-top: 0.5vh;
@@ -96,11 +99,6 @@
   margin-right: 0.25rem!important;
 }
 
-.alert-red {
-  background-image: linear-gradient(rgba(253,0,34,.3),rgba(253,0,34,0));
-  color: #fd0022;
-}
-
 .alert-blink-box {
   position: absolute;
   top: 0;
@@ -113,20 +111,21 @@
   padding: 17px 0 0;
 }
 
-// TODO: personalizar colores para alertas de expiracion en cuartos
-.error {
-  border: 1px #f00;
-  background-color: #fdd;
-
-  &--serious {
-    @extend .error;
-    border-width: 3px;
+.alert {
+  &-sot-danger {
+    background-image: linear-gradient(rgba($red-danger,.3),rgba($red-danger,0));
+    color: $red-danger;
   }
-}
-.error, .error--serious {
-  border: 1px #f00;
-  background-color: #fdd;
-}
-.error--serious {
-  border-width: 3px;
+  &-sot-warn {
+    background-image: linear-gradient(rgba($yellow-warn,.3),rgba($yellow-warn,0));
+    color: $yellow-warn;
+  }
+  &-sot-orange {
+    background-image: linear-gradient(rgba($orange-item,.3),rgba($orange-item,0));
+    color: $orange-item;
+  }
+  &-sot-blue {
+    background-image: linear-gradient(rgba($blue-item,.3),rgba($blue-item,0));
+    color: $blue-item;
+  }
 }

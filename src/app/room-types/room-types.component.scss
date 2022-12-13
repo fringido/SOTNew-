@@ -2,13 +2,11 @@ h6 {
   font-weight: 600;
 }
 
-
 /* Render items as columns */
 .rooms-container {
   display: flex;
   flex-flow: column wrap;
   align-content: space-around;
-  // margin: auto 3vw;
   /* Your container needs a fixed height, and it 
   * needs to be taller than your tallest column. */
   height: 88vh;
@@ -39,14 +37,6 @@ h6 {
 .rooms-group:nth-child(3n) {
   order: 3;
 }
-
-// @media screen and (min-width: 1025px) {
-//   .rooms-group:nth-child(6) {
-//     margin-top: 6vh;
-//     margin-left: -58.5vh;
-//   }
-// }
-
 
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
