@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { HomeService } from './services/home/home.service';
 import { Router } from '@angular/router';
 @Component({

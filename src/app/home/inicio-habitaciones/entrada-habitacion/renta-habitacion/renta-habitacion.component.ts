@@ -20,7 +20,7 @@ export class RentaHabitacionComponent implements OnInit {
   ) {
     this.formCreate();
   }
-
+// *Crea las opciones de tarifa
   tarifas= [
     {name: 'New York', code: 'NY'},
     {name: 'Rome', code: 'RM'},
@@ -28,12 +28,12 @@ export class RentaHabitacionComponent implements OnInit {
     {name: 'Istanbul', code: 'IST'},
     {name: 'Paris', code: 'PRS'}
 ];
-
+//* --------------------------------
 
   ngOnInit(): void {
 
   }
-
+//* Inicia el formulario
   formCreate(){
     this.form = this.fb.group({
       tarifa: ['', [Validators.required]],
@@ -74,7 +74,10 @@ export class RentaHabitacionComponent implements OnInit {
       }
     })
   }
+//* --------------------------------
 
+
+//* Botones de modal
   salir(){
     this.location.back()
   }
@@ -82,4 +85,6 @@ export class RentaHabitacionComponent implements OnInit {
   aceptar(){
     this.router.navigate([`/hotel/rentaHabitacion/pagoRenta`]);
   }
+
+//* --------------------------------
 }

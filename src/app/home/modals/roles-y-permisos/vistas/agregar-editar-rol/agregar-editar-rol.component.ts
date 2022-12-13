@@ -5,8 +5,8 @@ import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-agregar-editar-rol',
-  templateUrl: './agregar-editar-rol.component.html',
-  styleUrls: ['./agregar-editar-rol.component.scss']
+  templateUrl: 'agregar-editar-rol.component.html',
+  styleUrls: ['agregar-editar-rol.component.scss']
 })
 
 

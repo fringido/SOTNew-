@@ -11,8 +11,8 @@ import { MessageModalAutoclosableComponent } from 'src/app/core/components/messa
 })
 export class PagoRentaHabitacionComponent implements OnInit {
 
+//* Inicio de variables
   display = true
-
   total: number = 1000;
   form!: FormGroup
   tipoDePago = new FormControl(null);
@@ -23,6 +23,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
     { name: 'Cortesía', value: 4 },
     { name: 'Consumo Inteerno', value: 5 }
   ];
+//* -------------------------------
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
     this.menu();
   }
 
+  //* Observa los cambios del menu para mostrar el formulario y crear el FormGroup
   menu() {
     this.tipoDePago.valueChanges.subscribe((d) => {
       if (d == 1) {
@@ -66,18 +68,23 @@ export class PagoRentaHabitacionComponent implements OnInit {
 
     })
   }
+//* ------------------------------------------------------
 
+//* Trae el de pago mixto y de tarjeta
   addForm(form: FormGroup) {
     this.form = form
   }
+//* ------------------------------------------------------
 
-
-
+//* Inicia el formulario en nada
   formoCreate() {
     this.form = this.fb.group({
     })
   }
+//* ------------------------------------------------------
 
+
+//* BOtones de modal
   aceptar() {
     const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
       data: {
@@ -93,6 +100,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
   salir() {
     this.location.back()
   }
+//* ------------------------------------------------------
 
 
 

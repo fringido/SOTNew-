@@ -3,6 +3,7 @@
     <div class="button_add" (click)="quitarPago()"  [class.desactivar]="contador==2">
       <i class="fa-solid fa-minus"></i>
     </div>
+    <!--? INICIO DEL FOR PARA EL FORMULARIO -->
     <div class="form-array" formArrayName="mixto" *ngFor="let pago of mixtoField.controls ; let i = index">
       <div class="individual-formGroup" [formGroupName]="i">
         <label>TIPO TARJETA</label>
@@ -13,7 +14,7 @@
           <i class="fa-solid fa-money-bill tarjeta-efectivo" (click)="selectCard(i,4)" [class.activate]="pago.value.tipoTarjeta == 4"></i>
         </div>
         <label>IMPORTE:</label>
-        <p-inputNumber formControlName="importe"  mode="decimal" prefix="$" [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+        <p-inputNumber [min]="0" formControlName="importe"  mode="decimal" prefix="$" [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
         <div *ngIf="pago.value.tipoTarjeta != 4" class="form-condicional">
           <label>NÚMERO DE TARJETA</label>
           <p-inputMask minlength="4" mask="9-9-9-9" formControlName="numeroTarjeta" type="text" pInputText placeholder="Últimos 4 Dígitos">
@@ -29,5 +30,5 @@
       <i class="fa-solid fa-plus"></i>
     </div>
   </form>
-
+ <!--? ------------------------------------- -->
 </div>
