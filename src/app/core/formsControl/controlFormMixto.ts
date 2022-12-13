@@ -4,7 +4,6 @@ export class controlFormMixto {
 
   static isNotCero(control: AbstractControl) {
     const value = control.value;
-    console.log(value);
     if (value === 0) {
       return {cero_invalid: true};
     }
@@ -21,7 +20,6 @@ export class controlFormMixto {
     }
 
     if (totalPagar == suma) {
-      console.log('si')
       return null;
     }
     return {total_invalid: true};
