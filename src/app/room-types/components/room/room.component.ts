@@ -43,6 +43,26 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.DANGER;
       this.icon = RoomIconsEnum.PAREJA_OCUPADA;
     },
+    [RoomStatusEnum.OCUPADA_POR_COBRAR]: () => {
+      this.bgColor = BgColorEnum.DANGER;
+      this.textColor = TextColorEnum.DANGER;
+      this.icon = RoomIconsEnum.PAREJA_OCUPADA;
+    },
+    [RoomStatusEnum.OCUPADA_ROOM_SERVICE_POR_COBRAR]: () => {
+      this.bgColor = BgColorEnum.DANGER;
+      this.textColor = TextColorEnum.DANGER;
+      this.icon = RoomIconsEnum.ROOM_SERVICE;
+    },
+    [RoomStatusEnum.OCUPADA_ROOM_SERVICE]: () => {
+      this.bgColor = BgColorEnum.DANGER;
+      this.textColor = TextColorEnum.DANGER;
+      this.icon = RoomIconsEnum.ROOM_SERVICE;
+    },
+    [RoomStatusEnum.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR]: () => {
+      this.bgColor = BgColorEnum.DANGER;
+      this.textColor = TextColorEnum.SUCCESS;
+      this.icon = RoomIconsEnum.POR_COBRAR;
+    },
     [RoomStatusEnum.SUCIA]: () => {
       this.bgColor = BgColorEnum.WARN;
       this.textColor = TextColorEnum.WARN;

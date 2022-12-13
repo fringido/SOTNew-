@@ -93,7 +93,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           roomNumber: 6,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
+          camaristaOCamaristas: 'Luis Mario Hernández García',
           supervisor: null,
           duracionTarifa: 10000
         },
@@ -108,7 +108,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.OCUPADA_POR_COBRAR,
           statusTimer: 3700,
           roomNumber: 8,
           matricula: 'ABC-123',
@@ -118,7 +118,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.OCUPADA_ROOM_SERVICE_POR_COBRAR,
           statusTimer: 3700,
           roomNumber: 9,
           matricula: 'ABC-123',
@@ -128,7 +128,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR,
           statusTimer: 3700,
           roomNumber: 10,
           matricula: 'ABC-123',
@@ -138,8 +138,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
-          statusTimer: 3700,
+          status: this.statusRoom.OCUPADA_ROOM_SERVICE,
+          statusTimer: 3500,
           roomNumber: 11,
           matricula: 'ABC-123',
           tarifa: 'Pie',
@@ -148,7 +148,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR,
           statusTimer: 3700,
           roomNumber: 12,
           matricula: 'ABC-123',
@@ -158,7 +158,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.OCUPADA_ROOM_SERVICE,
           statusTimer: 3700,
           roomNumber: 13,
           matricula: 'ABC-123',
@@ -168,8 +168,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
-          statusTimer: 3700,
+          status: this.statusRoom.SUCIA,
+          statusTimer: 3500,
           roomNumber: 14,
           matricula: 'ABC-123',
           tarifa: 'Pie',
@@ -178,8 +178,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
-          statusTimer: 3700,
+          status: this.statusRoom.MEDIA_SUCIA,
+          statusTimer: 3500,
           roomNumber: 15,
           matricula: 'ABC-123',
           tarifa: 'Pie',
@@ -188,8 +188,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
-          statusTimer: 3700,
+          status: this.statusRoom.EN_LIMPIEZA,
+          statusTimer: 3500,
           roomNumber: 16,
           matricula: 'ABC-123',
           tarifa: 'Pie',
@@ -198,8 +198,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
-          statusTimer: 3700,
+          status: this.statusRoom.EN_SUPERVISION,
+          statusTimer: 3500,
           roomNumber: 17,
           matricula: 'ABC-123',
           tarifa: 'Pie',
@@ -766,11 +766,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   marginYSkySuite(index: number) {
     // Si es sky suite reacomodar para poner como tercer fila y segunda columna a solicitud de UX
-    if(index < this.roomsByType.length -1) {
+    if(index < this.roomsByType.length -1 || this.isIpadMini) {
       return;
-    }
-    if (this.isIpadMini) {
-      return '-0.5vh';
     }
     return '6vh';
   }

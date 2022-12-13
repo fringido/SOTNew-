@@ -42,6 +42,9 @@
 .typeroom_button:hover{
     width: 10vw;
     .d-none {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         display: block !important;
     }
 }

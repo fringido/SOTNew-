@@ -12,17 +12,22 @@
             status : ''"
     >
         <span class="span-usuario-card"></span>
+        <div class="text-center alert-blink-box animated flash slower infinite alert-sot-warn" *ngIf="statusTimer > 3600 && status === AvailableRoomStatus.SUCIA">
+            <i class="icon-clock"></i>
+        </div>
+        <div class="text-center alert-blink-box animated flash slower infinite alert-sot-orange" *ngIf="statusTimer > 3600 && status === AvailableRoomStatus.MEDIA_SUCIA">
+            <i class="icon-clock"></i>
+        </div>
         <div>
-            <div class="limitDescription font-10px label-state">
-                {{status}} 
+            <div class="limitDescription font-10px label-state"> 
+                {{statusTimer|timer}}
             </div>
             <div class="numero-habitacion">{{roomNumber}}</div>
-            <div class="position-absolute font-10px label-state pie-adjust"> 
-                {{statusTimer|timer}}
+            <div class="position-absolute font-10px label-state pie-adjust">
+                {{status}} 
             </div>
         </div>
         <div class="estilo-icon-in">
-
             <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
@@ -45,20 +50,44 @@
     <div 
         class="d-flex justify-content-between roomCard" 
         [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
-        *ngSwitchCase="AvailableRoomStatus.OCUPADA"
+        *ngSwitchCase="
+        status === AvailableRoomStatus.OCUPADA ||
+        status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE||
+        status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
+        status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ||
+        status === AvailableRoomStatus.OCUPADA_POR_COBRAR ?
+        status : ''"
     >
         <span class="span-usuario-card"></span>
+        <div class="text-center alert-blink-box animated flash slower infinite alert-sot-danger" *ngIf="statusTimer > 3600">
+            <i class="icon-clock" *ngIf="status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE || status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR"></i>
+        </div>
         <div>
             <div class="limitDescription font-10px label-state">
-                {{matricula}} 
+                {{duracionTarifa|timer}}
             </div>
             <div class="numero-habitacion">{{roomNumber}}</div>
             <div class="position-absolute font-10px label-state pie-adjust">
-                {{tarifa|slice:0:1}}    {{duracionTarifa|timer}}
+                {{matricula}} 
             </div>
         </div>
-        <div class="estilo-icon-in">
-            <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
+        <div class="estilo-icon-in" 
+            *ngIf="status === AvailableRoomStatus.OCUPADA_POR_COBRAR || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
+            status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR">
+            <i 
+                [ngClass]="['far icon-cobrar', 'txt-success']" 
+                class="far icon-cobrar reduce-ml"
+            ></i>
+        </div>
+        <div class="estilo-icon-in" 
+            *ngIf="status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE"
+        >
+            <i [ngClass]="['far fa-check-circle icon-roomservice fa-xs', textColor]" class="reduce-ml" style="width: 26px;"></i>
+        </div>
+        <div class="estilo-icon-in" 
+            *ngIf="status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.OCUPADA_POR_COBRAR"
+        >
+            <i [ngClass]="['far icon-pareja-ocupada', textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
     <div 
@@ -70,15 +99,18 @@
             status : ''"
     >
         <span class="span-usuario-card"></span>
+        <div class="text-center alert-blink-box animated flash slower infinite alert-sot-blue" *ngIf="statusTimer > 3600">
+            <i class="icon-clock"></i>
+        </div>
         <div>
             <div class="limitDescription font-10px label-state">
-                {{(camaristaOCamaristas || supervisor)+''|cutString:10}} 
+                {{statusTimer|timer}}
             </div>
             <div class="numero-habitacion">
                 {{roomNumber}}
             </div>
             <div class="position-absolute font-10px label-state pie-adjust"> 
-                {{statusTimer|timer}}
+                {{(camaristaOCamaristas || supervisor)+''|cutString:10}} 
             </div>
         </div>
         <div class="estilo-icon-in">

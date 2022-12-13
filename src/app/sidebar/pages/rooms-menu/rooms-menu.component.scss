@@ -22,6 +22,12 @@
     width: 11vw;
 }
 
+.others-menu_text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .spacer {
     flex: 1 1 auto;
 }
@@ -45,10 +51,6 @@
     position: absolute;
     white-space: nowrap;
     /* animation properties */
-    -moz-transform: translateX(50%);
-    -webkit-transform: translateX(50%);
-    transform: translateX(50%);
-
     -moz-animation: my-animation 5s linear infinite;
     -webkit-animation: my-animation 5s linear infinite;
     animation: my-animation 5s linear infinite;
@@ -56,37 +58,47 @@
 
 /* for Firefox */
 @-moz-keyframes my-animation {
-    from {
-        -moz-transform: translateX(50%);
+    0% {
+        -moz-transform: translateX(0%);
     }
 
-    to {
+    50% {
         -moz-transform: translateX(-50%);
+    }
+
+    100% {
+        -moz-transform: translateX(0%);
     }
 }
 
 /* for Chrome */
 @-webkit-keyframes my-animation {
-    from {
-        -webkit-transform: translateX(50%);
+    0% {
+        -webkit-transform: translateX(0%);
     }
-
-    to {
+    50% {
         -webkit-transform: translateX(-50%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
     }
 }
 
 @keyframes my-animation {
-    from {
-        -moz-transform: translateX(50%);
-        -webkit-transform: translateX(50%);
-        transform: translateX(50%);
+    0% {
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
     }
-
-    to {
+    50% {
         -moz-transform: translateX(-50%);
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
+    }
+    100% {
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
     }
 }
 
@@ -102,6 +114,7 @@
     cursor: pointer;
     border-radius: 5px !important;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .room-type__item:hover {
@@ -141,10 +154,6 @@
     color: white;
 }
 
-input {
-    margin-right: -20px;
-}
-
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
     input {
@@ -163,5 +172,12 @@ input {
 @media (min-width: 1026px) and (orientation: landscape) {
     .type-text__wrapper {
         margin-top: 5px;
+    }
+}
+
+// Pantalla 
+@media (max-width: 1700px) and (orientation: landscape) {
+    input::placeholder {
+        font-size: 10pt;   
     }
 }

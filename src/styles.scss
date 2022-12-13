@@ -330,3 +330,8 @@ $lvl10: 100;
 .txt-grey-item {
   @include txt-grey-item;
 }
+
+// Estilos para sidenav en home
+mat-drawer-content {
+  overflow: hidden !important;
+}

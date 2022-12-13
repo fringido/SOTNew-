@@ -1,6 +1,6 @@
 @import '../../../../styles.scss';
 
-.toolbar {
+.navbar {
   height: 12vh;
 }
 
@@ -54,4 +54,11 @@
   color: #ef9690;
   font-size: 10pt;
   margin-top: -8px;
+}
+
+// Ipad mini
+@media (max-width: 1025px) and (orientation: landscape) {
+  .navbar {
+    height: 13vh;
+  }
 }

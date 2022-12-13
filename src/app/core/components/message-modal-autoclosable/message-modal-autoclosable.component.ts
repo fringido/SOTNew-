@@ -15,13 +15,14 @@ export class MessageModalAutoclosableComponent implements OnInit {
 
   constructor(
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig
-  ) { }
-
-  ngOnInit(): void {
+    public config: DynamicDialogConfig,
+  ) { 
     this.config.showHeader = false;
     this.config.closable = false;
     this.config.width = '420px';
+  }
+
+  ngOnInit(): void {
     setTimeout(() => {
       this.ref.close();
     }, 3000)

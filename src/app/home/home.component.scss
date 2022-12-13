@@ -32,8 +32,9 @@
   height: 88vh;
 }
 
-.example-sidenav-content {
-  height: 90vh;
+.sidenav-content {
+  height: 88vh;
+  overflow: hidden;
 }
 
 .example-sidenav {
@@ -44,5 +45,8 @@
 @media (max-width: 1025px) and (orientation: landscape) {
   .sidenav {
     width: 23vw;
+  }
+  .sidenav-content {
+    overflow: scroll;
   }
 }
