@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2} from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2} from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { take } from 'rxjs';
@@ -34,6 +34,15 @@ export class RoomDetailsComponent implements OnInit {
     this.sidebarService.selectedRoom$.pipe(take(1)).subscribe((room) => {
       this.selectedRoom = room
     });
+  }
+
+  private readonly ESCAPE_KEY = 'Escape';
+
+  @HostListener('document:keydown', ['$event']) 
+  onEscapeHandler(event: KeyboardEvent) {
+    if(event.key === this.ESCAPE_KEY) {
+      this.exit();
+    }
   }
 
   exit() {
