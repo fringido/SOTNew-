@@ -155,7 +155,6 @@
         </ng-container>
         <ng-container *ngSwitchCase="
             selectedRoom.status === AvailableRoomStatus.OCUPADA ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_POR_COBRAR ||
             selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE ||
             selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
             selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ?
@@ -184,6 +183,17 @@
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-wine text-white">
                 <span class="me-3">Salida</span>
                 <i class="fas icon-icon-metro-exit"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="AvailableRoomStatus.OCUPADA_POR_COBRAR"
+        >
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="preparar()">
+                <span class="me-3">Cobrar Habitación</span>
+                <i class="fa-solid fa-money-bills"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white">
+                <span class="me-3">Bloquear</span>
+                <i class="far icon-candado"></i>
             </div>
         </ng-container>
         <ng-container *ngSwitchCase="
