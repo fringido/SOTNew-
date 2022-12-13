@@ -44,8 +44,9 @@ export class PagoRentaHabitacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.menu();
+    // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
     this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
-      this.selectedRoom = room!;
+      return this.selectedRoom = room!;
     });
   }
 
@@ -97,21 +98,18 @@ export class PagoRentaHabitacionComponent implements OnInit {
     const genDialogMessage = (message: string) => {
       return this.dialogService.open(MessageModalAutoclosableComponent, {data: { message }});
     };
-    // TODO: mensaje para el resto de estados que activan este componente
-    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA ) {
-      const ref = genDialogMessage('EXTRAS AGREGADOS CON ÉXITO')
-    }
-    if(this.selectedRoom.status === RoomStatusEnum.PREPARADA ) {
-      const ref = genDialogMessage('ENTRADA GENERADA CON ÉXITO')
-    }
-    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA_POR_COBRAR ) {
-      const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')
-    }
-
-
     setTimeout(() => {
       this.router.navigate([`/hotel`]);
     }, 2000);
+    // TODO: mensaje para el resto de estados que activan este componente
+    if(this.selectedRoom.status === RoomStatusEnum.PREPARADA ) {
+      const ref = genDialogMessage('ENTRADA GENERADA CON ÉXITO')
+      return;
+    }
+    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA_POR_COBRAR ) {
+      const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')
+      return;
+    }
   }
 
   salir() {

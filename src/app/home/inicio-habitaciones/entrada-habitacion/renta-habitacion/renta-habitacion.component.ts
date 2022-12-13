@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RoomService } from 'src/app/room-types/services/room/room.service';
+import { DialogService } from 'primeng/dynamicdialog';
+import { Room } from '../../../../home/interfaces/room.interface';
+import { take } from 'rxjs/operators';
+import { MessageModalAutoclosableComponent } from '../../../../../app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
 
 @Component({
   selector: 'app-renta-habitacion',
@@ -12,10 +18,14 @@ export class RentaHabitacionComponent implements OnInit {
 
   form: any;
   display = true
+  selectedRoom!: Room;
+
 
   constructor(
     private location:Location,
     private readonly router: Router,
+    private readonly roomService: RoomService,
+    public dialogService: DialogService,
     private fb: FormBuilder
   ) {
     this.formCreate();
@@ -31,7 +41,10 @@ export class RentaHabitacionComponent implements OnInit {
 //* --------------------------------
 
   ngOnInit(): void {
-
+    // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
+    this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+      return this.selectedRoom = room!;
+    });
   }
 //* Inicia el formulario
   formCreate(){
@@ -83,6 +96,14 @@ export class RentaHabitacionComponent implements OnInit {
   }
 
   aceptar(){
+    // TODO: mensaje para el resto de estados que activan este componente
+    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA ) {
+      this.dialogService.open(MessageModalAutoclosableComponent, {
+          data: { message: 'EXTRAS AGREGADOS CON ÉXITO' }
+      });
+      this.salir();
+      return;
+    }
     this.router.navigate([`/hotel/rentaHabitacion/pagoRenta`]);
   }
 
