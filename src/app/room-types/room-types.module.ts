@@ -9,6 +9,7 @@ import { RoomDetailsComponent } from './components/room-details/room-details.com
 import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { BootstrapModule } from '../core/modules/bootstrap/bootstrap.module';
 import { MessageModalAutoclosableComponent } from '../core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { RoomService } from './services/room/room.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,9 @@ import { MessageModalAutoclosableComponent } from '../core/components/message-mo
     PrimengModule,
     BootstrapModule,
     MessageModalAutoclosableComponent
+  ],
+  providers: [
+    RoomService
   ],
   exports: [
     RoomTypesComponent,
