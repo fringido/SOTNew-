@@ -1,1 +1,32 @@
-<p>lista-de-roles works!</p>
+<p-dialog header="Roles y permisos" [(visible)]="display" [closable]="false"
+[modal]="true" [draggable]="false" [showHeader]="true">
+    <div class="container-lista">
+        <div class="container-input_search">
+            <span class="p-input-icon-right">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input [formControl]="filterText" type="text" pInputText placeholder="Buscar Rol">
+              </span>
+        </div>
+        <div class="container-lista_data">
+            <div class="botton-list" *ngFor="let item of listaDeRoles">
+                {{item.name | uppercase}}
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <div class="modal-footer-content">
+            <button class="button-modal button-salir" (click)="salir()">
+                <div class="icon">
+                  <i class="fas icon-icon-metro-exit"></i>
+                </div>
+                <div class="text">Salir</div>
+              </button>
+              <button (click)="aceptar()" class="button-modal button-aceptar" >
+                <div class="icon">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="text">Aceptar</div>
+              </button>
+        </div>
+    </ng-template>
+</p-dialog>

@@ -4,6 +4,7 @@
 .sidebar {
     height: 99vh;
     overflow: hidden;
+    padding-top: 2px;
 }
 
 .wine {
@@ -14,6 +15,7 @@
     width: 55px;
     height: 55px;
     border-bottom-style: solid 1px $wine;
+    transition: all 0.2s;
 }
 
 .menu-icon {

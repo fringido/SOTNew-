@@ -1,32 +1,35 @@
 <nav class="d-lg-block sidebar bg-white shadow">
     <ng-container *ngIf="(sidebarState$ | async) !== 'roomSelected'; else roomSelected">
         <div class="w-100 d-flex justify-content-end">
-            <i class="fas fa-times-circle mx-3 mt-3 wine" (click)="toggle()"></i>
+            <i class="fas fa-times-circle mx-2 mt-1 wine" (click)="toggle()"></i>
         </div>
         <div class="d-flex justify-content-around mt-2">
-            <div 
-                class="d-flex flex-column justify-content-center align-items-center rounded" 
+            <div
+                class="d-flex flex-column justify-content-center align-items-center rounded "
+                style="width: 55px; height: 55px;"
                 (click)="selectMenu('home')"
                 [ngClass]="{'shadowed menu-box': isHomeMenuSelected}"
             >
                 <i class="fas fa-home wine menu-icon mb-1"></i>
                 <div class="divider" *ngIf="!isHomeMenuSelected"></div>
             </div>
-            <div class="shadowed menu-box d-flex flex-column justify-content-center align-items-center rounded" 
+            <div class="shadowed menu-box d-flex flex-column justify-content-center align-items-center rounded"
+            style="width: 55px; height: 55px;"
                 (click)="selectMenu('admin')"
                 [ngClass]="{'shadowed menu-box': isAdminMenuSelected}"
             >
                 <i class="far fa-user wine menu-icon mb-1"></i>
                 <div class="divider" *ngIf="!isAdminMenuSelected"></div>
-        
+
             </div>
-            <div class="menu-box d-flex flex-column justify-content-center align-items-center rounded" 
+            <div class="menu-box d-flex flex-column justify-content-center align-items-center rounded"
+            style="width: 55px; height: 55px;"
                 (click)="selectMenu('burguer')"
                 [ngClass]="{'shadowed menu-box': isBurguerMenuSelected}"
             >
                 <i class="fas fa-bars wine menu-icon mb-1"></i>
                 <div class="divider" *ngIf="!isBurguerMenuSelected"></div>
-        
+
             </div>
         </div>
         <ng-container [ngSwitch]="sidebarState$ | async">
@@ -36,5 +39,5 @@
     <ng-template #roomSelected>
         <app-room-details></app-room-details>
     </ng-template>
-    
+
 </nav>

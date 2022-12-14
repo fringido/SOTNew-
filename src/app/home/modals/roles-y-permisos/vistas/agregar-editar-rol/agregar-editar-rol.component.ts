@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -183,7 +184,8 @@ export class AgregarEditarRolComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private location:Location
+    private location:Location,
+    private router: Router
   ) {
     this.contador();
   }
@@ -289,6 +291,8 @@ export class AgregarEditarRolComponent implements OnInit {
   salir(){
     this.location.back()
   }
-
+  aceptar(){
+    this.router.navigate([`/hotel`]);
+  }
 
 }

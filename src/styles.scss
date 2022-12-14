@@ -139,13 +139,44 @@ textarea {
   font-family: $font-principal;
 }
 
+.container-lista {
+  margin-top: 15px;
+
+  & .container-input_search {
+    text-align: center;
+    margin: 10px 0;
+  }
+  .container-lista_data {
+    margin-top: 15px;
+    padding: 5px 15px;
+    box-shadow: $shadow-modal-tittle;
+    border: none;
+    border-radius: $border-radius-tittle;
+    max-height: 57vh;
+    text-align: center;
+    overflow: auto;
+
+    & .botton-list {
+      max-width: 91%;
+      margin: 12px auto;
+      border-radius: $border-radius-tittle;
+      box-shadow: $shadow-item-list;
+      cursor: pointer;
+      padding: 2px 10px;
+      border: $border-item-list;
+
+      &:hover{
+        background-color: $hover-grey
+      }
+    }
+  }
+
+}
+
 .modal-footer-content{
-  padding-top: 11px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
+  text-align: center;
   margin-top: 10px;
+  width: 100%;
 
   & .button-modal{
     width: 12vh;
@@ -154,7 +185,7 @@ textarea {
     opacity: 1;
     color: #fff;
     border: 1px solid transparent;
-    margin-left: 1rem;
+    margin: 0.5rem !important;
 
     & .icon{
       font-size: 3vh;
