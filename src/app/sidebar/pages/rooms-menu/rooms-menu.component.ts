@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-rooms-menu',
@@ -9,21 +11,26 @@ export class RoomsMenuComponent implements OnInit {
 
   isIpadMini!: boolean;
 
-  statusRooms = [{ 
-    name: 'Libre', 
+  statusRoomsAll: any;
+
+  filterText!: FormControl
+
+
+  statusRooms = [{
+    name: 'Libre',
     count: 10,
-    color: 'txt-success', 
-    icon: 'far fa-check-circle', 
+    color: 'txt-success',
+    icon: 'far fa-check-circle',
     isTextScrollable: false,
     iconExtraMargin: '-5px'
-  }, { 
+  }, {
     name: 'Por cobrar',
-    count: 10, 
+    count: 10,
     color: 'txt-success',
     icon: 'far fa-check-circle icon-cobrar',
     isTextScrollable: false,
-    iconExtraMargin: '-8px' 
-  }, { 
+    iconExtraMargin: '-8px'
+  }, {
     name: 'Preparada',
     count: 10,
     color: 'txt-success',
@@ -31,21 +38,21 @@ export class RoomsMenuComponent implements OnInit {
     isTextScrollable: false,
     iconExtraMargin: '-6px',
     class: 'reduce'
-  }, { 
+  }, {
     name: 'Ocupada',
     count: 10,
     color: 'txt-danger',
     icon: 'far fa-check-circle icon-pareja-ocupada',
     isTextScrollable: false,
     iconExtraMargin: '-10px'
-  }, { 
+  }, {
     name: 'Room service',
     count: 10,
     color: 'txt-danger',
     icon: 'far fa-check-circle icon-roomservice fa-2xs',
     isTextScrollable: false,
-    iconExtraMargin: '-3px' 
-  }, { 
+    iconExtraMargin: '-3px'
+  }, {
     name: 'Sucia',
     count: 10,
     color: 'txt-warn',
@@ -67,8 +74,8 @@ export class RoomsMenuComponent implements OnInit {
     isTextScrollable: false,
     iconExtraMargin: '-10px'
   }, {
-    name: 'Supervisión', 
-    count: 10, 
+    name: 'Supervisión',
+    count: 10,
     color: 'txt-blue',
     icon: 'far fa-check-circle icon-search',
     isTextScrollable: false,
@@ -87,7 +94,7 @@ export class RoomsMenuComponent implements OnInit {
     icon: 'icon-calendar',
     isTextScrollable: true,
     iconExtraMargin: '-7px'
-  }, { 
+  }, {
     name: 'Bloqueada',
     count: 10,
     color: 'txt-purple',
@@ -116,6 +123,9 @@ export class RoomsMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.isIpadMini = window.innerWidth <= 1025;
+    this.statusRoomsAll = this.statusRooms;
+    this.search()
+
   }
 
   @HostListener('window:resize', ['$event'])
@@ -134,5 +144,26 @@ export class RoomsMenuComponent implements OnInit {
   }
   removeAnimation(text: HTMLSpanElement, isTextScrollable: boolean) {
     this.renderer.removeClass(text, 'scroll-text')
+  }
+
+  //busca los roles
+  search() {
+
+    this.filterText = new FormControl("");
+    this.filterText.valueChanges
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe((v) => {
+
+        if (v) {
+          const filter = new RegExp(v, "i");
+          const filterFields = ["name"];
+          this.statusRooms = this.statusRoomsAll.filter((role:any) =>
+            filterFields.some((field) => filter.test(role[field]))
+          );
+
+        } else {
+          this.statusRooms = this.statusRoomsAll;
+        }
+      });
   }
 }

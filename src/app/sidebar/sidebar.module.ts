@@ -8,6 +8,9 @@ import { RoomTypesModule } from '../room-types/room-types.module';
 import { SidebarService } from './services/sidebar/sidebar.service';
 import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { MaterialModule } from '../core/modules/material/material.module';
+import {InputTextModule} from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { MaterialModule } from '../core/modules/material/material.module';
     CutStringPipe,
     RoomTypesModule,
     PrimengModule,
-    MaterialModule
+    MaterialModule,
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     SidebarComponent,
