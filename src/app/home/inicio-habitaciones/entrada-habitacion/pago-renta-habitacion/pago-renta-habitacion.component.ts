@@ -98,15 +98,13 @@ export class PagoRentaHabitacionComponent implements OnInit {
     const genDialogMessage = (message: string) => {
       return this.dialogService.open(MessageModalAutoclosableComponent, {data: { message }});
     };
-    setTimeout(() => {
-      this.router.navigate([`/hotel`]);
-    }, 2000);
+    this.router.navigate([`/hotel`]);
     // TODO: mensaje para el resto de estados que activan este componente
     if(this.selectedRoom.status === RoomStatusEnum.PREPARADA ) {
       const ref = genDialogMessage('ENTRADA GENERADA CON ÉXITO')
       return;
     }
-    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA_POR_COBRAR ) {
+    if(this.roomService.isroomPorCobrar(this.selectedRoom.status) ) {
       const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')
       return;
     }

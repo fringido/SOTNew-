@@ -60,7 +60,7 @@ export class RoomDetailsComponent implements OnInit {
     });
   }
 
-  preparar() {
+  openRentaHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion'])
   }
 

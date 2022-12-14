@@ -43,7 +43,19 @@ export class RentaHabitacionComponent implements OnInit {
   ngOnInit(): void {
     // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
     this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
-      return this.selectedRoom = room!;
+      this.selectedRoom = room!;
+      // Si se da click en "cobrar habitación" se deshabilitan todos los controls porque no cambiarán
+      if(this.roomService.isroomPorCobrar(this.selectedRoom.status)) {
+        this.form.disable();
+      }
+      if(this.selectedRoom.status === RoomStatusEnum.OCUPADA ||
+        this.selectedRoom.status === RoomStatusEnum.OCUPADA_ROOM_SERVICE) {
+          this.form.get('personaExtra').disable();
+          this.form.get('hospedaje').disable();
+          this.form.get('horasExtra').disable();
+          this.form.get('paquetes').disable();
+          this.form.get('descuento').disable();
+        }
     });
   }
 //* Inicia el formulario
@@ -97,7 +109,9 @@ export class RentaHabitacionComponent implements OnInit {
 
   aceptar(){
     // TODO: mensaje para el resto de estados que activan este componente
-    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA ) {
+    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA ||
+      this.selectedRoom.status === RoomStatusEnum.OCUPADA_ROOM_SERVICE
+      ) {
       this.dialogService.open(MessageModalAutoclosableComponent, {
           data: { message: 'EXTRAS AGREGADOS CON ÉXITO' }
       });
