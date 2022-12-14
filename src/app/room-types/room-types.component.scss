@@ -17,7 +17,7 @@ h6 {
 }
 
 /* Force new columns */
-.rooms-container::before,/
+.rooms-container::before,
 .rooms-container::after {
   content: "";
   flex-basis: 100%;
