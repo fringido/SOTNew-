@@ -4,8 +4,8 @@ import { AgregarEditarRolComponent } from './vistas/agregar-editar-rol/agregar-e
 import { ListaDeRolesComponent } from './vistas/lista-de-roles/lista-de-roles.component';
 
 const routes: Routes = [
-  {path: '' , component: AgregarEditarRolComponent},
-  {path: 'agregar', component: ListaDeRolesComponent}
+  {path: '' , component: ListaDeRolesComponent},
+  {path: 'agregar', component: AgregarEditarRolComponent}
 ];
 
 @NgModule({

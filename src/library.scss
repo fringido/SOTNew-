@@ -15,11 +15,14 @@ $orange-item: #db932f;
 $blue-item: #008deb;
 $purple-item: #a703fb;
 $grey-item: #707070;
-
+$hover-grey:#e5e5e5bf;
 $blue-visa:#1a1f71;
 $orange-mc:#ff5f00;
 $blue-AE:#0061b6;
 $green-money: #008000;
+
+//* Border
+$border-item-list:1px solid #d3d2d2;
 
 //* Modal
 $gray-background: #e4e4e4;
@@ -33,6 +36,7 @@ $border-button:5px;
 //* Shadows
 $shadow-modal-tittle:0 0 5pt rgb(0 0 0 / 50%);
 $shadow-boton: 10px 10px 13px #e1e1e1, -6px -2px 9px #e1e1e1;
+$shadow-item-list:4px 3px 6px #d3d3d3, -6px -6px 5px #fff;
 
 //* Font
 
