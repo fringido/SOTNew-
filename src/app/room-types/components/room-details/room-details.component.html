@@ -111,19 +111,19 @@
         <div>
             <div class="label-static text-center">SERVICIO DE RESTAURANTE</div>
             <div class="label-dynamic text-center container">
-                {{'$00.00'}}
+                {{'$0.00'}}
             </div>
         </div>
         <div>
             <div class="label-static text-center">OTROS</div>
             <div class="label-dynamic text-center container">
-                {{'$00.00'}}
+                {{'$0.00'}}
             </div>
         </div>
     </div>
 </div>
 
-<div class="list-group d-flex align-items-center list-group-flush m-3 p-1 others-menu">
+<div class="list-group d-flex align-items-center list-group-flush p-1 others-menu">
     <ng-container [ngSwitch]="selectedRoom.status">
         <ng-container *ngSwitchCase="AvailableRoomStatus.LIBRE">
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="entrada()">
@@ -131,15 +131,15 @@
                 <i class="far fa-check-circle icon-pareja-ocupada"></i>
             </div>
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white">
-                <span class="me-3">Bloquear</span>
+                <span class="me-3">Deshabilitar</span>
                 <i class="far icon-candado"></i>
             </div>
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
-                <span class="me-3">Mantenimiento</span>
-                <i class="far icon-mantenimiento"></i>
+                <span class="me-3">Reservación</span>
+                <i class="far icon-calendar"></i>
             </div>
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
-                <span class="me-3">Reservación</span>
+                <span class="me-3">Mantenimiento</span>
                 <i class="far icon-mantenimiento"></i>
             </div>
         </ng-container>
@@ -155,10 +155,7 @@
         </ng-container>
         <ng-container *ngSwitchCase="
             selectedRoom.status === AvailableRoomStatus.OCUPADA ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_POR_COBRAR ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ?
+            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE  ?
             selectedRoom.status : ''"
         >
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="preparar()">
@@ -184,6 +181,25 @@
             <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-wine text-white">
                 <span class="me-3">Salida</span>
                 <i class="fas icon-icon-metro-exit"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="
+            selectedRoom.status === AvailableRoomStatus.OCUPADA_POR_COBRAR ||
+            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
+            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ?
+            selectedRoom.status : ''"
+        >
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="preparar()">
+                <span class="me-3">Cobrar Habitación</span>
+                <i class="fa-solid fa-money-bills"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Room Service</span>
+                <i class="icon icon-roomservice"></i>
+            </div>
+            <div class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white">
+                <span class="me-3">Deshabilitar</span>
+                <i class="far icon-candado"></i>
             </div>
         </ng-container>
         <ng-container *ngSwitchCase="

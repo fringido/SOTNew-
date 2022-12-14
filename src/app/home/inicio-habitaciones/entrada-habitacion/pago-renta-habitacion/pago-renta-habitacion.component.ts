@@ -4,6 +4,10 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { RoomService } from 'src/app/room-types/services/room/room.service';
+import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
+import { Room } from '../../../../home/interfaces/room.interface';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-pago-renta-habitacion',
   templateUrl: './pago-renta-habitacion.component.html',
@@ -23,14 +27,15 @@ export class PagoRentaHabitacionComponent implements OnInit {
     { name: 'Cortesía', value: 4 },
     { name: 'Consumo Inteerno', value: 5 }
   ];
+  selectedRoom!: Room;
 //* -------------------------------
 
   constructor(
     private fb: FormBuilder,
     private location: Location,
     public dialogService: DialogService,
-
-    private router: Router
+    private router: Router,
+    private readonly roomService: RoomService,
   ) {
 
     this.formoCreate();
@@ -39,6 +44,10 @@ export class PagoRentaHabitacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.menu();
+    // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
+    this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+      return this.selectedRoom = room!;
+    });
   }
 
   //* Observa los cambios del menu para mostrar el formulario y crear el FormGroup
@@ -86,15 +95,21 @@ export class PagoRentaHabitacionComponent implements OnInit {
 
 //* BOtones de modal
   aceptar() {
-    const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
-      data: {
-        message: 'ENTRADA GENERADA CON ÉXITO'
-      },
-    });
-
+    const genDialogMessage = (message: string) => {
+      return this.dialogService.open(MessageModalAutoclosableComponent, {data: { message }});
+    };
     setTimeout(() => {
       this.router.navigate([`/hotel`]);
     }, 2000);
+    // TODO: mensaje para el resto de estados que activan este componente
+    if(this.selectedRoom.status === RoomStatusEnum.PREPARADA ) {
+      const ref = genDialogMessage('ENTRADA GENERADA CON ÉXITO')
+      return;
+    }
+    if(this.selectedRoom.status === RoomStatusEnum.OCUPADA_POR_COBRAR ) {
+      const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')
+      return;
+    }
   }
 
   salir() {

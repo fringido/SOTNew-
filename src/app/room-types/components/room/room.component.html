@@ -68,7 +68,7 @@
             </div>
             <div class="numero-habitacion">{{roomNumber}}</div>
             <div class="position-absolute font-10px label-state pie-adjust">
-                {{matricula}} 
+                {{status !== AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ? matricula : 'Por cobrar'}}
             </div>
         </div>
         <div class="estilo-icon-in" 

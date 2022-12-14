@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, Renderer2} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { take } from 'rxjs';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
@@ -40,7 +40,10 @@ export class RoomDetailsComponent implements OnInit {
 
   @HostListener('document:keydown', ['$event']) 
   onEscapeHandler(event: KeyboardEvent) {
-    if(event.key === this.ESCAPE_KEY) {
+    if(event.key !== this.ESCAPE_KEY) {
+      return;
+    }
+    if(this.router.routerState.snapshot.url === '/hotel') {
       this.exit();
     }
   }
@@ -58,11 +61,6 @@ export class RoomDetailsComponent implements OnInit {
   }
 
   preparar() {
-    // const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
-    //   data: {
-    //     message: 'TODO: PREPARAR'
-    //   },
-    // });
     this.router.navigate(['hotel', 'rentaHabitacion'])
   }
 
