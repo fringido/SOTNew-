@@ -84,31 +84,23 @@
                     {{ mensajeResultadoLogin }}
                 </span>
             </div>
-
-            <div class="d-flex justify-content-center mb-2vh">
-                <div>
-                    <label id="usuarioContrasenaIncorrectos" class="text-error font-2-5vh">Usuario o contraseña
-                        incorrecto favor de validar</label>
-                    <label id="usuarioNull" class="text-error font-2-5vh">Favor de ingresar un usuario</label>
-                    <label id="PassNull" class="text-error font-2-5vh">Favor de ingresar su contraseña</label>
-                </div>
-            </div>
-
             <div class="d-flex justify-content-center mb-4vh">
-                <div class="w-100">
+                <div class="field w-100">
                     <p class="text-center w-100 labelTitle">USUARIO</p>
-                    <input type="text" class="text-center font-2-5vh w-100 line-h-5vh" formControlName="name"
-                        placeholder="Ingresa un Usuario">
+                    <input type=text aria-describedby="username2-help" class="text-center" pInputText formControlName="name" placeholder="Ingresa un usuario" />
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center mb-4vh">
-                <div class="w-100">
+            <div class="d-flex justify-content-center mb-3">
+                <div class="field w-100">
                     <p class="text-center w-100 labelTitle">CONTRASEÑA</p>
-                    <input [type]="showPassword ? 'text' : 'password'"
-                        class="text-center pass-margin font-2-5vh w-100 line-h-5vh" id="passwordLogin"
-                        formControlName="password" placeholder="Ingresa una Contraseña">
-                    <span class="fa fa-eye text-secondary ojo font-3vh" (click)="toggleShowPassword()"></span>
+                    <span class="p-input-icon-right w-100">
+                        <i class="fa fa-eye text-secondary ojo" (click)="toggleShowPassword()"></i>
+                        <input [type]="showPassword ? 'text' : 'password'" aria-describedby="username2-help" class="text-center" pInputText formControlName="password" placeholder="Ingresa una Contraseña" />
+                    </span>
+                    <small class="p-error d-block" *ngIf="isRequiredError('name')">El usuario es requerido.</small>
+                    <small class="p-error d-block" *ngIf="isRequiredError('password')">El password es requerido.</small>
+                    <small class="p-error d-block" *ngIf="!isUserAndPasswordCorrect">Usuario o contraseña incorrectos.</small>
                 </div>
             </div>
 
