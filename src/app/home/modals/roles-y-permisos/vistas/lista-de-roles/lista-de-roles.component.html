@@ -1,11 +1,11 @@
-<p-dialog header="Roles y permisos" [(visible)]="display" [closable]="false"
-[modal]="true" [draggable]="false" [showHeader]="true">
+<p-dialog header="Roles y permisos" [(visible)]="display" [closable]="false" [modal]="true" [draggable]="false"
+    [showHeader]="true">
     <div class="container-lista">
         <div class="container-input_search">
             <span class="p-input-icon-right">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input [formControl]="filterText" type="text" pInputText placeholder="Buscar Rol">
-              </span>
+            </span>
         </div>
         <div class="container-lista_data">
             <div class="botton-list" *ngFor="let item of listaDeRoles">
@@ -15,18 +15,30 @@
     </div>
     <ng-template pTemplate="footer">
         <div class="modal-footer-content">
-            <button class="button-modal button-salir" (click)="salir()">
+            <button class="button-modal button-salir">
                 <div class="icon">
-                  <i class="fas icon-icon-metro-exit"></i>
+                    <i class="fas icon-icon-metro-exit"></i>
                 </div>
                 <div class="text">Salir</div>
-              </button>
-              <button (click)="aceptar()" class="button-modal button-aceptar" >
+            </button>
+            <button class="button-modal button-descartar">
                 <div class="icon">
-                  <i class="fa-solid fa-check"></i>
+                    <i class="fa-solid fa-trash"></i>
                 </div>
-                <div class="text">Aceptar</div>
-              </button>
+                <div class="text">Descartar</div>
+            </button>
+            <button class="button-modal button-ver">
+                <div class="icon">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="text">Ver</div>
+            </button>
+            <button class="button-modal button-aceptar"(click)="aceptar()">
+                <div class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="text">Crear</div>
+            </button>
         </div>
     </ng-template>
 </p-dialog>
