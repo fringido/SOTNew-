@@ -11,13 +11,14 @@ import { SidebarHiddenComponent } from './components/sidebar-hidden/sidebar-hidd
 import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MaterialModule } from '../core/modules/material/material.module';
-import { SidenavDirective } from './directives/sidenav.directive';
+import { SidenavDirective } from './directives/sidenav/sidenav.directive';
 import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 import { RoomTypesModule } from '../room-types/room-types.module';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
 import { SidebarModule } from '../sidebar/sidebar.module';
 import { EntradaHabitacionModule } from './inicio-habitaciones/entrada-habitacion/entrada-habitacion.module';
 import { FormsModule } from '@angular/forms';
+import { LogoutDirective } from './directives/logout/logout.directive';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     SidenavDirective,
     LayoutComponent,
     DarEntradaHabitacionComponent,
+    LogoutDirective,
   ],
   imports: [
     CommonModule,

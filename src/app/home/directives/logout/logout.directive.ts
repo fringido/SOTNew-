@@ -1,32 +1,20 @@
-import { Directive } from '@angular/core';
-import {
-  Renderer2,
-  ElementRef,
-  HostListener,
-  Input,
-  Output,
-  EventEmitter,
-  AfterViewInit
-} from '@angular/core';
+import { Directive, Renderer2, Input, Output, EventEmitter, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuButtons } from '../../models/menu-buttons.enum';
 
 @Directive({
-  selector: '[appMenuButton]'
+  selector: '[appLogout]'
 })
-export class MenuButtonDirective implements AfterViewInit {
+export class LogoutDirective implements AfterViewInit {
 
   click: any;
   touchend: any;
   mouseenter: any;
   mouseleave: any;
 
-  @Input('type') type!: MenuButtons;
   @Input('isShowing') isShowing!: boolean;
 
   @Output('updateIsShowing') updateIsShowing = new EventEmitter<boolean>();
   @Output('updateIsFirstTap') updateIsFirstTap = new EventEmitter<boolean>();
-
 
   constructor(
     private readonly renderer: Renderer2,
@@ -52,19 +40,19 @@ export class MenuButtonDirective implements AfterViewInit {
     const el = this.element.nativeElement;
     this.click = this.renderer.listen(
       el, 'click', 
-      () => {this.selectButton(this.type, this.isShowing ? 'redirect': 'show')}
+      () => {this.selectButton(this.isShowing ? 'redirect': 'show')}
     );
     this.touchend = this.renderer.listen(
       el, 'touchend', 
-      () => {this.selectButton(this.type, this.isShowing ? 'redirect': 'show')}
+      () => {this.selectButton(this.isShowing ? 'redirect': 'show')}
     );
     this.mouseenter = this.renderer.listen(
       el, 'mouseenter', 
-      () => {this.selectButton(this.type, 'show')}
+      () => {this.selectButton('show')}
     );
     this.mouseleave = this.renderer.listen(
       el, 'mouseleave', 
-      () => {this.selectButton(this.type, 'hide')}
+      () => {this.selectButton('hide')}
     );
     // Si es tablet eliminar listener de click
     if(window.innerWidth <= 1025) {
@@ -75,7 +63,7 @@ export class MenuButtonDirective implements AfterViewInit {
     this.touchend();
   }
 
-  selectButton(menuItem: MenuButtons, state: 'hide' | 'show' | 'redirect') {
+  selectButton(state: 'hide' | 'show' | 'redirect') {
     if (state === 'show') {
       this.updateIsShowing.next(true);
       this.updateIsFirstTap.next(true);
@@ -86,21 +74,9 @@ export class MenuButtonDirective implements AfterViewInit {
       this.updateIsFirstTap.next(false);
       return
     }
-    const options: { [key in MenuButtons]: () => void } = {
-      BAR: () => {
-          this.changeRoute('/cocina-bar/bar');
-          return;
-      },
-      CHECADOR: () => {
-          this.changeRoute('/cocina-bar');
-          return;
-      },
-      COCINA: () => {
-          this.changeRoute('/cocina-bar/cocina');
-          return;
-      },
+    if(state === 'redirect') {
+      this.changeRoute('login')
     }
-    return options[menuItem] ? options[menuItem]() : console.error('Opcion no implementada');
   }
 
   changeRoute(path: string) {

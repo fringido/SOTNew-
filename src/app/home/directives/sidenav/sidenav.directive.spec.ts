@@ -1,4 +1,4 @@
-import { SidenavDirective } from './sidenav.directive';
+import { SidenavDirective } from "./sidenav.directive";
 
 describe('SidenavDirective', () => {
   it('should create an instance', () => {

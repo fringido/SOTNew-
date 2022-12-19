@@ -25,6 +25,19 @@
       <button type="button" (click)="openModal('rolesYPermisos')">roles Y permisos</button>
 
       <app-room-types></app-room-types>
+      <button
+        class="logout__button d-flex flex-nowrap align-items-center justify-content-around text-white bg-danger hide-text"
+        (mouseenter)="showLogoutText()"
+        (mouseleave)="hideLogoutText()"
+        #LogoutButton
+        [isShowing]="isShowingLogoutText"
+        (updateIsShowing)="isShowingLogoutText = $event"
+        (updateIsFirstTap)="isLogoutFirstTap = $event" 
+        appLogout
+      >
+        <span class="text-nowrap d-none" #LogoutText>CERRAR SESIÓN</span>
+        <i class="fas fa-power-off fa-xl"></i>
+      </button>
     </div>
   </div>
 </mat-drawer-container>
