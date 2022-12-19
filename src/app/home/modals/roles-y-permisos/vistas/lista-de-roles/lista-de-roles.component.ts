@@ -102,7 +102,7 @@ export class ListaDeRolesComponent implements OnInit {
 
 
   salir(){
-    this.location.back()
+    this.router.navigate([`/hotel`]);
   }
 
   aceptar(){

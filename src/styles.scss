@@ -212,12 +212,20 @@ textarea {
   background-color: $green-item;
 }
 
+.button-print{
+  background-color: $grey-button-modal;
+}
+
 .button-descartar{
   background-color: $red-danger;
 }
 
 .button-ver{
   background-color:$gren-button-ver;
+}
+
+mat-sidenav {
+  width: 15rem;
 }
 
 
