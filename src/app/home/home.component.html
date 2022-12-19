@@ -26,14 +26,14 @@
 
       <app-room-types></app-room-types>
       <button
-        class="logout__button d-flex flex-nowrap align-items-center justify-content-around text-white bg-danger hide-text"
+        class="logout__button d-flex flex-nowrap align-items-center justify-content-around hide-text"
         (mouseenter)="showLogoutText()"
         (mouseleave)="hideLogoutText()"
         #LogoutButton
+        appLogout
         [isShowing]="isShowingLogoutText"
         (updateIsShowing)="isShowingLogoutText = $event"
         (updateIsFirstTap)="isLogoutFirstTap = $event" 
-        appLogout
       >
         <span class="text-nowrap d-none" #LogoutText>CERRAR SESIÓN</span>
         <i class="fas fa-power-off fa-xl"></i>

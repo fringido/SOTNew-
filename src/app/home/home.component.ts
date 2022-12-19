@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
   
   @ViewChild('LogoutButton') LogoutButton!: ElementRef;
   @ViewChild('LogoutText') LogoutText!: ElementRef;
@@ -22,11 +22,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit() {
-    console.log(this.LogoutText);
-    
   }
 
   showLogoutText() {

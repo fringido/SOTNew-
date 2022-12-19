@@ -53,10 +53,13 @@
   flex-shrink: 0;
   height: 35px;
   width: 35px;
+  overflow: hidden;
 }
 
 .show-text {
   animation: showText 1s ease 0s 1 normal forwards;
+  background-color: $red-danger;
+  color: white;
 }
 
 .hide-text {
