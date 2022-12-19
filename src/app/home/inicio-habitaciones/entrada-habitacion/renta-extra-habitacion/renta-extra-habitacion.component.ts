@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RoomService } from 'src/app/room-types/services/room/room.service';
 import { DialogService } from 'primeng/dynamicdialog';
-import { Room } from '../../../../home/interfaces/room.interface';
 import { take } from 'rxjs/operators';
+import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { Room } from '../../../interfaces/room.interface';
+import { RoomService } from 'src/app/room-types/services/room/room.service';
 
 @Component({
-  selector: 'app-renta-habitacion',
-  templateUrl: './renta-habitacion.component.html',
-  styleUrls: ['./renta-habitacion.component.scss']
+  selector: 'app-renta-extra-habitacion',
+  templateUrl: './renta-extra-habitacion.component.html',
+  styleUrls: ['./renta-extra-habitacion.component.scss']
 })
-export class RentaHabitacionComponent implements OnInit {
+export class RentaExtraHabitacionComponent implements OnInit {
 
   form: any;
   display = true
@@ -42,6 +43,13 @@ export class RentaHabitacionComponent implements OnInit {
     // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
     this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
       this.selectedRoom = room!;
+        this.form.get('tarifa').disable();
+        this.form.get('tarjetaLealtad').disable();
+        this.form.get('aPie').disable();
+        this.form.get('matricula').disable();
+        this.form.get('marca').disable();
+        this.form.get('modelo').disable();
+        this.form.get('color').disable();
     });
   }
 //* Inicia el formulario
@@ -61,29 +69,6 @@ export class RentaHabitacionComponent implements OnInit {
       paquetes:[0],
       descuento:[0],
     })
-
-    this.form.get('aPie').valueChanges.subscribe((d: any)=>{
-
-      if(d){
-        this.form.get('matricula').disable()
-        this.form.get('marca').disable()
-        this.form.get('modelo').disable()
-        this.form.get('color').disable()
-        this.form.get('comentario').disable()
-        this.form.get('matricula').setValue('')
-        this.form.get('marca').setValue('')
-        this.form.get('modelo').setValue('')
-        this.form.get('color').setValue('')
-        this.form.get('comentario').setValue('')
-      }
-      if(!d){
-        this.form.get('matricula').enable()
-        this.form.get('marca').enable()
-        this.form.get('modelo').enable()
-        this.form.get('color').enable()
-        this.form.get('comentario').enable()
-      }
-    })
   }
 //* --------------------------------
 
@@ -94,7 +79,10 @@ export class RentaHabitacionComponent implements OnInit {
   }
 
   aceptar(){
-    this.router.navigate([`/hotel/rentaHabitacion/pagoRenta`]);
+    this.dialogService.open(MessageModalAutoclosableComponent, {
+      data: { message: 'EXTRAS AGREGADOS CON ÉXITO' }
+    });
+    this.salir();
   }
 
 //* --------------------------------

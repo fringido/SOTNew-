@@ -1,0 +1,199 @@
+<p-dialog [(visible)]="display" [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
+    <form class="form-container" [formGroup]="form">
+      <!-- ?FORMULARIO IZQUIERDO -->
+      <div class="form-left">
+        <div class="titulo">
+          <h1>DATOS DE ENTRADA</h1>
+        </div>
+        <div class="form-component">
+          <label>TARIFA</label>
+          <p-dropdown placeholder="Selecciona una tarifa" formControlName="tarifa" [options]="tarifas" optionLabel="name"
+            optionValue="code"></p-dropdown>
+        </div>
+        <div class="form-component">
+          <label>TARJETA DE LEALTAD</label>
+          <span class="p-input-icon-right">
+            <i class="fa-solid fa-address-card"></i>
+            <input formControlName="tarjetaLealtad" type="text" pInputText placeholder="Código de Tarjeta">
+          </span>
+        </div>
+        <div class="form-component">
+          <p>CÓDIGO DE RESERVACIÓN</p>
+        </div>
+        <div class="form-component">
+          <div class="radio-button">
+            <p-checkbox [formControl]="form.controls['aPie']" [binary]="true"></p-checkbox>
+            <label>&nbsp; A PIE</label>
+          </div>
+        </div>
+        <hr>
+        <div class="form-component">
+  
+          <span class="p-input-icon-right">
+            <i *ngIf="form.controls.matricula.touched == false && form.controls.matricula.value == ''"
+              style="color: #495057;" class="fa-solid fa-car"></i>
+            <i *ngIf="form.controls.matricula.status == 'INVALID' && form.controls.matricula.touched == true"
+              class="fa-solid fa-car" style="color: red;"></i>
+            <i *ngIf="form.controls.matricula.status == 'VALID'" class="fa-solid fa-car" style="color: #0AC917;"></i>
+            <input formControlName="matricula" type="text" pInputText placeholder="Matricula">
+          </span>
+        </div>
+        <div class="form-component">
+          <span class="p-input-icon-right">
+            <i *ngIf="form.controls.marca.touched == false && form.controls.marca.value == ''" style="color: #495057;"
+              class="fa-solid fa-check"></i>
+            <i *ngIf="form.controls.marca.status == 'INVALID' && form.controls.marca.touched == true"
+              class="fa-solid fa-check" style="color: red;"></i>
+            <i *ngIf="form.controls.marca.status == 'VALID'" class="fa-solid fa-check" style="color: #0AC917;"></i>
+            <input formControlName="marca" type="text" pInputText placeholder="Marca">
+          </span>
+        </div>
+        <div class="form-component">
+          <span class="p-input-icon-right">
+            <i *ngIf="form.controls.modelo.touched == false && form.controls.modelo.value == ''" style="color: #495057;"
+              class="fa-solid fa-check"></i>
+            <i *ngIf="form.controls.modelo.status == 'INVALID' && form.controls.modelo.touched == true"
+              class="fa-solid fa-check" style="color: red;"></i>
+            <i *ngIf="form.controls.modelo.status == 'VALID'" class="fa-solid fa-check" style="color: #0AC917;"></i>
+            <input formControlName="modelo" type="text" pInputText placeholder="Modelo">
+          </span>
+        </div>
+        <div class="form-component">
+          <span class="p-input-icon-right">
+            <i *ngIf="form.controls.color.touched == false && form.controls.color.value == ''" style="color: #495057;"
+              class="fa-solid fa-brush"></i>
+            <i *ngIf="form.controls.color.status == 'INVALID' && form.controls.color.touched == true"
+              class="fa-solid fa-brush" style="color: red;"></i>
+            <i *ngIf="form.controls.color.status == 'VALID'" class="fa-solid fa-brush" style="color: #0AC917;"></i>
+            <input formControlName="color" type="text" pInputText placeholder="Color">
+          </span>
+        </div>
+        <div class="form-component ">
+          <span class="p-float-label text-area">
+            <textarea formControlName="comentario" id="float-input" rows="3" cols="26" pInputTextarea></textarea>
+            <label for="float-input">Comentarios</label>
+          </span>
+        </div>
+      <!--? ------------------- -->
+      <!--? FORMULARIO DERECHO -->
+      </div>
+      <div class="form-rigth">
+        <div class="titulo-rigth">
+          <h1>HABITACIÓN</h1>
+          <div class="info-habitacion">
+            <div class="number">601</div>
+            <div class="tipo">pool & spa</div>
+          </div>
+        </div>
+        <div class="form-component">
+          <label>Habitación</label>
+          <div class="form-component_contador">
+            <div class="divisor-form-l">
+              <p>$0.00</p>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+          <label>Persona extra</label>
+          <div class="form-component_contador">
+            <div class="divisor-form-l">
+              <p-inputNumber formControlName="personaExtra" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+                spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+              <p>$0.00</p>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+          <label>Hospedaje</label>
+          <div class="form-component_contador">
+            <div class="divisor-form-l">
+              <p-inputNumber formControlName="hospedaje" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+                spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+              <p>$0.00</p>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+          <label>Horas extra</label>
+          <div class="form-component_contador">
+            <div class="divisor-form-l">
+              <p-inputNumber formControlName="horasExtra" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+                spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+              <p>$0.00</p>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+          <h2>PAQUETES</h2>
+          <div class="form-component_contador">
+            <div class="divisor-form-l" style="padding: 0px 74px 0 22px;">
+              <p-inputNumber formControlName="paquetes"></p-inputNumber>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+          <h2>DESCUENTOS</h2>
+          <div class="form-component_contador">
+            <div class="divisor-form-l" style="padding: 0px 74px 0 22px;">
+              <p-inputNumber formControlName="descuento"></p-inputNumber>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-component">
+          <div class="form-component_contador">
+            <div class="divisor-form-l" class="">
+              <h2>DESCUENTOS TARJETA DE LEALTAD</h2>
+            </div>
+            <div class="divisor-form-r">
+              <p>$0.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <div>Total:</div>
+          <div>$1,000</div>
+        </div>
+      </div>
+      <!--? ------------------- -->
+    </form>
+    <!--? BOTONES DE FORMULARIO -->
+    <ng-template pTemplate="footer">
+      <div class="modal-footer-content">
+        <button class="button-modal button-salir" (click)="salir()">
+          <div class="icon">
+            <i class="fas icon-icon-metro-exit"></i>
+          </div>
+          <div class="text">Salir</div>
+        </button>
+        <button (click)="aceptar()" class="button-modal button-aceptar" [disabled]="form.invalid">
+          <div class="icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="text">Aceptar</div>
+        </button>
+      </div>
+    </ng-template>
+    <!--? ------------------- -->
+  </p-dialog>
+  

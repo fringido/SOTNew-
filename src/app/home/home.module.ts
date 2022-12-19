@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     NavMenuComponent,
     SidenavDirective,
     LayoutComponent,
-    DarEntradaHabitacionComponent
+    DarEntradaHabitacionComponent,
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { EntradaHabitacionRoutingModule } from './entrada-habitacion-routing.mod
 import { EntradaHabitacionComponent } from './entrada-habitacion.component';
 import { RentaHabitacionComponent } from './renta-habitacion/renta-habitacion.component';
 import { PagoRentaHabitacionComponent } from './pago-renta-habitacion/pago-renta-habitacion.component';
+import { RentaExtraHabitacionComponent } from './renta-extra-habitacion/renta-extra-habitacion.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ import {DialogModule} from 'primeng/dialog';
 import { PagoTarjetaComponent } from './pago-renta-habitacion/pago-tarjeta/pago-tarjeta.component';
 import { PagoMixtoComponent } from './pago-renta-habitacion/pago-mixto/pago-mixto.component';
 import {InputMaskModule} from 'primeng/inputmask';
+import { CobrarPendienteHabitacionComponent } from './cobrar-pendiente-habitacion/cobrar-pendiente-habitacion.component';
 
 
 @NgModule({
@@ -23,8 +25,10 @@ import {InputMaskModule} from 'primeng/inputmask';
     EntradaHabitacionComponent,
     RentaHabitacionComponent,
     PagoRentaHabitacionComponent,
+    RentaExtraHabitacionComponent,
+    CobrarPendienteHabitacionComponent,
     PagoTarjetaComponent,
-    PagoMixtoComponent
+    PagoMixtoComponent,
   ],
   imports: [
     CommonModule,

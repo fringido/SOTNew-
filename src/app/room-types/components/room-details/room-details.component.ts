@@ -36,11 +36,10 @@ export class RoomDetailsComponent implements OnInit {
     });
   }
 
-  private readonly ESCAPE_KEY = 'Escape';
 
   @HostListener('document:keydown', ['$event']) 
   onEscapeHandler(event: KeyboardEvent) {
-    if(event.key !== this.ESCAPE_KEY) {
+    if(event.key !== 'Escape') {
       return;
     }
     if(this.router.routerState.snapshot.url === '/hotel') {
@@ -62,6 +61,13 @@ export class RoomDetailsComponent implements OnInit {
 
   openRentaHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion'])
+  }
+
+  openRentaExtraHabitacion() {
+    this.router.navigate(['hotel', 'rentaHabitacion', 'pagoExtraRenta']);
+  }
+  openCobroPendiente() {
+    this.router.navigate(['hotel', 'rentaHabitacion', 'cobroPendiente']);
   }
 
 }
