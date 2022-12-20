@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'cocina-bar', loadChildren: () => import('./cocinabar/cocinabar.module').then((m) => m.CocinabarModule) },
   { path: 'hotel', loadChildren: () => import('./home/home.module').then((m) => m.HomeModule) },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'room-service', loadChildren: () => import('./home/inicio-habitaciones/room-service/room-service.module').then(m => m.RoomServiceModule) },
   { path: '**', component: PageNotFoundComponent },
 ];
 

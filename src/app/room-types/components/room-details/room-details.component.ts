@@ -43,7 +43,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-  @HostListener('document:keydown', ['$event']) 
+  @HostListener('document:keydown', ['$event'])
   onEscapeHandler(event: KeyboardEvent) {
     if(event.key !== 'Escape') {
       return;
@@ -81,6 +81,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
         message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
       },
     });
+  }
+
+  openModal(rute: string){
+    this.router.navigate(['hotel', rute])
   }
 
 }

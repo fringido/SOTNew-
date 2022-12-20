@@ -16,7 +16,7 @@ export class MessageModalAutoclosableComponent implements OnInit {
   constructor(
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-  ) { 
+  ) {
     this.config.showHeader = false;
     this.config.closable = false;
     this.config.width = '420px';

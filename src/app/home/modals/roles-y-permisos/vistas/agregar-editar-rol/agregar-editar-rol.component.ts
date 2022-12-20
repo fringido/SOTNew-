@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-agregar-editar-rol',
   templateUrl: 'agregar-editar-rol.component.html',
@@ -16,7 +15,7 @@ export class AgregarEditarRolComponent implements OnInit {
   menu: number = 1;
   separador: any[] = []
   separadorTotal: any[] = []
-
+  loading = false
   display = true
 
   form: any;
@@ -268,7 +267,7 @@ export class AgregarEditarRolComponent implements OnInit {
       nombre: [this.formulario.nombre, Validators.required],
       permisos: this.formularioBotones
     })
-
+    this.loading=true
   }
 
   selectMenu(numero: number) {
