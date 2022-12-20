@@ -2,6 +2,7 @@ import { Component, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/c
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
+import { ConfimModalMessageComponent } from 'src/app/core/components/confim-modal-message/confim-modal-message.component';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
@@ -68,12 +69,18 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   openRentaHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion'])
   }
-
   openRentaExtraHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion', 'pagoExtraRenta']);
   }
   openCobroPendiente() {
     this.router.navigate(['hotel', 'rentaHabitacion', 'cobroPendiente']);
+  }
+  openCambioHabitacion() {
+    const ref = this.dialogService.open(ConfimModalMessageComponent, {
+      data: {
+        message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
+      },
+    });
   }
 
 }
