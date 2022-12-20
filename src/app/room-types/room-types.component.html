@@ -3,11 +3,13 @@
         class="row col-1 rooms-group" 
         *ngFor="let roomType of roomsByType; let i = index;"
         [ngStyle]="{'margin-top': marginYSkySuite(i), 'margin-left': marginXSkySuite(i)}"
+        id="roomtype_{{roomType.name}}"
+        #roomsTypeRef
     >
         <div class="ml-2">
             <h6 class="mt-4 mb-1">{{roomType.name}}</h6>
             <div class="d-flex justify-content-start flex-wrap">
-                <div #roomsRef *ngFor="let room of roomType.rooms" id="room_{{room.roomNumber}}">
+                <div #roomsRef *ngFor="let room of roomType.rooms" id="type_{{roomType.name}}__room_{{room.roomNumber}}">
                     <app-room
                     [status]="room.status"
                     [statusTimer]="room.statusTimer"

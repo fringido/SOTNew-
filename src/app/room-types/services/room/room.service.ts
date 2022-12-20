@@ -9,8 +9,15 @@ export class RoomService {
   private selectedRoom = new BehaviorSubject<Room | null>(null);
   selectedRoom$ = this.selectedRoom.asObservable();
 
+  private modoCambioHabitacion = new BehaviorSubject<boolean>(false);
+  modoCambioHabitacion$ = this.modoCambioHabitacion.asObservable();
+
   constructor(
   ) { }
+
+  toggleModoCambioHabitacion(active?: boolean) {
+    this.modoCambioHabitacion.next(active ?? !this.modoCambioHabitacion.value);
+  }
 
   setSelectedRoom(room: any = null) {
     this.selectedRoom.next(room)

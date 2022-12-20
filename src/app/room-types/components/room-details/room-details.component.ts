@@ -6,6 +6,7 @@ import { ConfimModalMessageComponent } from 'src/app/core/components/confim-moda
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
+import { RoomService } from '../../services/room/room.service';
 
 @Component({
   selector: 'app-room-details',
@@ -25,16 +26,23 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   selectedRoom!: any;
   selectedRoomSubs!: Subscription;
 
+  isModoCambioHabitacion!: any;
+  isModoCambioHabitacionSubs!: Subscription;
+
   constructor(
-    private readonly sidebarService: SidebarService,
     private readonly renderer: Renderer2,
     private readonly router: Router,
     public dialogService: DialogService,
+    private readonly sidebarService: SidebarService,
+    private readonly roomService: RoomService,
   ) { }
 
   ngOnInit(): void {
-    this.selectedRoomSubs = this.sidebarService.selectedRoom$.pipe().subscribe((room) => {
+    this.selectedRoomSubs = this.sidebarService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room
+    });
+    this.isModoCambioHabitacionSubs = this.roomService.modoCambioHabitacion$.subscribe((active) => {
+      this.isModoCambioHabitacion = active;
     });
   }
 
@@ -75,10 +83,15 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   openCobroPendiente() {
     this.router.navigate(['hotel', 'rentaHabitacion', 'cobroPendiente']);
   }
+
+  togggleModoCambioHabitacion(active?: boolean) {
+    this.roomService.toggleModoCambioHabitacion(active ?? !this.isModoCambioHabitacion);
+  }
+
   openCambioHabitacion() {
     const ref = this.dialogService.open(ConfimModalMessageComponent, {
       data: {
-        message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
+        message: `ESTÁS POR CAMBIAR DE LA ${'tipo'} ${'numero'} A LA ${'numero2'}`
       },
     });
   }

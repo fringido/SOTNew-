@@ -6,13 +6,7 @@ import { RoomService } from 'src/app/room-types/services/room/room.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Room } from '../../../../home/interfaces/room.interface';
 import { take } from 'rxjs/operators';
-<<<<<<< HEAD
-
-=======
-import { MessageModalAutoclosableComponent } from '../../../../../app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
-import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
 import { controlHabitacion } from 'src/app/core/formsControl/controlHabitacion';
->>>>>>> 4b403798c0e9a709d1776ef6e75643f3d7740ebe
 @Component({
   selector: 'app-renta-habitacion',
   templateUrl: './renta-habitacion.component.html',
@@ -51,17 +45,6 @@ export class RentaHabitacionComponent implements OnInit {
     // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
     this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
       this.selectedRoom = room!;
-<<<<<<< HEAD
-=======
-      //* Si se da click en "cobrar habitación" se deshabilitan todos los controls porque no cambiarán
-      if(this.roomService.isroomPorCobrar(this.selectedRoom.status)) {
-        this.form.disable();
-      }
-      if(this.selectedRoom.status === RoomStatusEnum.OCUPADA ||
-        this.selectedRoom.status === RoomStatusEnum.OCUPADA_ROOM_SERVICE) {
-          this.initPayExtra()
-        }
->>>>>>> 4b403798c0e9a709d1776ef6e75643f3d7740ebe
     });
   }
 

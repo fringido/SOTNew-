@@ -23,8 +23,5 @@ export class ConfimModalMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.ref.close();
-    }, 3000)
   }
 }

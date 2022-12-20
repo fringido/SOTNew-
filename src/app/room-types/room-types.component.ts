@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
+import { RoomService } from './services/room/room.service';
 @Component({
   selector: 'app-room-types',
   templateUrl: './room-types.component.html',
@@ -27,8 +28,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   selectedRoom!: any; //TODO: tipar la habitacion
 
   @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef>;
+  @ViewChildren('roomsTypeRef') roomsTypeRef!: QueryList<ElementRef>;
 
   isIpadMini!: boolean;
+
+  isModoCambioHabitacion!: any;
+  isModoCambioHabitacionSubs!: Subscription;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -731,6 +736,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly homeService: HomeService,
+    private readonly roomService: RoomService,
     private readonly renderer: Renderer2,
     private readonly sidebarService: SidebarService
   ) { }
@@ -744,6 +750,14 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       if(state !== 'roomSelected') {
         this.unselectRoom();
       }
+    });
+    this.isModoCambioHabitacionSubs = this.roomService.modoCambioHabitacion$.subscribe((active) => {
+      this.isModoCambioHabitacion = active;
+      if(active) {
+        return  this.filtrarRoomsLibresPorTipo()
+      }
+      // TODO: cuando se cancela el cambio de habitacion, volver a seleccionar la habitacion visualmente
+      this.unselectRoom();
     });
   }
 
@@ -785,13 +799,13 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     const selectedRoomEl = 
     this.roomsRef
     ?.toArray()
-    .find(roomEl => roomEl.nativeElement.id === 'room_' + room.roomNumber)?.nativeElement;
+    .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + room.roomNumber))?.nativeElement;
+    this.renderer.removeClass(selectedRoomEl, 'no-filtro');
     
     // Agregar sombra a los elementos que no fueron seleccionados
-    this.renderer.removeClass(selectedRoomEl, 'no-filtro');
     this.roomsRef
       ?.toArray()
-      .filter((roomEl) => roomEl.nativeElement.id !== 'room_' + room.roomNumber)
+      .filter((roomEl) => !roomEl.nativeElement.id.endsWith('room_' + room.roomNumber))
       .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
     // Mostrar sidenav para ver los detalles del cuarto seleccionado
     this.homeService.toggleSidenav(true);
@@ -801,8 +815,28 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   }
   
   unselectRoom() {
+    this.roomService.toggleModoCambioHabitacion(false);
     this.roomsRef
     ?.toArray()
     .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
+  }
+
+  filtrarRoomsLibresPorTipo() {
+    const selectedRoomType = this.roomsByType
+      .find(type => type.rooms
+      .find((room => room === this.selectedRoom)));
+    this.roomsRef?.toArray()
+      .filter(room => room.nativeElement.id.startsWith(`type_${selectedRoomType?.name}`))
+      .filter(room => room.nativeElement.children[0].attributes[2].nodeValue === RoomStatusEnum.LIBRE)
+      .forEach((room) => {
+        this.renderer.removeClass(room.nativeElement, 'no-filtro')
+    });
+
+    const selectedRoomEl = 
+    this.roomsRef
+    ?.toArray()
+    .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
+    this.renderer.addClass(selectedRoomEl, 'no-filtro');
+
   }
 }
