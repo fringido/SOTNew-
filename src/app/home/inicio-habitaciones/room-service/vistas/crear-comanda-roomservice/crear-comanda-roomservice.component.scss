@@ -209,12 +209,16 @@
   font-weight    : 500;
   margin         : 15px 5px;
   width          : 25%;
+  height: 86vh;
 
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
     border-radius: $border-button;
-    height       : 100%;
-    margin       : 5px 0;
+    height: 100%;
+    max-height: fit-content;
+    margin: 5px 0;
+    padding: 2px 10px;
+    overflow: overlay;
   }
 
   & .title-info_buy {
@@ -226,12 +230,19 @@
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
     border-radius: $border-button;
+    margin-top: 5px;
   }
 
   & .button-cortesia {
     background-color: #7b09a6;
     color           : whitesmoke;
     border-radius   : 15px;
+    margin: 5px 0;
+    &.activate{
+      background-color: whitesmoke;
+      color: #7b09a6;
+      border: 2px solid #7b09a6;
+    }
   }
 
   & .button-cortesia {
@@ -253,5 +264,65 @@
     color  : $red-danger;
 
     justify-content: space-between;
+  }
+}
+
+.container-buy_colapse.food {
+  background-color: #f48b00;
+  border-radius: $border-radius-tittle;
+  & button {
+    border-radius: $border-radius-tittle;
+    margin-top: 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : none;
+    color           : white;
+    background-color: #f48b00;
+  }
+}
+
+.container-buy_colapse.drinks {
+  background-color: #ef1f3b;
+  border-radius: $border-radius-tittle;
+  & button {
+    border-radius: $border-radius-tittle;
+    margin-top: 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : none;
+    color           : white;
+    background-color: #ef1f3b;
+  }
+}
+
+.container-buy_colapse.other {
+  background-color: #00a57f;
+  border-radius: $border-radius-tittle;
+  & button {
+    border-radius: $border-radius-tittle;
+    margin-top: 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : 1px solid #00a57f;
+    color           : white;
+    background-color: #00a57f;
+  }
+}
+
+.container-buy_colapse.sexyspa {
+  background-color: #7e3899;
+  border-radius: $border-radius-tittle;
+  & button {
+    border-radius: $border-radius-tittle;
+    margin-top: 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : none;
+    color           : white;
+    background-color: #7e3899;
   }
 }

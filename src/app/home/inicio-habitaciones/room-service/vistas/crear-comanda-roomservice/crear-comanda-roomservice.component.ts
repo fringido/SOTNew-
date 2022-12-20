@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -12,11 +12,13 @@ export class CrearComandaRoomserviceComponent implements OnInit {
 
   display = true
   filterText!: FormControl
-
+  form!: FormGroup;
   food:any
   drinks:any
   other:any
   sexyspa:any
+
+  cortesia: boolean = false
 
   foodAll:any
   drinksAll:any
@@ -4302,8 +4304,26 @@ export class CrearComandaRoomserviceComponent implements OnInit {
 
   constructor(
     private router: Router,
-    ) { }
+    private fb : FormBuilder
+    ) {
+      this.form = this.fb.group({
+        habitacion:[2],
+        comanda: this.fb.array([]),
+        cortesia: this.fb.array([]),
+        subTotal:[],
+        total:[],
+      })
+    }
 
+    //* trae los datos de el FormArray
+  get comandaField() {
+    return this.form.get('comanda') as FormArray
+  }
+
+ get cortesiaField() {
+  return this.form.get('cortesia') as FormArray
+}
+//* ------------------------------------------
   ngOnInit(): void {
     this.initList()
     this.search();
@@ -4320,6 +4340,7 @@ export class CrearComandaRoomserviceComponent implements OnInit {
   this.otherAll = this.other
   this.sexyspaAll = this.sexyspa
   }
+
 
   search() {
     this.filterText = new FormControl("");
@@ -4355,6 +4376,39 @@ export class CrearComandaRoomserviceComponent implements OnInit {
   salir(){
     this.router.navigate([`/hotel`]);
   }
+
+
+
+  selectProduct(product:any,tipo:string){
+if(this.cortesia){
+  this.cortesiaField.push(
+    this.fb.group({
+    id:[product.id],
+    tipo:[tipo],
+    colapse:[true],
+    numProducts:[1],
+    observaciones:[''],
+    name:[product.name],
+    priceWhitOutIva:[product.priceWhitOutIva],
+    priceIva:[product.priceIva],
+    })
+  )
+}else{
+  this.comandaField.push(
+    this.fb.group({
+    id:[product.id],
+    tipo:[tipo],
+    colapse:[true],
+    numProducts:[1],
+    observaciones:[''],
+    name:[product.name],
+    priceWhitOutIva:[product.priceWhitOutIva],
+    priceIva:[product.priceIva],
+    })
+  )
+}
+  }
+
 
 
 }

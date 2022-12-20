@@ -13,7 +13,7 @@
             ALIMENTOS
           </div>
           <div class="body-list" >
-              <div class="product" *ngFor="let product of food">{{product.name | uppercase}}</div>
+              <div class="product" *ngFor="let product of food" (click)="selectProduct(product,'food')">{{product.name | uppercase}}</div>
           </div>
         </div>
         <div class="list-product-drink">
@@ -21,7 +21,7 @@
             BEBIDAS
           </div>
           <div class="body-list">
-            <div class="product" *ngFor="let product of drinks">{{product.name | uppercase}}</div>
+            <div class="product" *ngFor="let product of drinks" (click)="selectProduct(product,'drinks')">{{product.name | uppercase}}</div>
           </div>
         </div>
         <div class="list-product-other">
@@ -29,7 +29,7 @@
             OTROS
           </div>
           <div class="body-list" >
-            <div class="product" *ngFor="let product of other">{{product.name | uppercase}}</div>
+            <div class="product" *ngFor="let product of other" (click)="selectProduct(product,'other')">{{product.name | uppercase}}</div>
           </div>
         </div>
         <div class="list-product-sex_spa">
@@ -37,21 +37,67 @@
             SEX & SPA
           </div>
           <div class="body-list" >
-            <div class="product" *ngFor="let product of sexyspa">{{product.name | uppercase}}</div>
+            <div class="product" *ngFor="let product of sexyspa" (click)="selectProduct(product,'sexyspa')">{{product.name | uppercase}}</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-info_buy">
+    <form [formGroup]="form" class="container-info_buy">
       <div class="title-info_buy">
         HABITACIÓN 2
       </div>
       <div class="container-info_product_buy">
+        <div formArrayName="comanda" *ngFor="let product of comandaField.controls ; let i = index">
+          <div [formGroupName]="i" class="container-buy_colapse" [ngClass]="product.value.tipo">
+            <button
+            type="button"
+            class="button-buy_colapse"
+            (click)="comandaField.at(i).patchValue({colapse:!product.value.colapse})"
+            [attr.aria-expanded]="!product.value.colapse"
+            aria-controls="collapseExample"
+          >
+            <div>{{i +1}}</div><div>{{product.value.name | uppercase}}</div><div>{{product.value.priceIva | currency: '$'}}</div><div><i class="fa-solid fa-chevron-down mr-1"></i><i (click)="comandaField.removeAt(i)" class="fa-solid fa-trash"></i></div>
+          </button>
+          <div #collapse="ngbCollapse" [(ngbCollapse)]="product.value.colapse">
+            <div>
+              <p-inputNumber formControlName="numProducts" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+              spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+              incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+              <span class="text-area">
+                <textarea formControlName="observaciones" placeholder="OBSERVACIONES" rows="2" cols="20" pInputTextarea></textarea>
+              </span>
 
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
-      <button class="button-cortesia">ACTIVAR CORTESÍA</button>
-      <div class="container-info_product_buy">
+      <button class="button-cortesia" [class.activate]="cortesia" (click)="cortesia = !cortesia">ACTIVAR CORTESÍA</button>
+      <div class="container-info_product_buy" *ngIf="cortesia || cortesiaField.controls.length != 0">
+        <div formArrayName="cortesia" *ngFor="let product of cortesiaField.controls ; let i = index">
+          <div [formGroupName]="i" class="container-buy_colapse" [ngClass]="product.value.tipo">
+            <button
+            type="button"
+            class="button-buy_colapse"
+            (click)="cortesiaField.at(i).patchValue({colapse:!product.value.colapse})"
+            [attr.aria-expanded]="!product.value.colapse"
+            aria-controls="collapseExample"
+          >
+            <div>{{i +1}}</div><div>{{product.value.name | uppercase}}</div><div>{{product.value.priceIva | currency: '$'}}</div><div><i class="fa-solid fa-chevron-down mr-1"></i><i (click)="cortesiaField.removeAt(i)" class="fa-solid fa-trash"></i></div>
+          </button>
+          <div #collapse="ngbCollapse" [(ngbCollapse)]="product.value.colapse">
+            <div>
+              <p-inputNumber formControlName="numProducts" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+              spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+              incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+              <span class="text-area">
+                <textarea formControlName="observaciones" placeholder="OBSERVACIONES" rows="2" cols="20" pInputTextarea></textarea>
+              </span>
 
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
       <div class="container-info">
         <div class="info-pay">
@@ -72,13 +118,13 @@
         </div>
       </div>
       <div class="modal-footer-content">
-        <button class="button-modal button-descartar" (click)="salir()">
+        <button class="button-modal button-descartar" (click)="salir()" >
           <div class="icon">
               <i class="fa-solid fa-x"></i>
           </div>
           <div class="text">Cancelar</div>
       </button>
-      <button  class="button-modal button-aceptar" >
+      <button  class="button-modal button-aceptar" [disabled]="cortesiaField.controls.length == 0 && comandaField.controls.length == 0">
         <div class="icon">
           <i class="fa-solid fa-check"></i>
         </div>
@@ -86,6 +132,6 @@
       </button>
 
       </div>
-    </div>
+    </form>
   </div>
 </p-dialog>
