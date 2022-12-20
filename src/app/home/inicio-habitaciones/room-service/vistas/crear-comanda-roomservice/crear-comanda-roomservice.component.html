@@ -1,0 +1,91 @@
+<p-dialog [(visible)]="display"[blockScroll]="true" [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
+  <div class="container-roomservice">
+    <div class="container-list_products">
+      <div class="input-search">
+        <span class="p-input-icon-right">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input [formControl]="filterText" type="text" pInputText placeholder="Buscar Rol">
+      </span>
+      </div>
+      <div class="all-list_products">
+        <div class="list-product-food">
+          <div class="title-list">
+            ALIMENTOS
+          </div>
+          <div class="body-list" >
+              <div class="product" *ngFor="let product of productos.alimentos">{{product.name | uppercase}}</div>
+          </div>
+        </div>
+        <div class="list-product-drink">
+          <div class="title-list">
+            BEBIDAS
+          </div>
+          <div class="body-list">
+            <div class="product" *ngFor="let product of productos.bebidas">{{product.name | uppercase}}</div>
+          </div>
+        </div>
+        <div class="list-product-other">
+          <div class="title-list">
+            OTROS
+          </div>
+          <div class="body-list" >
+            <div class="product" *ngFor="let product of productos.otros">{{product.name | uppercase}}</div>
+          </div>
+        </div>
+        <div class="list-product-sex_spa">
+          <div class="title-list">
+            SEX & SPA
+          </div>
+          <div class="body-list" >
+            <div class="product" *ngFor="let product of productos.sexSpa">{{product.name | uppercase}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-info_buy">
+      <div class="title-info_buy">
+        HABITACIÓN 2
+      </div>
+      <div class="container-info_product_buy">
+
+      </div>
+      <button class="button-cortesia">ACTIVAR CORTESÍA</button>
+      <div class="container-info_product_buy">
+
+      </div>
+      <div class="container-info">
+        <div class="info-pay">
+          <div class="concepto">SUBTOTAL</div>
+          <div class="money">$2,000</div>
+        </div>
+        <div class="info-pay">
+          <div class="concepto">CORTESÍA</div>
+          <div class="money">$2,000</div>
+        </div>
+        <div class="info-pay">
+          <div class="concepto">DESCUENTO</div>
+          <div class="money">$2,000</div>
+        </div>
+        <div class="info-pay">
+          <div class="concepto">TOTAL</div>
+          <div class="money">$2,000</div>
+        </div>
+      </div>
+      <div class="modal-footer-content">
+        <button class="button-modal button-descartar" (click)="salir()">
+          <div class="icon">
+              <i class="fa-solid fa-x"></i>
+          </div>
+          <div class="text">Cancelar</div>
+      </button>
+      <button  class="button-modal button-aceptar" >
+        <div class="icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="text">Aceptar</div>
+      </button>
+
+      </div>
+    </div>
+  </div>
+</p-dialog>

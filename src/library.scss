@@ -1,26 +1,24 @@
-
-
 //* Variables para colores
-$wine : #801336;
-$wine-hover : #862f4a;
-$grey: #495057;
-$strong-grey: #3C3C3C;
-$dark-grey: #373737;
-$color-title-grey: #9b9898;
+$wine             : #801336;
+$wine-hover       : #862f4a;
+$grey             : #495057;
+$strong-grey      : #3C3C3C;
+$dark-grey        : #373737;
+$color-title-grey : #9b9898;
 //* Botones
-$green-item: #0AC917;
-$yellow-warn: #FFD500;
-$red-danger: #fd0022;
-$orange-item: #db932f;
-$blue-item: #008deb;
-$purple-item: #a703fb;
-$grey-item: #707070;
-$hover-grey:#e5e5e5bf;
-$blue-visa:#1a1f71;
-$orange-mc:#ff5f00;
-$blue-AE:#0061b6;
-$green-money: #008000;
-$gren-button-ver:#058e6e;
+$green-item       : #0AC917;
+$yellow-warn      : #FFD500;
+$red-danger       : #fd0022;
+$orange-item      : #db932f;
+$blue-item        : #008deb;
+$purple-item      : #a703fb;
+$grey-item        : #707070;
+$hover-grey       :#e5e5e5bf;
+$blue-visa        :#1a1f71;
+$orange-mc        :#ff5f00;
+$blue-AE          :#0061b6;
+$green-money      : #008000;
+$gren-button-ver  :#058e6e;
 $grey-button-modal:#536371;
 
 //* Border
@@ -34,14 +32,17 @@ $color-text: #212529;
 
 //* Border-radius
 $border-radius-tittle: 10px;
-$border-button:5px;
+$border-button       :5px;
 //* Shadows
-$shadow-modal-tittle:0 0 5pt rgb(0 0 0 / 50%);
-$shadow-boton: 10px 10px 13px #e1e1e1, -6px -2px 9px #e1e1e1;
-$shadow-item-list:4px 3px 6px #d3d3d3, -6px -6px 5px #fff;
+$shadow-modal-tittle :0 0 5pt rgb(0 0 0 / 50%);
+$shadow-boton        : 10px 10px 13px #e1e1e1,
+-6px -2px 9px #e1e1e1;
+$shadow-item-list:4px 3px 6px #d3d3d3,
+-6px -6px 5px #fff;
 
 //* Font
 
-$font-principal: "Epilogue",sans-serif;
-$font-secundaria: 'Rubik', sans-serif;
-
+$font-principal: "Epilogue",
+sans-serif;
+$font-secundaria: 'Rubik',
+sans-serif;
