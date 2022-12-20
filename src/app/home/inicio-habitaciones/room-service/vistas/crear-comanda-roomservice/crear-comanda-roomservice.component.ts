@@ -13,8 +13,15 @@ export class CrearComandaRoomserviceComponent implements OnInit {
   display = true
   filterText!: FormControl
 
+  food:any
+  drinks:any
+  other:any
+  sexyspa:any
 
-  productosAll:any
+  foodAll:any
+  drinksAll:any
+  otherAll:any
+  sexyspaAll:any
 
   productos={
     "alimentos": [
@@ -4298,8 +4305,20 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.productosAll = this.productos
+    this.initList()
     this.search();
+  }
+
+  initList(){
+  this.food = this.productos.alimentos
+  this.drinks= this.productos.bebidas
+  this.other= this.productos.otros
+  this.sexyspa= this.productos.sexSpa
+
+  this.foodAll = this.food
+  this.drinksAll = this.drinks
+  this.otherAll = this.other
+  this.sexyspaAll = this.sexyspa
   }
 
   search() {
@@ -4311,24 +4330,24 @@ export class CrearComandaRoomserviceComponent implements OnInit {
         if (v) {
           const filter = new RegExp(v, "i");
           const filterFields = ["name"];
-          this.productos.alimentos = this.productosAll.alimentos.filter((role:any) =>
+          this.food = this.foodAll.filter((role:any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
-          this.productos.bebidas = this.productosAll.bebidas.filter((role:any) =>
+          this.drinks = this.drinksAll.filter((role:any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
-          this.productos.otros = this.productosAll.otros.filter((role:any) =>
+          this.other = this.otherAll.filter((role:any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
-          this.productos.sexSpa = this.productosAll.sexSpa.filter((role:any) =>
+          this.sexyspa = this.sexyspaAll.filter((role:any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
 
         } else {
-          this.productos.alimentos = this.productosAll.alimentos;
-          this.productos.bebidas = this.productosAll.bebidas;
-          this.productos.otros = this.productosAll.otros;
-          this.productos.sexSpa = this.productosAll.sexSpa;
+          this.food = this.foodAll
+          this.drinks= this.drinksAll
+          this.other= this.otherAll
+          this.sexyspa= this.sexyspaAll
         }
       });
   }

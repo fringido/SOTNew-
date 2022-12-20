@@ -13,7 +13,7 @@
             ALIMENTOS
           </div>
           <div class="body-list" >
-              <div class="product" *ngFor="let product of productos.alimentos">{{product.name | uppercase}}</div>
+              <div class="product" *ngFor="let product of food">{{product.name | uppercase}}</div>
           </div>
         </div>
         <div class="list-product-drink">
@@ -21,7 +21,7 @@
             BEBIDAS
           </div>
           <div class="body-list">
-            <div class="product" *ngFor="let product of productos.bebidas">{{product.name | uppercase}}</div>
+            <div class="product" *ngFor="let product of drinks">{{product.name | uppercase}}</div>
           </div>
         </div>
         <div class="list-product-other">
@@ -29,7 +29,7 @@
             OTROS
           </div>
           <div class="body-list" >
-            <div class="product" *ngFor="let product of productos.otros">{{product.name | uppercase}}</div>
+            <div class="product" *ngFor="let product of other">{{product.name | uppercase}}</div>
           </div>
         </div>
         <div class="list-product-sex_spa">
@@ -37,7 +37,7 @@
             SEX & SPA
           </div>
           <div class="body-list" >
-            <div class="product" *ngFor="let product of productos.sexSpa">{{product.name | uppercase}}</div>
+            <div class="product" *ngFor="let product of sexyspa">{{product.name | uppercase}}</div>
           </div>
         </div>
       </div>
