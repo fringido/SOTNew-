@@ -38,7 +38,7 @@ export class RoomDetailsComponent implements OnInit {
 
   private readonly ESCAPE_KEY = 'Escape';
 
-  @HostListener('document:keydown', ['$event']) 
+  @HostListener('document:keydown', ['$event'])
   onEscapeHandler(event: KeyboardEvent) {
     if(event.key !== this.ESCAPE_KEY) {
       return;
@@ -62,6 +62,10 @@ export class RoomDetailsComponent implements OnInit {
 
   openRentaHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion'])
+  }
+
+  openModal(rute: string){
+    this.router.navigate(['hotel', rute])
   }
 
 }

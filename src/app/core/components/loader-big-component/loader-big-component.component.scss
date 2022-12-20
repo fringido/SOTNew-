@@ -1,0 +1,16 @@
+.loader{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 44vh;
+  width: 55vw;
+  flex-wrap: nowrap;
+
+  & .loader-containers{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

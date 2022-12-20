@@ -3,6 +3,7 @@
   "recommendations": [
     "angular.ng-template",
     "alexiv.vscode-angular2-files",
-    "moyu.snapcode"
+    "moyu.snapcode",
+    "cyrilletuzi.angular-schematics"
   ]
 }

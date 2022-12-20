@@ -8,7 +8,7 @@
 //* Importacion de Angular material
 //? Custom Theming for Angular Material
 //*?For more information: https://material.angular.io/guide/theming
-@use "@angular/material" as mat;
+@use "@angular/material"as mat;
 
 //? Plus imports for other components in your app.
 //? Include the common styles for Angular Material. We include this here so that you only
@@ -26,26 +26,22 @@
 //? (imported above). For each palette, you can optionally specify a default, lighter, and darker
 //? hue. Available color palettes: https://material.io/design/color/
 $SOTNew-primary: mat.define-palette(mat.$indigo-palette);
-$SOTNew-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$SOTNew-accent : mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 //? The warn palette is optional (defaults to red).
 $SOTNew-warn: mat.define-palette(mat.$red-palette);
 
 //? Create the theme object. A theme consists of configurations for individual
 //? theming systems such as "color" or "typography".
-$SOTNew-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $SOTNew-primary,
+$SOTNew-theme: mat.define-light-theme((color: (primary: $SOTNew-primary,
       accent: $SOTNew-accent,
       warn: $SOTNew-warn,
     ),
-  )
-);
+  ));
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 12px;
+  width           : 8px;
+  height          : 12px;
   background-color: transparent;
 }
 
@@ -55,27 +51,27 @@ $SOTNew-theme: mat.define-light-theme(
 
 ::-webkit-scrollbar-thumb {
   background-color: #999999;
-  border-radius: 20px;
-  border: 1px solid transparent;
-  background-clip: content-box;
+  border-radius   : 20px;
+  border          : 1px solid transparent;
+  background-clip : content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #303d41;
+  background-color: #303d41e1;
 }
 
 @font-face {
   font-family: 'epilogueFont';
-  src: url('./assets/libs/font/Epilogue-Regular.ttf') format('truetype'),
-       url('./assets/libs/font/Epilogue-Light.ttf') format('truetype'),
-       url('./assets/libs/font/Epilogue-Bold.ttf') format('truetype'),
-       url('./assets/libs/font/Epilogue-Black.ttf') format('truetype'),
-       url('./assets/libs/font/Epilogue-ExtraBold.ttf') format('truetype');
+  src        : url('./assets/libs/font/Epilogue-Regular.ttf') format('truetype'),
+    url('./assets/libs/font/Epilogue-Light.ttf') format('truetype'),
+    url('./assets/libs/font/Epilogue-Bold.ttf') format('truetype'),
+    url('./assets/libs/font/Epilogue-Black.ttf') format('truetype'),
+    url('./assets/libs/font/Epilogue-ExtraBold.ttf') format('truetype');
 
   font-family: 'rubikFont';
-  src: url('./assets/libs/font/Rubik-Regular.ttf'),
-       url('./assets/libs/font/Rubik-Bold.ttf'),
-       url('./assets/libs/font/Rubik-Light.ttf');
+  src        : url('./assets/libs/font/Rubik-Regular.ttf'),
+    url('./assets/libs/font/Rubik-Bold.ttf'),
+    url('./assets/libs/font/Rubik-Light.ttf');
 
 }
 
@@ -91,15 +87,14 @@ $SOTNew-theme: mat.define-light-theme(
 
 html,
 body {
-  height: 100%;
+  height  : 100%;
   overflow: hidden;
 }
 
 body {
-  margin: 0;
+  margin     : 0;
   font-family: 'epilogueFont', Arial, Helvetica, sans-serif;
-  background: #f1f1f1
-
+  background : #f1f1f1
 }
 
 /**
@@ -113,30 +108,30 @@ body {
 
 
 //* Estilos Cuerpo Modal
-hr{
-  color: $grey-item !important;
+hr {
+  color     : $grey-item !important;
   border-top: 2px solid !important;
-  width: 80% !important;
-  margin: .3rem 0 !important;
+  width     : 80% !important;
+  margin    : .3rem 0 !important;
 }
 
 textarea {
   resize: none;
 }
 
-.header-modal{
-  margin: 0 -24px;
-  display: flex;
-  align-items: center;
+.header-modal {
+  margin         : 0 -24px;
+  display        : flex;
+  align-items    : center;
   justify-content: space-around;
-  flex-shrink: 0;
-  border-bottom: 0 none;
-  background: #e4e4e4;
-  color: $color-title-grey;
-  padding: 10px;
-  font-size: 22px;
-  font-weight: 700;
-  font-family: $font-principal;
+  flex-shrink    : 0;
+  border-bottom  : 0 none;
+  background     : #e4e4e4;
+  color          : $color-title-grey;
+  padding        : 10px;
+  font-size      : 22px;
+  font-weight    : 700;
+  font-family    : $font-principal;
 }
 
 .container-lista {
@@ -144,28 +139,29 @@ textarea {
 
   & .container-input_search {
     text-align: center;
-    margin: 10px 0;
+    margin    : 10px 0;
   }
+
   .container-lista_data {
-    margin-top: 15px;
-    padding: 5px 15px;
-    box-shadow: $shadow-modal-tittle;
-    border: none;
+    margin-top   : 15px;
+    padding      : 5px 15px;
+    box-shadow   : $shadow-modal-tittle;
+    border       : none;
     border-radius: $border-radius-tittle;
-    max-height: 57vh;
-    text-align: center;
-    overflow: auto;
+    max-height   : 57vh;
+    text-align   : center;
+    overflow     : auto;
 
     & .botton-list {
-      max-width: 91%;
-      margin: 12px auto;
+      max-width    : 91%;
+      margin       : 12px auto;
       border-radius: $border-radius-tittle;
-      box-shadow: $shadow-item-list;
-      cursor: pointer;
-      padding: 2px 10px;
-      border: $border-item-list;
+      box-shadow   : $shadow-item-list;
+      cursor       : pointer;
+      padding      : 2px 10px;
+      border       : $border-item-list;
 
-      &:hover{
+      &:hover {
         background-color: $hover-grey
       }
     }
@@ -173,73 +169,83 @@ textarea {
 
 }
 
-.modal-footer-content{
+.modal-footer-content {
   text-align: center;
   margin-top: 10px;
-  width: 100%;
+  width     : 100%;
 
-  & .button-modal{
-    width: 12vh;
-    height: 11vh;
+  & .button-modal {
+    width        : 12vh;
+    height       : 11vh;
     border-radius: 10px;
-    opacity: 1;
-    color: #fff;
-    border: 1px solid transparent;
-    margin: 0.5rem !important;
+    opacity      : 1;
+    color        : #fff;
+    border       : 1px solid transparent;
+    margin       : 0.5rem !important;
 
-    & .icon{
+    & .icon {
       font-size: 3vh;
     }
-    & .text{
+
+    & .text {
       font-size: 2vh;
     }
   }
 
-  button:disabled{
+  button:disabled {
     background-color: $grey-item;
-    cursor: not-allowed;
+    cursor          : not-allowed;
   }
 
 
 }
 
-.button-salir{
+.button-salir {
   background-color: $wine;
-  box-shadow: 0 3px 6px #80133680;
+  box-shadow      : 0 3px 6px #80133680;
 
 }
-.button-aceptar{
+
+.button-aceptar {
   background-color: $green-item;
 }
 
-.button-descartar{
+.button-print {
+  background-color: $grey-button-modal;
+}
+
+.button-descartar {
   background-color: $red-danger;
 }
 
-.button-ver{
-  background-color:$gren-button-ver;
+.button-ver {
+  background-color: $gren-button-ver;
+}
+
+mat-sidenav {
+  width: 15rem;
 }
 
 
 //* Estilos de formularios
 input {
-  border: none;
-  background: transparent;
+  border       : none;
+  background   : transparent;
   border-bottom: 1px solid rgb(0, 0, 0);
-  width: 100%;
+  width        : 100%;
 }
 
 textarea {
   border-radius: 14px;
-  box-shadow: 0 0 3pt rgb(0 0 0 / 48%);
-  border: none;
+  box-shadow   : 0 0 3pt rgb(0 0 0 / 48%);
+  border       : none;
 }
 
 
-label{
-  font-family: 'Rubik',sans-serif;
-  color: $grey-item;
-  font-size: 13pt;
+label {
+  font-family: 'Rubik', sans-serif;
+  color      : $grey-item;
+  font-size  : 13pt;
   font-weight: 700;
 }
 
@@ -248,15 +254,15 @@ input:focus {
 }
 
 // Rangos de z-index
-$lvl1: 10;
-$lvl2: 20;
-$lvl3: 30;
-$lvl4: 40;
-$lvl5: 50;
-$lvl6: 60;
-$lvl7: 70;
-$lvl8: 80;
-$lvl9: 90;
+$lvl1 : 10;
+$lvl2 : 20;
+$lvl3 : 30;
+$lvl4 : 40;
+$lvl5 : 50;
+$lvl6 : 60;
+$lvl7 : 70;
+$lvl8 : 80;
+$lvl9 : 90;
 $lvl10: 100;
 
 
@@ -313,37 +319,45 @@ $lvl10: 100;
 .sot-bg-blue {
   @include bg-blue;
 }
+
 .sot-bg-purple {
   @include bg-purple;
 }
+
 .sot-bg-wine {
   @include bg-wine;
 }
+
 .sot-bg-grey-item {
   @include bg-grey-item;
 }
 
 // mixins para color de textos
-@mixin txt-success{
+@mixin txt-success {
   color: $green-item;
 }
 
-@mixin txt-danger{
+@mixin txt-danger {
   color: $red-danger;
 }
-@mixin txt-warn{
+
+@mixin txt-warn {
   color: $yellow-warn;
 }
-@mixin txt-orange{
+
+@mixin txt-orange {
   color: $orange-item;
 }
-@mixin txt-blue{
+
+@mixin txt-blue {
   color: $blue-item;
 }
-@mixin txt-purple{
+
+@mixin txt-purple {
   color: $purple-item;
 }
-@mixin txt-grey-item{
+
+@mixin txt-grey-item {
   color: $grey-item;
 }
 
@@ -351,21 +365,27 @@ $lvl10: 100;
 .txt-success {
   @include txt-success;
 }
+
 .txt-danger {
   @include txt-danger;
 }
+
 .txt-warn {
   @include txt-warn;
 }
+
 .txt-orange {
   @include txt-orange;
 }
+
 .txt-blue {
   @include txt-blue;
 }
+
 .txt-purple {
   @include txt-purple;
 }
+
 .txt-grey-item {
   @include txt-grey-item;
 }

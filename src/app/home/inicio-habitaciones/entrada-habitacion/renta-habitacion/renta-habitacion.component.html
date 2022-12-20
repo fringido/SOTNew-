@@ -100,13 +100,13 @@
         <label>Persona extra</label>
         <div class="form-component_contador">
           <div class="divisor-form-l">
-            <p-inputNumber formControlName="personaExtra" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+            <p-inputNumber formControlName="personaExtra" [showButtons]="true" [min]="0" [max]="maxPersonas" buttonLayout="horizontal"
               spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
               incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-            <p>$0.00</p>
+            <p>$200.00</p>
           </div>
           <div class="divisor-form-r">
-            <p>$0.00</p>
+            <p>{{200 * form.controls.personaExtra.value | currency: '$'}}</p>
           </div>
         </div>
       </div>
@@ -114,13 +114,13 @@
         <label>Hospedaje</label>
         <div class="form-component_contador">
           <div class="divisor-form-l">
-            <p-inputNumber formControlName="hospedaje" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+            <p-inputNumber formControlName="hospedaje" [showButtons]="true" [min]="0" [max]="maxHospedaje" buttonLayout="horizontal"
               spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
               incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-            <p>$0.00</p>
+            <p>$100.00</p>
           </div>
           <div class="divisor-form-r">
-            <p>$0.00</p>
+            <p>{{100 * form.controls.hospedaje.value | currency: '$'}}</p>
           </div>
         </div>
       </div>
@@ -128,13 +128,13 @@
         <label>Horas extra</label>
         <div class="form-component_contador">
           <div class="divisor-form-l">
-            <p-inputNumber formControlName="horasExtra" [showButtons]="true" [min]="0" buttonLayout="horizontal"
+            <p-inputNumber formControlName="horasExtra" [showButtons]="true" [min]="0" [max]="maxHoras" buttonLayout="horizontal"
               spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
               incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-            <p>$0.00</p>
+            <p>$150.00</p>
           </div>
           <div class="divisor-form-r">
-            <p>$0.00</p>
+            <p>{{150 * form.controls.horasExtra.value | currency: '$'}}</p>
           </div>
         </div>
       </div>

@@ -13,6 +13,10 @@ const routes: Routes = [
       },{
         path: 'rentaHabitacion',
         loadChildren: () => import('./inicio-habitaciones/entrada-habitacion/entrada-habitacion.module').then((m) => m.EntradaHabitacionModule)
+      }
+      ,{
+        path: 'roomService',
+        loadChildren: () => import('./inicio-habitaciones/room-service/room-service.module').then((m) => m.RoomServiceModule)
       },{
         path: 'entradaDeHabitacion',
         component: DarEntradaHabitacionComponent
