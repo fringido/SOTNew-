@@ -24,6 +24,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   isShowingSidenavSubs!: Subscription;
   sidenavStateSubs!: Subscription;
 
+  selectedRoom!: any; //TODO: tipar la habitacion
+
   @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef>;
 
   isIpadMini!: boolean;
@@ -772,8 +774,21 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     return '6vh';
   }
 
-  selectRoom(room: any) {
+  selectRoom(room: any) { //TODO: tipar la habitacion
+    if(this.selectedRoom?.roomNumber === room.roomNumber) {
+      // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
+      this.sidebarService.setSidebarState('home');
+      this.selectedRoom = null;
+      return this.unselectRoom();
+    }
+    // Quitar sombreado a elemento que ha sido seleccionado
+    const selectedRoomEl = 
+    this.roomsRef
+    ?.toArray()
+    .find(roomEl => roomEl.nativeElement.id === 'room_' + room.roomNumber)?.nativeElement;
+    
     // Agregar sombra a los elementos que no fueron seleccionados
+    this.renderer.removeClass(selectedRoomEl, 'no-filtro');
     this.roomsRef
       ?.toArray()
       .filter((roomEl) => roomEl.nativeElement.id !== 'room_' + room.roomNumber)
@@ -782,11 +797,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.homeService.toggleSidenav(true);
     // mostrar los detalles en el sidebar
     this.sidebarService.setSidebarState('roomSelected', room);
+    this.selectedRoom = room;
   }
-
+  
   unselectRoom() {
     this.roomsRef
-      ?.toArray()
-      .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
+    ?.toArray()
+    .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
   }
 }

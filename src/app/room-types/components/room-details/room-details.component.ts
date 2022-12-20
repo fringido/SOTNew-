@@ -1,7 +1,7 @@
-import { Component, HostListener, OnInit, Renderer2} from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
-import { take } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
@@ -11,7 +11,7 @@ import { RoomStatusEnum } from '../../enums/room-status.enum';
   templateUrl: './room-details.component.html',
   styleUrls: ['./room-details.component.scss']
 })
-export class RoomDetailsComponent implements OnInit {
+export class RoomDetailsComponent implements OnInit, OnDestroy {
 
   readonly AvailableRoomStatus = RoomStatusEnum;
   display: boolean = false;
@@ -22,6 +22,7 @@ export class RoomDetailsComponent implements OnInit {
   };
 
   selectedRoom!: any;
+  selectedRoomSubs!: Subscription;
 
   constructor(
     private readonly sidebarService: SidebarService,
@@ -31,9 +32,13 @@ export class RoomDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sidebarService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+    this.selectedRoomSubs = this.sidebarService.selectedRoom$.pipe().subscribe((room) => {
       this.selectedRoom = room
     });
+  }
+
+  ngOnDestroy(): void {
+    this.selectedRoomSubs.unsubscribe();
   }
 
 
@@ -42,6 +47,7 @@ export class RoomDetailsComponent implements OnInit {
     if(event.key !== 'Escape') {
       return;
     }
+    // si no se está mostrando una ruta en forma de modal se cancela la deselección de la habitacion
     if(this.router.routerState.snapshot.url === '/hotel') {
       this.exit();
     }
