@@ -4,6 +4,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {SkeletonModule} from 'primeng/skeleton';
 import { LoaderBigComponentComponent } from './components/loader-big-component/loader-big-component.component';
+
 @NgModule({
   declarations: [
     LoaderBigComponentComponent

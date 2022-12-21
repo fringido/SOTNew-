@@ -1,17 +1,18 @@
-import { Component, HostListener, OnInit, Renderer2} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
-import { take } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
+import { RoomService } from '../../services/room/room.service';
 
 @Component({
   selector: 'app-room-details',
   templateUrl: './room-details.component.html',
   styleUrls: ['./room-details.component.scss']
 })
-export class RoomDetailsComponent implements OnInit {
+export class RoomDetailsComponent implements OnInit, OnDestroy {
 
   readonly AvailableRoomStatus = RoomStatusEnum;
   display: boolean = false;
@@ -22,27 +23,39 @@ export class RoomDetailsComponent implements OnInit {
   };
 
   selectedRoom!: any;
+  selectedRoomSubs!: Subscription;
+
+  isModoCambioHabitacion!: any;
+  isModoCambioHabitacionSubs!: Subscription;
 
   constructor(
-    private readonly sidebarService: SidebarService,
     private readonly renderer: Renderer2,
     private readonly router: Router,
     public dialogService: DialogService,
+    private readonly sidebarService: SidebarService,
+    private readonly roomService: RoomService,
   ) { }
 
   ngOnInit(): void {
-    this.sidebarService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+    this.selectedRoomSubs = this.sidebarService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room
+    });
+    this.isModoCambioHabitacionSubs = this.roomService.modoCambioHabitacion$.subscribe((active) => {
+      this.isModoCambioHabitacion = active;
     });
   }
 
-  private readonly ESCAPE_KEY = 'Escape';
+  ngOnDestroy(): void {
+    this.selectedRoomSubs.unsubscribe();
+  }
+
 
   @HostListener('document:keydown', ['$event'])
   onEscapeHandler(event: KeyboardEvent) {
-    if(event.key !== this.ESCAPE_KEY) {
+    if(event.key !== 'Escape') {
       return;
     }
+    // si no se está mostrando una ruta en forma de modal se cancela la deselección de la habitacion
     if(this.router.routerState.snapshot.url === '/hotel') {
       this.exit();
     }
@@ -62,6 +75,16 @@ export class RoomDetailsComponent implements OnInit {
 
   openRentaHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion'])
+  }
+  openRentaExtraHabitacion() {
+    this.router.navigate(['hotel', 'rentaHabitacion', 'pagoExtraRenta']);
+  }
+  openCobroPendiente() {
+    this.router.navigate(['hotel', 'rentaHabitacion', 'cobroPendiente']);
+  }
+
+  togggleModoCambioHabitacion(active?: boolean) {
+    this.roomService.toggleModoCambioHabitacion(active ?? !this.isModoCambioHabitacion);
   }
 
   openModal(rute: string){

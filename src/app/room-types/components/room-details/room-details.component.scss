@@ -47,6 +47,10 @@
     color: white;
 }
 
+.list-group-item:disabled {
+    background-color: $grey-item !important;
+}
+
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
     .room-details {
