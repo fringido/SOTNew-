@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, min } from 'rxjs';
 import { Router } from '@angular/router';
+import { DialogService } from 'primeng/dynamicdialog';
+
+import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { controlFormMixto } from 'src/app/core/formsControl/controlFormMixto';
 
 @Component({
   selector: 'app-crear-comanda-roomservice',
@@ -13,19 +17,22 @@ export class CrearComandaRoomserviceComponent implements OnInit {
   display = true
   filterText!: FormControl
   form!: FormGroup;
-  food:any
-  drinks:any
-  other:any
-  sexyspa:any
+  food: any
+  drinks: any
+  other: any
+  sexyspa: any
 
   cortesia: boolean = false
 
-  foodAll:any
-  drinksAll:any
-  otherAll:any
-  sexyspaAll:any
+  foodAll: any
+  drinksAll: any
+  otherAll: any
+  sexyspaAll: any
 
-  productos={
+  total: number= 0
+  subTotal: number=0
+  descuento:number=0
+  productos = {
     "alimentos": [
       {
         id: "AC0001",
@@ -4304,41 +4311,44 @@ export class CrearComandaRoomserviceComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private fb : FormBuilder
-    ) {
-      this.form = this.fb.group({
-        habitacion:[2],
-        comanda: this.fb.array([]),
-        cortesia: this.fb.array([]),
-        subTotal:[],
-        total:[],
-      })
-    }
+    private fb: FormBuilder,
+    private dialogService: DialogService,
+  ) {
+    this.form = this.fb.group({
+      habitacion: [2],
+      comanda: this.fb.array([]),
+      cortesia: this.fb.array([]),
+      descuento:[this.descuento],
+      subTotal: [this.total],
+      total: [this.subTotal],
+    })
+  }
 
-    //* trae los datos de el FormArray
+  //* trae los datos de el FormArray
   get comandaField() {
     return this.form.get('comanda') as FormArray
   }
 
- get cortesiaField() {
-  return this.form.get('cortesia') as FormArray
-}
-//* ------------------------------------------
+  get cortesiaField() {
+    return this.form.get('cortesia') as FormArray
+  }
+  //* ------------------------------------------
   ngOnInit(): void {
-    this.initList()
+    this.initList();
+    this.sumatoriaTotal();
     this.search();
   }
 
-  initList(){
-  this.food = this.productos.alimentos
-  this.drinks= this.productos.bebidas
-  this.other= this.productos.otros
-  this.sexyspa= this.productos.sexSpa
+  initList() {
+    this.food = this.productos.alimentos
+    this.drinks = this.productos.bebidas
+    this.other = this.productos.otros
+    this.sexyspa = this.productos.sexSpa
 
-  this.foodAll = this.food
-  this.drinksAll = this.drinks
-  this.otherAll = this.other
-  this.sexyspaAll = this.sexyspa
+    this.foodAll = this.food
+    this.drinksAll = this.drinks
+    this.otherAll = this.other
+    this.sexyspaAll = this.sexyspa
   }
 
 
@@ -4351,62 +4361,89 @@ export class CrearComandaRoomserviceComponent implements OnInit {
         if (v) {
           const filter = new RegExp(v, "i");
           const filterFields = ["name"];
-          this.food = this.foodAll.filter((role:any) =>
+          this.food = this.foodAll.filter((role: any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
-          this.drinks = this.drinksAll.filter((role:any) =>
+          this.drinks = this.drinksAll.filter((role: any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
-          this.other = this.otherAll.filter((role:any) =>
+          this.other = this.otherAll.filter((role: any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
-          this.sexyspa = this.sexyspaAll.filter((role:any) =>
+          this.sexyspa = this.sexyspaAll.filter((role: any) =>
             filterFields.some((field) => filter.test(role[field]))
           );
 
         } else {
           this.food = this.foodAll
-          this.drinks= this.drinksAll
-          this.other= this.otherAll
-          this.sexyspa= this.sexyspaAll
+          this.drinks = this.drinksAll
+          this.other = this.otherAll
+          this.sexyspa = this.sexyspaAll
         }
       });
   }
 
-  salir(){
+  sumatoriaTotal(){
+    this.form.valueChanges.subscribe( () =>{
+      this.subTotal = 0
+      this.descuento = 0
+      this.total = 0
+      this.comandaField.value.map((d:any) =>{
+        this.subTotal = this.subTotal + (d.priceIva * d.numProducts)
+      })
+      this.cortesiaField.value.map((d:any) =>{
+        this.subTotal = this.subTotal + (d.priceIva * d.numProducts)
+        this.descuento = this.descuento + (d.priceIva * d.numProducts)
+      })
+
+      this.total= this.subTotal - this.descuento
+      console.log(this.form)
+    })
+  }
+
+  salir() {
     this.router.navigate([`/hotel`]);
   }
 
 
 
-  selectProduct(product:any,tipo:string){
-if(this.cortesia){
-  this.cortesiaField.push(
-    this.fb.group({
-    id:[product.id],
-    tipo:[tipo],
-    colapse:[true],
-    numProducts:[1],
-    observaciones:[''],
-    name:[product.name],
-    priceWhitOutIva:[product.priceWhitOutIva],
-    priceIva:[product.priceIva],
-    })
-  )
-}else{
-  this.comandaField.push(
-    this.fb.group({
-    id:[product.id],
-    tipo:[tipo],
-    colapse:[true],
-    numProducts:[1],
-    observaciones:[''],
-    name:[product.name],
-    priceWhitOutIva:[product.priceWhitOutIva],
-    priceIva:[product.priceIva],
-    })
-  )
-}
+  selectProduct(product: any, tipo: string) {
+    if (this.cortesia) {
+      this.cortesiaField.push(
+        this.fb.group({
+          id: [product.id],
+          tipo: [tipo],
+          colapse: [true],
+          numProducts: [1,[controlFormMixto.isNotCero]],
+          observaciones: [''],
+          name: [product.name],
+          priceWhitOutIva: [product.priceWhitOutIva],
+          priceIva: [product.priceIva],
+        })
+      )
+    } else {
+      this.comandaField.push(
+        this.fb.group({
+          id: [product.id],
+          tipo: [tipo],
+          colapse: [true],
+          numProducts: [1,[controlFormMixto.isNotCero]],
+          observaciones: [''],
+          name: [product.name],
+          priceWhitOutIva: [product.priceWhitOutIva],
+          priceIva: [product.priceIva],
+        })
+      )
+    }
+  }
+
+  aceptar(){
+    const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
+      data: {
+        message: `COMANDA GENERADA CON EXITO`
+      },
+    });
+    this.router.navigate([`/hotel`]);
   }
 
 

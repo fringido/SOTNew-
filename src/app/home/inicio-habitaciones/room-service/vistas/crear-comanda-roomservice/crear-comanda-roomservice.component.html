@@ -4,7 +4,7 @@
       <div class="input-search">
         <span class="p-input-icon-right">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input [formControl]="filterText" type="text" pInputText placeholder="Buscar Rol">
+          <input [formControl]="filterText" type="text" pInputText placeholder="Buscar En Room Service">
       </span>
       </div>
       <div class="all-list_products">
@@ -56,13 +56,15 @@
             [attr.aria-expanded]="!product.value.colapse"
             aria-controls="collapseExample"
           >
-            <div>{{i +1}}</div><div>{{product.value.name | uppercase}}</div><div>{{product.value.priceIva | currency: '$'}}</div><div><i class="fa-solid fa-chevron-down mr-1"></i><i (click)="comandaField.removeAt(i)" class="fa-solid fa-trash"></i></div>
+            <div>{{i +1}}</div><div class="name-product">{{product.value.name | uppercase}}</div><div>{{product.value.priceIva * product.value.numProducts| currency: '$'}}</div><div class="icons-product"><i class="fa-solid fa-chevron-down mr-1"></i><i (click)="comandaField.removeAt(i)" class="fa-solid fa-trash"></i></div>
           </button>
           <div #collapse="ngbCollapse" [(ngbCollapse)]="product.value.colapse">
-            <div>
-              <p-inputNumber formControlName="numProducts" [showButtons]="true" [min]="1" buttonLayout="horizontal"
-              spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
-              incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+            <div class="form-buy-container">
+              <div class="number-input-form_buy">
+                <button class="button-form" [disabled]="product.value.numProducts == 1" (click)="comandaField.at(i).patchValue({numProducts:product.value.numProducts - 1})"><i class="fa-solid fa-minus"></i></button>
+                <input type="number" formControlName="numProducts" min="1">
+                <button class="button-form" (click)="comandaField.at(i).patchValue({numProducts:product.value.numProducts + 1})"><i class="fa-solid fa-plus"></i></button>
+              </div>
               <span class="text-area">
                 <textarea formControlName="observaciones" placeholder="OBSERVACIONES" rows="2" cols="20" pInputTextarea></textarea>
               </span>
@@ -83,13 +85,15 @@
             [attr.aria-expanded]="!product.value.colapse"
             aria-controls="collapseExample"
           >
-            <div>{{i +1}}</div><div>{{product.value.name | uppercase}}</div><div>{{product.value.priceIva | currency: '$'}}</div><div><i class="fa-solid fa-chevron-down mr-1"></i><i (click)="cortesiaField.removeAt(i)" class="fa-solid fa-trash"></i></div>
+            <div>{{i +1}}</div><div class="name-product">{{product.value.name | uppercase}}</div><div>{{product.value.priceIva * product.value.numProducts | currency: '$'}}</div><div class="icons-product"><i class="fa-solid fa-chevron-down mr-1"></i><i (click)="cortesiaField.removeAt(i)" class="fa-solid fa-trash"></i></div>
           </button>
           <div #collapse="ngbCollapse" [(ngbCollapse)]="product.value.colapse">
-            <div>
-              <p-inputNumber formControlName="numProducts" [showButtons]="true" [min]="1" buttonLayout="horizontal"
-              spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
-              incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+            <div class="form-buy-container">
+              <div class="number-input-form_buy">
+                <button class="button-form" [disabled]="product.value.numProducts == 1" (click)="cortesiaField.at(i).patchValue({numProducts:product.value.numProducts - 1})"><i class="fa-solid fa-minus"></i></button>
+                <input type="number" formControlName="numProducts" min="1">
+                <button class="button-form" (click)="cortesiaField.at(i).patchValue({numProducts:product.value.numProducts + 1})"><i class="fa-solid fa-plus"></i></button>
+              </div>
               <span class="text-area">
                 <textarea formControlName="observaciones" placeholder="OBSERVACIONES" rows="2" cols="20" pInputTextarea></textarea>
               </span>
@@ -101,20 +105,20 @@
       </div>
       <div class="container-info">
         <div class="info-pay">
-          <div class="concepto">SUBTOTAL</div>
-          <div class="money">$2,000</div>
+          <div class="concepto">SUBTOTAL:</div>
+          <div class="money">{{subTotal | currency: '$'}}</div>
         </div>
         <div class="info-pay">
-          <div class="concepto">CORTESÍA</div>
-          <div class="money">$2,000</div>
+          <div class="concepto">CORTESÍA:</div>
+          <div class="money">-{{descuento | currency: '$'}}</div>
         </div>
         <div class="info-pay">
-          <div class="concepto">DESCUENTO</div>
-          <div class="money">$2,000</div>
+          <div class="concepto">DESCUENTO:</div>
+          <div class="money">{{0| currency: '$'}}</div>
         </div>
         <div class="info-pay">
-          <div class="concepto">TOTAL</div>
-          <div class="money">$2,000</div>
+          <div class="concepto"><b>TOTAL:</b></div>
+          <div class="money"><b>{{total | currency: '$'}}</b></div>
         </div>
       </div>
       <div class="modal-footer-content">
@@ -124,7 +128,7 @@
           </div>
           <div class="text">Cancelar</div>
       </button>
-      <button  class="button-modal button-aceptar" [disabled]="cortesiaField.controls.length == 0 && comandaField.controls.length == 0">
+      <button  class="button-modal button-aceptar" (click)="aceptar()" [disabled]="(cortesiaField.controls.length == 0 && comandaField.controls.length == 0) || form.invalid">
         <div class="icon">
           <i class="fa-solid fa-check"></i>
         </div>

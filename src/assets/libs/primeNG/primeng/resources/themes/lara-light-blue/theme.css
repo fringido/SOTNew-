@@ -2140,6 +2140,13 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   background: #801336;
   border: 1px solid #801336;
 }
+
+
+.p-button.p-button-success, .p-buttonset.p-button-backgranNone > .p-button, .p-splitbutton.p-button-backgranNone > .p-button {
+  color: #ffffff;
+  background: #801336;
+  border: 1px solid #801336;
+}
 .p-button.p-button-success:enabled:hover, .p-buttonset.p-button-success > .p-button:enabled:hover, .p-splitbutton.p-button-success > .p-button:enabled:hover {
   background: #862f4a;
   color: #ffffff;
