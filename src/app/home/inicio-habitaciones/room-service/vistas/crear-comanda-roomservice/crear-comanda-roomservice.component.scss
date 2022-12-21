@@ -1,8 +1,9 @@
 @import "../../../../../../library.scss";
 
 .container-roomservice {
-  display: flex;
-  width  : 95vw;
+  display    : flex;
+  width      : 95vw;
+  font-family: $font-secundaria;
 }
 
 .input-search {
@@ -16,6 +17,17 @@
   padding      : 10px 16px;
   text-align   : center;
   width        : 75%;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance   : textfield;
+  appearance        : textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
 .all-list_products {
@@ -37,7 +49,7 @@
     & .title-list {
       border-radius   : $border-button;
       text-align      : center;
-      background-color: #f48b00;
+      background-color: #ff9100;
       color           : whitesmoke;
       margin-bottom   : 5px;
     }
@@ -47,7 +59,7 @@
       flex-direction: column;
       align-items   : center;
       border-radius : $border-button;
-      border        : 1px solid #f48b00;
+      border        : 1px solid #ff9100;
       color         : #000000c7;
       overflow-x    : auto;
       height        : 100%;
@@ -57,7 +69,7 @@
         padding      : 0 5px;
         border       : none;
         border-radius: $border-button;
-        background   : #eaba7b;
+        background   : #ffb759;
         margin       : 2px 0;
         cursor       : pointer;
         width        : 97%;
@@ -79,7 +91,7 @@
     & .title-list {
       border-radius   : $border-button;
       text-align      : center;
-      background-color: #ef1f3b;
+      background-color: #c72c41;
       color           : whitesmoke;
       margin-bottom   : 5px;
     }
@@ -89,7 +101,7 @@
       flex-direction: column;
       align-items   : center;
       border-radius : $border-button;
-      border        : 1px solid #ef1f3b;
+      border        : 1px solid #c72c41;
       color         : #000000c7;
       overflow-x    : auto;
       height        : 100%;
@@ -99,7 +111,7 @@
         padding      : 0 5px;
         border       : none;
         border-radius: $border-button;
-        background   : #f79090;
+        background   : #d56171;
         margin       : 2px 0;
         cursor       : pointer;
         width        : 97%;
@@ -121,7 +133,7 @@
     & .title-list {
       border-radius   : $border-button;
       text-align      : center;
-      background-color: #00a57f;
+      background-color: #058e6e;
       color           : whitesmoke;
       margin-bottom   : 5px;
     }
@@ -131,7 +143,7 @@
       flex-direction: column;
       align-items   : center;
       border-radius : $border-button;
-      border        : 1px solid #00a57f;
+      border        : 1px solid #058e6e;
       color         : #000000c7;
       overflow-x    : auto;
       height        : 100%;
@@ -141,7 +153,7 @@
         padding      : 0 5px;
         border       : none;
         border-radius: $border-button;
-        background   : #7edcc7;
+        background   : #76c1af;
         margin       : 2px 0;
         cursor       : pointer;
         width        : 97%;
@@ -163,7 +175,7 @@
     & .title-list {
       border-radius   : $border-button;
       text-align      : center;
-      background-color: #7e3899;
+      background-color: #7b09a6;
       color           : whitesmoke;
       margin-bottom   : 5px;
     }
@@ -173,7 +185,7 @@
       flex-direction: column;
       align-items   : center;
       border-radius : $border-button;
-      border        : 1px solid #7e3899;
+      border        : 1px solid #7b09a6;
       color         : #000000c7;
       overflow-x    : auto;
       height        : 100%;
@@ -183,7 +195,7 @@
         padding      : 0 5px;
         border       : none;
         border-radius: $border-button;
-        background   : #d897f1;
+        background   : #a95fc5;
         margin       : 2px 0;
         cursor       : pointer;
         width        : 97%;
@@ -209,12 +221,16 @@
   font-weight    : 500;
   margin         : 15px 5px;
   width          : 25%;
+  height         : 86vh;
 
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
     border-radius: $border-button;
     height       : 100%;
+    max-height   : fit-content;
     margin       : 5px 0;
+    padding      : 2px 10px;
+    overflow     : overlay;
   }
 
   & .title-info_buy {
@@ -226,12 +242,20 @@
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
     border-radius: $border-button;
+    margin-top   : 5px;
   }
 
   & .button-cortesia {
     background-color: #7b09a6;
     color           : whitesmoke;
     border-radius   : 15px;
+    margin          : 5px 0;
+
+    &.activate {
+      background-color: whitesmoke;
+      color           : #7b09a6;
+      border          : 2px solid #7b09a6;
+    }
   }
 
   & .button-cortesia {
@@ -241,6 +265,8 @@
     border       : none;
     width        : 100%;
   }
+
+
 
   & .container-info {
     box-shadow   : $shadow-modal-tittle;
@@ -253,5 +279,259 @@
     color  : $red-danger;
 
     justify-content: space-between;
+  }
+}
+
+.name-product {
+  width: 45%;
+}
+
+.icons-product {
+  display        : flex;
+  width          : 15%;
+  flex-direction : row;
+  justify-content: space-around;
+  align-items    : center;
+}
+
+.container-buy_colapse.food {
+  background-color: #ff9100;
+  border-radius   : $border-radius-tittle;
+
+  & .form-buy-container {
+    & .number-input-form_buy {
+      display        : flex;
+      width          : 39%;
+      flex-direction : row;
+      justify-content: center;
+      margin         : 5px auto;
+      align-items    : flex-end;
+
+      & .button-form {
+        display        : flex;
+        background     : white;
+        color          : #ff9100;
+        padding        : 0;
+        margin         : 0;
+        height         : 4vh;
+        width          : 4vw;
+        text-align     : center;
+        align-items    : center;
+        border-radius  : 5px;
+        justify-content: center;
+      }
+
+      & input {
+        border       : none;
+        background   : transparent;
+        border-bottom: 2px solid #e9ecef;
+        width        : 100%;
+        color        : white;
+        text-align   : center;
+        margin       : 0 5px;
+        font-weight  : 500;
+        font-size    : large;
+      }
+    }
+
+    textarea {
+      margin-top: 5px;
+      width     : 88%;
+    }
+
+  }
+
+  & button {
+    align-items     : center;
+    border-radius   : $border-radius-tittle;
+    margin-top      : 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : none;
+    color           : white;
+    background-color: #ff9100;
+  }
+}
+
+.container-buy_colapse.drinks {
+  background-color: #c72c41;
+  border-radius   : $border-radius-tittle;
+
+  & .form-buy-container {
+    & .number-input-form_buy {
+      display        : flex;
+      width          : 39%;
+      flex-direction : row;
+      justify-content: center;
+      margin         : 5px auto;
+      align-items    : flex-end;
+
+      & .button-form {
+        display        : flex;
+        background     : white;
+        color          : #c72c41;
+        padding        : 0;
+        margin         : 0;
+        height         : 4vh;
+        width          : 4vw;
+        text-align     : center;
+        align-items    : center;
+        border-radius  : 5px;
+        justify-content: center;
+      }
+
+      & input {
+        border       : none;
+        background   : transparent;
+        border-bottom: 2px solid #e9ecef;
+        width        : 100%;
+        color        : white;
+        text-align   : center;
+        margin       : 0 5px;
+        font-weight  : 500;
+        font-size    : large;
+      }
+    }
+
+    textarea {
+      margin-top: 5px;
+      width     : 88%;
+    }
+  }
+
+  & button {
+    align-items     : center;
+    border-radius   : $border-radius-tittle;
+    margin-top      : 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : none;
+    color           : white;
+    background-color: #c72c41;
+  }
+}
+
+.container-buy_colapse.other {
+  background-color: #058e6e;
+  border-radius   : $border-radius-tittle;
+
+  & .form-buy-container {
+    & .number-input-form_buy {
+      display        : flex;
+      width          : 39%;
+      flex-direction : row;
+      justify-content: center;
+      margin         : 5px auto;
+      align-items    : flex-end;
+
+      & .button-form {
+        display        : flex;
+        background     : white;
+        color          : #058e6e;
+        padding        : 0;
+        margin         : 0;
+        height         : 4vh;
+        width          : 4vw;
+        text-align     : center;
+        align-items    : center;
+        border-radius  : 5px;
+        justify-content: center;
+      }
+
+      & input {
+        border       : none;
+        background   : transparent;
+        border-bottom: 2px solid #e9ecef;
+        width        : 100%;
+        color        : white;
+        text-align   : center;
+        margin       : 0 5px;
+        font-weight  : 500;
+        font-size    : large;
+      }
+    }
+
+    textarea {
+      margin-top: 5px;
+      width     : 88%;
+    }
+  }
+
+  & button {
+    align-items     : center;
+    border-radius   : $border-radius-tittle;
+    margin-top      : 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : 1px solid #058e6e;
+    color           : white;
+    background-color: #058e6e;
+  }
+}
+
+.container-buy_colapse.sexyspa {
+  background-color: #7b09a6;
+  border-radius   : $border-radius-tittle;
+
+  & .form-buy-container {
+    & .number-input-form_buy {
+      display        : flex;
+      width          : 39%;
+      flex-direction : row;
+      justify-content: center;
+      margin         : 5px auto;
+      align-items    : flex-end;
+
+      & .button-form {
+        display        : flex;
+        background     : white;
+        color          : #7b09a6;
+        border         : none;
+        padding        : 0;
+        margin         : 0;
+        height         : 4vh;
+        width          : 4vw;
+        text-align     : center;
+        align-items    : center;
+        border-radius  : 5px;
+        justify-content: center;
+      }
+
+      & input {
+        border       : none;
+        background   : transparent;
+        border-bottom: 2px solid #e9ecef;
+        width        : 100%;
+        color        : white;
+        text-align   : center;
+        margin       : 0 5px;
+        font-weight  : 500;
+        font-size    : large;
+      }
+    }
+
+    textarea {
+      margin-top: 5px;
+      width     : 88%;
+    }
+
+    p-inputnumber-button-up {
+      background-color: #7b09a6;
+    }
+  }
+
+  & .button-buy_colapse {
+    align-items     : center;
+    border-radius   : $border-radius-tittle;
+    margin-top      : 5px;
+    display         : flex;
+    width           : 100%;
+    justify-content : space-between;
+    border          : none;
+    color           : white;
+    background-color: #7b09a6;
   }
 }
