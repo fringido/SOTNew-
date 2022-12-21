@@ -1,8 +1,7 @@
 import { Component, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
-import { ConfimModalMessageComponent } from 'src/app/core/components/confim-modal-message/confim-modal-message.component';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
@@ -86,14 +85,6 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
 
   togggleModoCambioHabitacion(active?: boolean) {
     this.roomService.toggleModoCambioHabitacion(active ?? !this.isModoCambioHabitacion);
-  }
-
-  openCambioHabitacion() {
-    const ref = this.dialogService.open(ConfimModalMessageComponent, {
-      data: {
-        message: `ESTÁS POR CAMBIAR DE LA ${'tipo'} ${'numero'} A LA ${'numero2'}`
-      },
-    });
   }
 
   openModal(rute: string){

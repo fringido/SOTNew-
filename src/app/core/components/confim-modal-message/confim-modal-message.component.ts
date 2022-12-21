@@ -24,4 +24,12 @@ export class ConfimModalMessageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  confirm() {
+    this.ref.close({confirmed: false});
+  }
+  
+  cancel() {
+    this.ref.close({confirmed: true});
+  }
 }

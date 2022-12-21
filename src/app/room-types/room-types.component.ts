@@ -8,7 +8,10 @@ import {
   ElementRef,
   Renderer2,
 } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
+import { ConfimModalMessageComponent } from '../core/components/confim-modal-message/confim-modal-message.component';
+import { UtilitiesService } from '../core/services/utilitiesService/utilities.service';
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
@@ -46,6 +49,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       rooms: [
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 1,
           matricula: 'ABC-123',
@@ -56,6 +60,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.PREPARADA,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 2,
           matricula: 'ABC-123',
@@ -66,6 +71,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 3,
           matricula: 'ABC-123',
@@ -76,6 +82,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.SUCIA,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 4,
           matricula: 'ABC-123',
@@ -86,6 +93,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.MEDIA_SUCIA,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 5,
           matricula: 'ABC-123',
@@ -96,6 +104,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.EN_LIMPIEZA,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 6,
           matricula: 'ABC-123',
@@ -106,6 +115,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.EN_SUPERVISION,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 7,
           matricula: 'ABC-123',
@@ -116,6 +126,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA_POR_COBRAR,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 8,
           matricula: 'ABC-123',
@@ -126,6 +137,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA_ROOM_SERVICE_POR_COBRAR,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 9,
           matricula: 'ABC-123',
@@ -136,6 +148,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 10,
           matricula: 'ABC-123',
@@ -146,6 +159,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA_ROOM_SERVICE,
+          tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 11,
           matricula: 'ABC-123',
@@ -156,6 +170,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 12,
           matricula: 'ABC-123',
@@ -166,6 +181,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.OCUPADA_ROOM_SERVICE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 13,
           matricula: 'ABC-123',
@@ -176,6 +192,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.SUCIA,
+          tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 14,
           matricula: 'ABC-123',
@@ -186,6 +203,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.MEDIA_SUCIA,
+          tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 15,
           matricula: 'ABC-123',
@@ -196,6 +214,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.EN_LIMPIEZA,
+          tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 16,
           matricula: 'ABC-123',
@@ -206,6 +225,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.EN_SUPERVISION,
+          tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 17,
           matricula: 'ABC-123',
@@ -216,6 +236,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 18,
           matricula: 'ABC-123',
@@ -226,6 +247,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 19,
           matricula: 'ABC-123',
@@ -236,6 +258,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 20,
           matricula: 'ABC-123',
@@ -246,6 +269,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 21,
           matricula: 'ABC-123',
@@ -256,6 +280,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 22,
           matricula: 'ABC-123',
@@ -266,6 +291,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 23,
           matricula: 'ABC-123',
@@ -276,6 +302,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 24,
           matricula: 'ABC-123',
@@ -291,6 +318,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       rooms: [
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 25,
           matricula: 'ABC-123',
@@ -301,6 +329,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 26,
           matricula: 'ABC-123',
@@ -311,6 +340,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 27,
           matricula: 'ABC-123',
@@ -321,6 +351,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 28,
           matricula: 'ABC-123',
@@ -331,6 +362,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 29,
           matricula: 'ABC-123',
@@ -341,6 +373,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 30,
           matricula: 'ABC-123',
@@ -351,6 +384,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 31,
           matricula: 'ABC-123',
@@ -361,6 +395,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Twin Suite',
           statusTimer: 3700,
           roomNumber: 32,
           matricula: 'ABC-123',
@@ -376,6 +411,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       rooms: [
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 33,
           matricula: 'ABC-123',
@@ -386,6 +422,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 34,
           matricula: 'ABC-123',
@@ -396,6 +433,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 35,
           matricula: 'ABC-123',
@@ -406,6 +444,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 36,
           matricula: 'ABC-123',
@@ -416,6 +455,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 37,
           matricula: 'ABC-123',
@@ -426,6 +466,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 38,
           matricula: 'ABC-123',
@@ -436,6 +477,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 39,
           matricula: 'ABC-123',
@@ -446,6 +488,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 40,
           matricula: 'ABC-123',
@@ -456,6 +499,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 41,
           matricula: 'ABC-123',
@@ -466,6 +510,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 42,
           matricula: 'ABC-123',
@@ -476,6 +521,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 43,
           matricula: 'ABC-123',
@@ -486,6 +532,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 44,
           matricula: 'ABC-123',
@@ -496,6 +543,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 45,
           matricula: 'ABC-123',
@@ -506,6 +554,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 46,
           matricula: 'ABC-123',
@@ -516,6 +565,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 47,
           matricula: 'ABC-123',
@@ -526,6 +576,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 48,
           matricula: 'ABC-123',
@@ -536,6 +587,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 49,
           matricula: 'ABC-123',
@@ -546,6 +598,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 50,
           matricula: 'ABC-123',
@@ -556,6 +609,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 51,
           matricula: 'ABC-123',
@@ -566,6 +620,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Junior Suite',
           statusTimer: 3700,
           roomNumber: 52,
           matricula: 'ABC-123',
@@ -581,6 +636,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       rooms: [
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool Villa',
           statusTimer: 3700,
           roomNumber: 53,
           matricula: 'ABC-123',
@@ -591,6 +647,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool Villa',
           statusTimer: 3700,
           roomNumber: 54,
           matricula: 'ABC-123',
@@ -606,6 +663,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       rooms: [
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 54,
           matricula: 'ABC-123',
@@ -616,6 +674,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 55,
           matricula: 'ABC-123',
@@ -626,6 +685,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 56,
           matricula: 'ABC-123',
@@ -636,6 +696,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 57,
           matricula: 'ABC-123',
@@ -646,6 +707,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 58,
           matricula: 'ABC-123',
@@ -656,6 +718,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 59,
           matricula: 'ABC-123',
@@ -666,6 +729,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 60,
           matricula: 'ABC-123',
@@ -676,6 +740,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 61,
           matricula: 'ABC-123',
@@ -686,6 +751,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 62,
           matricula: 'ABC-123',
@@ -696,6 +762,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Pool & Spa',
           statusTimer: 3700,
           roomNumber: 63,
           matricula: 'ABC-123',
@@ -711,6 +778,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       rooms: [
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Sky Suite',
           statusTimer: 3700,
           roomNumber: 64,
           matricula: 'ABC-123',
@@ -721,6 +789,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         },
         {
           status: this.statusRoom.LIBRE,
+          tipo: 'Sky Suite',
           statusTimer: 3700,
           roomNumber: 65,
           matricula: 'ABC-123',
@@ -735,9 +804,11 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
 
   constructor(
+    private readonly renderer: Renderer2,
     private readonly homeService: HomeService,
     private readonly roomService: RoomService,
-    private readonly renderer: Renderer2,
+    public dialogService: DialogService,
+    private readonly utilitiesService: UtilitiesService,
     private readonly sidebarService: SidebarService
   ) { }
 
@@ -756,9 +827,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       if(active) {
         return  this.filtrarRoomsLibresPorTipo()
       }
-      // TODO: cuando se cancela el cambio de habitacion, volver a seleccionar la habitacion visualmente
-      this.unselectRoom();
-    });
+      this.unselectLibresPorTipo();
+  });
   }
 
   ngOnDestroy(): void {
@@ -789,6 +859,48 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   }
 
   selectRoom(room: any) { //TODO: tipar la habitacion
+    if(this.isModoCambioHabitacion && !(room.status === RoomStatusEnum.LIBRE)) {
+      return;
+    }
+    if(this.isModoCambioHabitacion && room.status === RoomStatusEnum.LIBRE) {
+      const ref = this.dialogService.open(ConfimModalMessageComponent, {
+        data: {
+          message: `ESTÁS POR CAMBIAR DE LA ${this.selectedRoom.tipo} ${this.selectedRoom.roomNumber} A LA ${room.roomNumber}`
+        },
+      });
+
+      ref.onClose.subscribe(({confirmed}) => {
+        if (!confirmed) {
+          return;
+        }
+        let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
+        const roomFromIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === this.selectedRoom)!
+        const roomToIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === room)!
+
+        const fromRoomNumberTemp = this.selectedRoom.roomNumber;
+        const toRoomNumberTemp = room.roomNumber;
+
+        selectedRoomType.rooms[roomFromIndex] = room;
+        selectedRoomType.rooms[roomToIndex] = this.selectedRoom;
+
+        selectedRoomType.rooms[roomFromIndex].roomNumber = fromRoomNumberTemp;
+        selectedRoomType.rooms[roomToIndex].roomNumber = toRoomNumberTemp;
+        
+        this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
+        
+        this.roomService.toggleModoCambioHabitacion(false);
+        // this.selectRoom(selectedRoomType.rooms[roomToIndex])
+        this.utilitiesService.createTask(() => {
+          this.sidebarService.setSidebarState('roomSelected', selectedRoomType.rooms[roomToIndex])
+          this.roomsRef
+            ?.toArray()
+            .filter((roomEl) => !roomEl.nativeElement.id.endsWith('room_' + selectedRoomType.rooms[roomToIndex].roomNumber))
+            .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
+        });
+      });
+      return;
+    }
+    this.roomService.toggleModoCambioHabitacion(false);
     if(this.selectedRoom?.roomNumber === room.roomNumber) {
       // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
       this.sidebarService.setSidebarState('home');
@@ -824,7 +936,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   filtrarRoomsLibresPorTipo() {
     const selectedRoomType = this.roomsByType
       .find(type => type.rooms
-      .find((room => room === this.selectedRoom)));
+      .find((room => room.roomNumber === this.selectedRoom.roomNumber)));
     this.roomsRef?.toArray()
       .filter(room => room.nativeElement.id.startsWith(`type_${selectedRoomType?.name}`))
       .filter(room => room.nativeElement.children[0].attributes[2].nodeValue === RoomStatusEnum.LIBRE)
@@ -838,5 +950,22 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
     this.renderer.addClass(selectedRoomEl, 'no-filtro');
 
+  }
+
+  unselectLibresPorTipo() {
+    if(!this.selectedRoom) {
+      return;
+    }
+    this.roomsRef
+    ?.toArray()
+    .filter(roomEl => !roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))
+    .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
+
+    const selectedRoomEl = 
+    this.roomsRef
+    ?.toArray()
+    .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
+
+    this.renderer.removeClass(selectedRoomEl, 'no-filtro');
   }
 }
