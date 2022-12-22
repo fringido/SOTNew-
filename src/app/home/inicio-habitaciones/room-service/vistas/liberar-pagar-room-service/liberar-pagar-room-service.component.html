@@ -1,0 +1,96 @@
+<p-dialog [(visible)]="display" [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
+  <div class="container-roomservice_modal">
+    <div class="titulo-rooms_servece">
+      HABITACIÓN <b>2</b>
+    </div>
+    <div class="container-cards_comanda" >
+      <div class="card-room_service"  *ngFor="let comanda of comandas">
+        <div class="header-card_comanda" [ngClass]="style(comanda.estadoPedido)">
+          <div class="title-card_comanda">
+          <b>Orden {{comanda.numeroOrden}}</b>
+          </div>
+          <div class="status-comanda">
+            <div><b>{{comanda.abrLineaOrden}}</b></div>
+            <div>{{comanda.fechaSolicitud |date: 'shortTime'}}</div>
+            <div>{{comanda.estadoPedido}}</div>
+          </div>
+        </div>
+        <div class="container-list_products">
+          <div class="container-list_products-pay" *ngFor="let articulo of comanda.detalleComandas">
+            <div class="products-to_pay" *ngIf="!articulo.esCortesia">
+              <div><b>{{articulo.idEstadoArticulo}}&nbsp;&nbsp;</b>{{articulo.desc_Articulo}}</div><div><b>{{articulo.subTotal | currency: '$'}}</b></div>
+            </div>
+          </div>
+          <div class="title-cortesia">
+            <b>Cortesías</b>
+          </div>
+          <div class="container-list_products-cortesia" *ngFor="let articulo of comanda.detalleComandas">
+            <div class="products-to_cortesia" *ngIf="articulo.esCortesia">
+              <div><b>{{articulo.idEstadoArticulo}}&nbsp;&nbsp;</b>{{articulo.desc_Articulo}}</div><div><b>{{articulo.subTotal | currency: '$'}}</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="cobro-total-comanda" [ngClass]="style(comanda.estadoPedido)">
+          <div class="separadores-total">
+            <div class="sep-l">Subtotal</div>
+            <div class="sep-r">{{comanda.subtotal | currency: '$'}}</div>
+          </div>
+          <div class="separadores-total">
+            <div class="sep-l">Cortesía</div>
+            <div class="sep-r">{{comanda.precioCortesia | currency: '$'}}</div>
+          </div>
+          <div class="separadores-total">
+            <div class="sep-l">Descuento</div>
+            <div class="sep-r">{{0 | currency: '$'}}</div>
+          </div>
+          <div class="separadores-total">
+            <div class="sep-l"><b>Total</b></div>
+            <div class="sep-r"><b>{{comanda.total | currency: '$'}}</b></div>
+          </div>
+        </div>
+        <div class="modal-footer-content comanda">
+          <div class="footer-card">
+            <button class="button-card button-descartar">
+              <div class="icon">
+                  <i class="fa-solid fa-x"></i>
+              </div>
+              <div class="text-card">Cancelar</div>
+          </button>
+          <button  class="button-card button-print">
+            <div class="icon">
+              <i class="fa-solid fa-print"></i>
+            </div>
+            <div class="text-card">Imprimir</div>
+          </button>
+          <button  class="button-card button-change">
+            <div class="icon">
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </div>
+            <div class="text-card">Cambiar</div>
+          </button>
+          <button class="button-card button-aceptar" >
+            <div class="icon">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="text-card">Aceptar</div>
+          </button>
+
+          </div>
+        </div>
+      </div>
+      <button class="button-add_comanda"><i class="fa-sharp fa-solid fa-plus"></i></button>
+    </div>
+    <div class="modal-footer-content comanda">
+      <div class="footer-botton">
+        <button class="button-modal button-salir" (click)="salir()">
+          <div class="icon">
+            <i class="fas icon-icon-metro-exit"></i>
+          </div>
+          <div class="text">Salir</div>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</p-dialog>

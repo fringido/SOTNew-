@@ -61,7 +61,7 @@
           <div #collapse="ngbCollapse" [(ngbCollapse)]="product.value.colapse">
             <div class="form-buy-container">
               <div class="number-input-form_buy">
-                <button class="button-form" [disabled]="product.value.numProducts == 1" (click)="comandaField.at(i).patchValue({numProducts:product.value.numProducts - 1})"><i class="fa-solid fa-minus"></i></button>
+                <button type="button" class="button-form" [disabled]="product.value.numProducts == 1" (click)="comandaField.at(i).patchValue({numProducts:product.value.numProducts - 1})"><i class="fa-solid fa-minus"></i></button>
                 <input type="number" formControlName="numProducts" min="1">
                 <button class="button-form" (click)="comandaField.at(i).patchValue({numProducts:product.value.numProducts + 1})"><i class="fa-solid fa-plus"></i></button>
               </div>
