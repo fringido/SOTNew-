@@ -12,11 +12,13 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { BootstrapModule } from 'src/app/core/modules/bootstrap/bootstrap.module';
+import { LiberarPagarRoomServiceComponent } from './vistas/liberar-pagar-room-service/liberar-pagar-room-service.component';
 
 @NgModule({
   declarations: [
     RoomServiceComponent,
-    CrearComandaRoomserviceComponent
+    CrearComandaRoomserviceComponent,
+    LiberarPagarRoomServiceComponent
   ],
   imports: [
     CommonModule,
