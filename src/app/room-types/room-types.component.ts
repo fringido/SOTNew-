@@ -859,6 +859,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   }
 
   selectRoom(room: any) { //TODO: tipar la habitacion
+    // TODO: si esta en modo cambio de habitacion no se pueden seleccionar cuartos de otros tipos
     if(this.isModoCambioHabitacion && !(room.status === RoomStatusEnum.LIBRE)) {
       return;
     }
