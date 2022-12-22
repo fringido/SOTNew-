@@ -144,7 +144,7 @@
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.PREPARADA">
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openRentaHabitacion()">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion')" >
                 <span class="me-3">Entrada de habitación</span>
                 <i class="far fa-check-circle icon-pareja-ocupada"></i>
             </button>
@@ -158,7 +158,7 @@
             selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE  ?
             selectedRoom.status : ''"
         >
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openRentaExtraHabitacion()" [disabled]="isModoCambioHabitacion">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion/pagoExtraRenta')" [disabled]="isModoCambioHabitacion">
                 <span class="me-3">Extras</span>
                 <i class="fas fa-user-plus"></i>
             </button>
@@ -170,7 +170,7 @@
                 <span class="me-3">Cancelar cambio</span>
                 <i class="fas fa-sync-alt"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white"(click)="openModal('roomService')" [disabled]="isModoCambioHabitacion">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white"(click)="openModal('roomService/comandas')" [disabled]="isModoCambioHabitacion">
                 <span class="me-3">Room Service</span>
                 <i class="icon icon-roomservice"></i>
             </button>
@@ -193,11 +193,11 @@
             selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ?
             selectedRoom.status : ''"
         >
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openCobroPendiente()">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion/cobroPendiente')">
                 <span class="me-3">Cobrar Habitación</span>
                 <i class="fa-solid fa-money-bills"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" (click)="openModal('roomService')">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" (click)="openModal('roomService/comandas')">
                 <span class="me-3">Room Service</span>
                 <i class="icon icon-roomservice"></i>
             </button>

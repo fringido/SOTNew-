@@ -62,13 +62,13 @@
             </div>
             <div class="text-card">Imprimir</div>
           </button>
-          <button  class="button-card button-change">
+          <button  class="button-card button-change"[disabled]="comanda.estadoPedido != 'Preparación'" >
             <div class="icon">
               <i class="fa-solid fa-arrows-rotate"></i>
             </div>
             <div class="text-card">Cambiar</div>
           </button>
-          <button class="button-card button-aceptar" >
+          <button class="button-card button-aceptar"[disabled]="comanda.estadoPedido == 'Preparación'" (click)="aceptar(comanda.estadoPedido)">
             <div class="icon">
               <i class="fa-solid fa-check"></i>
             </div>
@@ -78,9 +78,9 @@
           </div>
         </div>
       </div>
-      <button class="button-add_comanda"><i class="fa-sharp fa-solid fa-plus"></i></button>
+      <button class="button-add_comanda" [routerLink]="'/hotel/roomService'"><i class="fa-sharp fa-solid fa-plus"></i></button>
     </div>
-    <div class="modal-footer-content comanda">
+    <div class="modal-footer-content footer">
       <div class="footer-botton">
         <button class="button-modal button-salir" (click)="salir()">
           <div class="icon">

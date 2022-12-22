@@ -446,6 +446,171 @@ export class LiberarPagarRoomServiceComponent implements OnInit {
   "precioCortesia": 2700,
   "total": 1290,
   "tieneCortesias": true
+},{
+  "idComanda": 92389,
+  "numeroOrden": 105,
+  "abrLineaOrden": "ABOS",
+  "fechaSolicitud": "2022-12-21T12:46:08.443",
+  "idEstadoPedido": 4,
+  "estadoPedido": "Por pagar",
+  "detalleComandas": [
+      {
+          "idComanda": 92389,
+          "orden": 105,
+          "idArticuloComanda": 228789,
+          "idEstadoPedido": 4,
+          "estadoPedido": "Por pagar",
+          "idEstadoArticulo": 3,
+          "estadoArticulo": "Por cobrar",
+          "fechaSolicitud": "2022-12-21T12:46:08.443",
+          "cod_Articulo": "AC0570",
+          "desc_Articulo": "CIG MARLBORO BLANCO",
+          "abr_Comanda_Linea": "ABOS",
+          "cantidad": 1,
+          "precioUnidadConIva": 100,
+          "esCortesia": false,
+          "subTotal": 3990,
+          "cod_Linea": 1864,
+          "desc_Linea": "Otros"
+      },
+      {
+          "idComanda": 92389,
+          "orden": 105,
+          "idArticuloComanda": 228790,
+          "idEstadoPedido": 4,
+          "estadoPedido": "Por pagar",
+          "idEstadoArticulo": 3,
+          "estadoArticulo": "Por cobrar",
+          "fechaSolicitud": "2022-12-21T12:46:08.443",
+          "cod_Articulo": "AC0573",
+          "desc_Articulo": "SICO SENSITIVE",
+          "abr_Comanda_Linea": "ABOS",
+          "cantidad": 1,
+          "precioUnidadConIva": 90,
+          "esCortesia": false,
+          "subTotal": 3990,
+          "cod_Linea": 1799,
+          "desc_Linea": "Spa & Sex"
+      },
+      {
+          "idComanda": 92389,
+          "orden": 105,
+          "idArticuloComanda": 228791,
+          "idEstadoPedido": 4,
+          "estadoPedido": "Por pagar",
+          "idEstadoArticulo": 3,
+          "estadoArticulo": "Por cobrar",
+          "fechaSolicitud": "2022-12-21T12:46:08.443",
+          "cod_Articulo": "AC0688",
+          "desc_Articulo": "PROMO TEQ VOLCAN BOT.",
+          "abr_Comanda_Linea": "ABOS",
+          "cantidad": 1,
+          "precioUnidadConIva": 1100,
+          "esCortesia": false,
+          "subTotal": 3990,
+          "cod_Linea": 1798,
+          "desc_Linea": "Bebidas"
+      },
+      {
+        "idComanda": 92389,
+        "orden": 105,
+        "idArticuloComanda": 228791,
+        "idEstadoPedido": 4,
+        "estadoPedido": "Por pagar",
+        "idEstadoArticulo": 3,
+        "estadoArticulo": "Por cobrar",
+        "fechaSolicitud": "2022-12-21T12:46:08.443",
+        "cod_Articulo": "AC0688",
+        "desc_Articulo": "PROMO TEQ VOLCAN BOT.",
+        "abr_Comanda_Linea": "ABOS",
+        "cantidad": 1,
+        "precioUnidadConIva": 1100,
+        "esCortesia": false,
+        "subTotal": 3990,
+        "cod_Linea": 1798,
+        "desc_Linea": "Bebidas"
+    },
+    {
+      "idComanda": 92389,
+      "orden": 105,
+      "idArticuloComanda": 228791,
+      "idEstadoPedido": 4,
+      "estadoPedido": "Por pagar",
+      "idEstadoArticulo": 3,
+      "estadoArticulo": "Por cobrar",
+      "fechaSolicitud": "2022-12-21T12:46:08.443",
+      "cod_Articulo": "AC0688",
+      "desc_Articulo": "PROMO TEQ VOLCAN BOT.",
+      "abr_Comanda_Linea": "ABOS",
+      "cantidad": 1,
+      "precioUnidadConIva": 1100,
+      "esCortesia": false,
+      "subTotal": 3990,
+      "cod_Linea": 1798,
+      "desc_Linea": "Bebidas"
+  },
+  {
+    "idComanda": 92389,
+    "orden": 105,
+    "idArticuloComanda": 228791,
+    "idEstadoPedido": 4,
+    "estadoPedido": "Por pagar",
+    "idEstadoArticulo": 3,
+    "estadoArticulo": "Por cobrar",
+    "fechaSolicitud": "2022-12-21T12:46:08.443",
+    "cod_Articulo": "AC0688",
+    "desc_Articulo": "PROMO TEQ VOLCAN BOT.",
+    "abr_Comanda_Linea": "ABOS",
+    "cantidad": 1,
+    "precioUnidadConIva": 1100,
+    "esCortesia": false,
+    "subTotal": 3990,
+    "cod_Linea": 1798,
+    "desc_Linea": "Bebidas"
+},
+      {
+          "idComanda": 92389,
+          "orden": 105,
+          "idArticuloComanda": 228792,
+          "idEstadoPedido": 4,
+          "estadoPedido": "Por pagar",
+          "idEstadoArticulo": 3,
+          "estadoArticulo": "Por cobrar",
+          "fechaSolicitud": "2022-12-21T12:46:08.443",
+          "cod_Articulo": "AC0526",
+          "desc_Articulo": "PROMO POSTRE NUTELLA CREPES",
+          "abr_Comanda_Linea": "ABOS",
+          "cantidad": 1,
+          "precioUnidadConIva": 0,
+          "esCortesia": true,
+          "subTotal": 3990,
+          "cod_Linea": 1797,
+          "desc_Linea": "Alimentos"
+      },
+      {
+          "idComanda": 92389,
+          "orden": 105,
+          "idArticuloComanda": 228793,
+          "idEstadoPedido": 4,
+          "estadoPedido": "Por pagar",
+          "idEstadoArticulo": 3,
+          "estadoArticulo": "Por cobrar",
+          "fechaSolicitud": "2022-12-21T12:46:08.443",
+          "cod_Articulo": "AC0536",
+          "desc_Articulo": "COMPLEMENTO DE HABITACION",
+          "abr_Comanda_Linea": "ABOS",
+          "cantidad": 1,
+          "precioUnidadConIva": 2700,
+          "esCortesia": true,
+          "subTotal": 3990,
+          "cod_Linea": 1864,
+          "desc_Linea": "Otros"
+      }
+  ],
+  "subtotal": 3990,
+  "precioCortesia": 2700,
+  "total": 1290,
+  "tieneCortesias": true
 }
 
   ]
@@ -474,6 +639,15 @@ export class LiberarPagarRoomServiceComponent implements OnInit {
     }
 
     return ''
+  }
+
+  aceptar(tipo:string){
+    // if(tipo == 'Por cobrar'){
+
+    // }
+    if(tipo == 'Por pagar'){
+      this.router.navigate([`/hotel/roomService/pago`]);
+    }
   }
 
 }

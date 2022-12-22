@@ -7,7 +7,7 @@ import { take } from 'rxjs/operators';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { Room } from '../../../interfaces/room.interface';
 import { RoomService } from 'src/app/room-types/services/room/room.service';
-
+import { controlHabitacion } from 'src/app/core/formsControl/controlHabitacion';
 @Component({
   selector: 'app-renta-extra-habitacion',
   templateUrl: './renta-extra-habitacion.component.html',
@@ -18,6 +18,10 @@ export class RentaExtraHabitacionComponent implements OnInit {
   form: any;
   display = true
   selectedRoom!: Room;
+
+  maxPersonas:number = 3;
+  maxHospedaje:number = 2;
+  maxHoras:number = 4;
 
 
   constructor(
@@ -50,6 +54,9 @@ export class RentaExtraHabitacionComponent implements OnInit {
         this.form.get('marca').disable();
         this.form.get('modelo').disable();
         this.form.get('color').disable();
+        this.form.get('color').disable();
+        this.form.get('comentario').disable();
+        this.form.addValidators(controlHabitacion.extrasControl)
     });
   }
 //* Inicia el formulario
