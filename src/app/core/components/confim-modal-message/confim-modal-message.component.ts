@@ -26,10 +26,10 @@ export class ConfimModalMessageComponent implements OnInit {
   }
 
   confirm() {
-    this.ref.close({confirmed: false});
+    this.ref.close({confirmed: true});
   }
   
   cancel() {
-    this.ref.close({confirmed: true});
+    this.ref.close({confirmed: false});
   }
 }
