@@ -183,9 +183,11 @@
   border-radius   : $border-button;
   border          : none;
   color           : #fff;
-  height          : 6vh;
-  width           : 3vw;
   font-size       : 20pt;
+
+  & i{
+    padding: 5px;
+  }
 
   &:hover {
     background-color: $wine-hover;
@@ -205,6 +207,14 @@
     color        : #fff;
     border       : 1px solid transparent;
     margin       : 3px;
+
+    & .icon{
+      font-size: 3vh;
+    }
+
+    & .text-card{
+      font-size: 1.8vh;
+    }
   }
 
   & .text-card {
