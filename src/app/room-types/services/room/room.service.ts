@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { Room } from '../../interfaces/room.interface';
+import { ModoAppRoomInitialState, ModoAppRoomState } from '../../state/modo-app-room.state';
 
 @Injectable()
 export class RoomService {
@@ -9,14 +10,14 @@ export class RoomService {
   private selectedRoom = new BehaviorSubject<Room | null>(null);
   selectedRoom$ = this.selectedRoom.asObservable();
 
-  private modoCambioHabitacion = new BehaviorSubject<boolean>(false);
-  modoCambioHabitacion$ = this.modoCambioHabitacion.asObservable();
+  private modoAppHabitacion = new BehaviorSubject<ModoAppRoomState>(ModoAppRoomInitialState);
+  modoAppHabitacion$ = this.modoAppHabitacion.asObservable();
 
   constructor(
   ) { }
 
-  toggleModoCambioHabitacion(active?: boolean) {
-    this.modoCambioHabitacion.next(active ?? !this.modoCambioHabitacion.value);
+  updateModoAppHabitacion(state: Partial<ModoAppRoomState>) {
+    this.modoAppHabitacion.next({...this.modoAppHabitacion.value, ...state});
   }
 
   setSelectedRoom(room: any = null) {
