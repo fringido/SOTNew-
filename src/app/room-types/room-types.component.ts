@@ -16,6 +16,7 @@ import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
 import { RoomService } from './services/room/room.service';
+import { ModoAppRoomState } from './state/modo-app-room.state';
 @Component({
   selector: 'app-room-types',
   templateUrl: './room-types.component.html',
@@ -35,7 +36,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   isIpadMini!: boolean;
 
-  isModoCambioHabitacion!: any;
+  modoAppRoom!: ModoAppRoomState;
   isModoCambioHabitacionSubs!: Subscription;
 
   @HostListener('window:resize', ['$event'])
@@ -822,12 +823,17 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         this.unselectRoom();
       }
     });
-    this.isModoCambioHabitacionSubs = this.roomService.modoCambioHabitacion$.subscribe((active) => {
-      this.isModoCambioHabitacion = active;
-      if(active) {
+    this.isModoCambioHabitacionSubs = this.roomService.modoAppHabitacion$.subscribe((state) => {
+      this.modoAppRoom = state;
+      if(state.cambio) {
         return  this.filtrarRoomsLibresPorTipo()
       }
-      this.unselectLibresPorTipo();
+      if(!state.cambio) {
+        this.unselectLibresPorTipo();
+      }
+      if(state.seleccionada) {
+        return this.unselectRoom();
+      }
   });
   }
 
@@ -859,11 +865,14 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   }
 
   selectRoom(room: any) { //TODO: tipar la habitacion
-    // TODO: si esta en modo cambio de habitacion no se pueden seleccionar cuartos de otros tipos
-    if(this.isModoCambioHabitacion && !(room.status === RoomStatusEnum.LIBRE)) {
+    // No permitir la seleccion de habitaciones de otro tipo cuando se está en modo cambio de habitacion.
+    if(this.selectedRoom && this.modoAppRoom.cambio && (this.selectedRoom.tipo !== room.tipo)) {
       return;
     }
-    if(this.isModoCambioHabitacion && room.status === RoomStatusEnum.LIBRE) {
+    if(this.modoAppRoom.cambio && !(room.status === RoomStatusEnum.LIBRE)) {
+      return;
+    }
+    if(this.modoAppRoom.cambio && room.status === RoomStatusEnum.LIBRE) {
       const ref = this.dialogService.open(ConfimModalMessageComponent, {
         data: {
           message: `ESTÁS POR CAMBIAR DE LA ${this.selectedRoom.tipo} ${this.selectedRoom.roomNumber} A LA ${room.roomNumber}`
@@ -889,8 +898,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         
         this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
         
-        this.roomService.toggleModoCambioHabitacion(false);
-        // this.selectRoom(selectedRoomType.rooms[roomToIndex])
+        this.roomService.updateModoAppHabitacion({cambio: false});
         this.utilitiesService.createTask(() => {
           this.sidebarService.setSidebarState('roomSelected', selectedRoomType.rooms[roomToIndex])
           this.roomsRef
@@ -901,11 +909,10 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       });
       return;
     }
-    this.roomService.toggleModoCambioHabitacion(false);
+    this.roomService.updateModoAppHabitacion({cambio: false});
     if(this.selectedRoom?.roomNumber === room.roomNumber) {
       // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
-      this.sidebarService.setSidebarState('home');
-      this.selectedRoom = null;
+
       return this.unselectRoom();
     }
     // Quitar sombreado a elemento que ha sido seleccionado
@@ -928,7 +935,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   }
   
   unselectRoom() {
-    this.roomService.toggleModoCambioHabitacion(false);
+    this.selectedRoom = null;
+    this.roomService.updateModoAppHabitacion({cambio: false, seleccionada: false});
     this.roomsRef
     ?.toArray()
     .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
@@ -954,6 +962,9 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   }
 
   unselectLibresPorTipo() {
+    if(this.modoAppRoom.cambio) {
+      this.roomService.updateModoAppHabitacion({cambio: false, seleccionada: true})
+    }
     if(!this.selectedRoom) {
       return;
     }

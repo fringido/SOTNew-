@@ -40,8 +40,8 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     this.selectedRoomSubs = this.sidebarService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room
     });
-    this.isModoCambioHabitacionSubs = this.roomService.modoCambioHabitacion$.subscribe((active) => {
-      this.isModoCambioHabitacion = active;
+    this.isModoCambioHabitacionSubs = this.roomService.modoAppHabitacion$.subscribe((state) => {
+      this.isModoCambioHabitacion = state.cambio;
     });
   }
 
@@ -56,6 +56,9 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       return;
     }
     // si no se está mostrando una ruta en forma de modal se cancela la deselección de la habitacion
+    if(this.isModoCambioHabitacion) {
+      return this.togggleModoCambioHabitacion(false);
+    }
     if(this.router.routerState.snapshot.url === '/hotel') {
       this.exit();
     }
@@ -84,7 +87,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   }
 
   togggleModoCambioHabitacion(active?: boolean) {
-    this.roomService.toggleModoCambioHabitacion(active ?? !this.isModoCambioHabitacion);
+    this.roomService.updateModoAppHabitacion({cambio: active ?? !this.isModoCambioHabitacion});
   }
 
   openModal(rute: string){
