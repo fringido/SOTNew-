@@ -1,0 +1,34 @@
+<div class="content-form-array">
+  <form [formGroup]="form" class="form-container">
+    <div class="button_add" (click)="quitarPago()"  [class.desactivar]="contador==2">
+      <i class="fa-solid fa-minus"></i>
+    </div>
+    <!--? INICIO DEL FOR PARA EL FORMULARIO -->
+    <div class="form-array" formArrayName="mixto" *ngFor="let pago of mixtoField.controls ; let i = index">
+      <div class="individual-formGroup" [formGroupName]="i">
+        <label>TIPO TARJETA</label>
+        <div class="tarjeta-content">
+          <i class="fa-brands fa-cc-visa tarjeta-icon-visa" (click)="selectCard(i,1)" [class.activate]="pago.value.tipoTarjeta ==  1" ></i>
+          <i class="fa-brands fa-cc-mastercard tarjeta-icon-mc" (click)="selectCard(i,2)" [class.activate]="pago.value.tipoTarjeta == 2"></i>
+          <i class="fa-brands fa-cc-amex tarjeta-icon-ax" (click)="selectCard(i,3)" [class.activate]="pago.value.tipoTarjeta == 3"></i>
+          <i class="fa-solid fa-money-bill tarjeta-efectivo" (click)="selectCard(i,4)" [class.activate]="pago.value.tipoTarjeta == 4"></i>
+        </div>
+        <label>IMPORTE:</label>
+        <p-inputNumber [min]="0" formControlName="importe"  mode="decimal" prefix="$" [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+        <div *ngIf="pago.value.tipoTarjeta != 4" class="form-condicional">
+          <label>NÚMERO DE TARJETA</label>
+          <p-inputMask minlength="4" mask="9-9-9-9" formControlName="numeroTarjeta" type="text" pInputText placeholder="Últimos 4 Dígitos">
+          </p-inputMask>
+          <label>NÚMERO DE APROBACIÓN</label>
+          <p-inputMask  mask="9 9 9 9" minlength="4" formControlName="numeroAprobacion" type="text" pInputText placeholder="Número de Aprobación"></p-inputMask>
+          <label>PROPINA</label>
+          <p-inputNumber formControlName="propina" mode="decimal" prefix="$"[minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+        </div>
+      </div>
+    </div>
+    <div class="button_add" (click)="aumentarPago()" [class.desactivar]="contador==4">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+  </form>
+ <!--? ------------------------------------- -->
+</div>

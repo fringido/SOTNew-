@@ -3,27 +3,35 @@
 .container-roomservice_modal {
   display        : flex;
   width          : 88vw;
-  height         : 88vh;
+  height         : 90vh;
   font-family    : $font-secundaria;
   flex-direction : column;
   flex-wrap      : nowrap;
   justify-content: space-between;
 
   & .titulo-rooms_servece {
-    text-align : end;
-    font-weight: 700;
-    font-size  : 17pt;
-    color      : $wine;
+    text-align   : end;
+    font-weight  : 700;
+    font-size    : 17pt;
+    color        : $wine;
+    margin-bottom: 5px;
   }
 
   & .modal-footer-content.comanda {
+    text-align: center;
+    margin: 5px 0px;
+    width     : 100%;
+  }
+
+  & .modal-footer-content.footer {
     text-align: end;
-    margin-top: 10px;
+    margin-top: 0px;
     width     : 100%;
   }
 }
 
 .container-list_products {
+  overflow: auto;
   padding: 0 5px;
 }
 
@@ -34,6 +42,9 @@
   justify-content: flex-start;
   height         : 100%;
   align-items    : center;
+  overflow-x: scroll;
+  overflow-y: clip;
+  padding: 3px 0;
 
   & .card-room_service {
     height         : 100%;
@@ -102,9 +113,10 @@
     }
 
     & .cobro-total-comanda {
-      width         : 89%;
-      margin: 0 auto;
+      width  : 89%;
+      margin: 6px auto 0;
       padding: 3px 0;
+
       & .separadores-total {
         display        : flex;
         width          : 91%;
@@ -151,33 +163,37 @@
     }
   }
 }
-.button-add_comanda{
+
+.button-add_comanda {
   background-color: $wine;
-  border-radius: $border-button;
-  border: none;
-  color: #fff;
-  height: 6vh;
-  width: 3vw;
-  font-size: 20pt;
-  &:hover{
+  border-radius   : $border-button;
+  border          : none;
+  color           : #fff;
+  height          : 6vh;
+  width           : 3vw;
+  font-size       : 20pt;
+
+  &:hover {
     background-color: $wine-hover;
   }
 }
 
 .footer-card {
-  display: flex;
-  flex-direction: row;
+  display        : flex;
+  flex-direction : row;
   justify-content: space-evenly;
-  & .button-card{
-    width: 9vh;
-    height: 9vh;
+
+  & .button-card {
+    width        : 9vh;
+    height       : 9vh;
     border-radius: 10px;
-    opacity: 1;
-    color: #fff;
-    border: 1px solid transparent;
-    margin: 3px;
+    opacity      : 1;
+    color        : #fff;
+    border       : 1px solid transparent;
+    margin       : 3px;
   }
-  & .text-card{
+
+  & .text-card {
     font-size: 8pt;
   }
 }

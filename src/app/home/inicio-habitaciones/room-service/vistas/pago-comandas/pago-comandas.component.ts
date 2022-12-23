@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
-import { RoomService } from 'src/app/room-types/services/room/room.service';
-import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
-import { Room } from '../../../../home/interfaces/room.interface';
-import { take } from 'rxjs/operators';
-@Component({
-  selector: 'app-pago-renta-habitacion',
-  templateUrl: './pago-renta-habitacion.component.html',
-  styleUrls: ['./pago-renta-habitacion.component.scss']
-})
-export class PagoRentaHabitacionComponent implements OnInit {
 
-//* Inicio de variables
+
+@Component({
+  selector: 'app-pago-comandas',
+  templateUrl: './pago-comandas.component.html',
+  styleUrls: ['./pago-comandas.component.scss']
+})
+export class PagoComandasComponent implements OnInit {
+
+  //* Inicio de variables
   display = true
   total: number = 1000;
   form!: FormGroup
   tipoDePago = new FormControl(null);
+
   tiposDePago = [
     { name: 'Efectivo', value: 1 },
     { name: 'Tarjeta', value: 2 },
@@ -27,27 +26,20 @@ export class PagoRentaHabitacionComponent implements OnInit {
     { name: 'Cortesía', value: 4 },
     { name: 'Consumo Inteerno', value: 5 }
   ];
-  selectedRoom!: Room;
-//* -------------------------------
+  //* -------------------------------
+
 
   constructor(
     private fb: FormBuilder,
     private location: Location,
     public dialogService: DialogService,
     private router: Router,
-    private readonly roomService: RoomService,
   ) {
-
     this.formoCreate();
   }
 
-
   ngOnInit(): void {
     this.menu();
-    // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
-    this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
-      return this.selectedRoom = room!;
-    });
   }
 
   //* Observa los cambios del menu para mostrar el formulario y crear el FormGroup
@@ -77,44 +69,36 @@ export class PagoRentaHabitacionComponent implements OnInit {
 
     })
   }
-//* ------------------------------------------------------
+  //* ------------------------------------------------------
 
-//* Trae el de pago mixto y de tarjeta
+  //* Trae el de pago mixto y de tarjeta
   addForm(form: FormGroup) {
     this.form = form
   }
-//* ------------------------------------------------------
+  //* ------------------------------------------------------
 
-//* Inicia el formulario en nada
+  //* Inicia el formulario en nada
   formoCreate() {
     this.form = this.fb.group({
     })
   }
-//* ------------------------------------------------------
+  //* ------------------------------------------------------
 
 
-//* BOtones de modal
+  //* BOtones de modal
   aceptar() {
     const genDialogMessage = (message: string) => {
       return this.dialogService.open(MessageModalAutoclosableComponent, {data: { message }});
     };
+    const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')
+
     this.router.navigate([`/hotel`]);
-    // TODO: mensaje para el resto de estados que activan este componente
-    if(this.selectedRoom.status === RoomStatusEnum.PREPARADA ) {
-      const ref = genDialogMessage('ENTRADA GENERADA CON ÉXITO')
-      return;
-    }
-    if(this.roomService.isroomPorCobrar(this.selectedRoom.status) ) {
-      const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')
-      return;
-    }
   }
 
   salir() {
     this.location.back()
   }
-//* ------------------------------------------------------
-
+  //* ------------------------------------------------------
 
 
 }

@@ -1,0 +1,46 @@
+@import '../../../../../../../library.scss';
+
+.content-form{
+  width: 100%;
+}
+.form-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+
+  & .tarjeta-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 31px;
+    margin-bottom: 7px;
+}
+}
+
+.tarjeta-icon-visa{
+  cursor: pointer;
+  &.activate{
+    color: $blue-visa;
+  }
+}
+.tarjeta-icon-mc{
+  cursor: pointer;
+
+  &.activate{
+    color: $orange-mc;
+  }
+}
+.tarjeta-icon-ax{
+  cursor: pointer;
+
+  &.activate{
+    color: $blue-AE;
+  }
+}

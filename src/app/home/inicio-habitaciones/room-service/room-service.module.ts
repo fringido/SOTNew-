@@ -13,12 +13,25 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { BootstrapModule } from 'src/app/core/modules/bootstrap/bootstrap.module';
 import { LiberarPagarRoomServiceComponent } from './vistas/liberar-pagar-room-service/liberar-pagar-room-service.component';
+import { PagoComandasComponent } from './vistas/pago-comandas/pago-comandas.component';
+import { PagoTarjetaComponent } from './vistas/pago-comandas/pago-tarjeta/pago-tarjeta.component';
+import { PagoMixtoComponent } from './vistas/pago-comandas/pago-mixto/pago-mixto.component';
+import {InputMaskModule} from 'primeng/inputmask';
+import {DropdownModule} from 'primeng/dropdown';
+import {CheckboxModule} from 'primeng/checkbox';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
+
+
 
 @NgModule({
   declarations: [
     RoomServiceComponent,
     CrearComandaRoomserviceComponent,
-    LiberarPagarRoomServiceComponent
+    LiberarPagarRoomServiceComponent,
+    PagoComandasComponent,
+    PagoTarjetaComponent,
+    PagoMixtoComponent
   ],
   imports: [
     CommonModule,
@@ -28,10 +41,14 @@ import { LiberarPagarRoomServiceComponent } from './vistas/liberar-pagar-room-se
     FormsModule,
     ReactiveFormsModule,
     ScrollPanelModule,
+    CheckboxModule,
     NgbCollapseModule,
+    RadioButtonModule,
     InputNumberModule,
     InputTextareaModule,
-    BootstrapModule
+    BootstrapModule,
+    DropdownModule,
+    InputMaskModule
   ]
 })
 export class RoomServiceModule { }

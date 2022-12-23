@@ -76,22 +76,12 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  openRentaHabitacion() {
-    this.router.navigate(['hotel', 'rentaHabitacion'])
-  }
-  openRentaExtraHabitacion() {
-    this.router.navigate(['hotel', 'rentaHabitacion', 'pagoExtraRenta']);
-  }
-  openCobroPendiente() {
-    this.router.navigate(['hotel', 'rentaHabitacion', 'cobroPendiente']);
-  }
-
   togggleModoCambioHabitacion(active?: boolean) {
     this.roomService.updateModoAppHabitacion({cambio: active ?? !this.isModoCambioHabitacion});
   }
 
   openModal(rute: string){
-    this.router.navigate(['hotel', rute])
+    this.router.navigate([`hotel/${rute}`])
   }
 
 }
