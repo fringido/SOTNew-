@@ -35,7 +35,7 @@
           <i *ngIf="form.controls.matricula.status == 'INVALID' && form.controls.matricula.touched == true"
             class="fa-solid fa-car" style="color: red;"></i>
           <i *ngIf="form.controls.matricula.status == 'VALID'" class="fa-solid fa-car" style="color: #0AC917;"></i>
-          <input formControlName="matricula" type="text" pInputText placeholder="Matricula">
+          <input formControlName="matricula" maxlength="9" minlength="6" type="text" pInputText placeholder="Matricula">
         </span>
       </div>
       <div class="form-component">
@@ -65,7 +65,7 @@
           <i *ngIf="form.controls.color.status == 'INVALID' && form.controls.color.touched == true"
             class="fa-solid fa-brush" style="color: red;"></i>
           <i *ngIf="form.controls.color.status == 'VALID'" class="fa-solid fa-brush" style="color: #0AC917;"></i>
-          <input formControlName="color" type="text" pInputText placeholder="Color">
+          <input formControlName="color" type="text" pInputText placeholder="Color" pKeyFilter="alpha">
         </span>
       </div>
       <div class="form-component ">

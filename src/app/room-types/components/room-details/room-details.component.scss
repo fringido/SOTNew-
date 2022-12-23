@@ -1,66 +1,68 @@
 @import '../../../../library.scss';
 
 .room-details {
-    overflow: scroll;
-    height: 60vh;
+  overflow: scroll;
+  height  : 60vh;
 }
 
 .wine {
-    color: $wine;
+  color: $wine;
 }
 
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .label-static {
-    color: $wine;
-    font-weight: 600;
+  color      : $wine;
+  font-weight: 600;
 }
 
 .label-dynamic {
-    font-weight: 700;
-    color: $grey-item;
-    border-bottom: 1px solid rgb(0, 0, 0);
-    width: 80%;
+  font-weight  : 700;
+  color        : $grey-item;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width        : 80%;
 }
 
 .others-menu {
-    height: 33vh;
-    margin: 1vh 1rem  0 !important;
-    box-shadow: 0px 0px 9px #00000073;
-    border-radius: 10px 10px 0px 0px;
-    width: 86%;
+  height       : 33vh;
+  margin       : 1vh 1rem 0 !important;
+  box-shadow   : 0px 0px 9px #00000073;
+  border-radius: 10px 10px 0px 0px;
+  width        : 86%;
 }
 
 .others-menu_button {
-    color: #fff;
-    border-radius: 5px;
-    height: 30px;
-    font-size: 10pt;
-    cursor: pointer;
-    width: 11vw;
+  color        : #fff;
+  border-radius: 5px;
+  height       : 30px;
+  font-size    : 10pt;
+  cursor       : pointer;
+  width        : 11vw;
 }
 
 .item-disabled {
-    background-color: $grey-item;
-    color: white;
+  background-color: $grey-item;
+  color           : white;
 }
 
 .list-group-item:disabled {
-    background-color: $grey-item !important;
+  background-color: $grey-item !important;
 }
 
 // Ipad mini
 @media (max-width: 1025px) and (orientation: landscape) {
-    .room-details {
-        height: 56vh;
-    }
-    .others-menu {
-        height: 36vh;
-    }
-    .others-menu_button {
-        font-size: 8pt;
-        width: 17vw;
-    }    
+  .room-details {
+    height: 56vh;
+  }
+
+  .others-menu {
+    height: 36vh;
+  }
+
+  .others-menu_button {
+    font-size: 8pt;
+    width    : 17vw;
+  }
 }

@@ -46,6 +46,7 @@ input[type=number]::-webkit-outer-spin-button {
     width         : 25%;
     height        : 77vh;
 
+
     & .title-list {
       border-radius   : $border-button;
       text-align      : center;
@@ -65,6 +66,10 @@ input[type=number]::-webkit-outer-spin-button {
       height        : 100%;
       max-height    : 77vh;
 
+      &::-webkit-scrollbar-thumb {
+        background: #ff9100;
+      }
+
       & .product {
         padding      : 0 5px;
         border       : none;
@@ -75,7 +80,8 @@ input[type=number]::-webkit-outer-spin-button {
         width        : 97%;
 
         &:hover {
-          background: #e2a95e;
+          color     : white;
+          background: #ff9100;
         }
       }
     }
@@ -107,6 +113,10 @@ input[type=number]::-webkit-outer-spin-button {
       height        : 100%;
       max-height    : 77vh;
 
+      &::-webkit-scrollbar-thumb {
+        background: #c72c41;
+      }
+
       & .product {
         padding      : 0 5px;
         border       : none;
@@ -117,7 +127,8 @@ input[type=number]::-webkit-outer-spin-button {
         width        : 97%;
 
         &:hover {
-          background: #f17b7b;
+          color     : white;
+          background: #c72c41;
         }
       }
     }
@@ -149,6 +160,10 @@ input[type=number]::-webkit-outer-spin-button {
       height        : 100%;
       max-height    : 77vh;
 
+      &::-webkit-scrollbar-thumb {
+        background: #058e6e;
+      }
+
       & .product {
         padding      : 0 5px;
         border       : none;
@@ -159,7 +174,8 @@ input[type=number]::-webkit-outer-spin-button {
         width        : 97%;
 
         &:hover {
-          background: #4bdbbc;
+          color     : white;
+          background: #058e6e;
         }
       }
     }
@@ -191,6 +207,10 @@ input[type=number]::-webkit-outer-spin-button {
       height        : 100%;
       max-height    : 77vh;
 
+      &::-webkit-scrollbar-thumb {
+        background: #7b09a6;
+      }
+
       & .product {
         padding      : 0 5px;
         border       : none;
@@ -201,7 +221,8 @@ input[type=number]::-webkit-outer-spin-button {
         width        : 97%;
 
         &:hover {
-          background: #cf7df0;
+          color     : white;
+          background: #7b09a6;
         }
       }
     }
@@ -215,17 +236,17 @@ input[type=number]::-webkit-outer-spin-button {
   flex-wrap      : nowrap;
   justify-content: space-between;
   box-shadow     : $shadow-modal-tittle;
-  border-radius  : $border-button;
+  border-radius  : $border-radius-tittle;
   text-align     : center;
-  padding        : 10px 15px;
+  padding        : 10px 15px 0px;
   font-weight    : 500;
   margin         : 15px 5px;
   width          : 25%;
-  height         : 86vh;
+  height         : 88vh;
 
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
-    border-radius: $border-button;
+    border-radius: $border-radius-tittle;
     height       : 100%;
     max-height   : fit-content;
     margin       : 5px 0;
@@ -241,8 +262,9 @@ input[type=number]::-webkit-outer-spin-button {
 
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
-    border-radius: $border-button;
+    border-radius: $border-radius-tittle;
     margin-top   : 5px;
+    font-size    : $font-normal-size;
   }
 
   & .button-cortesia {
@@ -272,18 +294,21 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow   : $shadow-modal-tittle;
     border-radius: $border-radius-tittle;
     padding      : 5px;
+    font-weight  : 400;
   }
 
   & .info-pay {
-    display: flex;
-    color  : $red-danger;
-
+    display        : flex;
+    color          : $red-danger;
+    font-size      : $font-normal-size;
     justify-content: space-between;
   }
 }
 
 .name-product {
   width: 45%;
+
+
 }
 
 .icons-product {
@@ -292,6 +317,19 @@ input[type=number]::-webkit-outer-spin-button {
   flex-direction : row;
   justify-content: space-around;
   align-items    : center;
+
+  & i.rotate {
+    transform : rotate(180deg);
+    transition: all 0.3s;
+  }
+
+  & i {
+    transition: all 0.3s;
+  }
+
+  & i.trash:hover {
+    color: $red-danger;
+  }
 }
 
 .container-buy_colapse.food {
@@ -342,15 +380,17 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   & button {
-    align-items     : center;
     border-radius   : $border-radius-tittle;
     margin-top      : 5px;
     display         : flex;
     width           : 100%;
-    justify-content : space-between;
     border          : none;
     color           : white;
     background-color: #ff9100;
+    padding-top     : 3px;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : baseline;
   }
 }
 
@@ -401,15 +441,18 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   & button {
-    align-items     : center;
-    border-radius   : $border-radius-tittle;
-    margin-top      : 5px;
+    border-radius: $border-radius-tittle;
+    margin-top   : 5px;
+    padding-top  : 3px;
+
     display         : flex;
     width           : 100%;
-    justify-content : space-between;
     border          : none;
     color           : white;
     background-color: #c72c41;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : baseline;
   }
 }
 
@@ -460,15 +503,17 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   & button {
-    align-items     : center;
     border-radius   : $border-radius-tittle;
     margin-top      : 5px;
+    padding-top     : 3px;
     display         : flex;
     width           : 100%;
-    justify-content : space-between;
     border          : 1px solid #058e6e;
     color           : white;
     background-color: #058e6e;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : baseline;
   }
 }
 
@@ -518,20 +563,19 @@ input[type=number]::-webkit-outer-spin-button {
       width     : 88%;
     }
 
-    p-inputnumber-button-up {
-      background-color: #7b09a6;
-    }
   }
 
   & .button-buy_colapse {
-    align-items     : center;
     border-radius   : $border-radius-tittle;
     margin-top      : 5px;
     display         : flex;
     width           : 100%;
-    justify-content : space-between;
     border          : none;
     color           : white;
     background-color: #7b09a6;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : baseline;
+    padding-top     : 3px;
   }
 }
