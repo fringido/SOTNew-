@@ -56,16 +56,17 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       return;
     }
     // si no se está mostrando una ruta en forma de modal se cancela la deselección de la habitacion
+    this.exit();
+
+  }
+
+  exit() {
     if(this.isModoCambioHabitacion) {
       return this.togggleModoCambioHabitacion(false);
     }
     if(this.router.routerState.snapshot.url === '/hotel') {
-      this.exit();
-    }
-  }
-
-  exit() {
     this.sidebarService.setSidebarState('home')
+    }
   }
 
   entrada() {

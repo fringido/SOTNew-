@@ -5,7 +5,7 @@ export interface ModoAppRoomState {
     noSeleccionada: boolean;
 }
 
-export const ModoAppInitialState: ModoAppRoomState = {
+export const ModoAppRoomInitialState: ModoAppRoomState = {
     cambio: false,
     seleccionada: false,
     noSeleccionada: true

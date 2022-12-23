@@ -819,7 +819,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       (isShowing) => this.isShowingSidenav = isShowing
     )
     this.sidenavStateSubs = this.sidebarService.sidebarState$.subscribe((state) => {
-      if(state !== 'roomSelected') {
+      if(state !== 'roomSelected' && this.selectedRoom) {
         this.unselectRoom();
       }
     });
@@ -866,7 +866,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   selectRoom(room: any) { //TODO: tipar la habitacion
     // No permitir la seleccion de habitaciones de otro tipo cuando se está en modo cambio de habitacion.
-    if(this.selectedRoom && this.modoAppRoom.cambio && (this.selectedRoom.tipo !== room.tipo)) {
+    if(this.selectedRoom && this.modoAppRoom.cambio && (this.selectedRoom?.tipo !== room.tipo)) {
       return;
     }
     if(this.modoAppRoom.cambio && !(room.status === RoomStatusEnum.LIBRE)) {
@@ -912,7 +912,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.roomService.updateModoAppHabitacion({cambio: false});
     if(this.selectedRoom?.roomNumber === room.roomNumber) {
       // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
-
+      console.log(this.selectedRoom?.roomNumber === room.roomNumber);
+      
       return this.unselectRoom();
     }
     // Quitar sombreado a elemento que ha sido seleccionado
@@ -936,7 +937,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   
   unselectRoom() {
     this.selectedRoom = null;
-    this.roomService.updateModoAppHabitacion({cambio: false, seleccionada: false});
+    this.sidebarService.setSidebarState('home');
+    // this.roomService.updateModoAppHabitacion({cambio: false, seleccionada: false});  
     this.roomsRef
     ?.toArray()
     .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
