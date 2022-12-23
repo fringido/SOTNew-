@@ -238,11 +238,11 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow     : $shadow-modal-tittle;
   border-radius  : $border-radius-tittle;
   text-align     : center;
-  padding        : 10px 15px;
+  padding        : 10px 15px 0px;
   font-weight    : 500;
   margin         : 15px 5px;
   width          : 25%;
-  height         : 86vh;
+  height         : 88vh;
 
   & .container-info_product_buy {
     box-shadow   : $shadow-modal-tittle;
@@ -397,6 +397,7 @@ input[type=number]::-webkit-outer-spin-button {
 .container-buy_colapse.drinks {
   background-color: #c72c41;
   border-radius   : $border-radius-tittle;
+
   & .form-buy-container {
     & .number-input-form_buy {
       display        : flex;
@@ -440,9 +441,9 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   & button {
-    border-radius   : $border-radius-tittle;
-    margin-top      : 5px;
-    padding-top: 3px;
+    border-radius: $border-radius-tittle;
+    margin-top   : 5px;
+    padding-top  : 3px;
 
     display         : flex;
     width           : 100%;
@@ -504,6 +505,7 @@ input[type=number]::-webkit-outer-spin-button {
   & button {
     border-radius   : $border-radius-tittle;
     margin-top      : 5px;
+    padding-top     : 3px;
     display         : flex;
     width           : 100%;
     border          : 1px solid #058e6e;
@@ -561,9 +563,6 @@ input[type=number]::-webkit-outer-spin-button {
       width     : 88%;
     }
 
-    p-inputnumber-button-up {
-      background-color: #7b09a6;
-    }
   }
 
   & .button-buy_colapse {
@@ -577,5 +576,6 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction  : row;
     justify-content : space-between;
     align-items     : baseline;
+    padding-top     : 3px;
   }
 }
