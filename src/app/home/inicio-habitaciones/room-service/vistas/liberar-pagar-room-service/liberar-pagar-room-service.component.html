@@ -32,19 +32,19 @@
         </div>
         <div class="cobro-total-comanda" [ngClass]="style(comanda.estadoPedido)">
           <div class="separadores-total">
-            <div class="sep-l">Subtotal</div>
+            <div class="sep-l">SUBTOTAL</div>
             <div class="sep-r">{{comanda.subtotal | currency: '$'}}</div>
           </div>
           <div class="separadores-total">
-            <div class="sep-l">Cortesía</div>
+            <div class="sep-l">CORTESÍA</div>
             <div class="sep-r">{{comanda.precioCortesia | currency: '$'}}</div>
           </div>
           <div class="separadores-total">
-            <div class="sep-l">Descuento</div>
+            <div class="sep-l">DESCUENTO</div>
             <div class="sep-r">{{0 | currency: '$'}}</div>
           </div>
           <div class="separadores-total">
-            <div class="sep-l"><b>Total</b></div>
+            <div class="sep-l"><b>TOTAL</b></div>
             <div class="sep-r"><b>{{comanda.total | currency: '$'}}</b></div>
           </div>
         </div>

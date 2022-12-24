@@ -53,6 +53,7 @@ input[type=number]::-webkit-outer-spin-button {
       background-color: #ff9100;
       color           : whitesmoke;
       margin-bottom   : 5px;
+      box-shadow      : 0px 0px 8px 0px rgba(255,145,0,1);
     }
 
     & .body-list {
@@ -61,6 +62,7 @@ input[type=number]::-webkit-outer-spin-button {
       align-items   : center;
       border-radius : $border-button;
       border        : 1px solid #ff9100;
+      box-shadow: 0px 0px 7px 0px rgb(255 145 0);
       color         : #000000c7;
       overflow-x    : auto;
       height        : 100%;
@@ -100,6 +102,7 @@ input[type=number]::-webkit-outer-spin-button {
       background-color: #c72c41;
       color           : whitesmoke;
       margin-bottom   : 5px;
+      box-shadow: 0px 0px 7px 0px rgba(199,44,65,1);
     }
 
     & .body-list {
@@ -112,6 +115,7 @@ input[type=number]::-webkit-outer-spin-button {
       overflow-x    : auto;
       height        : 100%;
       max-height    : 77vh;
+      box-shadow: 0px 0px 7px 0px rgba(199,44,65,1);
 
       &::-webkit-scrollbar-thumb {
         background: #c72c41;
@@ -147,6 +151,8 @@ input[type=number]::-webkit-outer-spin-button {
       background-color: #058e6e;
       color           : whitesmoke;
       margin-bottom   : 5px;
+      box-shadow: 0px 0px 7px 0px rgba(5,142,110,1);
+
     }
 
     & .body-list {
@@ -159,6 +165,8 @@ input[type=number]::-webkit-outer-spin-button {
       overflow-x    : auto;
       height        : 100%;
       max-height    : 77vh;
+      box-shadow: 0px 0px 7px 0px rgba(5,142,110,1);
+
 
       &::-webkit-scrollbar-thumb {
         background: #058e6e;
@@ -194,6 +202,8 @@ input[type=number]::-webkit-outer-spin-button {
       background-color: #7b09a6;
       color           : whitesmoke;
       margin-bottom   : 5px;
+      box-shadow: 0px 0px 7px 0px rgba(123,9,166,1);
+
     }
 
     & .body-list {
@@ -206,6 +216,8 @@ input[type=number]::-webkit-outer-spin-button {
       overflow-x    : auto;
       height        : 100%;
       max-height    : 77vh;
+      box-shadow: 0px 0px 7px 0px rgba(123,9,166,1);
+
 
       &::-webkit-scrollbar-thumb {
         background: #7b09a6;
@@ -272,11 +284,17 @@ input[type=number]::-webkit-outer-spin-button {
     color           : whitesmoke;
     border-radius   : 15px;
     margin          : 5px 0;
+    transition: all 0.3s;
+
 
     &.activate {
       background-color: whitesmoke;
       color           : #7b09a6;
       border          : 2px solid #7b09a6;
+      box-shadow: 0px 0px 7px 0px rgba(123,9,166,1);
+      transition: all 0.3s;
+
+
     }
   }
 

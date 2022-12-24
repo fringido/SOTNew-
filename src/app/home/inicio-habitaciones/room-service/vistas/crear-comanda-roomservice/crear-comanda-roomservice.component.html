@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-      <button class="button-cortesia" [class.activate]="cortesia" (click)="cortesia = !cortesia">ACTIVAR
+      <button class="button-cortesia" [class.activate]="!cortesia" (click)="cortesia = !cortesia">ACTIVAR
         CORTESÍA</button>
       <div class="container-info_product_buy" *ngIf="cortesia || cortesiaField.controls.length != 0">
         <div formArrayName="cortesia" *ngFor="let product of cortesiaField.controls ; let i = index">
