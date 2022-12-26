@@ -24,6 +24,8 @@ export class RoomComponent implements OnInit, OnChanges {
   @Input('tarifa') tarifa!: string;
   @Input('camaristaOCamaristas') camaristaOCamaristas!: string | number;
   @Input('supervisor') supervisor!: string;
+  // Si esta en mantenimiento se usa este atributo
+  @Input('observaciones') observaciones?: string;
   @Input('duracionTarifa') duracionTarifa: number = 0;
 
 
@@ -83,6 +85,11 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.BLUE;
       this.icon = RoomIconsEnum.SUPERVISION;
     },
+    [RoomStatusEnum.MANTENIMIENTO]: () => {
+      this.bgColor = BgColorEnum.GREY_ITEM;
+      this.textColor = TextColorEnum.GREY_ITEM;
+      this.icon = RoomIconsEnum.MANTENIMIENTO
+    }
   }
 
   constructor() { }

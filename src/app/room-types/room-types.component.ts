@@ -228,12 +228,13 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.EN_SUPERVISION,
+          status: this.statusRoom.MANTENIMIENTO,
           tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 17,
           matricula: 'ABC-123',
           tarifa: 'Pie',
+          observaciones: 'La pantalla no enciende',
           camaristaOCamaristas: 2,
           supervisor: null,
           duracionTarifa: 10000
