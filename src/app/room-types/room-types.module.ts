@@ -24,7 +24,7 @@ import { RoomService } from './services/room/room.service';
     CutStringPipe,
     PrimengModule,
     BootstrapModule,
-    MessageModalAutoclosableComponent
+    MessageModalAutoclosableComponent,
   ],
   providers: [
     RoomService
