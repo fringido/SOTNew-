@@ -31,7 +31,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   selectedRoom!: any; //TODO: tipar la habitacion
 
-  @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef>;
+  @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef<HTMLDivElement>>;
   @ViewChildren('roomsTypeRef') roomsTypeRef!: QueryList<ElementRef>;
 
   isIpadMini!: boolean;
@@ -899,13 +899,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
         
         this.roomService.updateModoAppHabitacion({cambio: false});
-        this.utilitiesService.createTask(() => {
-          this.sidebarService.setSidebarState('roomSelected', selectedRoomType.rooms[roomToIndex])
-          this.roomsRef
-            ?.toArray()
-            .filter((roomEl) => !roomEl.nativeElement.id.endsWith('room_' + selectedRoomType.rooms[roomToIndex].roomNumber))
-            .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
-        });
+        this.unselectRoom();
       });
       return;
     }
@@ -950,7 +944,9 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       .find((room => room.roomNumber === this.selectedRoom.roomNumber)));
     this.roomsRef?.toArray()
       .filter(room => room.nativeElement.id.startsWith(`type_${selectedRoomType?.name}`))
-      .filter(room => room.nativeElement.children[0].attributes[2].nodeValue === RoomStatusEnum.LIBRE)
+      .filter(room => {
+        return room.nativeElement.children[0].attributes.getNamedItem('custom-status')?.nodeValue === RoomStatusEnum.LIBRE
+      })
       .forEach((room) => {
         this.renderer.removeClass(room.nativeElement, 'no-filtro')
     });

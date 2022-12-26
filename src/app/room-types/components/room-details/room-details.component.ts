@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { RoomService } from '../../services/room/room.service';
@@ -28,10 +29,14 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   isModoCambioHabitacion!: any;
   isModoCambioHabitacionSubs!: Subscription;
 
+  isModalOpen!: boolean;
+  isModalOpenSubs!: Subscription;
+
   constructor(
     private readonly renderer: Renderer2,
     private readonly router: Router,
     public dialogService: DialogService,
+    private modalService: ModalService,
     private readonly sidebarService: SidebarService,
     private readonly roomService: RoomService,
   ) { }
@@ -43,16 +48,19 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     this.isModoCambioHabitacionSubs = this.roomService.modoAppHabitacion$.subscribe((state) => {
       this.isModoCambioHabitacion = state.cambio;
     });
+    this.isModalOpenSubs = this.modalService.isModalOpen$.subscribe((isOpen) => this.isModalOpen = isOpen)
   }
 
   ngOnDestroy(): void {
     this.selectedRoomSubs.unsubscribe();
+    this.isModalOpenSubs.unsubscribe();
+    this.isModoCambioHabitacionSubs.unsubscribe();
   }
 
 
   @HostListener('document:keydown', ['$event'])
   onEscapeHandler(event: KeyboardEvent) {
-    if(event.key !== 'Escape') {
+    if(event.key !== 'Escape' || this.isModalOpen) {
       return;
     }
     // si no se está mostrando una ruta en forma de modal se cancela la deselección de la habitacion

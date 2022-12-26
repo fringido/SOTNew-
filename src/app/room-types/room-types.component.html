@@ -11,6 +11,7 @@
             <div class="d-flex justify-content-start flex-wrap">
                 <div #roomsRef *ngFor="let room of roomType.rooms" id="type_{{roomType.name}}__room_{{room.roomNumber}}">
                     <app-room
+                    [attr.custom-status]="room.status"
                     [status]="room.status"
                     [statusTimer]="room.statusTimer"
                     [roomNumber]="room.roomNumber"
