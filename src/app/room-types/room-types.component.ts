@@ -8,10 +8,12 @@ import {
   ElementRef,
   Renderer2,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { ConfimModalMessageComponent } from '../core/components/confim-modal-message/confim-modal-message.component';
 import { UtilitiesService } from '../core/services/utilitiesService/utilities.service';
+import { CambioHabitacionService } from '../home/inicio-habitaciones/entrada-habitacion/services/cambio-habitacion/cambio-habitacion.service';
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
@@ -38,6 +40,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   modoAppRoom!: ModoAppRoomState;
   isModoCambioHabitacionSubs!: Subscription;
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -806,11 +809,13 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly renderer: Renderer2,
+    private readonly router: Router,
     private readonly homeService: HomeService,
     private readonly roomService: RoomService,
     public dialogService: DialogService,
     private readonly utilitiesService: UtilitiesService,
-    private readonly sidebarService: SidebarService
+    private readonly sidebarService: SidebarService,
+    private readonly cambioHabitacionService: CambioHabitacionService
   ) { }
 
   ngOnInit(): void {
@@ -834,7 +839,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       if(state.seleccionada) {
         return this.unselectRoom();
       }
-  });
+    });
   }
 
   ngOnDestroy(): void {
@@ -883,23 +888,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         if (!confirmed) {
           return;
         }
-        let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
-        const roomFromIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === this.selectedRoom)!
-        const roomToIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === room)!
-
-        const fromRoomNumberTemp = this.selectedRoom.roomNumber;
-        const toRoomNumberTemp = room.roomNumber;
-
-        selectedRoomType.rooms[roomFromIndex] = room;
-        selectedRoomType.rooms[roomToIndex] = this.selectedRoom;
-
-        selectedRoomType.rooms[roomFromIndex].roomNumber = fromRoomNumberTemp;
-        selectedRoomType.rooms[roomToIndex].roomNumber = toRoomNumberTemp;
-        
-        this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
-        
-        this.roomService.updateModoAppHabitacion({cambio: false});
-        this.unselectRoom();
+        this.router.navigate(['hotel/rentaHabitacion/cambio']);
+        this.cambioHabitacionService.cambioHabitacionConfirmado$.pipe(take(1)).subscribe((confirmed) => {
+          if(confirmed) {
+            this.cambiarHabitacion(room);
+          }
+        });
       });
       return;
     }
@@ -977,5 +971,25 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
 
     this.renderer.removeClass(selectedRoomEl, 'no-filtro');
+  }
+
+  cambiarHabitacion(room: any) {//TODO: tipar habitacion
+    let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
+    const roomFromIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === this.selectedRoom)!
+    const roomToIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === room)!
+
+    const fromRoomNumberTemp = this.selectedRoom.roomNumber;
+    const toRoomNumberTemp = room.roomNumber;
+
+    selectedRoomType.rooms[roomFromIndex] = room;
+    selectedRoomType.rooms[roomToIndex] = this.selectedRoom;
+
+    selectedRoomType.rooms[roomFromIndex].roomNumber = fromRoomNumberTemp;
+    selectedRoomType.rooms[roomToIndex].roomNumber = toRoomNumberTemp;
+    
+    this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
+    
+    this.roomService.updateModoAppHabitacion({cambio: false});
+    this.unselectRoom();
   }
 }

@@ -19,6 +19,7 @@ import { PagoMixtoComponent } from './pago-renta-habitacion/pago-mixto/pago-mixt
 import {InputMaskModule} from 'primeng/inputmask';
 import { CobrarPendienteHabitacionComponent } from './cobrar-pendiente-habitacion/cobrar-pendiente-habitacion.component';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import { CambioHabitacionComponent } from './cambio-habitacion/cambio-habitacion.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     PagoRentaHabitacionComponent,
     RentaExtraHabitacionComponent,
     CobrarPendienteHabitacionComponent,
+    CambioHabitacionComponent,
     PagoTarjetaComponent,
     PagoMixtoComponent,
   ],
@@ -45,6 +47,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     DialogModule,
     InputMaskModule
   ],
+  providers: [],
   exports:[]
 })
 export class EntradaHabitacionModule { }

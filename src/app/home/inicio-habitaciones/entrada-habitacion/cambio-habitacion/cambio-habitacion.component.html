@@ -1,0 +1,50 @@
+<p-dialog [(visible)]="display" [modal]="true" [closable]="false" [draggable]="false" header="SELECCIONA UN MOTIVO" [style]="{'width': '30vw'}" [breakpoints]="{'1024px': '35vw'}">
+    <form [formGroup]="motivoForm">
+        <div class="d-flex flex-column flex-wrap">
+            <div class="row d-flex justify-content-center my-4">
+                <button 
+                    class="boton-motivo shadow"
+                    (click)="setMotivo('Mantenimiento')"
+                    [ngClass]="{'boton-motivo__selected': motivoValue === 'Mantenimiento'}"
+                >
+                    MANTENIMIENTO
+                </button>
+                <button 
+                    class="boton-motivo shadow"
+                    (click)="setMotivo('Fumigacion')"
+                    [ngClass]="{'boton-motivo__selected': motivoValue === 'Fumigacion'}"
+                >
+                    FUMIGACIÓN
+                </button>
+                <button 
+                    class="boton-motivo shadow"
+                    (click)="setMotivo('Otro')"
+                    [ngClass]="{'boton-motivo__selected': motivoValue === 'Otro'}"
+                >
+                    OTRO
+                </button>
+            </div>
+            <div class="row">
+
+                <span class="p-float-label text-area">
+                    <textarea formControlName="comentarios" id="float-input" rows="3" cols="26" pInputTextarea></textarea>
+                    <label for="float-input">Observaciones</label>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer-content">
+            <button (click)="back()" class="button-modal button-descartar">
+                <div class="icon">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+                <div class="text">Cancelar</div>
+            </button>
+            <button (click)="confirm()" class="button-modal button-aceptar">
+                <div class="icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="text">Aceptar</div>
+            </button>
+        </div>
+    </form>
+</p-dialog>
