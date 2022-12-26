@@ -4,6 +4,7 @@
       HABITACIÓN <b>2</b>
     </div>
     <div class="container-cards_comanda" >
+      <!--? INICIO DE LAS TARJETAS -->
       <div class="card-room_service"  *ngFor="let comanda of comandas">
         <div class="header-card_comanda" [ngClass]="style(comanda.estadoPedido)">
           <div class="title-card_comanda">
@@ -78,6 +79,7 @@
           </div>
         </div>
       </div>
+      <!--? ------------------------------- -->
       <button class="button-add_comanda" [routerLink]="'/hotel/roomService'"><i class="fa-sharp fa-solid fa-plus"></i></button>
     </div>
     <div class="modal-footer-content footer">

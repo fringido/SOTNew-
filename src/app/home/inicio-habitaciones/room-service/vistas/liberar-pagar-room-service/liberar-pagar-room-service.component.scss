@@ -12,7 +12,7 @@
   & .titulo-rooms_servece {
     text-align   : end;
     font-weight  : 700;
-    font-size    : 17pt;
+    font-size    : 15pt;
     color        : $wine;
     margin-bottom: 5px;
   }
@@ -24,15 +24,17 @@
   }
 
   & .modal-footer-content.footer {
-    text-align: end;
-    margin-top: 0px;
-    width     : 100%;
+    justify-content: end;
+    margin-top     : 0px;
+    width          : 100%;
   }
 }
 
 .container-list_products {
+  font-family     : $font-secundaria;
   overflow: auto;
   padding : 0 5px;
+  height: 100%;
 }
 
 .container-cards_comanda {
@@ -57,15 +59,18 @@
     justify-content: space-between;
 
     .header-card_comanda {
-
+      // font-family: $font-secundaria;
       display       : flex;
       width         : 89%;
       flex-direction: column;
       margin        : 10px auto 18px;
       align-items   : center;
 
+      &b{
+        font-family: $font-principal;
+      }
+
       &.preparacion {
-        font-family     : $font-secundaria;
         border-radius   : $border-radius-tittle;
         background-color: #F0FFF1;
         border          : 1px solid;
@@ -184,8 +189,9 @@
   border          : none;
   color           : #fff;
   font-size       : 20pt;
-
-  & i{
+  box-shadow      : 0px 0px 8px 0px rgba(128,19,54,0.81);
+  margin-right: 6px;
+  & i {
     padding: 5px;
   }
 
@@ -198,6 +204,8 @@
   display        : flex;
   flex-direction : row;
   justify-content: space-evenly;
+  margin-top: 5px;
+
 
   & .button-card {
     width        : 9vh;
@@ -208,11 +216,11 @@
     border       : 1px solid transparent;
     margin       : 3px;
 
-    & .icon{
+    & .icon {
       font-size: 3vh;
     }
 
-    & .text-card{
+    & .text-card {
       font-size: 1.8vh;
     }
   }

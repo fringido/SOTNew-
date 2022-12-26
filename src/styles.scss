@@ -171,6 +171,10 @@ textarea {
 
 .modal-footer-content {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
   margin-top: 10px;
   width     : 100%;
 
@@ -224,10 +228,6 @@ textarea {
 
 .button-ver {
   background-color: $gren-button-ver;
-}
-
-mat-sidenav {
-  width: 15rem;
 }
 
 

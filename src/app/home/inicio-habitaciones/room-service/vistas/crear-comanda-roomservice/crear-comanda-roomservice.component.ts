@@ -14,24 +14,29 @@ import { controlFormMixto } from 'src/app/core/formsControl/controlFormMixto';
 })
 export class CrearComandaRoomserviceComponent implements OnInit {
 
+//* VARIABLES
+  //? VARIABLES PARA FUNCIONAMIENTO LÓGICO
   display = true
+  cortesia: boolean = false
+  //? -----------------------------------
+  //? VARIABLES PARA LAS LISTAS DE PRODUCTOS Y FILTRO
   filterText!: FormControl
-  form!: FormGroup;
   food: any
   drinks: any
   other: any
   sexyspa: any
-
-  cortesia: boolean = false
-
   foodAll: any
   drinksAll: any
   otherAll: any
   sexyspaAll: any
-
+  //? -----------------------------------
+  //? VARIABLES DE FORMULARIO
+  form!: FormGroup;
   total: number= 0
   subTotal: number=0
   descuento:number=0
+  //? -----------------------------------
+//* -----------------------------------
   productos = {
     "alimentos": [
       {
@@ -4339,6 +4344,7 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     this.search();
   }
 
+//* INICIANDO LAS LISTAS
   initList() {
     this.food = this.productos.alimentos
     this.drinks = this.productos.bebidas
@@ -4350,8 +4356,8 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     this.otherAll = this.other
     this.sexyspaAll = this.sexyspa
   }
-
-
+ //* ------------------------------------------
+  //* FUNCION DE BUSQUEDA DE PRODUCTO
   search() {
     this.filterText = new FormControl("");
     this.filterText.valueChanges
@@ -4382,7 +4388,8 @@ export class CrearComandaRoomserviceComponent implements OnInit {
         }
       });
   }
-
+ //* ------------------------------------------
+ //* SUMA PARA SACAR EL SUBTOTAL Y RESTA PARA SACAR EL TOTAL
   sumatoriaTotal(){
     this.form.valueChanges.subscribe( () =>{
       this.subTotal = 0
@@ -4400,13 +4407,12 @@ export class CrearComandaRoomserviceComponent implements OnInit {
       console.log(this.form)
     })
   }
-
-  salir() {
-    this.router.navigate([`/hotel`]);
-  }
+ //* ------------------------------------------
 
 
 
+ //* ------------------------------------------
+ //*EMPUJA UN FURMULARIO DEPENDIENDO DE EL ESTADO DEL BOTON CORTESIA
   selectProduct(product: any, tipo: string) {
     if (this.cortesia) {
       this.cortesiaField.push(
@@ -4436,6 +4442,11 @@ export class CrearComandaRoomserviceComponent implements OnInit {
       )
     }
   }
+ //* ------------------------------------------
+  //*BOTONES DE MODAL
+  salir() {
+    this.router.navigate([`/hotel`]);
+  }
 
   aceptar(){
     const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
@@ -4445,7 +4456,7 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     });
     this.router.navigate([`/hotel`]);
   }
-
+ //* ------------------------------------------
 
 
 }

@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./liberar-pagar-room-service.component.scss']
 })
 export class LiberarPagarRoomServiceComponent implements OnInit {
-
+//* VARIABLES
   display = true
-
+//* ---------------
   comandas = [
     {
       "idComanda": 92389,
@@ -621,11 +621,7 @@ export class LiberarPagarRoomServiceComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  salir(){
-    this.router.navigate([`/hotel`]);
-  }
-
+//* FUNCION PARA LOS CAMBIOS DE ESTILO
   style(estado:string){
 
     if(estado == 'Preparación'){
@@ -640,6 +636,12 @@ export class LiberarPagarRoomServiceComponent implements OnInit {
 
     return ''
   }
+ //* ------------------------------------------
+
+ //* BOTONES MODAL
+  salir(){
+    this.router.navigate([`/hotel`]);
+  }
 
   aceptar(tipo:string){
     // if(tipo == 'Por cobrar'){
@@ -649,5 +651,5 @@ export class LiberarPagarRoomServiceComponent implements OnInit {
       this.router.navigate([`/hotel/roomService/pago`]);
     }
   }
-
+ //* ------------------------------------------
 }
