@@ -1,0 +1,37 @@
+@import '../../../../library.scss';
+
+h5 {
+    font-weight: 700;
+}
+
+.room-type__item {
+    cursor: pointer;
+    border-radius: 5px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.room-type__item:hover {
+    background-color: $wine;
+    .menu-item__text {
+        color: white;
+    }
+}
+
+.nav-item {
+    height: 4vh;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 20%);
+}
+
+.menu-item__text {
+    color: $grey-item;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+.divider {
+    height: 2px;
+    width: 100%;
+    background-color: $wine;
+}

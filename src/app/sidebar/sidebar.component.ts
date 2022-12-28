@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { HomeService } from '../home/services/home/home.service';
+import { SidebarState } from './interfaces/sidebar-state.interface';
 import { SidebarService } from './services/sidebar/sidebar.service';
 
 @Component({
@@ -7,13 +9,10 @@ import { SidebarService } from './services/sidebar/sidebar.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
 
-  sidebarState$ = this.sidebarService.sidebarState$;
-
-  isHomeMenuSelected = true;
-  isAdminMenuSelected = false;
-  isBurguerMenuSelected = false;
+  sidebarStateSubs!: Subscription;
+  sidebarState!: SidebarState;
 
   constructor(
     private readonly sidebarService: SidebarService,
@@ -21,6 +20,13 @@ export class SidebarComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.sidebarStateSubs = this.sidebarService.sidebarState$.subscribe((state) => {
+      this.sidebarState = state;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sidebarStateSubs.unsubscribe();
   }
 
   toggle() {
@@ -29,22 +35,13 @@ export class SidebarComponent implements OnInit {
 
   selectMenu(state: 'home' | 'admin' | 'burguer') {
     if (state === 'home') {
-      this.isHomeMenuSelected = true;
-      this.isAdminMenuSelected = false;
-      this.isBurguerMenuSelected = false;
-      return;
+      return this.sidebarService.setSidebarState('home')
     }
     if (state === 'admin') {
-      this.isHomeMenuSelected = false;
-      this.isAdminMenuSelected = true;
-      this.isBurguerMenuSelected = false;
-      return;
+      return this.sidebarService.setSidebarState('admin')
     }
     if (state === 'burguer') {
-      this.isHomeMenuSelected = false;
-      this.isAdminMenuSelected = false;
-      this.isBurguerMenuSelected = true;
-      return;
+      return this.sidebarService.setSidebarState('hamburguesa')
     }
   }
 

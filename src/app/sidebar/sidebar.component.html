@@ -1,5 +1,5 @@
 <nav class="d-lg-block sidebar bg-white shadow">
-    <ng-container *ngIf="(sidebarState$ | async) !== 'roomSelected'; else roomSelected">
+    <ng-container *ngIf="sidebarState !== 'roomSelected'; else roomSelected">
         <div class="w-100 d-flex justify-content-end">
             <i class="fas fa-times-circle mx-2 mt-1 wine" (click)="toggle()"></i>
         </div>
@@ -8,32 +8,34 @@
                 class="d-flex flex-column justify-content-center align-items-center rounded "
                 style="width: 55px; height: 55px;"
                 (click)="selectMenu('home')"
-                [ngClass]="{'shadowed menu-box': isHomeMenuSelected}"
+                [ngClass]="{'shadowed menu-box': sidebarState === 'home'}"
             >
                 <i class="fas fa-home wine menu-icon mb-1"></i>
-                <div class="divider" *ngIf="!isHomeMenuSelected"></div>
+                <div class="divider" *ngIf="sidebarState !== 'home'"></div>
             </div>
             <div class="shadowed menu-box d-flex flex-column justify-content-center align-items-center rounded"
             style="width: 55px; height: 55px;"
                 (click)="selectMenu('admin')"
-                [ngClass]="{'shadowed menu-box': isAdminMenuSelected}"
+                [ngClass]="{'shadowed menu-box': sidebarState === 'admin'}"
             >
                 <i class="far fa-user wine menu-icon mb-1"></i>
-                <div class="divider" *ngIf="!isAdminMenuSelected"></div>
+                <div class="divider" *ngIf="sidebarState !== 'admin'"></div>
 
             </div>
             <div class="menu-box d-flex flex-column justify-content-center align-items-center rounded"
             style="width: 55px; height: 55px;"
                 (click)="selectMenu('burguer')"
-                [ngClass]="{'shadowed menu-box': isBurguerMenuSelected}"
+                [ngClass]="{'shadowed menu-box': sidebarState === 'hamburguesa'}"
             >
                 <i class="fas fa-bars wine menu-icon mb-1"></i>
-                <div class="divider" *ngIf="!isBurguerMenuSelected"></div>
+                <div class="divider" *ngIf="sidebarState !== 'hamburguesa'"></div>
 
             </div>
         </div>
-        <ng-container [ngSwitch]="sidebarState$ | async">
+        <ng-container [ngSwitch]="sidebarState">
             <app-rooms-menu *ngSwitchCase="'home'"></app-rooms-menu>
+            <app-admin-menu *ngSwitchCase="'admin'"></app-admin-menu>
+            <app-hamburguesa-menu *ngSwitchCase="'hamburguesa'"></app-hamburguesa-menu>
         </ng-container>
     </ng-container>
     <ng-template #roomSelected>
