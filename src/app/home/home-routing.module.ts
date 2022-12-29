@@ -21,7 +21,7 @@ const routes: Routes = [
         component: DarEntradaHabitacionComponent
       },
       {
-        path: 'mandar-limpieza',
+        path: 'salida',
         loadChildren: () => import('../salida/salida.module').then((m) => m.SalidaModule)
       }
     ]

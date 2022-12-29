@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
@@ -18,7 +19,7 @@ export class MandarLimpiezaHabitacionComponent implements OnInit, OnDestroy{
   constructor(
     private readonly dialogService: DialogService,
     private readonly roomService: RoomService,
-    private readonly location: Location
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class MandarLimpiezaHabitacionComponent implements OnInit, OnDestroy{
         message: 'Se ha terminado la renta de la habitación'
       }
     });
-    this.location.back();
+    this.router.navigate(['/hotel'])
   }
 
   enviarLimpiezaSucia() {

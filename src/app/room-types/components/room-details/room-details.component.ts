@@ -98,9 +98,14 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       if(!confirmed) {
         return;
       }
-      this.router.navigate(['/hotel/mandar-limpieza'])
+      this.router.navigate(['/hotel/salida/enviar-limpieza'])
     });
     
+  }
+
+  asignarLimpieza() {
+    this.router.navigate(['/hotel/salida/limpieza'])
+
   }
 
   togggleModoCambioHabitacion(active?: boolean) {
