@@ -8,6 +8,12 @@
         </div>
         <div class="text">Cancelar</div>
     </button>
+    <button type="button" class="button-modal button-blue" *ngIf="showVideoButton">
+        <div class="icon">
+            <i class="fas fa-video"></i>
+        </div>
+        <div class="text">Vincular</div>
+    </button>
     <button (click)="confirm()" class="button-modal button-aceptar">
         <div class="icon">
             <i class="fa-solid fa-check"></i>

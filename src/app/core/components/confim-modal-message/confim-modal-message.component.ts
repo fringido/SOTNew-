@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PrimengModule } from '../../modules/primeng/primeng.module';
@@ -7,12 +8,13 @@ import { ModalService } from '../../services/modal.service';
   selector: 'app-confim-modal-message',
   templateUrl: './confim-modal-message.component.html',
   standalone: true,
-  imports: [PrimengModule],
+  imports: [PrimengModule, CommonModule],
   styleUrls: ['./confim-modal-message.component.scss']
 })
 export class ConfimModalMessageComponent implements OnInit {
 
   message = this.config.data.message;
+  showVideoButton = this.config.data.withVideoButton;
 
   constructor(
     public ref: DynamicDialogRef,
