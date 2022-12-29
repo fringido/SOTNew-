@@ -1,0 +1,31 @@
+@import '/src/library.scss';
+
+.auth_form {
+  display       : flex;
+  flex-direction: column;
+  flex-wrap     : nowrap;
+  align-items   : center;
+  margin        : 10px;
+  border-radius: 15px;
+}
+
+label {
+  margin: 10px;
+}
+
+.icon-header {
+  text-align   : center;
+  padding      : 5px 10px;
+  font-size    : 80px;
+  color        : $wine;
+  width        : -moz-fit-content;
+  width        : fit-content;
+  border-radius: 10px;
+  margin       : 12px auto 20px;
+  box-shadow   : 7px 0.7rem 1.7rem rgb(0 0 0 / 28%);
+
+  &.acces {
+    background-color: $wine;
+    color           : whitesmoke;
+  }
+}

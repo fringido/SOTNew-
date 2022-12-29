@@ -20,6 +20,13 @@ const routes: Routes = [
       },{
         path: 'entradaDeHabitacion',
         component: DarEntradaHabitacionComponent
+      },{
+        path: 'mantenimiento',
+        loadChildren:() => import('./inicio-habitaciones/mantenimiento/mantenimiento.module').then((m) => m.MantenimientoModule)
+      }
+      ,{
+        path: 'deshabilitarHabitacion',
+        loadChildren:() => import('./inicio-habitaciones/deshabilitar-habitacion/deshabilitar-habitacion.module').then((m) => m.DeshabilitarHabitacionModule)
       }
     ]
   },

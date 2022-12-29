@@ -1,0 +1,33 @@
+<p-dialog header="SELECCIONA UN MOTIVO" [(visible)]="display" [closable]="false" [modal]="true" [draggable]="false"
+  [showHeader]="true">
+  <form class="container-mantenimiento" [formGroup]="form">
+    <div class="button_opcion">
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 1" (click)="selectTipo(1)">BLOQUEO</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 2" (click)="selectTipo(2)">FUMIGACIÓN</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 3" (click)="selectTipo(3)">MANTENIMIENTO</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 4" (click)="selectTipo(4)">PARA RESERVACIÓN</button>
+    </div>
+    <div class="container_textarea">
+      <span class="text-area">
+        <textarea formControlName="motivo" placeholder="OBSERVACIONES" rows="4" cols="36" pInputTextarea></textarea>
+      </span>
+    </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <div class="modal-footer-content">
+      <button class="button-modal button-descartar" (click)="salir()">
+        <div class="icon">
+          <i class="fa-solid fa-x"></i>
+        </div>
+        <div class="text">Cancelar</div>
+      </button>
+      <button (click)="aceptar()" class="button-modal button-aceptar" [disabled]="form.invalid">
+        <div class="icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="text">Aceptar</div>
+      </button>
+    </div>
+  </ng-template>
+
+</p-dialog>
