@@ -117,4 +117,27 @@
             <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
+    <div 
+        class="d-flex justify-content-between roomCard"
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
+        *ngSwitchCase="AvailableRoomStatus.MANTENIMIENTO">
+        <span class="span-usuario-card"></span>
+        <div class="text-center alert-blink-box animated flash slower infinite alert-sot-blue" *ngIf="statusTimer > 3600">
+            <i class="icon-clock"></i>
+        </div>
+        <div>
+            <div class="limitDescription font-10px label-state">
+                {{status|cutString:10}}
+            </div>
+            <div class="numero-habitacion">
+                {{roomNumber}}
+            </div>
+            <div class="position-absolute font-10px label-state pie-adjust"> 
+                {{observaciones+''|cutString:10}} 
+            </div>
+        </div>
+        <div class="estilo-icon-in">
+            <i [ngClass]="[icon, textColor]"></i>
+        </div>
+    </div>
 </div>

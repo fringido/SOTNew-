@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription, take } from 'rxjs';
 import { ConfimModalMessageComponent } from '../core/components/confim-modal-message/confim-modal-message.component';
-import { UtilitiesService } from '../core/services/utilitiesService/utilities.service';
 import { CambioHabitacionService } from '../home/inicio-habitaciones/entrada-habitacion/services/cambio-habitacion/cambio-habitacion.service';
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
@@ -228,12 +227,13 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.EN_SUPERVISION,
+          status: this.statusRoom.MANTENIMIENTO,
           tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 17,
           matricula: 'ABC-123',
           tarifa: 'Pie',
+          observaciones: 'La pantalla no enciende',
           camaristaOCamaristas: 2,
           supervisor: null,
           duracionTarifa: 10000
@@ -813,7 +813,6 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     private readonly homeService: HomeService,
     private readonly roomService: RoomService,
     public dialogService: DialogService,
-    private readonly utilitiesService: UtilitiesService,
     private readonly sidebarService: SidebarService,
     private readonly cambioHabitacionService: CambioHabitacionService
   ) { }
@@ -878,30 +877,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       return;
     }
     if(this.modoAppRoom.cambio && room.status === RoomStatusEnum.LIBRE) {
-      const ref = this.dialogService.open(ConfimModalMessageComponent, {
-        data: {
-          message: `ESTÁS POR CAMBIAR DE LA ${this.selectedRoom.tipo} ${this.selectedRoom.roomNumber} A LA ${room.roomNumber}`
-        },
-      });
-
-      ref.onClose.subscribe(({confirmed}) => {
-        if (!confirmed) {
-          return;
-        }
-        this.router.navigate(['hotel/rentaHabitacion/cambio']);
-        this.cambioHabitacionService.cambioHabitacionConfirmado$.pipe(take(1)).subscribe((confirmed) => {
-          if(confirmed) {
-            this.cambiarHabitacion(room);
-          }
-        });
-      });
+      this.mostrarMensajeConfirmarCambioHabitacion(room);
       return;
     }
     this.roomService.updateModoAppHabitacion({cambio: false});
     if(this.selectedRoom?.roomNumber === room.roomNumber) {
       // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
-      console.log(this.selectedRoom?.roomNumber === room.roomNumber);
-      
       return this.unselectRoom();
     }
     // Quitar sombreado a elemento que ha sido seleccionado
@@ -926,7 +907,6 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   unselectRoom() {
     this.selectedRoom = null;
     this.sidebarService.setSidebarState('home');
-    // this.roomService.updateModoAppHabitacion({cambio: false, seleccionada: false});  
     this.roomsRef
     ?.toArray()
     .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
@@ -991,5 +971,25 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     
     this.roomService.updateModoAppHabitacion({cambio: false});
     this.unselectRoom();
+  }
+
+  mostrarMensajeConfirmarCambioHabitacion(room: any) {
+    const ref = this.dialogService.open(ConfimModalMessageComponent, {
+      data: {
+        message: `ESTÁS POR CAMBIAR DE LA ${this.selectedRoom.tipo} ${this.selectedRoom.roomNumber} A LA ${room.roomNumber}`
+      },
+    });
+
+    ref.onClose.subscribe(({confirmed}) => {
+      if (!confirmed) {
+        return;
+      }
+      this.router.navigate(['hotel/rentaHabitacion/cambio']);
+      this.cambioHabitacionService.cambioHabitacionConfirmado$.pipe(take(1)).subscribe((confirmed) => {
+        if(confirmed) {
+          this.cambiarHabitacion(room);
+        }
+      });
+    });
   }
 }

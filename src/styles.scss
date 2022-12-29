@@ -337,6 +337,10 @@ $lvl10: 100;
 }
 
 // mixins para color de textos
+@mixin txt-wine {
+  color: $wine;
+}
+
 @mixin txt-success {
   color: $green-item;
 }
@@ -366,6 +370,10 @@ $lvl10: 100;
 }
 
 // Color de textos
+.txt-wine {
+  @include txt-wine;
+}
+
 .txt-success {
   @include txt-success;
 }

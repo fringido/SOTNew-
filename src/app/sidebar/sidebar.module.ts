@@ -11,10 +11,12 @@ import { MaterialModule } from '../core/modules/material/material.module';
 import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
+import { HamburguesaMenuComponent } from './pages/hamburguesa-menu/hamburguesa-menu.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent,RoomsMenuComponent],
+  declarations: [SidebarComponent,RoomsMenuComponent, AdminMenuComponent, HamburguesaMenuComponent],
   imports: [
     CommonModule,
     CutStringPipe,
