@@ -8,10 +8,11 @@ import {
   ElementRef,
   Renderer2,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { ConfimModalMessageComponent } from '../core/components/confim-modal-message/confim-modal-message.component';
-import { UtilitiesService } from '../core/services/utilitiesService/utilities.service';
+import { CambioHabitacionService } from '../home/inicio-habitaciones/entrada-habitacion/services/cambio-habitacion/cambio-habitacion.service';
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
@@ -31,13 +32,14 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   selectedRoom!: any; //TODO: tipar la habitacion
 
-  @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef>;
+  @ViewChildren('roomsRef') roomsRef!: QueryList<ElementRef<HTMLDivElement>>;
   @ViewChildren('roomsTypeRef') roomsTypeRef!: QueryList<ElementRef>;
 
   isIpadMini!: boolean;
 
   modoAppRoom!: ModoAppRoomState;
   isModoCambioHabitacionSubs!: Subscription;
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -225,12 +227,13 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.EN_SUPERVISION,
+          status: this.statusRoom.MANTENIMIENTO,
           tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 17,
           matricula: 'ABC-123',
           tarifa: 'Pie',
+          observaciones: 'La pantalla no enciende',
           camaristaOCamaristas: 2,
           supervisor: null,
           duracionTarifa: 10000
@@ -806,11 +809,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly renderer: Renderer2,
+    private readonly router: Router,
     private readonly homeService: HomeService,
     private readonly roomService: RoomService,
     public dialogService: DialogService,
-    private readonly utilitiesService: UtilitiesService,
-    private readonly sidebarService: SidebarService
+    private readonly sidebarService: SidebarService,
+    private readonly cambioHabitacionService: CambioHabitacionService
   ) { }
 
   ngOnInit(): void {
@@ -834,7 +838,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       if(state.seleccionada) {
         return this.unselectRoom();
       }
-  });
+    });
   }
 
   ngOnDestroy(): void {
@@ -873,47 +877,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       return;
     }
     if(this.modoAppRoom.cambio && room.status === RoomStatusEnum.LIBRE) {
-      const ref = this.dialogService.open(ConfimModalMessageComponent, {
-        data: {
-          message: `ESTÁS POR CAMBIAR DE LA ${this.selectedRoom.tipo} ${this.selectedRoom.roomNumber} A LA ${room.roomNumber}`
-        },
-      });
-
-      ref.onClose.subscribe(({confirmed}) => {
-        if (!confirmed) {
-          return;
-        }
-        let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
-        const roomFromIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === this.selectedRoom)!
-        const roomToIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === room)!
-
-        const fromRoomNumberTemp = this.selectedRoom.roomNumber;
-        const toRoomNumberTemp = room.roomNumber;
-
-        selectedRoomType.rooms[roomFromIndex] = room;
-        selectedRoomType.rooms[roomToIndex] = this.selectedRoom;
-
-        selectedRoomType.rooms[roomFromIndex].roomNumber = fromRoomNumberTemp;
-        selectedRoomType.rooms[roomToIndex].roomNumber = toRoomNumberTemp;
-        
-        this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
-        
-        this.roomService.updateModoAppHabitacion({cambio: false});
-        this.utilitiesService.createTask(() => {
-          this.sidebarService.setSidebarState('roomSelected', selectedRoomType.rooms[roomToIndex])
-          this.roomsRef
-            ?.toArray()
-            .filter((roomEl) => !roomEl.nativeElement.id.endsWith('room_' + selectedRoomType.rooms[roomToIndex].roomNumber))
-            .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
-        });
-      });
+      this.mostrarMensajeConfirmarCambioHabitacion(room);
       return;
     }
     this.roomService.updateModoAppHabitacion({cambio: false});
     if(this.selectedRoom?.roomNumber === room.roomNumber) {
       // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
-      console.log(this.selectedRoom?.roomNumber === room.roomNumber);
-      
       return this.unselectRoom();
     }
     // Quitar sombreado a elemento que ha sido seleccionado
@@ -938,7 +907,6 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   unselectRoom() {
     this.selectedRoom = null;
     this.sidebarService.setSidebarState('home');
-    // this.roomService.updateModoAppHabitacion({cambio: false, seleccionada: false});  
     this.roomsRef
     ?.toArray()
     .forEach((roomEl) => this.renderer.removeClass(roomEl.nativeElement, 'no-filtro'));
@@ -950,7 +918,9 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       .find((room => room.roomNumber === this.selectedRoom.roomNumber)));
     this.roomsRef?.toArray()
       .filter(room => room.nativeElement.id.startsWith(`type_${selectedRoomType?.name}`))
-      .filter(room => room.nativeElement.children[0].attributes[2].nodeValue === RoomStatusEnum.LIBRE)
+      .filter(room => {
+        return room.nativeElement.children[0].attributes.getNamedItem('custom-status')?.nodeValue === RoomStatusEnum.LIBRE
+      })
       .forEach((room) => {
         this.renderer.removeClass(room.nativeElement, 'no-filtro')
     });
@@ -981,5 +951,45 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
 
     this.renderer.removeClass(selectedRoomEl, 'no-filtro');
+  }
+
+  cambiarHabitacion(room: any) {//TODO: tipar habitacion
+    let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
+    const roomFromIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === this.selectedRoom)!
+    const roomToIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType === room)!
+
+    const fromRoomNumberTemp = this.selectedRoom.roomNumber;
+    const toRoomNumberTemp = room.roomNumber;
+
+    selectedRoomType.rooms[roomFromIndex] = room;
+    selectedRoomType.rooms[roomToIndex] = this.selectedRoom;
+
+    selectedRoomType.rooms[roomFromIndex].roomNumber = fromRoomNumberTemp;
+    selectedRoomType.rooms[roomToIndex].roomNumber = toRoomNumberTemp;
+    
+    this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
+    
+    this.roomService.updateModoAppHabitacion({cambio: false});
+    this.unselectRoom();
+  }
+
+  mostrarMensajeConfirmarCambioHabitacion(room: any) {
+    const ref = this.dialogService.open(ConfimModalMessageComponent, {
+      data: {
+        message: `ESTÁS POR CAMBIAR DE LA ${this.selectedRoom.tipo} ${this.selectedRoom.roomNumber} A LA ${room.roomNumber}`
+      },
+    });
+
+    ref.onClose.subscribe(({confirmed}) => {
+      if (!confirmed) {
+        return;
+      }
+      this.router.navigate(['hotel/rentaHabitacion/cambio']);
+      this.cambioHabitacionService.cambioHabitacionConfirmado$.pipe(take(1)).subscribe((confirmed) => {
+        if(confirmed) {
+          this.cambiarHabitacion(room);
+        }
+      });
+    });
   }
 }

@@ -1,0 +1,27 @@
+@import '../../../../../library.scss';
+
+.boton-motivo {
+    width: 10vw;
+    margin: 0.5em 5px;
+    height: 5vh;
+    border-radius: 5px;
+    border: solid 1px $wine;
+    background-color: white;
+    color:  $grey-item;
+}
+
+.boton-motivo__selected {
+    background-color: $wine;
+    color: white;
+}
+
+.boton-motivo:hover {
+    background-color: $wine;
+    color: white;
+}
+
+@media (max-width: 1025px) and (orientation: landscape) {
+    .boton-motivo {
+        width: 15vw;
+    }
+}

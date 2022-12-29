@@ -1,5 +1,8 @@
 import { Directive, Renderer2, Input, Output, EventEmitter, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { DialogService } from 'primeng/dynamicdialog';
+import { ConfimModalMessageComponent } from 'src/app/core/components/confim-modal-message/confim-modal-message.component';
+import { LocalStorageService } from 'src/app/core/services/localStorage/local-storage.service';
 
 @Directive({
   selector: '[appLogout]'
@@ -19,6 +22,8 @@ export class LogoutDirective implements AfterViewInit {
   constructor(
     private readonly renderer: Renderer2,
     private readonly element: ElementRef,
+    private readonly dialogService: DialogService,
+    private readonly localStorageService: LocalStorageService,
     private readonly router: Router
   ) { }
 
@@ -75,7 +80,19 @@ export class LogoutDirective implements AfterViewInit {
       return
     }
     if(state === 'redirect') {
-      this.changeRoute('login')
+      const ref = this.dialogService.open(ConfimModalMessageComponent, {
+        data: {
+          message: '¿Cerrar sesión?'
+        }
+      });
+
+      ref.onClose.subscribe(({confirmed}) => {
+        if(!confirmed) {
+          return;
+        }
+        this.localStorageService.clear();
+        this.changeRoute('login')
+      })
     }
   }
 
