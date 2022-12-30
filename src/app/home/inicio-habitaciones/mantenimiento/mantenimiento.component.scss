@@ -1,0 +1,44 @@
+@import '/src/library.scss';
+
+.container-mantenimiento {
+  display       : flex;
+  flex-direction: column;
+  flex-wrap     : nowrap;
+  align-items   : center;
+  max-width     : 400px;
+
+  & .button_opcion {
+    display        : flex;
+    flex-direction : row;
+    width          : 97%;
+    margin         : 12px auto;
+    flex-wrap      : wrap;
+    justify-content: space-between;
+    font-weight    : 400;
+
+    & .select-button {
+      width           : 48%;
+      margin          : 7px 0;
+      padding         : 8px 0;
+      border-radius   : 5px;
+      border          : 2px solid $wine;
+      color           : $color-title-grey;
+      background-color: white;
+      box-shadow      : $shadow-item-list;
+
+      &.activate {
+        background-color: $wine;
+        color           : white;
+        box-shadow      : none;
+      }
+    }
+  }
+
+  & .container_textarea {
+    width: 96%;
+
+    textarea {
+      font-size: 12pt;
+    }
+  }
+}

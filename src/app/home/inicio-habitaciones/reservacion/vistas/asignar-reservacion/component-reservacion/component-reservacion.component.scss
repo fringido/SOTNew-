@@ -1,0 +1,220 @@
+@import '/src/library.scss';
+
+
+.car__reservacion {
+  font-family     : 'Rubik', sans-serif;
+  box-shadow      : 0pt 0pt 9pt #00000045;
+  border-radius   : 10px;
+  border-width    : 3pt;
+  display         : table-cell;
+  background-color: #FFFFFF;
+  align-self      : center;
+  padding         : 0%;
+  overflow-x      : hidden;
+  cursor          : pointer;
+  width           : 100%;
+  padding-bottom  : 10px;
+  text-align      : center;
+  transition: all 0.3s;
+
+  & hr {
+    width        : 60%;
+    color        : $color-title-grey;
+    margin       : 0 auto !important;
+    // margin-top: -6px;
+    // border-top: 3px solid rgba(0, 0, 0, .1);
+  }
+
+  & .estilo_car {
+    background-color: #D4D4D4;
+    box-shadow      : 0pt 0pt 3pt #00000045;
+    border-radius   : 10px;
+    color           : #707070;
+    margin          : 9px !important;
+    padding         : 9px !important;
+  }
+
+  & .estilo_carR {
+    display         : flex;
+    background-color: #D4D4D4;
+    box-shadow      : 0 0 3pt #00000045;
+    border-radius   : 10px;
+    color           : #707070;
+    margin          : 9px !important;
+    padding         : 5px !important;
+    flex-wrap       : wrap;
+    align-content   : center;
+    justify-content : center;
+  }
+
+  .rigth hr {
+    color : $color-title-grey;
+    width        : 98%;
+    margin-top   : 0;
+    margin-bottom: 5px;
+  }
+}
+
+.car__reservacion.selected {
+  font-family     : 'Rubik', sans-serif;
+  box-shadow      : 0pt 0pt 9pt #00000045;
+  border-radius   : 10px;
+  border-width    : 3pt;
+  display         : table-cell;
+  background-color: $wine;
+  align-self      : center;
+  padding         : 0%;
+  margin-right    : 2rem !important;
+  margin-left     : 2rem !important;
+  margin          : 0.8rem;
+  overflow-x      : hidden;
+  cursor          : pointer;
+  width           : 100%;
+  padding-bottom  : 10px;
+  text-align      : center;
+  transition: all 0.3s;
+
+
+  & hr {
+    width : 60%;
+    color : #FFFFFF;
+    margin: 0 auto !important;
+
+  }
+
+  & .estilo_carR {
+    background-color: #fff;
+    box-shadow      : 0pt 0pt 3pt #00000045;
+    border-radius   : 10px;
+    color           : #707070;
+    margin          : 9px !important;
+    padding         : 5px !important;
+  }
+
+  & .estilo_car {
+    background-color: #fff;
+    box-shadow      : 0pt 0pt 3pt #00000045;
+    border-radius   : 10px;
+    color           : #707070;
+    margin          : 9px !important;
+    padding         : 9px !important;
+  }
+
+  & .color {
+    background-color: #fff;
+  }
+
+  & .red {
+    color: #fff;
+  }
+  .rigth .aling--R {
+    color      : $wine;
+    font-weight: 600;
+  }
+
+  .rigth hr {
+    color : $wine;
+    width        : 98%;
+    margin-top   : 0;
+    margin-bottom: 5px;
+  }
+
+  & .car__reservacion-tittle {
+    align-items: center;
+    margin-top : 5px;
+    color      : #fff;
+    font-weight: 500;
+  }
+
+}
+
+
+/*grids para dar forma a los cuadros
+*/
+
+.container-cards {
+  display              : grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-rows   : 1fr 1fr;
+  gap                  : 5px;
+  grid-template-areas  : "left1 rigth""left2 rigth";
+}
+
+
+.rigth {
+  grid-area    : rigth;
+  padding-right: -5px;
+}
+
+.left1 {
+  grid-area  : left1;
+  padding-top: 5px;
+}
+
+.left2 {
+  grid-area: left2;
+}
+
+/*da estilos a los cuadros
+*/
+
+.datos {
+  padding: 0px;
+  margin : 0;
+}
+
+.tabla {
+  padding: 0 18px 4px;
+  margin : 0;
+}
+
+.estilo_car p {
+  font-size: 14px;
+}
+
+
+
+
+
+.text_format {
+  font-family: 'Rubik', sans-serif;
+  font-size  : 10pt;
+}
+
+.car__reservacion-tittle {
+  align-items  : center;
+  margin-top   : 5px;
+  color        : #707070;
+  margin-bottom: 5px;
+
+}
+
+.red {
+  font-size: 22px;
+  color    : $wine;
+  font-weight: 800;
+}
+
+
+.car__reservacion-carRight {
+  background-color: #D4D4D4;
+  border-radius   : 10px;
+  color           : #707070;
+  margin          : 9px !important;
+  height          : 100%;
+}
+
+.aling--L {
+  text-align   : initial;
+  padding      : 0;
+  padding-right: 2px;
+}
+
+.aling--R {
+  text-align: end;
+  padding   : 0;
+}
+
+.aling--C {
+  text-align: webkit-center;
+}

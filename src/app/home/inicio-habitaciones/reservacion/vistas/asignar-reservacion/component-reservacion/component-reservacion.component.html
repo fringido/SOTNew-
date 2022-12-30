@@ -1,0 +1,68 @@
+<div  class="car__reservacion" [class.selected]="reservacion.idReservacion == selectId">
+  <div class="car__reservacion-tittle">
+      RESERVACIÓN <br><b class="red">{{reservacion.codigoReserva.toUpperCase() }}</b>
+  </div>
+  <hr class="color">
+  <div class="container-cards container">
+      <!-- Primera tabla de la izquierda -->
+      <div class="left1 estilo_car text_format">
+          <div class="row w-100 datos">
+              <div class="col-8 aling--L">
+                  <b>{{ reservacion.nombre }}</b>
+              </div>
+              <div class="col-4 aling--L">
+                  <p title="Id Cliente">
+                      <i class="fas fa-users aling--L"></i> {{ idCliente }}
+                  </p>
+              </div>
+              <div class="col-8 aling--L">
+
+                  <i class="fas fa-at" style="display: contents;"></i>{{ reservacion.email }}
+
+              </div>
+              <div class="col-4 aling--L">
+                  <i class="fas fa-phone"></i> {{ reservacion.telefono }}
+              </div>
+          </div>
+      </div>
+      <!-- Tabla de la derecha -->
+      <div class="rigth estilo_carR">
+          <div class="row w-100 tabla">
+              <div class="col-6 aling--L">Fecha de entrada</div>
+              <div class="col-6 aling--R">
+                  {{ fechaEntrada }}
+              </div>
+              <div class="col-6 aling--L">Fecha de salida</div>
+              <div class="col-6 aling--R">
+                  {{ fechaSalida }}
+              </div>
+              <div class="col-6 aling--L">Personas extra</div>
+              <div class="col-6 aling--R">
+                  {{ reservacion.personasExtra }}
+              </div>
+              <div class="col-6 aling--L">Paquete</div>
+              <div class="col-6 aling--R">
+                  {{ reservacion.paquetes }}
+              </div>
+              <div class="col-6 aling--L">Descuento</div>
+              <br />
+              <br />
+              <div class="col-6 aling--R">
+                  {{ reservacion.descuento | currency: "":"$" }}
+              </div>
+              <div class="col-6 aling--L">Total (MXN)</div>
+              <div class="col-6 aling--R">
+                  {{ reservacion.valorConIVA | currency: "":"$" }}
+              </div>
+          </div>
+          <hr />
+      </div>
+      <!-- Tabla de la izquierda abajo -->
+      <div class="left2 estilo_car">
+          <div>
+              <b>Observaciones</b>
+          </div>
+          <p>{{reservacion.observaciones }}</p>
+      </div>
+  </div>
+</div>

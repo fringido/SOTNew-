@@ -63,13 +63,15 @@
             </div>
             <div class="text-card">Imprimir</div>
           </button>
-          <button  class="button-card button-change"[disabled]="comanda.estadoPedido != 'Preparación'" >
+          <button  class="button-card button-change"
+          [disabled]="comanda.estadoPedido != 'Preparación'" >
             <div class="icon">
               <i class="fa-solid fa-arrows-rotate"></i>
             </div>
             <div class="text-card">Cambiar</div>
           </button>
-          <button class="button-card button-aceptar"[disabled]="comanda.estadoPedido == 'Preparación'" (click)="aceptar(comanda.estadoPedido)">
+          <button class="button-card button-aceptar"
+          [disabled]="comanda.estadoPedido == 'Preparación'" (click)="aceptar(comanda.estadoPedido)">
             <div class="icon">
               <i class="fa-solid fa-check"></i>
             </div>

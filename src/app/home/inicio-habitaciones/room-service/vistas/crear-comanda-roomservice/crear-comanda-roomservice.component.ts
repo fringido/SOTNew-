@@ -4329,7 +4329,7 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     })
   }
 
-  //* trae los datos de el FormArray
+//* trae los datos de el FormArray
   get comandaField() {
     return this.form.get('comanda') as FormArray
   }
@@ -4337,7 +4337,7 @@ export class CrearComandaRoomserviceComponent implements OnInit {
   get cortesiaField() {
     return this.form.get('cortesia') as FormArray
   }
-  //* ------------------------------------------
+//* ------------------------------------------
   ngOnInit(): void {
     this.initList();
     this.sumatoriaTotal();
@@ -4356,8 +4356,8 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     this.otherAll = this.other
     this.sexyspaAll = this.sexyspa
   }
- //* ------------------------------------------
-  //* FUNCION DE BUSQUEDA DE PRODUCTO
+//* ------------------------------------------
+//* FUNCION DE BUSQUEDA DE PRODUCTO
   search() {
     this.filterText = new FormControl("");
     this.filterText.valueChanges
@@ -4388,8 +4388,8 @@ export class CrearComandaRoomserviceComponent implements OnInit {
         }
       });
   }
- //* ------------------------------------------
- //* SUMA PARA SACAR EL SUBTOTAL Y RESTA PARA SACAR EL TOTAL
+//* ------------------------------------------
+//* SUMA PARA SACAR EL SUBTOTAL Y RESTA PARA SACAR EL TOTAL
   sumatoriaTotal(){
     this.form.valueChanges.subscribe( () =>{
       this.subTotal = 0
@@ -4407,12 +4407,11 @@ export class CrearComandaRoomserviceComponent implements OnInit {
       console.log(this.form)
     })
   }
- //* ------------------------------------------
+//* ------------------------------------------
 
 
 
- //* ------------------------------------------
- //*EMPUJA UN FURMULARIO DEPENDIENDO DE EL ESTADO DEL BOTON CORTESIA
+//*EMPUJA UN FURMULARIO DEPENDIENDO DE EL ESTADO DEL BOTON CORTESIA
   selectProduct(product: any, tipo: string) {
     if (this.cortesia) {
       this.cortesiaField.push(
@@ -4442,8 +4441,8 @@ export class CrearComandaRoomserviceComponent implements OnInit {
       )
     }
   }
- //* ------------------------------------------
-  //*BOTONES DE MODAL
+//* ------------------------------------------
+//*BOTONES DE MODAL
   salir() {
     this.router.navigate([`/hotel`]);
   }
@@ -4456,7 +4455,7 @@ export class CrearComandaRoomserviceComponent implements OnInit {
     });
     this.router.navigate([`/hotel`]);
   }
- //* ------------------------------------------
+//* ------------------------------------------
 
 
 }

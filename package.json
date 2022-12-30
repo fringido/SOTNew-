@@ -30,6 +30,7 @@
     "apollo-angular": "^4.1.0",
     "bootstrap": "^5.2.0",
     "graphql": "^16.6.0",
+    "moment": "^2.29.4",
     "primeng": "^14.2.1",
     "react": "^18.2.0",
     "rxjs": "~7.5.0",

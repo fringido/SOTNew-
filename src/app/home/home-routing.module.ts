@@ -23,7 +23,18 @@ const routes: Routes = [
       {
         path: 'salida',
         loadChildren: () => import('../salida/salida.module').then((m) => m.SalidaModule)
+      },{
+        path: 'mantenimiento',
+        loadChildren:() => import('./inicio-habitaciones/mantenimiento/mantenimiento.module').then((m) => m.MantenimientoModule)
       }
+      ,{
+        path: 'deshabilitarHabitacion',
+        loadChildren:() => import('./inicio-habitaciones/deshabilitar-habitacion/deshabilitar-habitacion.module').then((m) => m.DeshabilitarHabitacionModule)
+      },
+      { path: 'reservacion',
+        loadChildren: () => import('./inicio-habitaciones/reservacion/reservacion.module').then(m => m.ReservacionModule)
+      },
+
     ]
   },
 ];

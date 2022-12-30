@@ -39,26 +39,6 @@ $SOTNew-theme: mat.define-light-theme((color: (primary: $SOTNew-primary,
     ),
   ));
 
-::-webkit-scrollbar {
-  width           : 5px;
-  height          : 12px;
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #999999;
-  border-radius   : 20px;
-  border          : 1px solid transparent;
-  background-clip : content-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #303d41e1;
-}
 
 @font-face {
   font-family: 'epilogueFont';
@@ -98,21 +78,39 @@ body {
 }
 
 /**
-  *--------------------------------------------------------------------------------------------
-  *------------------------------Estilos generales personalizados post factorizado-----------
-  *---------------------------------------------------------------------------------------------
+*---------------------------------------------------------------------------------------------
+*---------------------------------Estilos generales personalizados post factorizado-----------
+*---------------------------------------------------------------------------------------------
 */
+//* Scrollbar
+::-webkit-scrollbar {
+  width           : 5px;
+  height          : 12px;
+  background-color: transparent;
+}
 
-//* Estilos de botones
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius   : 20px;
+  border          : 1px solid transparent;
+  background-clip : content-box;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background-color: #303d41e1;
+}
 
 //* Estilos Cuerpo Modal
 hr {
-  color     : $grey-item !important;
+  // color     : $grey-item !important;
   border-top: 2px solid !important;
-  width     : 80% !important;
+  // width     : 80% !important;
   margin    : .3rem 0 !important;
+  opacity: 1;
 }
 
 textarea {
@@ -170,13 +168,13 @@ textarea {
 }
 
 .modal-footer-content {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  text-align     : center;
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : nowrap;
   justify-content: center;
-  margin-top: 10px;
-  width     : 100%;
+  margin-top     : 10px;
+  width          : 100%;
 
   & .button-modal {
     width        : 12vh;
@@ -204,6 +202,8 @@ textarea {
 
 }
 
+//* Estilos de botones
+
 .button-salir {
   background-color: $wine;
   box-shadow      : 0 3px 6px #80133680;
@@ -218,7 +218,7 @@ textarea {
   background-color: $green-item;
 }
 
-.button-change{
+.button-change {
   background-color: $yellow-button;
 }
 
@@ -278,7 +278,7 @@ $lvl9 : 90;
 $lvl10: 100;
 
 
-// Mixins para color de fondos
+//* Mixins para color de fondos
 @mixin bg-success {
   background-color: $green-item;
 }
@@ -311,7 +311,7 @@ $lvl10: 100;
   background-color: $grey-item;
 }
 
-// Color de fondos
+//* Color de fondos
 .sot-bg-success {
   @include bg-success;
 }
@@ -344,6 +344,7 @@ $lvl10: 100;
   @include bg-grey-item;
 }
 
+//* mixins para color de textos
 // mixins para color de textos
 @mixin txt-wine {
   color: $wine;
@@ -377,6 +378,7 @@ $lvl10: 100;
   color: $grey-item;
 }
 
+//* Color de textos
 // Color de textos
 .txt-wine {
   @include txt-wine;
@@ -410,7 +412,7 @@ $lvl10: 100;
   @include txt-grey-item;
 }
 
-// Estilos para sidenav en home
+//* Estilos para sidenav en home
 mat-drawer-content {
   overflow: hidden !important;
 }

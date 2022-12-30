@@ -2,7 +2,6 @@
     <i class="fas fa-times-circle mx-3 my-3 wine" (click)="exit()"></i>
 </div>
 <div class="room-details">
-
     <div class="titulo d-flex container">
         <b>Datos de Habitación</b>
         <span class="spacer"></span>
@@ -130,15 +129,15 @@
                 <span class="me-3">Entrada de habitación</span>
                 <i class="far fa-check-circle icon-pareja-ocupada"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('deshabilitarHabitacion')">
                 <span class="me-3">Deshabilitar</span>
                 <i class="far icon-candado"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('reservacion')">
                 <span class="me-3">Reservación</span>
                 <i class="far icon-calendar"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white" (click)="openModal('mantenimiento')">
                 <span class="me-3">Mantenimiento</span>
                 <i class="far icon-mantenimiento"></i>
             </button>
@@ -201,7 +200,7 @@
                 <span class="me-3">Room Service</span>
                 <i class="icon icon-roomservice"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('deshabilitarHabitacion')">
                 <span class="me-3">Deshabilitar</span>
                 <i class="far icon-candado"></i>
             </button>
@@ -221,7 +220,7 @@
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
                 <span class="me-3">Camaristas en turno</span>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white" (click)="openModal('mantenimiento')">
                 <span class="me-3">Mantenimiento</span>
                 <i class="far icon-mantenimiento"></i>
             </button>
