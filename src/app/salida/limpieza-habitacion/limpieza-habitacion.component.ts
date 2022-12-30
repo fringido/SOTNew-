@@ -23,6 +23,9 @@ export class LimpiezaHabitacionComponent implements OnInit {
   camaristasDisponibles: any[]= [];
   camaristasSeleccionados: any[]= [];
 
+  arregloTemporalDisponibles: any[] = [];
+  arregloTemporalSeleccionados: any[] = [];
+
   selectedRoom!: any;
   selectedRoomSubs!: Subscription;  
   
@@ -34,7 +37,7 @@ export class LimpiezaHabitacionComponent implements OnInit {
   }
 
 
-  filterText!: FormControl
+  filterText: FormControl = new FormControl("");
 
   ngOnInit(): void {
 
@@ -51,25 +54,24 @@ export class LimpiezaHabitacionComponent implements OnInit {
       {nombre: 'Nombre5', id: 5},
       {nombre: 'Nombre6', id: 6}
     ]
+    this.arregloTemporalDisponibles = this.camaristasDisponibles;
   }
 
   search() {
-
-    this.filterText = new FormControl("");
     this.filterText.valueChanges
       .pipe(debounceTime(400), distinctUntilChanged())
       .subscribe((v) => {
-
-        if (v) {
-          const filter = new RegExp(v, "i");
-          const filterFields = ["name"];
-          // this.statusRooms = this.statusRoomsAll.filter((role:any) =>
-          //   filterFields.some((field) => filter.test(role[field]))
-          // );
-
-        } else {
-          // this.statusRooms = this.statusRoomsAll;
+        if(!v) {
+          this.arregloTemporalDisponibles = this.camaristasDisponibles;
+          this.arregloTemporalSeleccionados = this.camaristasSeleccionados;
+          return;
         }
+        this.arregloTemporalDisponibles = [...this.camaristasDisponibles];
+        this.arregloTemporalSeleccionados = [...this.camaristasSeleccionados];
+        this.arregloTemporalDisponibles = this.arregloTemporalDisponibles.filter(
+          camarista => camarista.nombre.toLowerCase().includes(v.toLowerCase()))
+        this.arregloTemporalSeleccionados  = this.arregloTemporalSeleccionados.filter(
+          camarista => camarista.nombre.toLowerCase().includes(v.toLowerCase()))
       });
   }
 
@@ -112,7 +114,7 @@ export class LimpiezaHabitacionComponent implements OnInit {
   deseleccionarLimpieza(tipoLimpieza: number) {
     setTimeout(() => {
       this.limpiezaSeleccionada = false;
-    }, 300)
+    }, 100)
   }
   
   regresar() {

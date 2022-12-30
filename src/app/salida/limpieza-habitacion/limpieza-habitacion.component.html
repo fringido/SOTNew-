@@ -1,6 +1,6 @@
 <p-dialog [(visible)]="display" [closable]="false" [modal]="true" [draggable]="false" [showHeader]="false"  [style]="{width: '50vw'}">
     <!-- TODO: acomodar header, numero de habitacion y tipo en esta ventana -->
-    <div class="row w-100 m-0 title-dimension">
+    <div class="row w-100 m-0 title-dimension d-flex">
         <p class="modal-limpieza-header-title p-0 mt-3">LIMPIEZA DE HABITACIÓN</p>
         <div class="habitacion-title">
             <p class="numberM m-0">{{'24'}}</p>
@@ -25,7 +25,7 @@
                     <div class="header center w-100">
                         <p>CAMARISTAS DISPONIBLES</p>
                     </div>
-                    <div class="camarista-touple my-2 mx-4" *ngFor="let camarista of camaristasDisponibles" (click)="seleccionar(camarista?.id)">
+                    <div class="camarista-touple my-2 mx-4" *ngFor="let camarista of arregloTemporalDisponibles" (click)="seleccionar(camarista?.id)">
                         <p class="w-80 p-1">
                             {{camarista?.nombre?.toUpperCase()}}
                         </p>
@@ -37,7 +37,7 @@
                     <div class="header center w-100">
                         <p>CAMARISTAS   SELECCIONADOS</p>
                     </div>
-                    <div class="camarista-touple-assigned my-2 mx-4" *ngFor="let camarista of camaristasSeleccionados" (click)="deseleccionar(camarista?.id)">
+                    <div class="camarista-touple-assigned my-2 mx-4" *ngFor="let camarista of arregloTemporalSeleccionados" (click)="deseleccionar(camarista?.id)">
                         <p class="w-80 p-1">
                             {{camarista?.nombre?.toUpperCase()}}
                         </p>
