@@ -106,10 +106,11 @@ body {
 
 //* Estilos Cuerpo Modal
 hr {
-  color     : $grey-item !important;
+  // color     : $grey-item !important;
   border-top: 2px solid !important;
-  width     : 80% !important;
+  // width     : 80% !important;
   margin    : .3rem 0 !important;
+  opacity: 1;
 }
 
 textarea {

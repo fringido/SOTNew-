@@ -27,7 +27,11 @@ const routes: Routes = [
       ,{
         path: 'deshabilitarHabitacion',
         loadChildren:() => import('./inicio-habitaciones/deshabilitar-habitacion/deshabilitar-habitacion.module').then((m) => m.DeshabilitarHabitacionModule)
-      }
+      },
+      { path: 'reservacion',
+        loadChildren: () => import('./inicio-habitaciones/reservacion/reservacion.module').then(m => m.ReservacionModule)
+      },
+
     ]
   },
 ];
