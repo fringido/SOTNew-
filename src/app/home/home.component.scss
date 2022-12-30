@@ -33,7 +33,6 @@
 }
 
 .sidenav-content {
-  height: 88vh;
   overflow: auto;
 }
 
@@ -104,6 +103,7 @@
     width: 23vw;
   }
   .sidenav-content {
+    height: 88vh;
     overflow: scroll;
   }
 }
