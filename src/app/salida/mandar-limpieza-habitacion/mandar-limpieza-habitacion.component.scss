@@ -1,0 +1,57 @@
+@import '../../../library.scss';
+
+.message-wrapper {
+    margin: 4vh 1vw;
+}
+
+h2 {
+    /* UI Properties */
+    text-align: center;
+    align-items: center;
+    font: normal normal bold 30px/36px Rubik;
+    letter-spacing: 0px;
+    color: $grey-item;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.btn-modal-details {
+    border-radius: 10px;
+    width: 12vw;
+}
+
+.box-modal-fingerprint {
+    box-shadow: 0px 0px 9px #09000365;
+    border-radius: 10px;
+    width: 30vw;
+    height: 165px;
+    margin-bottom: 2vh;
+    margin: 3vh;
+    margin-left: 2vh !important;
+    margin-right: 2vh !important;
+    align-self: center;
+    padding: 1%;
+    justify-content: center;
+}
+
+.botonIngreso {
+    background-color: #FFD50010;
+    border:2px solid #FFD500;
+    text-shadow: 0pt 3pt 6pt;
+    box-shadow: 0pt 1pt 1pt #FFD500;
+}
+
+.botonSalida {
+    background-color: #FFA60D10;
+    border:2px solid #FFA60D;
+    text-shadow: 0pt 3pt 6pt;
+    box-shadow: 0pt 1pt 1pt #FFA60D;
+}
+
+.amarilloNormal{
+    color: #FFD500;
+}
+
+.amarilloPollo{
+    color: #FFA60D;
+}

@@ -1,0 +1,33 @@
+<p-dialog [(visible)]="display" [closable]="false" [modal]="true" [draggable]="false" [showHeader]="false">
+    <div class="message-wrapper">
+        <h2>Selecciona estado de la habitación</h2>
+    </div>
+    <div class="modal-footer-content">
+        <div class="row box-modal-fingerprint">
+            <div class="d-flex justify-content-around">
+                <div class="h-100 pr-1 pt-2 pb-2">
+                    <button
+                        class="btn-modal-details centerInside botonSalida h-100 mr-1"
+                        (click)="enviarLimpiezaMediaSucia()"
+                        >
+                        <div class="font-3vh">
+                            <i class="fas fa-trash-alt amarilloPollo"></i>
+                        </div>
+                        <div class="font-2vh amarilloPollo">Media Sucia</div>
+                    </button>
+                </div>
+                <div class="h-100 pl-1 pt-2 pb-2">
+                    <button
+                        class="btn-modal-details centerInside botonIngreso h-100 p-0 ml-1"
+                        (click)="enviarLimpiezaSucia()"
+                        >
+                        <div class="font-3vh">
+                            <i class="fas fa-trash amarilloNormal"></i>
+                        </div>
+                        <div class="font-2vh amarilloNormal">Sucia</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-dialog>

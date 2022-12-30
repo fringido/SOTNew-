@@ -1,0 +1,117 @@
+<p-dialog [(visible)]="display" [closable]="false" [modal]="true" [draggable]="false" [showHeader]="false"  [style]="{width: '50vw'}">
+    <!-- TODO: acomodar header, numero de habitacion y tipo en esta ventana -->
+    <div class="row w-100 m-0 title-dimension d-flex">
+        <p class="modal-limpieza-header-title p-0 mt-3">LIMPIEZA DE HABITACIÓN</p>
+        <div class="habitacion-title">
+            <p class="numberM m-0">{{'24'}}</p>
+            <p class="room-desc">{{'Junior Villa'}}</p>
+        </div>
+    </div>
+    <div class="row m-0 w-100">
+        <p class="text-center w-100 labelTitle">CAMARISTA</p>
+    </div>
+    <div class="w-100 row title-dimension mb-5">
+        <div class="row float-left m-0 p-0 w-25">
+            <span class="p-input-icon-right">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input [formControl]="filterText" type="text" pInputText placeholder="Escribe Camarista">
+            </span>
+        </div>
+    </div>
+    <div class="container mt-2">
+        <div class="row title-dimension">
+            <div class="col-6" style="text-align: -webkit-center;">
+                <div class="panelCamaristas m-0">
+                    <div class="header center w-100">
+                        <p>CAMARISTAS DISPONIBLES</p>
+                    </div>
+                    <div class="camarista-touple my-2 mx-4" *ngFor="let camarista of arregloTemporalDisponibles" (click)="seleccionar(camarista?.id)">
+                        <p class="w-80 p-1">
+                            {{camarista?.nombre?.toUpperCase()}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: -webkit-center;">
+                <div class="panelCamaristas m-0">
+                    <div class="header center w-100">
+                        <p>CAMARISTAS   SELECCIONADOS</p>
+                    </div>
+                    <div class="camarista-touple-assigned my-2 mx-4" *ngFor="let camarista of arregloTemporalSeleccionados" (click)="deseleccionar(camarista?.id)">
+                        <p class="w-80 p-1">
+                            {{camarista?.nombre?.toUpperCase()}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3 pt-3 bottom-line pb-3">
+    <div class="modal-footer-content">
+        <button class="button-modal button-salir" (click)="regresar()">
+            <div class="icon">
+              <i class="fas icon-icon-metro-exit"></i>
+            </div>
+            <div class="text">Salir</div>
+          </button>
+        <button 
+            class="button-modal btn-normal limpieza-button"
+            *ngIf="sucia"
+            (click)="seleccionarLimpieza(1)"
+            (blur)="deseleccionarLimpieza(1)"
+            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' "
+        >
+            <div class="icon">
+                <i class="icon-limpieza"></i>
+            </div>
+            <div class="text">Normal</div>
+        </button>
+        <button 
+            class="button-modal btn-detallada limpieza-button" 
+            *ngIf="sucia"
+            (click)="seleccionarLimpieza(2)"
+            (blur)="deseleccionarLimpieza(1)"
+            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' "
+        >
+            <div class="icon">
+                <i class="icon-limpieza"></i>
+            </div>
+            <div class="text">Detallada</div>
+        </button>
+        <button 
+            class="button-modal btn-rapida limpieza-button"
+            *ngIf="medioSucia" 
+            (click)="seleccionarLimpieza(3)"
+            (blur)="deseleccionarLimpieza(1)"
+            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' "
+        >
+            <div class="icon">
+                <i class="icon-limpieza"></i>
+            </div>
+            <div class="text">Rapida</div>
+        </button>
+        <button 
+            class="button-modal btn-retoque limpieza-button"
+            *ngIf="retoque"
+            (click)="seleccionarLimpieza(4)"
+            (blur)="deseleccionarLimpieza(1)"
+            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' " 
+        >
+            <div class="icon">
+                <i class="icon-limpieza"></i>
+            </div>
+            <div class="text">Retoque</div>
+        </button>
+        <button  
+            (focus)="aceptar()"
+            class="button-modal button-aceptar"
+            [attr.disabled]="limpiezaSeleccionada ? null: '' "    
+        >
+            <div class="icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="text">Aceptar</div>
+        </button>
+    </div>
+    </div>
+</p-dialog>

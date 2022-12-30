@@ -7,6 +7,7 @@ import { ModalService } from 'src/app/core/services/modal.service';
 import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { RoomService } from '../../services/room/room.service';
+import { ConfimModalMessageComponent } from '../../../core/components/confim-modal-message/confim-modal-message.component';
 
 @Component({
   selector: 'app-room-details',
@@ -83,6 +84,28 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
         message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
       },
     });
+  }
+  
+  salida() {
+    const ref = this.dialogService.open(ConfimModalMessageComponent, {
+      data: {
+        message: '¿Estás seguro que quieres salir de la habitación?',
+        withVideoButton: true
+      },
+    });
+
+    ref.onClose.subscribe(({confirmed}) => {
+      if(!confirmed) {
+        return;
+      }
+      this.router.navigate(['/hotel/salida/enviar-limpieza'])
+    });
+    
+  }
+
+  asignarLimpieza() {
+    this.router.navigate(['/hotel/salida/limpieza'])
+
   }
 
   togggleModoCambioHabitacion(active?: boolean) {

@@ -1,0 +1,152 @@
+.modalLimpieza{
+    background-color: white;
+    width: 65vw;
+    border-radius: 30px;
+    font-family: 'Rubik';
+    box-shadow: 1pt 0pt 9pt #00000019;
+}
+
+.modal-limpieza-header-title{
+    font-weight: 600;
+    font-size: 22px;
+    color: black;
+    text-align: center;
+}
+
+.habitacion-title{
+    position: absolute;
+    right: 0;
+    margin-top: 0.5em;
+    margin-right: 2em;
+    justify-content: center;
+    width: 6vw;
+}
+
+.title-dimension{
+    place-content: center;
+}
+
+.labelTitle {
+    font-family: 'Rubik', sans-serif;
+    color: #707070;
+    font-weight: 600;
+    font-size: 18pt;
+    margin: 0;
+}
+
+.panelCamaristas{
+    height: 40vh;
+    border-radius: 20px;
+    overflow-y: auto;
+    box-shadow: 0pt 3pt 6pt #00000019;
+    margin: 0;
+}
+
+.panelCamaristas .header{
+    width: auto;
+    height: 50px;
+    background-color: #E4E4E4;
+    font-family: 'Epilogue';
+    border-radius: 20px 20px 0s 0;
+    position:sticky;
+    top: 0;
+}
+
+.center{
+    text-align: center;
+    display: table;
+}
+
+.center p {
+    line-height: 1.5;
+    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
+    color:#9B9898;
+    font-weight: 600;
+}
+
+.camarista-touple {
+    cursor:pointer;
+    height: 50px;
+    background-color: #00D2CB;
+    border-radius: 12px;
+    font-family: 'Epilogue';
+    box-shadow: 0pt 3pt 6pt #00000019;
+    text-align: center;
+    display: table;
+    width: -webkit-fill-available;
+}
+
+.limpieza-button:focus {
+    border: 5px solid #fff;
+    box-shadow: 0 0 2px 2px #15c0eb;
+}
+
+.camarista-touple-assigned {
+    cursor:pointer;
+    height: 50px;
+    background-color: #52D9B9;
+    border-radius: 12px;
+    font-family: 'Epilogue';
+    box-shadow: 0pt 3pt 6pt #00000019;
+    text-align: center;
+    display: table;
+    width: -webkit-fill-available;
+}
+
+.camarista-touple-assigned p {
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    font-weight: 500;
+    cursor:pointer;
+}
+
+.camarista-touple p {
+    cursor:pointer;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    font-weight: 500;
+}
+
+.numberM{
+    font-family: 'Rubik';
+    font-weight: bold;
+    font-size: 30pt;
+    text-align: center;
+    color: #801336;
+}
+
+.room-desc{
+    position: relative;
+    top: -12px;
+    color: #707070;
+}
+
+button{
+    font-family: 'Rubik';
+}
+
+.bottom-line{
+    border: solid #dad9d9;
+    border-width: 1px 0 0 0;
+}
+
+.btn-normal{
+    background-color: #15D1CB;
+}
+  
+.btn-detallada{
+    background-color: #00A2B8;
+}
+  
+.btn-rapida{
+    background-color: #009DD6;
+}
+  
+.btn-retoque{
+    background-color: #5DBBDD;
+}
+  

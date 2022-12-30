@@ -40,6 +40,9 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   modoAppRoom!: ModoAppRoomState;
   isModoCambioHabitacionSubs!: Subscription;
 
+  updatedRoom!: any;
+  updatedRoomSubs!: Subscription;
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -839,11 +842,15 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         return this.unselectRoom();
       }
     });
+    this.updatedRoomSubs = this.roomService.updatedRoom$.subscribe((room) => {
+      this.onUpdateRoom(room);
+    });
   }
 
   ngOnDestroy(): void {
     this.isShowingSidenavSubs.unsubscribe();
     this.sidenavStateSubs.unsubscribe();
+    this.updatedRoomSubs.unsubscribe();
   }
 
   marginXSkySuite(index: number) {
@@ -866,6 +873,13 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       return;
     }
     return '6vh';
+  }
+
+  onUpdateRoom(room: any) {
+    let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
+    const roomToUpdateIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType.roomNumber === this.selectedRoom.roomNumber)!
+    selectedRoomType.rooms[roomToUpdateIndex] = room;
+    this.unselectRoom();
   }
 
   selectRoom(room: any) { //TODO: tipar la habitacion

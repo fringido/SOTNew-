@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 import { HomeComponent } from './home.component';
-
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -20,6 +19,10 @@ const routes: Routes = [
       },{
         path: 'entradaDeHabitacion',
         component: DarEntradaHabitacionComponent
+      },
+      {
+        path: 'salida',
+        loadChildren: () => import('../salida/salida.module').then((m) => m.SalidaModule)
       },{
         path: 'mantenimiento',
         loadChildren:() => import('./inicio-habitaciones/mantenimiento/mantenimiento.module').then((m) => m.MantenimientoModule)
