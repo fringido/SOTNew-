@@ -43,6 +43,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   updatedRoom!: any;
   updatedRoomSubs!: Subscription;
 
+  filtradoHabitacionSubs!: Subscription;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -827,7 +828,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     )
     this.sidenavStateSubs = this.sidebarService.sidebarState$.subscribe((state) => {
       if(state !== 'roomSelected' && this.selectedRoom) {
-        this.unselectRoom();
+        this.unselectRooms();
       }
     });
     this.isModoCambioHabitacionSubs = this.roomService.modoAppHabitacion$.subscribe((state) => {
@@ -839,11 +840,14 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         this.unselectLibresPorTipo();
       }
       if(state.seleccionada) {
-        return this.unselectRoom();
+        return this.unselectRooms();
       }
     });
     this.updatedRoomSubs = this.roomService.updatedRoom$.subscribe((room) => {
       this.onUpdateRoom(room);
+    });
+    this.filtradoHabitacionSubs = this.roomService.filtradoHabitacion$.subscribe((status) => {
+      this.onStatusFilter(status);
     });
   }
 
@@ -851,6 +855,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.isShowingSidenavSubs.unsubscribe();
     this.sidenavStateSubs.unsubscribe();
     this.updatedRoomSubs.unsubscribe();
+    this.isModoCambioHabitacionSubs.unsubscribe();
+    this.filtradoHabitacionSubs.unsubscribe();
   }
 
   marginXSkySuite(index: number) {
@@ -879,7 +885,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
     const roomToUpdateIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType.roomNumber === this.selectedRoom.roomNumber)!
     selectedRoomType.rooms[roomToUpdateIndex] = room;
-    this.unselectRoom();
+    this.unselectRooms();
   }
 
   selectRoom(room: any) { //TODO: tipar la habitacion
@@ -897,7 +903,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.roomService.updateModoAppHabitacion({cambio: false});
     if(this.selectedRoom?.roomNumber === room.roomNumber) {
       // regresar al sidebar en home desde un click de nuevo en la habitacion seleccionada
-      return this.unselectRoom();
+      return this.unselectRooms();
     }
     // Quitar sombreado a elemento que ha sido seleccionado
     const selectedRoomEl = 
@@ -918,7 +924,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.selectedRoom = room;
   }
   
-  unselectRoom() {
+  unselectRooms() {
     this.selectedRoom = null;
     this.sidebarService.setSidebarState('home');
     this.roomsRef
@@ -984,7 +990,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
     
     this.roomService.updateModoAppHabitacion({cambio: false});
-    this.unselectRoom();
+    this.unselectRooms();
   }
 
   mostrarMensajeConfirmarCambioHabitacion(room: any) {
@@ -1005,5 +1011,23 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  onStatusFilter(status: RoomStatusEnum | null) {
+    if(!status) {
+      return this.unselectRooms();
+    }
+    this.unselectRooms();
+
+    this.roomsRef
+    ?.toArray()
+    .filter(roomEl => 
+      roomEl
+        .nativeElement
+        .children[0]
+        .attributes
+        .getNamedItem('custom-status')
+        ?.nodeValue !== status
+    ).forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));    
   }
 }

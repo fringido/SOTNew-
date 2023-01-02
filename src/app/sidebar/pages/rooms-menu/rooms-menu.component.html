@@ -7,13 +7,17 @@
           </span>
       </div>
       <div
-          *ngFor="let statusRoom of statusRooms"
+          *ngFor="let statusRoom of statusRooms let i = index"
+          [ngClass]="statusRoom.colorClass"
           class="d-flex list-group-item py-2 my-1 room-type__item nav-item align-items-center "
-          [ngClass]="statusRoom.color"
           (touchend)="addAnimation(textElement, statusRoom.isTextScrollable)"
           (mouseover)="addAnimation(textElement, statusRoom.isTextScrollable)"
           (mouseout)="removeAnimation(textElement, statusRoom.isTextScrollable)"
+          (click)="filtrarHabitaciones(statusRoom.status); activarBoton(statusRoom.color ,i)"
+          #roomTypesRef
+          [id]="'roomType_' + i"
       >
+      <!-- TODO: hacer los filtros al dar click en un estado de habitacion -->
           <span class="me-3 room-type__count">{{statusRoom.count}}</span>
           <div class="w-100 room-type__item">
               <span
