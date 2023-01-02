@@ -17,6 +17,9 @@ export class RoomService {
   private modoAppHabitacion = new BehaviorSubject<ModoAppRoomState>(ModoAppRoomInitialState);
   modoAppHabitacion$ = this.modoAppHabitacion.asObservable();
 
+  private filtradoHabitacion = new BehaviorSubject<RoomStatusEnum | null>(null);
+  filtradoHabitacion$ = this.filtradoHabitacion.asObservable();
+
   constructor(
     private readonly http: HttpClient
   ) { }
@@ -32,6 +35,10 @@ export class RoomService {
 
   updateSelectedRoom(room: any){ 
     this.updatedRoom.next(room);
+  }
+
+  updateFiltradoHabitacion(state: RoomStatusEnum | null) {
+    this.filtradoHabitacion.next(state);
   }
 
   isroomPorCobrar(roomStatus: RoomStatusEnum) {

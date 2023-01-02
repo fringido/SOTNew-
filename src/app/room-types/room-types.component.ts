@@ -845,6 +845,9 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.updatedRoomSubs = this.roomService.updatedRoom$.subscribe((room) => {
       this.onUpdateRoom(room);
     });
+    this.roomService.filtradoHabitacion$.subscribe((status) => {
+      this.onStatusFilter(status);
+    });
   }
 
   ngOnDestroy(): void {
@@ -1005,5 +1008,20 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  onStatusFilter(status: RoomStatusEnum | null) {
+    this.unselectRoom();
+
+    this.roomsRef
+    ?.toArray()
+    .filter(roomEl => 
+      roomEl
+        .nativeElement
+        .children[0]
+        .attributes
+        .getNamedItem('custom-status')
+        ?.nodeValue !== status
+    ).forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));    
   }
 }
