@@ -96,7 +96,7 @@ export class MandarSupervisarHabitacionComponent implements OnInit {
   }
 
   aceptar() {
-    this.location.back();
+    this.regresar();
     this.dialogService.open(MessageModalAutoclosableComponent, {
       data: {
         message: 'Supervisor Asignado'

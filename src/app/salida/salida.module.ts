@@ -7,13 +7,15 @@ import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { LimpiezaHabitacionComponent } from './limpieza-habitacion/limpieza-habitacion.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MandarSupervisarHabitacionComponent } from './mandar-supervisar-habitacion/mandar-supervisar-habitacion.component';
+import { LiberarHabitacionComponent } from './liberar-habitacion/liberar-habitacion.component';
 
 
 @NgModule({
   declarations: [
     MandarLimpiezaHabitacionComponent,
     LimpiezaHabitacionComponent,
-    MandarSupervisarHabitacionComponent
+    MandarSupervisarHabitacionComponent,
+    LiberarHabitacionComponent
   ],
   imports: [
     CommonModule,

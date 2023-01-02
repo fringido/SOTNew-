@@ -111,6 +111,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/hotel/salida/supervisar']);
   }
 
+  liberarHabitacion() {
+    this.router.navigate(['/hotel/salida/liberar']);
+  }
+
   togggleModoCambioHabitacion(active?: boolean) {
     this.roomService.updateModoAppHabitacion({cambio: active ?? !this.isModoCambioHabitacion});
   }
