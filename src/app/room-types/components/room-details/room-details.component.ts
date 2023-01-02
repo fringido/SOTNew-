@@ -105,7 +105,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
 
   asignarLimpieza() {
     this.router.navigate(['/hotel/salida/limpieza'])
+  }
 
+  asignarSupervisor() {
+    this.router.navigate(['/hotel/salida/supervisar']);
   }
 
   togggleModoCambioHabitacion(active?: boolean) {

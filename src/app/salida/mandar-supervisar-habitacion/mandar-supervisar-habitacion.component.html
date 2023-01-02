@@ -1,0 +1,51 @@
+<p-dialog [(visible)]="display" [closable]="false" [modal]="true" [draggable]="false" [showHeader]="true" header="Supervisores">
+    <div class="modalBody" id="modalSOTSupervisores">
+        <div class="row modal-content modal-dialog modal-dialogSOT">
+          <div class="">
+            <div class="modal-body-2">
+                <span class="p-input-icon-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input [formControl]="filterText" type="text" pInputText placeholder="Buscar Supervisor">
+                </span>
+              <!-- <i class="fas fa-search idle align-bottom"></i> -->
+              <div class="card text-center contenedor-supervisores mt-3 mx-4">
+                <div class="card-body">
+                  <div
+                    *ngFor="let supervisor of supervisores; 
+                    let i = index" 
+                    class="box_componente"
+                    #supervisoresRef
+                    [id]="'supervisor_' + i"
+                    (click)="selectSupervisor(supervisor, i)"
+                >
+                    {{supervisor.nombres}} {{supervisor.apellidoPaterno}}
+                    {{supervisor.apellidoMaterno}}
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer-content">
+                <div class="col s12 m12 l12 text-center">
+                    <button class="button-modal button-salir" (click)="regresar()">
+                        <div class="icon">
+                          <i class="fas icon-icon-metro-exit"></i>
+                        </div>
+                        <div class="text">Salir</div>
+                    </button>
+                    <button  
+                      (focus)="aceptar()"
+                      class="button-modal button-aceptar"
+                      [attr.disabled]="isSupervisorSeleccionado ? null: '' "    
+                    >
+                        <div class="icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div class="text">Aceptar</div>
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</p-dialog>

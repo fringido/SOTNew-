@@ -29,10 +29,16 @@ export class RoomService {
     this.modoAppHabitacion.next({...this.modoAppHabitacion.value, ...state});
   }
 
+  /**
+   * Selecciona o deselecciona una habitacion
+   * */
   setSelectedRoom(room: any = null) {
     this.selectedRoom.next(room)
   }
 
+  /** 
+   * Actualiza el valor de una habitación seleccionada
+  */
   updateSelectedRoom(room: any){ 
     this.updatedRoom.next(room);
   }
