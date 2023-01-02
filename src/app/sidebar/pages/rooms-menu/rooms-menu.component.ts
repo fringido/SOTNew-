@@ -1,6 +1,8 @@
-import { Component, ElementRef, HostListener, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, QueryList, Renderer2, ViewChildren, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { ModalService } from 'src/app/core/services/modal.service';
 import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
 import { RoomService } from 'src/app/room-types/services/room/room.service';
 
@@ -9,7 +11,7 @@ import { RoomService } from 'src/app/room-types/services/room/room.service';
   templateUrl: './rooms-menu.component.html',
   styleUrls: ['./rooms-menu.component.scss']
 })
-export class RoomsMenuComponent implements OnInit {
+export class RoomsMenuComponent implements OnInit, OnDestroy {
 
   isIpadMini!: boolean;
 
@@ -18,6 +20,9 @@ export class RoomsMenuComponent implements OnInit {
   filterText!: FormControl
   @ViewChildren('roomTypesRef') roomTypesRef!: QueryList<ElementRef<HTMLButtonElement>>;
 
+  isModalOpen!: boolean;
+  isModalOpenSubs!: Subscription;
+  
 
   statusRooms = [{
     name: 'Libre',
@@ -150,13 +155,34 @@ export class RoomsMenuComponent implements OnInit {
 
   constructor(
     private readonly renderer: Renderer2,
-    private readonly roomService: RoomService
+    private readonly roomService: RoomService,
+    private readonly modalService: ModalService,
   ) { }
 
   ngOnInit(): void {
     this.isIpadMini = window.innerWidth <= 1025;
     this.statusRoomsAll = this.statusRooms;
     this.search()
+    this.isModalOpenSubs = this.modalService.isModalOpen$.subscribe((isOpen) => this.isModalOpen = isOpen)
+
+  }
+
+  ngOnDestroy(): void {
+    this.isModalOpenSubs.unsubscribe();
+  }
+  
+
+  @HostListener('document:keydown', ['$event'])
+  onEscapeHandler(event: KeyboardEvent) {
+    if(event.key !== 'Escape' || this.isModalOpen) {
+      return;
+    }
+    this.roomService.filtradoHabitacion$.pipe(take(1)).subscribe((status) => {
+      if(status) {
+        this.roomService.updateFiltradoHabitacion(null);
+        this.desactivarBotones();
+      }
+    });
 
   }
 
