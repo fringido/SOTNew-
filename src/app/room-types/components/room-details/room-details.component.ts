@@ -84,6 +84,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
         message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
       },
     });
+    this.roomService.updateSelectedRoom({
+      ...this.selectedRoom,
+      status: RoomStatusEnum.PREPARADA
+    });
   }
   
   salida() {
@@ -105,7 +109,14 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
 
   asignarLimpieza() {
     this.router.navigate(['/hotel/salida/limpieza'])
+  }
 
+  asignarSupervisor() {
+    this.router.navigate(['/hotel/salida/supervisar']);
+  }
+
+  liberarHabitacion() {
+    this.router.navigate(['/hotel/salida/liberar']);
   }
 
   togggleModoCambioHabitacion(active?: boolean) {

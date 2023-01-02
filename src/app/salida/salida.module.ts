@@ -6,12 +6,16 @@ import { MandarLimpiezaHabitacionComponent } from './mandar-limpieza-habitacion/
 import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { LimpiezaHabitacionComponent } from './limpieza-habitacion/limpieza-habitacion.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MandarSupervisarHabitacionComponent } from './mandar-supervisar-habitacion/mandar-supervisar-habitacion.component';
+import { LiberarHabitacionComponent } from './liberar-habitacion/liberar-habitacion.component';
 
 
 @NgModule({
   declarations: [
     MandarLimpiezaHabitacionComponent,
-    LimpiezaHabitacionComponent
+    LimpiezaHabitacionComponent,
+    MandarSupervisarHabitacionComponent,
+    LiberarHabitacionComponent
   ],
   imports: [
     CommonModule,
