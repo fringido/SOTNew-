@@ -84,6 +84,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
         message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
       },
     });
+    this.roomService.updateSelectedRoom({
+      ...this.selectedRoom,
+      status: RoomStatusEnum.PREPARADA
+    });
   }
   
   salida() {
