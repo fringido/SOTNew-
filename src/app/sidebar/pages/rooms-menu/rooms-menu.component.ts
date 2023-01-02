@@ -177,6 +177,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     if(event.key !== 'Escape' || this.isModalOpen) {
       return;
     }
+    // Al presionar Esc borrar el filtrado de habitaciones por status
     this.roomService.filtradoHabitacion$.pipe(take(1)).subscribe((status) => {
       if(status) {
         this.roomService.updateFiltradoHabitacion(null);

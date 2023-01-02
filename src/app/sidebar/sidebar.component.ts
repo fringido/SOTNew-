@@ -39,6 +39,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   selectMenu(state: 'home' | 'admin' | 'burguer') {
+    // Al cambiar de menu borrar el filtrado de habitaciones por status
     this.roomService.filtradoHabitacion$.pipe(take(1)).subscribe((state) => {
       if(state) {
         this.roomService.updateFiltradoHabitacion(null);
