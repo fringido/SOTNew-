@@ -63,12 +63,12 @@ export class RoomComponent implements OnInit, OnChanges {
     [RoomStatusEnum.RESERVADA]: () => {
       this.bgColor = BgColorEnum.PURPLE;
       this.textColor = TextColorEnum.PURPLE;
-      this.icon = RoomIconsEnum.ROOM_SERVICE;
+      this.icon = RoomIconsEnum.RESERVADA;
     },
     [RoomStatusEnum.RESERVADA_PREPARADA]: () => {
       this.bgColor = BgColorEnum.PURPLE;
       this.textColor = TextColorEnum.PURPLE;
-      this.icon = RoomIconsEnum.ROOM_SERVICE;
+      this.icon = RoomIconsEnum.RESERVADA;
     },
     [RoomStatusEnum.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR]: () => {
       this.bgColor = BgColorEnum.DANGER;

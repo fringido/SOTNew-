@@ -256,7 +256,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         {
           status: this.statusRoom.RESERVADA,
           tipo: 'Junior Villa',
-          statusTimer: 3700,
+          statusTimer: 0,
           roomNumber: 19,
           matricula: 'ABC-123',
           tarifa: 'Pie',
@@ -267,11 +267,11 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         {
           status: this.statusRoom.RESERVADA_PREPARADA,
           tipo: 'Junior Villa',
-          statusTimer: 3700,
+          statusTimer: 0,
           roomNumber: 20,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
+          camaristaOCamaristas: 0,
           supervisor: null,
           duracionTarifa: 10000
         },

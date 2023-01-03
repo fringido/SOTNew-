@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
     private readonly router: Router,
     private readonly renderer: Renderer2,
     private homeService: HomeService,
-
+    private habitacionesService: HabitacionesService
   ) { }
 
   ngOnInit(): void {
-    // this.habitacionesService.getHabitaciones();
+    this.habitacionesService.getHabitaciones();
   }
 
   showLogoutText() {

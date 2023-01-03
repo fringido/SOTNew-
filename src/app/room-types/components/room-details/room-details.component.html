@@ -210,7 +210,7 @@
             selectedRoom.status === AvailableRoomStatus.MEDIA_SUCIA ?
             selectedRoom.status : ''"
         >
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-blue text-white" (click)="asignarLimpieza()">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-blue text-white" (click)="openModal('salida/limpieza')">
                 <span class="me-3">Enviar a limpieza</span>
                 <i class="icon-limpieza"></i>
             </button>
@@ -226,7 +226,7 @@
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.EN_LIMPIEZA">
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm active text-white" (click)="asignarSupervisor()">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm active text-white" (click)="openModal('salida/supervisar')">
                 <span class="me-3">Enviar Supervisor</span>
                 <i class="icon-search"></i>
             </button>
@@ -242,8 +242,44 @@
                 <span class="me-3">Camaristas en turno</span>
             </button>
         </ng-container>
+        <ng-container *ngSwitchCase="AvailableRoomStatus.RESERVADA">
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="confirmarReservacion()">
+              <span class="me-3">Confirmar Reservación</span>
+              <i class="far fa-check-circle"></i>
+          </button>
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+              <span class="me-3">Desanclar Reservación</span>
+              <i class="far fa-times-circle pr-1"></i>
+          </button>
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white" (click)="togggleModoCambioHabitacion(true)" *ngIf="!isModoCambioHabitacion">
+            <span class="me-3">Cambiar Habitación</span>
+            <i class="fas fa-sync-alt"></i>
+        </button>
+        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" (click)="togggleModoCambioHabitacion(false)" *ngIf="isModoCambioHabitacion">
+            <span class="me-3">Cancelar cambio</span>
+            <i class="fas fa-sync-alt"></i>
+        </button>
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" >
+            <span class="me-3">Datos de Reservación</span>
+            <div><i class="icon-calendar"></i></div>
+        </button>
+      </ng-container>
+      <ng-container *ngSwitchCase="AvailableRoomStatus.RESERVADA_PREPARADA">
+        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion')">
+          <span class="me-3">Entrada de habitación</span>
+          <i class="far fa-check-circle icon-pareja-ocupada"></i>
+      </button>
+        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+            <span class="me-3">Cancelar Reservación</span>
+            <i class="fas fa-times-circle"></i>
+        </button>
+        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" >
+          <span class="me-3">Datos de Reservación</span>
+          <div><i class="icon-calendar"></i></div>
+      </button>
+    </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.EN_SUPERVISION">
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="liberarHabitacion()">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('salida/liberar')">
                 <span class="me-3">Liberar Habitación</span>
                 <i class="far fa-check-circle"></i>
             </button>
@@ -260,7 +296,7 @@
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.MANTENIMIENTO">
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm active text-white" (click)="asignarSupervisor()">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm active text-white" (click)="openModal('salida/supervisar')">
                 <span class="me-3">Enviar Supervisor</span>
                 <i class="icon-search"></i>
             </button>

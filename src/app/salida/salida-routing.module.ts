@@ -6,7 +6,7 @@ import { MandarLimpiezaHabitacionComponent } from './mandar-limpieza-habitacion/
 import { MandarSupervisarHabitacionComponent } from './mandar-supervisar-habitacion/mandar-supervisar-habitacion.component';
 
 const routes: Routes = [
-  {path: 'enviar-limpieza', component: MandarLimpiezaHabitacionComponent},
+  {path: 'enviarLimpieza', component: MandarLimpiezaHabitacionComponent},
   {path: 'limpieza', component: LimpiezaHabitacionComponent},
   {path: 'supervisar', component: MandarSupervisarHabitacionComponent},
   {path: 'liberar', component: LiberarHabitacionComponent}
