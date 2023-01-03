@@ -13,9 +13,16 @@
                     <p class="w-100">{{detalle.text}}</p>
                 </div>
             </div>
-            <div class="row rowModal pc-center" [formGroup]="form">
-                <textarea formControlName="motivo" placeholder="OBSERVACIONES" rows="4" cols="36" pInputTextarea [attr.disabled]="liberacion.conDetalle ? null: '' "></textarea>
-            </div>
+            <form [formGroup]="form">
+                <textarea 
+                    formControlName="motivo"
+                    placeholder="OBSERVACIONES"
+                    rows="4"
+                    cols="36"
+                    pInputTextarea 
+                    [attr.disabled]="liberacion.conDetalle ? null: '' "
+                ></textarea>
+            </form>
             <div class="modal-footer-content">
                 <div class="col s12 m12 l12 text-center">
                     <button class="button-modal button-salir" (click)="salir()">
