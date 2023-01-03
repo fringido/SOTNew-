@@ -248,23 +248,23 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           roomNumber: 18,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
+          camaristaOCamaristas: 0,
           supervisor: null,
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.RESERVADA,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 19,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
+          camaristaOCamaristas: 0,
           supervisor: null,
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.RESERVADA_PREPARADA,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 20,
@@ -900,12 +900,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
       return this.unselectRoom();
     }
     // Quitar sombreado a elemento que ha sido seleccionado
-    const selectedRoomEl = 
+    const selectedRoomEl =
     this.roomsRef
     ?.toArray()
     .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + room.roomNumber))?.nativeElement;
     this.renderer.removeClass(selectedRoomEl, 'no-filtro');
-    
+
     // Agregar sombra a los elementos que no fueron seleccionados
     this.roomsRef
       ?.toArray()
@@ -917,7 +917,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     this.sidebarService.setSidebarState('roomSelected', room);
     this.selectedRoom = room;
   }
-  
+
   unselectRoom() {
     this.selectedRoom = null;
     this.sidebarService.setSidebarState('home');
@@ -939,7 +939,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
         this.renderer.removeClass(room.nativeElement, 'no-filtro')
     });
 
-    const selectedRoomEl = 
+    const selectedRoomEl =
     this.roomsRef
     ?.toArray()
     .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
@@ -959,7 +959,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     .filter(roomEl => !roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))
     .forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
 
-    const selectedRoomEl = 
+    const selectedRoomEl =
     this.roomsRef
     ?.toArray()
     .find(roomEl => roomEl.nativeElement.id.endsWith('room_' + this.selectedRoom.roomNumber))?.nativeElement;
@@ -980,9 +980,9 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
 
     selectedRoomType.rooms[roomFromIndex].roomNumber = fromRoomNumberTemp;
     selectedRoomType.rooms[roomToIndex].roomNumber = toRoomNumberTemp;
-    
+
     this.roomsByType = JSON.parse(JSON.stringify(this.roomsByType));
-    
+
     this.roomService.updateModoAppHabitacion({cambio: false});
     this.unselectRoom();
   }

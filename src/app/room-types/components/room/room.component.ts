@@ -60,6 +60,16 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.DANGER;
       this.icon = RoomIconsEnum.ROOM_SERVICE;
     },
+    [RoomStatusEnum.RESERVADA]: () => {
+      this.bgColor = BgColorEnum.PURPLE;
+      this.textColor = TextColorEnum.PURPLE;
+      this.icon = RoomIconsEnum.ROOM_SERVICE;
+    },
+    [RoomStatusEnum.RESERVADA_PREPARADA]: () => {
+      this.bgColor = BgColorEnum.PURPLE;
+      this.textColor = TextColorEnum.PURPLE;
+      this.icon = RoomIconsEnum.ROOM_SERVICE;
+    },
     [RoomStatusEnum.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR]: () => {
       this.bgColor = BgColorEnum.DANGER;
       this.textColor = TextColorEnum.SUCCESS;
@@ -99,7 +109,7 @@ export class RoomComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const status: RoomStatusEnum = changes?.['status']?.currentValue;
-    this.statusOptions[status] ? 
+    this.statusOptions[status] ?
     this.statusOptions[status]() : null;
   }
 
