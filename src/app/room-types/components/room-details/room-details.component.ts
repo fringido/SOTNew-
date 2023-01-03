@@ -89,7 +89,19 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       status: RoomStatusEnum.PREPARADA
     });
   }
-  
+
+  confirmarReservacion(){
+    const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
+      data: {
+        message: 'SE HA CONFIRMADO LA RESERVACIÓN'
+      },
+    });
+    this.roomService.updateSelectedRoom({
+      ...this.selectedRoom,
+      status: RoomStatusEnum.RESERVADA_PREPARADA
+    });
+  }
+
   salida() {
     const ref = this.dialogService.open(ConfimModalMessageComponent, {
       data: {
@@ -104,19 +116,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       }
       this.router.navigate(['/hotel/salida/enviar-limpieza'])
     });
-    
-  }
 
-  asignarLimpieza() {
-    this.router.navigate(['/hotel/salida/limpieza'])
-  }
-
-  asignarSupervisor() {
-    this.router.navigate(['/hotel/salida/supervisar']);
-  }
-
-  liberarHabitacion() {
-    this.router.navigate(['/hotel/salida/liberar']);
   }
 
   togggleModoCambioHabitacion(active?: boolean) {

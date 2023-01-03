@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities';
 
-const uri = environment.url; // <-- add the URL of the GraphQL server here
+const uri = environment.urlGraph; // <-- add the URL of the GraphQL server here
 const socket = environment.ws
 // const uri = 'https://rickandmortyapi.com/graphql';
 
