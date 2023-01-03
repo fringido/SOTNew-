@@ -17,6 +17,9 @@ export class RoomService {
   private modoAppHabitacion = new BehaviorSubject<ModoAppRoomState>(ModoAppRoomInitialState);
   modoAppHabitacion$ = this.modoAppHabitacion.asObservable();
 
+  private filtradoHabitacion = new BehaviorSubject<RoomStatusEnum | null>(null);
+  filtradoHabitacion$ = this.filtradoHabitacion.asObservable();
+
   constructor(
     private readonly http: HttpClient
   ) { }
@@ -26,12 +29,22 @@ export class RoomService {
     this.modoAppHabitacion.next({...this.modoAppHabitacion.value, ...state});
   }
 
+  /**
+   * Selecciona o deselecciona una habitacion
+   * */
   setSelectedRoom(room: any = null) {
     this.selectedRoom.next(room)
   }
 
+  /** 
+   * Actualiza el valor de una habitación seleccionada
+  */
   updateSelectedRoom(room: any){ 
     this.updatedRoom.next(room);
+  }
+
+  updateFiltradoHabitacion(state: RoomStatusEnum | null) {
+    this.filtradoHabitacion.next(state);
   }
 
   isroomPorCobrar(roomStatus: RoomStatusEnum) {

@@ -2,7 +2,11 @@
     <div class="bg-white d-flex justify-content-center align-items-center rounded shadowed home-button my-1 ml-2" (click)="toggle()">
         <i class="fas fa-home fa-xl wine menu-icon mb-1"></i>
     </div>
-    <div *ngFor="let statusRoom of statusRooms" [ngClass]="statusRoom.color" class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1">
+    <div 
+        *ngFor="let statusRoom of statusRooms"
+        [ngClass]="statusRoom.color"
+        class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1"
+        (click)="filtrarPorStatus(statusRoom.status)">
         <span class="ml-3">{{statusRoom.count}}</span>
             <span class="d-none wrelative toggable-text">{{statusRoom.name}}</span>
         <i [ngClass]="statusRoom.icon"></i>
