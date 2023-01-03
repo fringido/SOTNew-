@@ -2,12 +2,14 @@
     class="div-room-card mx-1"
     [ngSwitch]="status"
 >
-    <div 
-        class="d-flex justify-content-between roomCard" 
+    <div
+        class="d-flex justify-content-between roomCard"
         [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
         *ngSwitchCase="
             status === AvailableRoomStatus.LIBRE ||
             status === AvailableRoomStatus.SUCIA ||
+            status === AvailableRoomStatus.RESERVADA ||
+            status === AvailableRoomStatus.RESERVADA_PREPARADA ||
             status === AvailableRoomStatus.MEDIA_SUCIA ?
             status : ''"
     >
@@ -19,27 +21,27 @@
             <i class="icon-clock"></i>
         </div>
         <div>
-            <div class="limitDescription font-10px label-state"> 
+            <div class="limitDescription font-10px label-state">
                 {{statusTimer|timer}}
             </div>
             <div class="numero-habitacion">{{roomNumber}}</div>
             <div class="position-absolute font-10px label-state pie-adjust">
-                {{status}} 
+                {{status}}
             </div>
         </div>
         <div class="estilo-icon-in">
             <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
-    <div 
-        class="d-flex justify-content-between roomCard" 
+    <div
+        class="d-flex justify-content-between roomCard"
         [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
         *ngSwitchCase="AvailableRoomStatus.PREPARADA"
     >
         <span class="span-usuario-card"></span>
         <div>
             <div class="limitDescription font-10px label-state">
-                {{status}} 
+                {{status}}
             </div>
             <div class="numero-habitacion">{{roomNumber}}</div>
         </div>
@@ -47,9 +49,9 @@
             <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
-    <div 
-        class="d-flex justify-content-between roomCard" 
-        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
+    <div
+        class="d-flex justify-content-between roomCard"
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
         *ngSwitchCase="
         status === AvailableRoomStatus.OCUPADA ||
         status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE||
@@ -71,28 +73,28 @@
                 {{status !== AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ? matricula : 'Por cobrar'}}
             </div>
         </div>
-        <div class="estilo-icon-in" 
+        <div class="estilo-icon-in"
             *ngIf="status === AvailableRoomStatus.OCUPADA_POR_COBRAR || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
             status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR">
-            <i 
-                [ngClass]="['far icon-cobrar', 'txt-success']" 
+            <i
+                [ngClass]="['far icon-cobrar', 'txt-success']"
                 class="far icon-cobrar reduce-ml"
             ></i>
         </div>
-        <div class="estilo-icon-in" 
+        <div class="estilo-icon-in"
             *ngIf="status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE"
         >
             <i [ngClass]="['far fa-check-circle icon-roomservice fa-xs', textColor]" class="reduce-ml" style="width: 26px;"></i>
         </div>
-        <div class="estilo-icon-in" 
+        <div class="estilo-icon-in"
             *ngIf="status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.OCUPADA_POR_COBRAR"
         >
             <i [ngClass]="['far icon-pareja-ocupada', textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
-    <div 
+    <div
         class="d-flex justify-content-between roomCard"
-        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
         *ngSwitchCase="
             status === AvailableRoomStatus.EN_LIMPIEZA ||
             status === AvailableRoomStatus.EN_SUPERVISION ?
@@ -109,17 +111,17 @@
             <div class="numero-habitacion">
                 {{roomNumber}}
             </div>
-            <div class="position-absolute font-10px label-state pie-adjust"> 
-                {{(camaristaOCamaristas || supervisor)+''|cutString:10}} 
+            <div class="position-absolute font-10px label-state pie-adjust">
+                {{(camaristaOCamaristas || supervisor)+''|cutString:10}}
             </div>
         </div>
         <div class="estilo-icon-in">
             <i [ngClass]="[icon, textColor]" class="fa reduce-ml"></i>
         </div>
     </div>
-    <div 
+    <div
         class="d-flex justify-content-between roomCard"
-        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}" 
+        [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
         *ngSwitchCase="AvailableRoomStatus.MANTENIMIENTO">
         <span class="span-usuario-card"></span>
         <div class="text-center alert-blink-box animated flash slower infinite alert-sot-blue" *ngIf="statusTimer > 3600">
@@ -132,8 +134,8 @@
             <div class="numero-habitacion">
                 {{roomNumber}}
             </div>
-            <div class="position-absolute font-10px label-state pie-adjust"> 
-                {{observaciones+''|cutString:10}} 
+            <div class="position-absolute font-10px label-state pie-adjust">
+                {{observaciones+''|cutString:10}}
             </div>
         </div>
         <div class="estilo-icon-in">

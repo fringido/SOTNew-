@@ -1,13 +1,15 @@
 import {  Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { HomeService } from './services/home/home.service';
 import { Router } from '@angular/router';
+import { HabitacionesService } from './services/habitaciones/habitaciones.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  
+
   @ViewChild('LogoutButton') LogoutButton!: ElementRef;
   @ViewChild('LogoutText') LogoutText!: ElementRef;
   showSidenav = this.homeService.showSidenav$;
@@ -19,9 +21,11 @@ export class HomeComponent implements OnInit {
     private readonly router: Router,
     private readonly renderer: Renderer2,
     private homeService: HomeService,
+
   ) { }
 
   ngOnInit(): void {
+    // this.habitacionesService.getHabitaciones();
   }
 
   showLogoutText() {
@@ -29,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.renderer.removeClass(this.LogoutButton.nativeElement, 'hide-text')
     this.renderer.removeClass(this.LogoutText.nativeElement, 'd-none')
   }
-  
+
   hideLogoutText() {
     this.renderer.removeClass(this.LogoutButton.nativeElement, 'show-text')
     this.renderer.addClass(this.LogoutButton.nativeElement, 'hide-text')

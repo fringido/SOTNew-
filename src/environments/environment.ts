@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url : 'http://10.0.60.9:3000/api/v1'
+  url : 'http://10.0.60.9:3000/api/v1',
+  ws: 'ws://10.0.60.9:3002/graphql'
 };
 
 /*

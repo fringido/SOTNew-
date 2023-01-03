@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 
+
 registerLocaleData(localeEsMx, 'es')
 
 
@@ -25,7 +26,7 @@ registerLocaleData(localeEsMx, 'es')
     NgbModule,
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'es'}
+    {provide: LOCALE_ID, useValue: 'es'},
   ],
   bootstrap: [AppComponent]
 })
