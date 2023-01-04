@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql,QueryRef } from 'apollo-angular';
 import { take, tap } from 'rxjs';
 
-const GET_HABITAICON = gql `
-  {
-    habitaciones{
-      habitacion{
-        id
+const GET_HABITAICON = gql`
+  query {
+    habitaciones {
+      numeroHabitacion
+      piso
+      estadoHabitacion {
+        nombre
       }
     }
   }
