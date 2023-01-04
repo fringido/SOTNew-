@@ -45,17 +45,17 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.DANGER;
       this.icon = RoomIconsEnum.PAREJA_OCUPADA;
     },
-    [RoomStatusEnum.OCUPADA_POR_COBRAR]: () => {
+    [RoomStatusEnum.POR_COBRAR]: () => {
       this.bgColor = BgColorEnum.DANGER;
       this.textColor = TextColorEnum.DANGER;
       this.icon = RoomIconsEnum.PAREJA_OCUPADA;
     },
-    [RoomStatusEnum.OCUPADA_ROOM_SERVICE_POR_COBRAR]: () => {
+    [RoomStatusEnum.ROOM_SERVICE_POR_COBRAR]: () => {
       this.bgColor = BgColorEnum.DANGER;
       this.textColor = TextColorEnum.DANGER;
       this.icon = RoomIconsEnum.ROOM_SERVICE;
     },
-    [RoomStatusEnum.OCUPADA_ROOM_SERVICE]: () => {
+    [RoomStatusEnum.ROOM_SERVICE]: () => {
       this.bgColor = BgColorEnum.DANGER;
       this.textColor = TextColorEnum.DANGER;
       this.icon = RoomIconsEnum.ROOM_SERVICE;
@@ -70,7 +70,7 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.PURPLE;
       this.icon = RoomIconsEnum.RESERVADA;
     },
-    [RoomStatusEnum.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR]: () => {
+    [RoomStatusEnum.ROOM_SERVICE_EXTRAS_POR_COBRAR]: () => {
       this.bgColor = BgColorEnum.DANGER;
       this.textColor = TextColorEnum.SUCCESS;
       this.icon = RoomIconsEnum.POR_COBRAR;

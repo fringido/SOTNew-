@@ -154,14 +154,20 @@
         </ng-container>
         <ng-container *ngSwitchCase="
             selectedRoom.status === AvailableRoomStatus.OCUPADA ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE  ?
+            selectedRoom.status === AvailableRoomStatus.ROOM_SERVICE  ||
+            selectedRoom.status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR ?
             selectedRoom.status : ''"
         >
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion/pagoExtraRenta')" [disabled]="isModoCambioHabitacion">
                 <span class="me-3">Extras</span>
                 <i class="fas fa-user-plus"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white" (click)="togggleModoCambioHabitacion(true)" *ngIf="!isModoCambioHabitacion">
+            <button 
+                class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white"
+                (click)="togggleModoCambioHabitacion(true)" 
+                *ngIf="!isModoCambioHabitacion"
+                [disabled]="selectedRoom.status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR"
+            >
                 <span class="me-3">Cambio de habitación</span>
                 <i class="fas fa-sync-alt"></i>
             </button>
@@ -173,7 +179,10 @@
                 <span class="me-3">Room Service</span>
                 <i class="icon icon-roomservice"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" [disabled]="isModoCambioHabitacion">
+            <button 
+                class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white"
+                [disabled]="isModoCambioHabitacion || selectedRoom.status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR"
+            >
                 <span class="me-3">Cancelar Entrada</span>
                 <i class="fas fa-times-circle"></i>
             </button>
@@ -181,25 +190,29 @@
                 <span class="me-3">Imprimir Ticket</span>
                 <i class="fa-solid fa-print"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-wine text-white" [disabled]="isModoCambioHabitacion" (click)="salida()">
+            <button 
+                class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-wine text-white"
+                [disabled]="isModoCambioHabitacion || selectedRoom.status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR"
+                (click)="salida()"
+            >
                 <span class="me-3">Salida</span>
                 <i class="fas icon-icon-metro-exit"></i>
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_POR_COBRAR ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
-            selectedRoom.status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ?
+            selectedRoom.status === AvailableRoomStatus.POR_COBRAR ||
+            selectedRoom.status === AvailableRoomStatus.ROOM_SERVICE_EXTRAS_POR_COBRAR ?
             selectedRoom.status : ''"
         >
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion/cobroPendiente')">
                 <span class="me-3">Cobrar Habitación</span>
                 <i class="fa-solid fa-money-bills"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" (click)="openModal('roomService')">
+            <!-- TODO: definir la lógica de negocio en este caso: se va a poder añadir room service a una habitación con extras? -->
+            <!-- <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" (click)="openModal('roomService')">
                 <span class="me-3">Room Service</span>
                 <i class="icon icon-roomservice"></i>
-            </button>
+            </button> -->
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('deshabilitarHabitacion')">
                 <span class="me-3">Deshabilitar</span>
                 <i class="far icon-candado"></i>
@@ -243,11 +256,11 @@
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.RESERVADA">
-          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="confirmarReservacion()">
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="confirmarReservacion()" [disabled]="isModoCambioHabitacion">
               <span class="me-3">Confirmar Reservación</span>
               <i class="far fa-check-circle"></i>
           </button>
-          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white" [disabled]="isModoCambioHabitacion">
               <span class="me-3">Desanclar Reservación</span>
               <i class="far fa-times-circle pr-1"></i>
           </button>
@@ -259,7 +272,7 @@
             <span class="me-3">Cancelar cambio</span>
             <i class="fas fa-sync-alt"></i>
         </button>
-          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" >
+          <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" [disabled]="isModoCambioHabitacion">
             <span class="me-3">Datos de Reservación</span>
             <div><i class="icon-calendar"></i></div>
         </button>

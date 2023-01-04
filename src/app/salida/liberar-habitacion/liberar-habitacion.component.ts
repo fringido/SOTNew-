@@ -18,7 +18,7 @@ export class LiberarHabitacionComponent implements OnInit {
 
   seleccionRazon = false;
 
-  detalleSelected!: {name: string, text: string};
+  detalleSelected?: {name: string, text: string};
   detalleSelectedIndex!: number;
 
   liberacion: {conDetalle: boolean} = {conDetalle: false};
@@ -60,11 +60,12 @@ export class LiberarHabitacionComponent implements OnInit {
       return this.unselectDetalles();
     }
     this.unselectDetalles();
+    this.liberacion.conDetalle = true;
     if(detalle.name === 'exitosa') {
       this.form.reset();
       this.seleccionRazon = true;
+      this.liberacion.conDetalle = false;
     }
-    this.liberacion.conDetalle = true;
     this.detalleSelectedIndex = index;
     this.detalleSelected = detalle;
     const detalleToSelect = this.detallesRef.toArray().find((el) => el.nativeElement.id === 'detalle_' + index);
@@ -90,6 +91,8 @@ export class LiberarHabitacionComponent implements OnInit {
   }
   
   aceptar() {
+    console.log(this.form.value);
+    
     this.salir();
     this.dialogService.open(MessageModalAutoclosableComponent, {
       data: {

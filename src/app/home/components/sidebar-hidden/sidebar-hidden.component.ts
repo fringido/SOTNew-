@@ -48,7 +48,7 @@ export class SidebarHiddenComponent implements OnInit {
     { 
       name: 'Room service',
       count: 10,
-      status: RoomStatusEnum.OCUPADA_ROOM_SERVICE,
+      status: RoomStatusEnum.ROOM_SERVICE,
       color: 'sot-bg-danger',
       icon: 'far fa-check-circle icon-roomservice fa-2xs mr5px',
       isTextScrollable: true

@@ -48,9 +48,9 @@ export class RoomService {
   }
 
   isroomPorCobrar(roomStatus: RoomStatusEnum) {
-    return roomStatus === RoomStatusEnum.OCUPADA_POR_COBRAR ||
-    roomStatus === RoomStatusEnum.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
-    roomStatus === RoomStatusEnum.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR;
+    return roomStatus === RoomStatusEnum.POR_COBRAR ||
+    roomStatus === RoomStatusEnum.ROOM_SERVICE_POR_COBRAR ||
+    roomStatus === RoomStatusEnum.ROOM_SERVICE_EXTRAS_POR_COBRAR;
   }
 
   // http

@@ -9,9 +9,9 @@ export enum RoomStatusEnum {
     EN_LIMPIEZA = 'En limpieza',
     OCUPADA = 'Ocupada',
     EN_SUPERVISION  = 'En supervisión',
-    OCUPADA_POR_COBRAR = 'Ocupada por cobrar',
-    OCUPADA_ROOM_SERVICE = 'Ocupada room service',
-    OCUPADA_ROOM_SERVICE_POR_COBRAR = 'Ocupada room service por cobrar',
-    OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR = 'Ocupada room service extras por cobrar',
+    POR_COBRAR = 'Ocupada por cobrar',
+    ROOM_SERVICE = 'Ocupada room service',
+    ROOM_SERVICE_POR_COBRAR = 'Ocupada room service por cobrar',
+    ROOM_SERVICE_EXTRAS_POR_COBRAR = 'Ocupada room service extras por cobrar',
     MANTENIMIENTO = 'Mantenimiento'
 }
