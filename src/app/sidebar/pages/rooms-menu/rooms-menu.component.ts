@@ -35,7 +35,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     iconExtraMargin: '-5px'
   }, {
     name: 'Por cobrar',
-    status: RoomStatusEnum.OCUPADA_POR_COBRAR,
+    status: RoomStatusEnum.POR_COBRAR,
     count: 10,
     color: '#0AC917',
     colorClass: 'txt-success',
@@ -63,7 +63,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     iconExtraMargin: '-10px'
   }, {
     name: 'Room service',
-    status: RoomStatusEnum.OCUPADA_ROOM_SERVICE,
+    status: RoomStatusEnum.ROOM_SERVICE,
     count: 10,
     color: '#fd0022',
     colorClass: 'txt-danger',

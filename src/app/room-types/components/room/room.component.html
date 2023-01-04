@@ -54,15 +54,15 @@
         [ngStyle]="{'box-shadow' : '0 3px 4px', 'color':  bgColor}"
         *ngSwitchCase="
         status === AvailableRoomStatus.OCUPADA ||
-        status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE||
-        status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
-        status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ||
-        status === AvailableRoomStatus.OCUPADA_POR_COBRAR ?
+        status === AvailableRoomStatus.ROOM_SERVICE||
+        status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR ||
+        status === AvailableRoomStatus.ROOM_SERVICE_EXTRAS_POR_COBRAR ||
+        status === AvailableRoomStatus.POR_COBRAR ?
         status : ''"
     >
         <span class="span-usuario-card"></span>
         <div class="text-center alert-blink-box animated flash slower infinite alert-sot-danger" *ngIf="statusTimer > 3600">
-            <i class="icon-clock" *ngIf="status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE || status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR"></i>
+            <i class="icon-clock" *ngIf="status === AvailableRoomStatus.ROOM_SERVICE || status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.ROOM_SERVICE_EXTRAS_POR_COBRAR"></i>
         </div>
         <div>
             <div class="limitDescription font-10px label-state">
@@ -70,24 +70,24 @@
             </div>
             <div class="numero-habitacion">{{roomNumber}}</div>
             <div class="position-absolute font-10px label-state pie-adjust">
-                {{status !== AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR ? matricula : 'Por cobrar'}}
+                {{status !== AvailableRoomStatus.ROOM_SERVICE_EXTRAS_POR_COBRAR ? matricula : 'Por cobrar'}}
             </div>
         </div>
         <div class="estilo-icon-in"
-            *ngIf="status === AvailableRoomStatus.OCUPADA_POR_COBRAR || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR ||
-            status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR">
+            *ngIf="status === AvailableRoomStatus.POR_COBRAR || status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR ||
+            status === AvailableRoomStatus.ROOM_SERVICE_EXTRAS_POR_COBRAR">
             <i
                 [ngClass]="['far icon-cobrar', 'txt-success']"
                 class="far icon-cobrar reduce-ml"
             ></i>
         </div>
         <div class="estilo-icon-in"
-            *ngIf="status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE_POR_COBRAR || status === AvailableRoomStatus.OCUPADA_ROOM_SERVICE"
+            *ngIf="status === AvailableRoomStatus.ROOM_SERVICE_POR_COBRAR || status === AvailableRoomStatus.ROOM_SERVICE"
         >
             <i [ngClass]="['far fa-check-circle icon-roomservice fa-xs', textColor]" class="reduce-ml" style="width: 26px;"></i>
         </div>
         <div class="estilo-icon-in"
-            *ngIf="status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.OCUPADA_POR_COBRAR"
+            *ngIf="status === AvailableRoomStatus.OCUPADA || status === AvailableRoomStatus.POR_COBRAR"
         >
             <i [ngClass]="['far icon-pareja-ocupada', textColor]" class="fa reduce-ml"></i>
         </div>

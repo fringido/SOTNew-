@@ -132,7 +132,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.OCUPADA_POR_COBRAR,
+          status: this.statusRoom.POR_COBRAR,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 8,
@@ -143,7 +143,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.OCUPADA_ROOM_SERVICE_POR_COBRAR,
+          status: this.statusRoom.ROOM_SERVICE_POR_COBRAR,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 9,
@@ -154,7 +154,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR,
+          status: this.statusRoom.ROOM_SERVICE_EXTRAS_POR_COBRAR,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 10,
@@ -165,7 +165,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.OCUPADA_ROOM_SERVICE,
+          status: this.statusRoom.ROOM_SERVICE,
           tipo: 'Junior Villa',
           statusTimer: 3500,
           roomNumber: 11,
@@ -176,7 +176,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.OCUPADA_ROOM_SERVICE_EXTRAS_POR_COBRAR,
+          status: this.statusRoom.ROOM_SERVICE_EXTRAS_POR_COBRAR,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 12,
@@ -187,7 +187,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.OCUPADA_ROOM_SERVICE,
+          status: this.statusRoom.ROOM_SERVICE,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 13,
