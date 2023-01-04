@@ -129,4 +129,8 @@
     background-image: linear-gradient(rgba($blue-item,.3),rgba($blue-item,0));
     color: $blue-item;
   }
+  &-sot-grey {
+    background-image: linear-gradient(rgba($grey-item,.3),rgba($grey-item,0));
+    color: $grey-item;
+  }
 }

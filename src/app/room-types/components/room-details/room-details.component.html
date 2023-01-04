@@ -124,22 +124,30 @@
 
 <div class="list-group d-flex align-items-center list-group-flush p-1 others-menu">
     <ng-container [ngSwitch]="selectedRoom.status">
-        <ng-container *ngSwitchCase="AvailableRoomStatus.LIBRE">
+        <ng-container *ngSwitchCase="
+            selectedRoom.status === AvailableRoomStatus.LIBRE ||
+            selectedRoom.status === AvailableRoomStatus.BLOQUEADA||
+            selectedRoom.status === AvailableRoomStatus.LIBRE_CON_DETALLES ?
+            selectedRoom.status : ''">
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="entrada()">
                 <span class="me-3">Entrada de habitación</span>
                 <i class="far fa-check-circle icon-pareja-ocupada"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('deshabilitarHabitacion')">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('deshabilitarHabitacion')" *ngIf="selectedRoom.status !== AvailableRoomStatus.BLOQUEADA">
                 <span class="me-3">Deshabilitar</span>
                 <i class="far icon-candado"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('reservacion')">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" (click)="openModal('reservacion')" *ngIf="selectedRoom.status !== AvailableRoomStatus.BLOQUEADA">
                 <span class="me-3">Reservación</span>
                 <i class="far icon-calendar"></i>
             </button>
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white" (click)="openModal('mantenimiento')">
                 <span class="me-3">Mantenimiento</span>
                 <i class="far icon-mantenimiento"></i>
+            </button>
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Cancelar Bloqueo</span>
+                <i class="fas fa-times-circle"></i>
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.PREPARADA">
@@ -280,34 +288,41 @@
         </button>
       </ng-container>
       <ng-container *ngSwitchCase="AvailableRoomStatus.RESERVADA_PREPARADA">
-        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion')">
-          <span class="me-3">Entrada de habitación</span>
-          <i class="far fa-check-circle icon-pareja-ocupada"></i>
-      </button>
-        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
-            <span class="me-3">Cancelar Reservación</span>
-            <i class="fas fa-times-circle"></i>
-        </button>
-        <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" >
-          <span class="me-3">Datos de Reservación</span>
-          <div><i class="icon-calendar"></i></div>
-      </button>
-    </ng-container>
-        <ng-container *ngSwitchCase="AvailableRoomStatus.EN_SUPERVISION">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('rentaHabitacion')">
+                <span class="me-3">Entrada de habitación</span>
+                <i class="far fa-check-circle icon-pareja-ocupada"></i>
+            </button>
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white">
+                <span class="me-3">Cancelar Reservación</span>
+                <i class="fas fa-times-circle"></i>
+            </button>
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" >
+                <span class="me-3">Datos de Reservación</span>
+                <div><i class="icon-calendar"></i></div>
+            </button>
+        </ng-container>
+        <ng-container *ngSwitchCase="
+                selectedRoom.status === AvailableRoomStatus.EN_SUPERVISION ||
+                selectedRoom.status === AvailableRoomStatus.SUPERVISION_MANTENIMIENTO ?
+                selectedRoom.status : ''
+                ">
             <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-success text-white" (click)="openModal('salida/liberar')">
                 <span class="me-3">Liberar Habitación</span>
                 <i class="far fa-check-circle"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-orange text-white" (click)="openModal('salida/supervisar')">
                 <span class="me-3">Cambiar Supervisor</span>
                 <i class="fas fa-sync-alt"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-blue text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-blue text-white" (click)="openModal('salida/limpieza')">
                 <span class="me-3">Enviar a limpieza</span>
                 <i class="icon-limpieza"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-grey-item text-white" *ngIf="selectedRoom.status === AvailableRoomStatus.EN_SUPERVISION">
                 <span class="me-3">Camaristas en turno</span>
+            </button>
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-purple text-white" *ngIf="selectedRoom.status === AvailableRoomStatus.SUPERVISION_MANTENIMIENTO">
+                <span class="me-3 text-nowrap">Historial de mantenimiento</span>
             </button>
         </ng-container>
         <ng-container *ngSwitchCase="AvailableRoomStatus.MANTENIMIENTO">

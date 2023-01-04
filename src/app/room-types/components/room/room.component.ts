@@ -35,6 +35,11 @@ export class RoomComponent implements OnInit, OnChanges {
       this.textColor = TextColorEnum.SUCCESS;
       this.icon = RoomIconsEnum.CHECK;
     },
+    [RoomStatusEnum.LIBRE_CON_DETALLES]: () => {
+      this.bgColor = BgColorEnum.PURPLE;
+      this.textColor = TextColorEnum.PURPLE;
+      this.icon = RoomIconsEnum.CHECK;
+    },
     [RoomStatusEnum.PREPARADA]: () => {
       this.bgColor = BgColorEnum.SUCCESS;
       this.textColor = TextColorEnum.SUCCESS;
@@ -94,6 +99,16 @@ export class RoomComponent implements OnInit, OnChanges {
       this.bgColor = BgColorEnum.BLUE;
       this.textColor = TextColorEnum.BLUE;
       this.icon = RoomIconsEnum.SUPERVISION;
+    },
+    [RoomStatusEnum.BLOQUEADA]: () => {
+      this.bgColor = BgColorEnum.PURPLE;
+      this.textColor = TextColorEnum.PURPLE;
+      this.icon = RoomIconsEnum.CANDADO;
+    },
+    [RoomStatusEnum.SUPERVISION_MANTENIMIENTO]: () => {
+      this.bgColor = BgColorEnum.BLUE;
+      this.textColor = TextColorEnum.BLUE;
+      this.icon = RoomIconsEnum.SUPERVISION
     },
     [RoomStatusEnum.MANTENIMIENTO]: () => {
       this.bgColor = BgColorEnum.GREY_ITEM;

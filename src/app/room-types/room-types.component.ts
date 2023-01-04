@@ -276,7 +276,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.LIBRE_CON_DETALLES,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 21,
@@ -287,7 +287,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           duracionTarifa: 10000
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.BLOQUEADA,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 22,
@@ -295,10 +295,11 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           tarifa: 'Pie',
           camaristaOCamaristas: 2,
           supervisor: null,
-          duracionTarifa: 10000
+          duracionTarifa: 10000,
+          observaciones: 'Bloqueado por texto'
         },
         {
-          status: this.statusRoom.LIBRE,
+          status: this.statusRoom.SUPERVISION_MANTENIMIENTO,
           tipo: 'Junior Villa',
           statusTimer: 3700,
           roomNumber: 23,
@@ -306,7 +307,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           tarifa: 'Pie',
           camaristaOCamaristas: 2,
           supervisor: null,
-          duracionTarifa: 10000
+          duracionTarifa: 10000,
+          observaciones: 'Mant. por texto'
         },
         {
           status: this.statusRoom.LIBRE,
