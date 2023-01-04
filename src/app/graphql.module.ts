@@ -17,7 +17,7 @@ const subscriptionLink = new WebSocketLink({
   options: {
     reconnect: true,
     connectionParams: {
-      authToken: localStorage.getItem("token") || '',
+      authToken: `${JSON.parse(localStorage.getItem("token") || '')}`,
     },
   },
 });
@@ -26,7 +26,7 @@ const authMiddleware = new ApolloLink((operation: any, forward: any) => {
   operation.setContext({
     headers: new HttpHeaders().set(
       "Authorization",
-      `Bearer ${localStorage.getItem("token")}` || '',
+      `Bearer ${JSON.parse(localStorage.getItem("token") || '')}`,
     ),
   });
 
@@ -40,10 +40,10 @@ export function createApollo(httpLink: HttpLink) {
       split(
         ({ query }) => {
           const definition = getMainDefinition(query);
-        return (
-          definition.kind === 'OperationDefinition' &&
-          definition.operation === 'subscription'
-        );
+          return (
+            definition.kind === 'OperationDefinition' &&
+            definition.operation === 'subscription'
+          );
         },
         subscriptionLink,
         httpLink.create({
@@ -56,7 +56,7 @@ export function createApollo(httpLink: HttpLink) {
 
 }
 @NgModule({
-  exports: [ApolloModule],
+  exports: [HttpClientModule,ApolloModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
