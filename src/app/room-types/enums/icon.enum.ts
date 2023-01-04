@@ -10,5 +10,6 @@ export enum RoomIconsEnum {
     SUPERVISION = 'far icon-search',
     ROOM_SERVICE = 'far icon-rooms',
     POR_COBRAR = 'far icon-cobrar',
+    CANDADO = 'icon-candado',
     MANTENIMIENTO = 'far icon-mantenimiento'
 }

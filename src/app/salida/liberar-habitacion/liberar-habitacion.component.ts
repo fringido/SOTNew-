@@ -14,11 +14,13 @@ import { RoomService } from 'src/app/room-types/services/room/room.service';
 })
 export class LiberarHabitacionComponent implements OnInit {
 
+  AvailableRoomStatus = RoomStatusEnum;
+
   display = true;
 
   seleccionRazon = false;
 
-  detalleSelected?: {name: string, text: string};
+  detalleSelected?: {name: string, text: string} | null;
   detalleSelectedIndex!: number;
 
   liberacion: {conDetalle: boolean} = {conDetalle: false};
@@ -28,6 +30,10 @@ export class LiberarHabitacionComponent implements OnInit {
     {name: 'supervision', text: 'Hubo detalle de supervisión'},
     {name: 'ventilacion', text: 'Hubo detalle de ventilación'},
     {name: 'pormenor', text: 'Hubo detalle pormenor'},
+  ]
+  
+  readonly exitosa = [
+    {name: 'exitosa', text: 'Liberación Exitosa'},
   ]
 
   @ViewChildren('detallesRef') detallesRef!: QueryList<ElementRef<HTMLDivElement>>;
@@ -62,7 +68,6 @@ export class LiberarHabitacionComponent implements OnInit {
     this.unselectDetalles();
     this.liberacion.conDetalle = true;
     if(detalle.name === 'exitosa') {
-      this.form.reset();
       this.seleccionRazon = true;
       this.liberacion.conDetalle = false;
     }
@@ -74,8 +79,10 @@ export class LiberarHabitacionComponent implements OnInit {
   }
 
   unselectDetalles() {
+    this.form.reset();
     this.seleccionRazon = false;
     this.detalleSelectedIndex = -1;
+    this.detalleSelected = null;
     this.detallesRef.toArray().forEach((el) => {
       this.renderer.addClass(el.nativeElement, 'concepto-lib-touple');
       this.renderer.removeClass(el.nativeElement, 'concepto-lib-touple-assigned');
@@ -83,7 +90,19 @@ export class LiberarHabitacionComponent implements OnInit {
   }
 
   enableAceptarButton() {
-    return this.seleccionRazon || (this.detalleSelected?.name !== 'exitosa' && this.form.valid);  
+    return (this.form.valid || this.selectedRoom?.status !== this.AvailableRoomStatus.SUPERVISION_MANTENIMIENTO) && this.detalleSelected && 
+    ((this.selectedRoom?.status === this.AvailableRoomStatus.SUPERVISION_MANTENIMIENTO) ||
+      (this.seleccionRazon || 
+        (this.detalleSelected?.name !== 'exitosa' &&
+         this.selectedRoom?.status !== this.AvailableRoomStatus.SUPERVISION_MANTENIMIENTO && this.form.valid
+        )
+      )
+    );
+  }
+
+  enableObservacionesInput() {
+    return (this.liberacion.conDetalle && this.detalleSelected) || 
+          (this.selectedRoom?.status === this.AvailableRoomStatus.SUPERVISION_MANTENIMIENTO && this.detalleSelected?.name === 'exitosa')
   }
 
   salir() {

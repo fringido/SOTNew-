@@ -4,7 +4,9 @@
             <div class="row rowModal body-ModalSOT box-modal" style="overflow-y:auto;">
                 <div 
                     class="concepto-lib-touple my-2 mx-4" 
-                    *ngFor="let detalle of detalles 
+                    *ngFor="let detalle of 
+                        (selectedRoom?.status === 
+                        AvailableRoomStatus.SUPERVISION_MANTENIMIENTO ? exitosa : detalles)
                     let i = index" 
                     (click)="selectDetalle(detalle, i)" 
                     #detallesRef 
@@ -20,7 +22,7 @@
                     rows="4"
                     cols="36"
                     pInputTextarea 
-                    [attr.disabled]="liberacion.conDetalle ? null: '' "
+                    [attr.disabled]="enableObservacionesInput() ? null: ''"
                 ></textarea>
             </form>
             <div class="modal-footer-content">
@@ -34,7 +36,7 @@
                     <button  
                       (focus)="aceptar()"
                       class="button-modal button-aceptar"
-                      [attr.disabled]="enableAceptarButton() ? null: '' "    
+                      [attr.disabled]="enableAceptarButton() ? null: ''"    
                     >
                         <div class="icon">
                             <i class="fa-solid fa-check"></i>
