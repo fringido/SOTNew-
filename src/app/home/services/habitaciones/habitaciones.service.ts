@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo, gql,QueryRef } from 'apollo-angular';
 import { take, tap } from 'rxjs';
 
 const GET_HABITAICON = gql `
-{
-  habitaciones{
-    id
+  {
+    habitaciones{
+      habitacion{
+        id
+      }
+    }
   }
-}
 `;
 
 @Injectable({
