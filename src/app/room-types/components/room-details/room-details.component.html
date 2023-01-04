@@ -175,7 +175,9 @@
                 <span class="me-3">Cancelar cambio</span>
                 <i class="fas fa-sync-alt"></i>
             </button>
-            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white"(click)="openModal('roomService/comandas')" [disabled]="isModoCambioHabitacion">
+            <button class="d-flex list-group-item py-2 my-1 others-menu_button align-items-center justify-content-between shadow-sm sot-bg-danger text-white"
+            (click)="selectedRoom.status === AvailableRoomStatus.OCUPADA ? openModal('roomService') : openModal('roomService/comandas') "
+            [disabled]="isModoCambioHabitacion">
                 <span class="me-3">Room Service</span>
                 <i class="icon icon-roomservice"></i>
             </button>
