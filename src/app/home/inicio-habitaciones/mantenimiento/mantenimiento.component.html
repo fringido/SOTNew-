@@ -2,10 +2,10 @@
   [showHeader]="true">
   <form class="container-mantenimiento" [formGroup]="form">
     <div class="button_opcion">
-      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 1" (click)="selectTipo(1)">BLOQUEO</button>
-      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 2" (click)="selectTipo(2)">FUMIGACIÓN</button>
-      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 3" (click)="selectTipo(3)">MANTENIMIENTO</button>
-      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == 4" (click)="selectTipo(4)">PARA RESERVACIÓN</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == tipoMantenimiento.BLOQUEO" (click)="selectTipo(tipoMantenimiento.BLOQUEO)">BLOQUEO</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == tipoMantenimiento.FUMIGACION" (click)="selectTipo(tipoMantenimiento.FUMIGACION)">FUMIGACIÓN</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == tipoMantenimiento.MANTENIMIENTO" (click)="selectTipo(tipoMantenimiento.MANTENIMIENTO)">MANTENIMIENTO</button>
+      <button type="button" class="select-button" [class.activate] = "form.controls['tipoMantenimiento'].value == tipoMantenimiento.PARA_RESERVACION" (click)="selectTipo(tipoMantenimiento.PARA_RESERVACION)">PARA RESERVACIÓN</button>
     </div>
     <div class="container_textarea">
       <span class="text-area">

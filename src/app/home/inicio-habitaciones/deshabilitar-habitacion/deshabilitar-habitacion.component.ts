@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { DialogService } from 'primeng/dynamicdialog';
+import { RoomService } from 'src/app/room-types/services/room/room.service';
 
 
 
@@ -21,13 +21,14 @@ export class DeshabilitarHabitacionComponent implements OnInit {
     private location: Location,
     private readonly router: Router,
     public dialogService: DialogService,
+    private readonly roomService: RoomService,
     private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       motivo:['',[Validators.required]]
-    })
+    });
   }
 
   aceptar(){
@@ -39,7 +40,7 @@ export class DeshabilitarHabitacionComponent implements OnInit {
   }
 
   modalCng(modal:boolean){
-    this.autorisacion=modal
+    this.autorisacion=modal;
   }
 
 }

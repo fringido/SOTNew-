@@ -17,6 +17,8 @@ import { RoomService } from '../../../../room-types/services/room/room.service';
 export class CobrarPendienteHabitacionComponent implements OnInit {
   form: any;
   display = true
+
+  // Variables provisionales la habitacion seleccionada se va a obtener por medio de los params en la ruta
   selectedRoom!: Room;
 
 

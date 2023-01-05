@@ -28,5 +28,5 @@
   </ng-template>
 </p-dialog>
 <p-dialog [(visible)]="autorisacion" [modal]="true" [closable]="false" [draggable]="false" [showHeader]="false">
-  <app-autorizacion (newItemEvent)="modalCng($event)"></app-autorizacion>
+  <app-autorizacion (newItemEvent)="modalCng($event)" [observaciones]="form.get('motivo')?.value"></app-autorizacion>
 </p-dialog>

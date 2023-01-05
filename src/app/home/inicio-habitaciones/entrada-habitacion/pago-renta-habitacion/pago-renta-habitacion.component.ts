@@ -27,6 +27,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
     { name: 'Cortesía', value: 4 },
     { name: 'Consumo Inteerno', value: 5 }
   ];
+  // Variables provisionales la habitacion seleccionada se va a obtener por medio de los params en la ruta
   selectedRoom!: Room;
 //* -------------------------------
 

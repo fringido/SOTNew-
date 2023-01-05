@@ -16,6 +16,7 @@ export class RentaHabitacionComponent implements OnInit {
 
   form!: any;
   display = true
+  // Variables provisionales la habitacion seleccionada se va a obtener por medio de los params en la ruta
   selectedRoom!: Room;
 
   maxPersonas:number = 3;

@@ -11,7 +11,7 @@ export enum RoomStatusEnum {
     EN_SUPERVISION  = 'En supervisión',
     POR_COBRAR = 'Ocupada por cobrar',
     ROOM_SERVICE = 'Ocupada room service',
-    BLOQUEADA = 'Bloqueada',
+    BLOQUEADA = 'Deshabilitada',
     LIBRE_CON_DETALLES = 'Con Detalles',
     ROOM_SERVICE_POR_COBRAR = 'Ocupada room service por cobrar',
     ROOM_SERVICE_EXTRAS_POR_COBRAR = 'Ocupada room service extras por cobrar',
