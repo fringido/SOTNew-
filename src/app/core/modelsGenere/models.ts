@@ -1,3 +1,5 @@
+import { DocumentNode } from 'graphql';
+import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -701,3 +703,12 @@ export enum ValidEstadosHabitaciones {
   Supervision = 'Supervision',
   SupervisionMantenimiento = 'Supervision_Mantenimiento'
 }
+
+
+export type Requester<C = {}, E = unknown> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
+export function getSdk<C, E>(requester: Requester<C, E>) {
+  return {
+
+  };
+}
+export type Sdk = ReturnType<typeof getSdk>;
