@@ -13,6 +13,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription, take } from 'rxjs';
 import { ConfimModalMessageComponent } from '../core/components/confim-modal-message/confim-modal-message.component';
 import { CambioHabitacionService } from '../home/inicio-habitaciones/entrada-habitacion/services/cambio-habitacion/cambio-habitacion.service';
+import { TipoMantenimientoEnum } from '../home/interfaces/tipo-mantenimiento.enum';
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
@@ -127,8 +128,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           roomNumber: 7,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
-          supervisor: null,
+          camaristaOCamaristas: null,
+          supervisor: 'Luis Mario Hernández García',
           duracionTarifa: 10000
         },
         {
@@ -240,7 +241,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           observaciones: 'La pantalla no enciende',
           camaristaOCamaristas: 2,
           supervisor: null,
-          duracionTarifa: 10000
+          duracionTarifa: 10000,
+          tipoMantenimiento: TipoMantenimientoEnum.MANTENIMIENTO
         },
         {
           status: this.statusRoom.LIBRE,
@@ -305,8 +307,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
           roomNumber: 23,
           matricula: 'ABC-123',
           tarifa: 'Pie',
-          camaristaOCamaristas: 2,
-          supervisor: null,
+          camaristaOCamaristas: null,
+          supervisor: 'Luis Mario Hernández García',
           duracionTarifa: 10000,
           observaciones: 'Mant. por texto'
         },

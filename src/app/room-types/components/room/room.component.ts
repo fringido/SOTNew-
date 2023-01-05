@@ -22,10 +22,11 @@ export class RoomComponent implements OnInit, OnChanges {
   @Input('roomNumber') roomNumber!: number;
   @Input('matricula') matricula!: string;
   @Input('tarifa') tarifa!: string;
-  @Input('camaristaOCamaristas') camaristaOCamaristas!: string | number;
-  @Input('supervisor') supervisor!: string;
-  // Si esta en mantenimiento se usa este atributo
+  @Input('camaristaOCamaristas') camaristaOCamaristas?: string | number | null;
+  @Input('supervisor') supervisor?: string | null;
+  // Si esta deshabilitada se usa este atributo
   @Input('observaciones') observaciones?: string;
+  @Input('tipoMantenimiento') tipoMantenimiento?: string;
   @Input('duracionTarifa') duracionTarifa: number = 0;
 
 

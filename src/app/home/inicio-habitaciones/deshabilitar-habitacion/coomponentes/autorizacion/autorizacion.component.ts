@@ -1,8 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input ,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
+import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
+import { RoomService } from 'src/app/room-types/services/room/room.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -10,15 +13,21 @@ import { MessageModalAutoclosableComponent } from 'src/app/core/components/messa
   templateUrl: './autorizacion.component.html',
   styleUrls: ['./autorizacion.component.scss']
 })
-export class AutorizacionComponent implements OnInit {
+export class AutorizacionComponent implements OnInit, OnDestroy {
 
   form!:FormGroup
 
   @Output() newItemEvent = new EventEmitter<boolean>();
+  @Input() observaciones!: string;
+
+  // Variables provisionales la habitacion seleccionada se va a obtener por medio de los params en la ruta
+  selectedRoom!: any;
+  selectedRoomSubs!: Subscription;
 
   constructor(
     private readonly router: Router,
     private readonly fb: FormBuilder,
+    private readonly roomService: RoomService,
     private dialogService: DialogService,
 
 
@@ -30,6 +39,13 @@ export class AutorizacionComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
+      this.selectedRoom = room;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.selectedRoomSubs.unsubscribe();
   }
 
   cancelar(){
@@ -41,6 +57,11 @@ export class AutorizacionComponent implements OnInit {
     };
     genDialogMessage(`DESHABILITARÍAN GENERADA CON ÉXITO`)
     this.router.navigate([`/hotel`]);
+    this.roomService.updateSelectedRoom({
+      ...this.selectedRoom,
+      status: RoomStatusEnum.BLOQUEADA,
+      observaciones: this.observaciones
+    });
   }
 
 }
