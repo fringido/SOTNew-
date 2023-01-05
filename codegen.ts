@@ -15,6 +15,9 @@ const config: CodegenConfig = {
     },
     'src/app/core/modelsGenere/models.ts': {
       plugins: ['typescript','typescript-generic-sdk'],
+      config: {
+        avoidOptionals: true
+      }
     },
   }
 
