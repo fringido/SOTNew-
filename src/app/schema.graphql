@@ -1,0 +1,1140 @@
+"""
+Objeto que contiene los campos que representan a la entidad Rol
+"""
+type Rol {
+  """
+  UUID de la entidad Rol
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Rol
+  """
+  nombre: String!
+
+  """
+  Lista con la informacion de todos los Usuarios que pertenecen a la entidad Rol
+  """
+  usuarios: [UsuarioResponse!]!
+}
+
+"""
+Objecto que contiene los comapos que representan a la entidad Acceso
+"""
+type Acceso {
+  """
+  UUID de la entidad Acceso
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Acceso
+  """
+  nombre: String!
+}
+
+"""
+Objecto que contiene los campos que representan a la entidad Permiso
+"""
+type Permiso {
+  """
+  UUID de la entidad Permiso
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Permiso
+  """
+  nombre: String!
+
+  """
+  Campo que indica el valor de al entidad Permiso, es decir, si el usuario al cual pertenece tiene dicho permiso o no
+  """
+  valor: Boolean!
+
+  """
+  Informacion del Acceso al cual pertenece la entidad Permiso
+  """
+  acceso: Acceso!
+
+  """
+  Informacion del Rol al cual pertenece la entidad Permiso
+  """
+  rol: Rol!
+
+  """
+  Informacion del Usuario al cual pertenece la entidad Permiso
+  """
+  usuario: [UsuarioResponse!]!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad Usuario
+"""
+type Usuario {
+  id: ID!
+
+  """
+  Nombre de la entidad Usuario
+  """
+  nombre: String!
+
+  """
+  Indica si la entidad Usuario se encuentra activa, es decir, si ya se a registrado su eliminacion
+  """
+  activo: Boolean!
+
+  """
+  Informacion del Rol al que pertenece la entidad Usuario
+  """
+  rol: Rol!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad PermisosUsuarioResponse
+"""
+type PermisoUsuarioResponse {
+  """
+  UUID de la entidad PermisoUsuarioResponse
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad PermisoUsuarioResponse
+  """
+  nombre: String!
+
+  """
+  Indica si el usuario tiene permiso o no de acceder a la caracteristica que representa el permiso
+  """
+  valor: Boolean!
+
+  """
+  Nombre del Acceso al cual pertenece la entidad PermisoUsuarioResponse
+  """
+  acceso: String!
+
+  """
+  Nombre del Menu al cual pertenece la entidad PermisoUsuarioResponse
+  """
+  menu: String!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad RolUsuarioResponse
+"""
+type RolUsuarioResponse {
+  """
+  UUID de la entidad RolUsuarioResponse
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad RolUsuarioResponse
+  """
+  nombre: String!
+
+  """
+  Lista de permisos de la entidad RolUsuarioResponse
+  """
+  permisos: [PermisoUsuarioResponse!]!
+}
+
+"""
+Objecto que contiene los campos que representan a la entidad UsuarioResponse
+"""
+type UsuarioResponse {
+  """
+  UUID de la entidad UsuarioResponse
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad UsuarioResponse
+  """
+  nombre: String!
+
+  """
+  Indica si la entidad UsuarioResponse se encuentra activa, es decir, si ya se a registrado su eliminacion
+  """
+  activo: Boolean!
+
+  """
+  Informacion del RolUsuarioResponse al cual pertenece la entidad UsuarioResponse
+  """
+  rol: RolUsuarioResponse!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad Renta
+"""
+type Renta {
+  """
+  UUID de la entidad Renta
+  """
+  id: ID!
+
+  """
+  Fecha-hora en la que se registro la entrada del cliente a la habitacion
+  """
+  fechaRegistro: Date!
+
+  """
+  Fecha-hora en la que se registro la salida del cliente de la habitacion. Puede ser nulo
+  """
+  fechaSalida: Date
+
+  """
+  Fecha-hora en la que inicio la renta de la habitacion
+  """
+  fechaInicio: Date!
+
+  """
+  Fecha-hora en la que finalizara la renta de la habitacion
+  """
+  fechaFin: Date!
+
+  """
+  No se xd
+  """
+  numeroServicio: String!
+
+  """
+  Informacion de la Habitacion a la cual pertenece la entidad Renta
+  """
+  habitacion: Habitacion!
+
+  """
+  Informacion de la Tarifa a la cual pertenece la entidad Renta
+  """
+  tarifa: Tarifa!
+
+  """
+  Numeros de hospedajes extra solicitados
+  """
+  hospedajesExtra: Int!
+
+  """
+  Numero de personas extra solicitadas
+  """
+  personasExtra: Int!
+
+  """
+  Numero de horas extra solicitadas
+  """
+  horasExtra: Int!
+
+  """
+  Descripcion del motivo por el cual la renta se cancelo
+  """
+  motivoCancelacion: String
+
+  """
+  Monto total de la renta de la habitacion, esto incluye el costo de la habitacion y los diferentes extras que se hayan solicitado
+  """
+  total: Int!
+}
+
+"""
+Objecto que contiene los campos que representan a la entidad Tarifa
+"""
+type Tarifa {
+  """
+  UUID de la entidad Tarifa
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Tarifa
+  """
+  nombre: String!
+
+  """
+  Campo que inidica si la entidad Tarifa se encuentra actualmente activa, es decir, si ya se registro su eliminacion
+  """
+  activo: Boolean!
+
+  """
+  Duracion en horas de la renta de la habitacion
+  """
+  duracion: Int!
+
+  """
+  Hora en la que se empieza a aplicar la tarifa. Formato HH:mm:ss
+  """
+  horaInicio: String!
+
+  """
+  Hora en la que finaliza la aplicacion de la tarifa. Formato HH:mm:ss
+  """
+  horaFinal: String!
+
+  """
+  Indica si la tarifa aplica en los dias lunes
+  """
+  lunes: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias martes
+  """
+  martes: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias miercoles
+  """
+  miercoles: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias jueves
+  """
+  jueves: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias viernes
+  """
+  viernes: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias sabado
+  """
+  sabado: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias domingo
+  """
+  domingo: Boolean!
+
+  """
+  Fecha a partir de la cual se empieza a aplicar la Tarifa
+  """
+  fechaInicio: Date!
+
+  """
+  Fecha en la que termine la aplicacion de la Tarifa
+  """
+  fechaFinal: Date!
+
+  """
+  Costo de la renta de la habitacion
+  """
+  costoHabitacion: Int!
+
+  """
+  Costo de un hospedaje extra
+  """
+  costoHospedajeExtra: Int!
+
+  """
+  Costo de una persona extra
+  """
+  costoPersonaExtra: Int!
+
+  """
+  Costo de una hora extra
+  """
+  costoHoraExtra: Int!
+
+  """
+  Numero maximo de hospedajes extra que se pueden solicitar
+  """
+  hospedajesExtraMax: Int!
+
+  """
+  Numero maximo de personas extra que se pueden solicitar
+  """
+  personasExtraMax: Int!
+
+  """
+  Numero maximo de horas extra que se pueden solicitar
+  """
+  horasExtraMax: Int!
+
+  """
+  Informacion del Tipo de Habitacion a la cual pertenece la entidad Tarifa
+  """
+  tipoHabitacion: TipoHabitacion!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad Tipo Habitacion
+"""
+type TipoHabitacion {
+  """
+  UUID de la entidad Tipo Habitacion
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Tipo Habitacion
+  """
+  nombre: String!
+
+  """
+  Clave que representa a la entidad Tipo Habitacion
+  """
+  clave: String!
+
+  """
+  Descripcion de la entidad Tipo Habitacion
+  """
+  descripcion: String!
+
+  """
+  Indica si la entidad Tipo Habitacion se encuentra activa, es decir, si ya se ha registrado su eliminacion
+  """
+  activo: Boolean!
+
+  """
+  Promedio de minutos que una habitacion tarda en relizar el proceso de entrada
+  """
+  minutosEntrada: Int!
+
+  """
+  Promedio de minutos que una habitacion tarda en realizar el proceso de Limpieza estando sucia
+  """
+  minutosSucia: Int!
+
+  """
+  Promedio de minutos que una habitacion tarda en realizar el proceso de Limpieza estando medio sucia
+  """
+  minutosMediaSucia: Int!
+
+  """
+  Numero maximo de reservaciones que se le pueden asignar a la habitacion
+  """
+  maximoReservaciones: Int!
+}
+
+"""
+Objecto que contiene los campos que representan a la entidad Estado Habitacion
+"""
+type EstadoHabitacion {
+  """
+  UUID de la entidad Estado Habitacion
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Estado Habitacion
+  """
+  nombre: String!
+
+  """
+  Campo que nos indica si la entidad Estado Habitacion se encuentra activa
+  """
+  activo: Boolean!
+}
+
+"""
+Objecto que contiene los campos que representan a la entidad Habitacion
+"""
+type Habitacion {
+  """
+  UUID de la entidad Habitacion
+  """
+  id: ID!
+
+  """
+  Numero de la entidad Habitacion
+  """
+  numeroHabitacion: Int!
+
+  """
+  Piso en la cual se encuentra la entidad Habitacion
+  """
+  piso: Int!
+
+  """
+  Indica si la entidad Habitacion esta activa, es decir, si ya ha sido marcada como eliminada
+  """
+  activo: Boolean!
+
+  """
+  Informacion del Usuario que se encuentra actualmente revisando la entidad Habitacion, este campo puede ser nulo
+  """
+  usuarioRevision: Usuario
+
+  """
+  Informacion del Tipo de Habitacion a la cual pertenece la entidad Habitacion
+  """
+  tipoHabitacion: TipoHabitacion!
+
+  """
+  Informacion del Estado de la Habitacion a la cual pertenece la entidad Habitacion
+  """
+  estadoHabitacion: EstadoHabitacion!
+}
+
+"""
+Date custom scalar type
+"""
+scalar Date
+
+type Query {
+  """
+  Query que obtiene una entidad UsuarioResponse que cumpla con los argumentos de busqueda
+  """
+  usuario(id: ID!): UsuarioResponse!
+
+  """
+  Query que obtiene una lista de entidades UsuarioResponse que cumpla con los argumentos de busqueda
+  """
+  usuarios(ofset: Int = 0, limit: Int = 10): [UsuarioResponse!]!
+
+  """
+  Query que obtiene una entidad Rol que cumpla con los argumentos de busqueda
+  """
+  rol(id_o_nombre: String!): Rol!
+
+  """
+  Query que obtiene una lista de entidades Rol que cumplan con los argumentos de busqueda
+  """
+  roles: [Rol!]!
+
+  """
+  Query que obtiene una entidad Permiso que cumpla con los argumentos solicitados
+  """
+  permiso(id: ID!): Permiso!
+
+  """
+  Query que obtiene una lista de entidades Permiso que cumplan con los argumentos de busqueda
+  """
+  permisos(ofset: Int = 0, limit: Int = 10): [Permiso!]!
+
+  """
+  Consulta la informacion de todas la entidades de Habitacion que coincidan con los argumentos de busqueda
+  """
+  habitaciones(activo: Boolean): [Habitacion!]!
+
+  """
+  Consulta la información de la entidad Habitacion que coincida con los argumentos de busqueda
+  """
+  habitacion(id: ID!): Habitacion!
+
+  """
+  Query que obtiene una lista de entidades EstadoHabitacion que cumplan con los argumentos solicitados
+  """
+  estados_habitaciones(activo: Boolean): [EstadoHabitacion!]!
+
+  """
+  Query que obtiene una entidad EstadoHabitacion que cumpla con los argumentos solicitados
+  """
+  estado_habitacion(id_o_nombre: String!): EstadoHabitacion!
+
+  """
+  Query que obtiene una lista de entidades TipoHabitacion que cumplan con los argumentos de busqueda
+  """
+  tipos_habitaciones(activo: Boolean): [TipoHabitacion!]!
+
+  """
+  Query que obtiene una entidad TipoHabitacion que coincida con los argumentos de busqueda
+  """
+  tipo_habitacion(id_o_nombre: String!): TipoHabitacion!
+
+  """
+  Query que obtiene una lista de entidades Renta que cumplan con los argumentos de busqueda
+  """
+  rentas(finalizada: Boolean): [Renta!]!
+
+  """
+  Query que obtiene una entidad Renta que cumpla con los argumentos de busqueda
+  """
+  renta(id: ID!): Renta!
+
+  """
+  Query que obtiene una lista de entidades Tarifa que cumplan con los argumentos de busqueda
+  """
+  tarifas(activo: Boolean): [Tarifa!]!
+
+  """
+  Query que obtiene una entidad Tarifa que cumpla con los argumentos de busqueda
+  """
+  tarifa(id_o_nombre: String!): Tarifa!
+}
+
+type Mutation {
+  """
+  Crea una nueva entidad Habitacion en la base de datos
+  """
+  crear_habitacion(createHabitacioneInput: CreateHabitacionInput!): String!
+
+  """
+  Actualiza la informacion de la entidad Habitacion indicada
+  """
+  actualizar_habitacion(updateHabitacioneInput: UpdateHabitacionInput!): String!
+
+  """
+  Mutacion que desactiva la entidad Habitacion
+  """
+  eliminar_habitacion(id: ID!): String!
+
+  """
+  Cambia el estado de la entidad Habitacion indicada
+  """
+  cambiar_estado(id: ID!, estado: ValidEstadosHabitaciones!): String!
+
+  """
+  Actualiza la informacion del campo usuarioRevision de la entidad Habitacion
+  """
+  revisar_habitacion(id: ID!, enRevision: Boolean!): String!
+
+  """
+  Mutacion que crea una nueva entidad Estado Habitacion con los parametros ingresados
+  """
+  crear_estado_habitacion(
+    createEstadosHabitacioneInput: CreateEstadoHabitacionInput!
+  ): String!
+
+  """
+  Mutacion que actualiza la entidad EstadoHabitacion con los parametros ingresados
+  """
+  actualizar_estado_habitacion(
+    updateEstadosHabitacioneInput: UpdateEstadoHabitacionInput!
+  ): EstadoHabitacion!
+
+  """
+  Mutacion que desactiva la entidad EstadoHabitacion
+  """
+  eliminar_estado_habitacion(id: ID!): EstadoHabitacion!
+
+  """
+  Mutacion que crea una entidad TipoHabitacion con los parametros proporcionados
+  """
+  crear_tipo_habitacion(
+    createTiposHabitacioneInput: CreateTipoHabitacionInput!
+  ): String!
+
+  """
+  Mutacion que actualiza la entidad TipoHabitacion con los parametros proporcionados
+  """
+  actualizar_tipo_habitacion(
+    actualizar_tipo_habitacion: UpdateTipoHabitacionInput!
+  ): String!
+
+  """
+  Mutacion que desactiva la entidad TipoHabitacion
+  """
+  eliminar_tipo_habitacion(id: String!): String!
+
+  """
+  Mutacion que crea una entidad Renta con los parametros ingresados
+  """
+  crear_renta(createRentaInput: CreateRentaInput!): String!
+
+  """
+  Mutacion que actualiza la entidad Renta con los parametros ingresados
+  """
+  actualizar_renta(updateRentaInput: UpdateRentaInput!): String!
+
+  """
+  Mutacion que crea una entidad Tarifa con los parametros proporcionados
+  """
+  crear_tarifa(createTarifaInput: CreateTarifaInput!): String!
+
+  """
+  Mutacion que actualiza la entidad Tarifa con los parametros proporcionados
+  """
+  actualizar_tarifa(updateTarifaInput: UpdateTarifaInput!): Tarifa!
+
+  """
+  Mutacion que desactiva la entidad Tarifa
+  """
+  eliminar_tarifa(id: ID!): Tarifa!
+}
+
+"""
+Campos necesarios para crear una nueva entidad Habitacion en la base de datos
+"""
+input CreateHabitacionInput {
+  """
+  Numero de la habitacion
+  """
+  numeroHabitacion: Int!
+
+  """
+  Piso en el que se encuentra la habitacion
+  """
+  piso: Int!
+
+  """
+  Id del Tipo de Habitacion a la que pertenece la habitacion
+  """
+  tipoHabitacionId: ID!
+
+  """
+  Id del Estado de la Habitacion
+  """
+  estadoHabitacionId: ID!
+}
+
+"""
+Campos que pueden ser directamente modificados de la entidad Habitacion
+"""
+input UpdateHabitacionInput {
+  """
+  Numero de la habitacion
+  """
+  numeroHabitacion: Int
+
+  """
+  Piso en el que se encuentra la habitacion
+  """
+  piso: Int
+
+  """
+  Id del Tipo de Habitacion a la que pertenece la habitacion
+  """
+  tipoHabitacionId: ID
+
+  """
+  Id del Estado de la Habitacion
+  """
+  estadoHabitacionId: ID
+
+  """
+  UUID de la entidad Habitacion
+  """
+  id: ID!
+}
+
+enum ValidEstadosHabitaciones {
+  En_Creacion
+  Libre
+  Pendiente_Cobro
+  Preparada
+  Reservada
+  Preparada_Reservada
+  Bloqueada
+  Ocupada
+  Sucia
+  Limpieza
+  Supervision
+  Mantenimiento
+  Supervision_Mantenimiento
+  Media_Sucia
+  Con_Detalles
+  Room_Service
+}
+
+"""
+Campos necesarios para crear una entidad Estado Habitacion en la base de datos
+"""
+input CreateEstadoHabitacionInput {
+  """
+  Nombre de la entidad Estado Habitacion
+  """
+  nombre: String!
+}
+
+"""
+Campos que pueden ser editados directamente de la entidad Estado Habitacion
+"""
+input UpdateEstadoHabitacionInput {
+  """
+  Nombre de la entidad Estado Habitacion
+  """
+  nombre: String
+
+  """
+  UUID de la entidad Estado Habitacion
+  """
+  id: ID!
+}
+
+"""
+Objeto que contiene los campos necesarios para crear una entidad Tipo Habitacion
+"""
+input CreateTipoHabitacionInput {
+  """
+  Nombre de la entidad Tipo Habitacion
+  """
+  nombre: String!
+
+  """
+  Clave que representa a la entidad Tipo Habitacion
+  """
+  clave: String!
+
+  """
+  Descripcion de la entidad Tipo Habitacion
+  """
+  descripcion: String!
+
+  """
+  Promedio de minutos que una habitacion tarda en relizar el proceso de entrada
+  """
+  minutosEntrada: Int!
+
+  """
+  Promedio de minutos que una habitacion tarda en realizar el proceso de Limpieza estando sucia
+  """
+  minutosSucia: Int!
+
+  """
+  Promedio de minutos que una habitacion tarda en realizar el proceso de Limpieza estando medio sucia
+  """
+  minutosMediaSucia: Int!
+
+  """
+  Numero maximo de reservaciones que se le pueden asignar a la habitacion
+  """
+  maximoReservaciones: Int!
+}
+
+"""
+Objecto que contiene todos los campos que se pueden editar directamente de la entidad Tipo Habitacion
+"""
+input UpdateTipoHabitacionInput {
+  """
+  Nombre de la entidad Tipo Habitacion
+  """
+  nombre: String
+
+  """
+  Clave que representa a la entidad Tipo Habitacion
+  """
+  clave: String
+
+  """
+  Descripcion de la entidad Tipo Habitacion
+  """
+  descripcion: String
+
+  """
+  Promedio de minutos que una habitacion tarda en relizar el proceso de entrada
+  """
+  minutosEntrada: Int
+
+  """
+  Promedio de minutos que una habitacion tarda en realizar el proceso de Limpieza estando sucia
+  """
+  minutosSucia: Int
+
+  """
+  Promedio de minutos que una habitacion tarda en realizar el proceso de Limpieza estando medio sucia
+  """
+  minutosMediaSucia: Int
+
+  """
+  Numero maximo de reservaciones que se le pueden asignar a la habitacion
+  """
+  maximoReservaciones: Int
+
+  """
+  UUID de la entidad Tipo Habitacion
+  """
+  id: ID!
+}
+
+"""
+Objeto que contiene los campos requeridos para crear una entidad Renta
+"""
+input CreateRentaInput {
+  """
+  ???
+  """
+  numeroServicio: String!
+
+  """
+  UUID de la Habitacion a la cual pertenece la entidad Renta
+  """
+  habitacionId: String!
+
+  """
+  UUID de la Tarifa a la cual pertenece la entidad Renta
+  """
+  tarifaId: String!
+
+  """
+  Numero de hospedajes extra solicitados
+  """
+  hospedajesExtra: Int!
+
+  """
+  Numero de personas extra solicitadas
+  """
+  personasExtra: Int!
+
+  """
+  Numero de horas extra solicitadas
+  """
+  horasExtra: Int!
+}
+
+"""
+Objeto que contiene los campos que se pueden editar directamente de la entidad Renta
+"""
+input UpdateRentaInput {
+  """
+  ???
+  """
+  numeroServicio: String
+
+  """
+  UUID de la Habitacion a la cual pertenece la entidad Renta
+  """
+  habitacionId: String
+
+  """
+  UUID de la Tarifa a la cual pertenece la entidad Renta
+  """
+  tarifaId: String
+
+  """
+  Numero de hospedajes extra solicitados
+  """
+  hospedajesExtra: Int
+
+  """
+  Numero de personas extra solicitadas
+  """
+  personasExtra: Int
+
+  """
+  Numero de horas extra solicitadas
+  """
+  horasExtra: Int
+  id: ID!
+
+  """
+  Fecha-hora en la que se registro la salida del cliente de la habitacion. Solo colocar cuando se de por finalizada la renta
+  """
+  fechaSalida: Date = null
+
+  """
+  Estado que se le dara a la habitacion cuando finalize la rente o haya un cambio de habitacion
+  """
+  estado: ValidEstadosHabitaciones!
+}
+
+"""
+Objecto que contiene los campo necesarios para crear una entidad Tarifa
+"""
+input CreateTarifaInput {
+  """
+  Nombre de la entidad Tarifa
+  """
+  nombre: String!
+
+  """
+  Numero de horas que dura la renta de una habitacion de la entidad Tarifa
+  """
+  duracion: Int!
+
+  """
+  Hora a partir de la cual empieza a aplicar la entidad Tarifa. Formato HH:mm:ss
+  """
+  horaInicio: String!
+
+  """
+  Hora en la que finaliza la aplicacion de la Tarifa. Formato HH:mm:ss
+  """
+  horaFinal: String!
+
+  """
+  Indica si la tarifa aplica en los dias lunes
+  """
+  lunes: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias martes
+  """
+  martes: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias miercoles
+  """
+  miercoles: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias jueves
+  """
+  jueves: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias viernes
+  """
+  viernes: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias sabado
+  """
+  sabado: Boolean!
+
+  """
+  Indica si la tarifa aplica en los dias domingo
+  """
+  domingo: Boolean!
+
+  """
+  Fecha a partir de la cual se empieza a aplicar la Tarifa
+  """
+  fechaInicio: Date!
+
+  """
+  Fecha en la que termine la aplicacion de la Tarifa
+  """
+  fechaFinal: Date!
+
+  """
+  Costo de la renta de la habitacion
+  """
+  costoHabitacion: Int!
+
+  """
+  Costo de un hospedaje extra
+  """
+  costoHospedajeExtra: Int!
+
+  """
+  Costo de una persona extra
+  """
+  costoPersonaExtra: Int!
+
+  """
+  Costo de una hora extra
+  """
+  costoHoraExtra: Int!
+
+  """
+  Numero maximo de hospedajes extra que se pueden solicitar
+  """
+  hospedajesExtraMax: Int!
+
+  """
+  Numero maximo de personas extra que se pueden solicitar
+  """
+  personasExtraMax: Int!
+
+  """
+  Numero maximo de horas extra que se pueden solicitar
+  """
+  horasExtraMax: Int!
+
+  """
+  UUID del Tipo de Habitacion a la cual pertenece la entidad Tarifa
+  """
+  tipoHabitacionId: ID!
+}
+
+"""
+Objecto que contiene todos los campos que se pueden editar directamente de la entidad Tarifa
+"""
+input UpdateTarifaInput {
+  """
+  Nombre de la entidad Tarifa
+  """
+  nombre: String
+
+  """
+  Numero de horas que dura la renta de una habitacion de la entidad Tarifa
+  """
+  duracion: Int
+
+  """
+  Hora a partir de la cual empieza a aplicar la entidad Tarifa. Formato HH:mm:ss
+  """
+  horaInicio: String
+
+  """
+  Hora en la que finaliza la aplicacion de la Tarifa. Formato HH:mm:ss
+  """
+  horaFinal: String
+
+  """
+  Indica si la tarifa aplica en los dias lunes
+  """
+  lunes: Boolean
+
+  """
+  Indica si la tarifa aplica en los dias martes
+  """
+  martes: Boolean
+
+  """
+  Indica si la tarifa aplica en los dias miercoles
+  """
+  miercoles: Boolean
+
+  """
+  Indica si la tarifa aplica en los dias jueves
+  """
+  jueves: Boolean
+
+  """
+  Indica si la tarifa aplica en los dias viernes
+  """
+  viernes: Boolean
+
+  """
+  Indica si la tarifa aplica en los dias sabado
+  """
+  sabado: Boolean
+
+  """
+  Indica si la tarifa aplica en los dias domingo
+  """
+  domingo: Boolean
+
+  """
+  Fecha a partir de la cual se empieza a aplicar la Tarifa
+  """
+  fechaInicio: Date
+
+  """
+  Fecha en la que termine la aplicacion de la Tarifa
+  """
+  fechaFinal: Date
+
+  """
+  Costo de la renta de la habitacion
+  """
+  costoHabitacion: Int
+
+  """
+  Costo de un hospedaje extra
+  """
+  costoHospedajeExtra: Int
+
+  """
+  Costo de una persona extra
+  """
+  costoPersonaExtra: Int
+
+  """
+  Costo de una hora extra
+  """
+  costoHoraExtra: Int
+
+  """
+  Numero maximo de hospedajes extra que se pueden solicitar
+  """
+  hospedajesExtraMax: Int
+
+  """
+  Numero maximo de personas extra que se pueden solicitar
+  """
+  personasExtraMax: Int
+
+  """
+  Numero maximo de horas extra que se pueden solicitar
+  """
+  horasExtraMax: Int
+
+  """
+  UUID del Tipo de Habitacion a la cual pertenece la entidad Tarifa
+  """
+  tipoHabitacionId: ID
+
+  """
+  UUID de la entidad Tarifa
+  """
+  id: ID!
+}
+
+type Subscription {
+  """
+  Escucha los cambios que afecten a las entidades Habitacion y regresa la informacion de las habitaciones actualizada
+  """
+  checkHabitaciones: [Habitacion!]!
+}
