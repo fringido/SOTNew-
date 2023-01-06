@@ -1,0 +1,15 @@
+query getAllRooms {
+  habitaciones {
+      numeroHabitacion
+      piso
+      estadoHabitacion {
+        nombre
+      }
+    }
+}
+
+query getAllUsers{
+  usuarios{
+    nombre
+  }
+}

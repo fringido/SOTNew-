@@ -1,4 +1,6 @@
-import gql from 'graphql-tag';
+import { gql } from 'apollo-angular';
+import { Injectable } from '@angular/core';
+import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -702,3 +704,54 @@ export enum ValidEstadosHabitaciones {
   Supervision = 'Supervision',
   SupervisionMantenimiento = 'Supervision_Mantenimiento'
 }
+
+export type GetAllRoomsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllRoomsQuery = { __typename?: 'Query', habitaciones: Array<{ __typename?: 'Habitacion', numeroHabitacion: number, piso: number, estadoHabitacion: { __typename?: 'EstadoHabitacion', nombre: string } }> };
+
+export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllUsersQuery = { __typename?: 'Query', usuarios: Array<{ __typename?: 'UsuarioResponse', nombre: string }> };
+
+export const GetAllRoomsDocument = gql`
+    query getAllRooms {
+  habitaciones {
+    numeroHabitacion
+    piso
+    estadoHabitacion {
+      nombre
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetAllRoomsGQL extends Apollo.Query<GetAllRoomsQuery, GetAllRoomsQueryVariables> {
+    override document = GetAllRoomsDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetAllUsersDocument = gql`
+    query getAllUsers {
+  usuarios {
+    nombre
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetAllUsersGQL extends Apollo.Query<GetAllUsersQuery, GetAllUsersQueryVariables> {
+    override document = GetAllUsersDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
