@@ -17,6 +17,7 @@ import { TipoMantenimientoEnum } from '../home/interfaces/tipo-mantenimiento.enu
 import { HomeService } from '../home/services/home/home.service';
 import { SidebarService } from '../sidebar/services/sidebar/sidebar.service';
 import { RoomStatusEnum } from './enums/room-status.enum';
+import { RoomTypesService } from './services/room-types/room-types.service';
 import { RoomService } from './services/room/room.service';
 import { ModoAppRoomState } from './state/modo-app-room.state';
 @Component({
@@ -822,10 +823,12 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     private readonly roomService: RoomService,
     public dialogService: DialogService,
     private readonly sidebarService: SidebarService,
+    private readonly roomTypesService: RoomTypesService,
     private readonly cambioHabitacionService: CambioHabitacionService
   ) { }
 
   ngOnInit(): void {
+    this.roomTypesService.updateRoomStateCount(this.roomsByType);
     this.isIpadMini = window.innerWidth <= 1025;
     this.isShowingSidenavSubs = this.homeService.showSidenav$.subscribe(
       (isShowing) => this.isShowingSidenav = isShowing

@@ -4,7 +4,9 @@ import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
+import { RoomTypesService } from 'src/app/room-types/services/room-types/room-types.service';
 import { RoomService } from 'src/app/room-types/services/room/room.service';
+import { RoomStateCountInitialState, RoomStateCountKeys } from 'src/app/room-types/state/room-types-count-state';
 
 @Component({
   selector: 'app-rooms-menu',
@@ -22,12 +24,14 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
 
   isModalOpen!: boolean;
   isModalOpenSubs!: Subscription;
+
+  countRoomState = {...RoomStateCountInitialState};
   
 
   statusRooms = [{
     name: 'Libre',
     status: RoomStatusEnum.LIBRE,
-    count: 10,
+    count: 0,
     color: '#0AC917',
     colorClass: 'txt-success',
     icon: 'far fa-check-circle',
@@ -36,7 +40,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Por cobrar',
     status: RoomStatusEnum.POR_COBRAR,
-    count: 10,
+    count: 0,
     color: '#0AC917',
     colorClass: 'txt-success',
     icon: 'far fa-check-circle icon-cobrar',
@@ -45,7 +49,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Preparada',
     status: RoomStatusEnum.PREPARADA,
-    count: 10,
+    count: 0,
     color: '#0AC917',
     colorClass: 'txt-success',
     icon: 'far fa-check-circle icon-car fa-sm',
@@ -55,7 +59,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Ocupada',
     status: RoomStatusEnum.OCUPADA,
-    count: 10,
+    count: 0,
     color: '#fd0022',
     colorClass: 'txt-danger',
     icon: 'far fa-check-circle icon-pareja-ocupada',
@@ -64,7 +68,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Room service',
     status: RoomStatusEnum.ROOM_SERVICE,
-    count: 10,
+    count: 0,
     color: '#fd0022',
     colorClass: 'txt-danger',
     icon: 'far fa-check-circle icon-roomservice fa-2xs',
@@ -73,7 +77,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Sucia',
     status: RoomStatusEnum.SUCIA,
-    count: 10,
+    count: 0,
     color: '#FFD500',
     colorClass: 'txt-warn',
     icon: 'far fa-check-circle fa-sm icon-sucia',
@@ -82,7 +86,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Media Sucia',
     status: RoomStatusEnum.MEDIA_SUCIA,
-    count: 10,
+    count: 0,
     color: '#e78300',
     colorClass: 'txt-orange',
     icon: 'far fa-check-circle fa-sm icon-sucia',
@@ -91,7 +95,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Limpieza',
     status: RoomStatusEnum.EN_LIMPIEZA,
-    count: 10,
+    count: 0,
     color: '#008deb',
     colorClass: 'txt-blue',
     icon: 'far fa-check-circle icon-limpieza',
@@ -100,7 +104,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Supervisión',
     status: RoomStatusEnum.EN_SUPERVISION,
-    count: 10,
+    count: 0,
     color: '#008deb',
     colorClass: 'txt-blue',
     icon: 'far fa-check-circle icon-search',
@@ -108,8 +112,8 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     iconExtraMargin: '-10px'
   }, {
     name: 'Reservar',
-    status: RoomStatusEnum.LIBRE,
-    count: 10,
+    status: RoomStatusEnum.RESERVADA,
+    count: 0,
     color: '#a703fb',
     colorClass: 'txt-purple',
     icon: 'icon-calendar',
@@ -117,8 +121,8 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     iconExtraMargin: '-7px'
   }, {
     name: 'Preparada y Reservada',
-    status: RoomStatusEnum.LIBRE,
-    count: 10,
+    status: RoomStatusEnum.RESERVADA_PREPARADA,
+    count: 0,
     color: '#a703fb',
     colorClass: 'txt-purple',
     icon: 'icon-calendar',
@@ -126,8 +130,8 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     iconExtraMargin: '-7px'
   }, {
     name: 'Bloqueada',
-    status: RoomStatusEnum.LIBRE,
-    count: 10,
+    status: RoomStatusEnum.BLOQUEADA,
+    count: 0,
     color: '#a703fb',
     colorClass: 'txt-purple',
     icon: 'far fa-check-circle icon-candado',
@@ -136,7 +140,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Mantenimiento',
     status: RoomStatusEnum.MANTENIMIENTO,
-    count: 10,
+    count: 0,
     color: '#707070',
     colorClass: 'txt-grey-item',
     icon: 'far fa-check-circle icon-mantenimiento fa-sm',
@@ -145,7 +149,7 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
   }, {
     name: 'Alertas',
     status: RoomStatusEnum.LIBRE,
-    count: 10,
+    count: 0,
     color: '#707070',
     colorClass: 'txt-grey-item',
     icon: 'fas fa-clock',
@@ -157,13 +161,57 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
     private readonly renderer: Renderer2,
     private readonly roomService: RoomService,
     private readonly modalService: ModalService,
+    private readonly roomTypesService: RoomTypesService
   ) { }
+
+  private statusCountOptions(key: RoomStateCountKeys, value: number) {
+    const options = {
+      [RoomStateCountKeys.libre]: () => {
+        this.statusRooms[0].count = value
+      },
+      [RoomStateCountKeys.porCobrar]: () => {
+        // TODO: para el resto de habitaciones
+      },
+      [RoomStateCountKeys.preparada]: () => {
+      },
+      [RoomStateCountKeys.ocupada]: () => {
+      },
+      [RoomStateCountKeys.roomService]: () => {
+      },
+      [RoomStateCountKeys.sucia]: () => {
+      },
+      [RoomStateCountKeys.mediaSucia]: () => {
+      },
+      [RoomStateCountKeys.enLimpieza]: () => {
+      },
+      [RoomStateCountKeys.enSupervision]: () => {
+      },
+      [RoomStateCountKeys.reservada]: () => {
+      },
+      [RoomStateCountKeys.reservadaPreparada]: () => {
+      },
+      [RoomStateCountKeys.bloqueada]: () => {
+      },
+      [RoomStateCountKeys.mantenimiento]: () => {
+      },
+      [RoomStateCountKeys.alertas]: () => {
+      },
+    }
+    options[key] ? options[key]() : null;
+  }
 
   ngOnInit(): void {
     this.isIpadMini = window.innerWidth <= 1025;
     this.statusRoomsAll = this.statusRooms;
     this.search()
     this.isModalOpenSubs = this.modalService.isModalOpen$.subscribe((isOpen) => this.isModalOpen = isOpen)
+    this.roomTypesService.roomStateCount$.subscribe((newCountState) => {
+      this.countRoomState = {...newCountState}
+      for(let [key, value] of Object.entries(newCountState)) {
+        this.statusCountOptions(key as RoomStateCountKeys, value)
+      }
+      this.statusRooms = [...this.statusRooms]
+    });
 
   }
 
