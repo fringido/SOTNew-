@@ -13,12 +13,6 @@ const config: CodegenConfig = {
     // './schema.json': {
     //   plugins: ['introspection'],
     // },
-    // 'src/app/core/modelsGenere/models.ts': {
-    //   plugins: ['typescript','typescript-generic-sdk'],
-    //   config: {
-    //     avoidOptionals: true
-    //   }
-    // },
   }
 
 }
