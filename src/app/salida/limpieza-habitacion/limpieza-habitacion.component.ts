@@ -26,6 +26,7 @@ export class LimpiezaHabitacionComponent implements OnInit {
   arregloTemporalDisponibles: any[] = [];
   arregloTemporalSeleccionados: any[] = [];
 
+  // Variables provisionales la habitacion seleccionada se va a obtener por medio de los params en la ruta
   selectedRoom!: any;
   selectedRoomSubs!: Subscription;  
   
@@ -43,6 +44,11 @@ export class LimpiezaHabitacionComponent implements OnInit {
 
     this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room;
+      if(this.selectedRoom.status === RoomStatusEnum.EN_SUPERVISION) {
+        this.medioSucia = false;
+        this.sucia = false;
+        this.retoque = true;
+      }
     });
     this.search()
 
