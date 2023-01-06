@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -12,7 +12,7 @@ import { RoomService } from 'src/app/room-types/services/room/room.service';
   templateUrl: './limpieza-habitacion.component.html',
   styleUrls: ['./limpieza-habitacion.component.scss']
 })
-export class LimpiezaHabitacionComponent implements OnInit {
+export class LimpiezaHabitacionComponent implements OnInit, OnDestroy {
 
   display = true;
   sucia = true
@@ -44,7 +44,10 @@ export class LimpiezaHabitacionComponent implements OnInit {
 
     this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room;
-      if(this.selectedRoom.status === RoomStatusEnum.EN_SUPERVISION) {
+      if(
+        this.selectedRoom.status === RoomStatusEnum.EN_SUPERVISION ||
+        this.selectedRoom.status === RoomStatusEnum.SUPERVISION_MANTENIMIENTO
+      ) {
         this.medioSucia = false;
         this.sucia = false;
         this.retoque = true;
@@ -61,6 +64,10 @@ export class LimpiezaHabitacionComponent implements OnInit {
       {nombre: 'Nombre6', id: 6}
     ]
     this.arregloTemporalDisponibles = this.camaristasDisponibles;
+  }
+
+  ngOnDestroy(): void {
+    this.selectedRoomSubs.unsubscribe();
   }
 
   search() {
