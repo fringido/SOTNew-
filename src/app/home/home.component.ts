@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   showSidenav = this.homeService.showSidenav$;
 
 
-  habitaciones: Observable<GetAllRoomsQuery['habitaciones']>
+  habitaciones: Observable<GetAllRoomsQuery['habitaciones']> | undefined
 
   isShowingLogoutText:boolean = false;
   isLogoutFirstTap: boolean = false;
@@ -25,12 +25,12 @@ export class HomeComponent implements OnInit {
     private readonly router: Router,
     private readonly renderer: Renderer2,
     private homeService: HomeService,
-    getAllRooms: GetAllRoomsGQL
+    private getAllRooms: GetAllRoomsGQL
   ) {
-    this.habitaciones = getAllRooms.watch().valueChanges.pipe(map(result => result.data.habitaciones))
   }
 
   ngOnInit(): void {
+    this.habitaciones = this.getAllRooms.watch().valueChanges.pipe(map(result => result.data.habitaciones))
 
     console.log(this.habitaciones)
   }
