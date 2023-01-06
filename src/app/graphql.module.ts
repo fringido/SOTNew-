@@ -11,7 +11,7 @@ import { getMainDefinition } from '@apollo/client/utilities';
 
 const uri = environment.urlGraph; // <-- add the URL of the GraphQL server here
 const socket = environment.ws
-// const uri = 'https://rickandmortyapi.com/graphql';
+
 const subscriptionLink = new WebSocketLink({
   uri: socket,
   options: {

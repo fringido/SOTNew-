@@ -1,7 +1,8 @@
 import {  Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { HomeService } from './services/home/home.service';
 import { Router } from '@angular/router';
-import { HabitacionesService } from './services/habitaciones/habitaciones.service';
+import { GetAllRoomsGQL, GetAllRoomsQuery } from '../core/graphQL/serviciosGraph';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,9 @@ export class HomeComponent implements OnInit {
   @ViewChild('LogoutText') LogoutText!: ElementRef;
   showSidenav = this.homeService.showSidenav$;
 
+
+  habitaciones: Observable<GetAllRoomsQuery['habitaciones']>
+
   isShowingLogoutText:boolean = false;
   isLogoutFirstTap: boolean = false;
 
@@ -21,11 +25,14 @@ export class HomeComponent implements OnInit {
     private readonly router: Router,
     private readonly renderer: Renderer2,
     private homeService: HomeService,
-    private habitacionesService: HabitacionesService
-  ) { }
+    getAllRooms: GetAllRoomsGQL
+  ) {
+    this.habitaciones = getAllRooms.watch().valueChanges.pipe(map(result => result.data.habitaciones))
+  }
 
   ngOnInit(): void {
-    this.habitacionesService.getHabitaciones();
+
+    console.log(this.habitaciones)
   }
 
   showLogoutText() {
