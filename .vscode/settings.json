@@ -4,5 +4,8 @@
         "Encapsulation",
         "Loader",
         "wine"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }
