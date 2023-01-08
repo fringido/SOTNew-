@@ -16,6 +16,9 @@ const subscriptionLink = new WebSocketLink({
   uri: socket,
   options: {
     reconnect: true,
+    connectionParams: {
+      authToken: `${JSON.parse(localStorage.getItem("token") || '')}`,
+    },
   },
 });
 
@@ -44,7 +47,7 @@ export function createApollo(httpLink: HttpLink) {
         },
         subscriptionLink,
         httpLink.create({
-          uri
+          uri:uri
         }),
       ),
     ]),
@@ -53,7 +56,7 @@ export function createApollo(httpLink: HttpLink) {
 
 }
 @NgModule({
-  exports: [ApolloModule,HttpClientModule],
+  exports: [ApolloModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
