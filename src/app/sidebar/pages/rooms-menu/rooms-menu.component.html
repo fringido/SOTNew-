@@ -13,7 +13,7 @@
           (touchend)="addAnimation(textElement, statusRoom.isTextScrollable)"
           (mouseover)="addAnimation(textElement, statusRoom.isTextScrollable)"
           (mouseout)="removeAnimation(textElement, statusRoom.isTextScrollable)"
-          (click)="filtrarHabitaciones(statusRoom.status); activarBoton(statusRoom.color ,i)"
+          (click)="filtrarHabitaciones(statusRoom); activarBoton(statusRoom.color ,i)"
           #roomTypesRef
           [id]="'roomType_' + i"
       >

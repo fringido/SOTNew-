@@ -286,8 +286,11 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
       });
   }
 
-  filtrarHabitaciones(estadoHab: RoomStatusEnum) {
-    this.roomService.updateFiltradoHabitacion(estadoHab);
+  filtrarHabitaciones(statusRoom: any) {
+    if(statusRoom.name === 'Alertas') {
+      return this.roomService.updateFiltradoHabitacion('expirada');  
+    }
+    this.roomService.updateFiltradoHabitacion((statusRoom.status as RoomStatusEnum));
   }
 
   activarBoton(color: string, index: number) {
