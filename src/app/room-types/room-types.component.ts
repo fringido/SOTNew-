@@ -892,6 +892,7 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     let selectedRoomType = this.roomsByType.find((roomType) => roomType.name === room.tipo)!;
     const roomToUpdateIndex = selectedRoomType?.rooms.findIndex((roomFromType) => roomFromType.roomNumber === this.selectedRoom.roomNumber)!
     selectedRoomType.rooms[roomToUpdateIndex] = room;
+    this.roomTypesService.updateRoomStateCount(this.roomsByType)
     this.unselectRooms();
   }
 

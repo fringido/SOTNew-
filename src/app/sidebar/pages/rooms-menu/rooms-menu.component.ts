@@ -170,31 +170,43 @@ export class RoomsMenuComponent implements OnInit, OnDestroy {
         this.statusRooms[0].count = value
       },
       [RoomStateCountKeys.porCobrar]: () => {
-        // TODO: para el resto de habitaciones
+        this.statusRooms[1].count = value
       },
       [RoomStateCountKeys.preparada]: () => {
+        this.statusRooms[2].count = value
       },
       [RoomStateCountKeys.ocupada]: () => {
+        this.statusRooms[3].count = value
       },
       [RoomStateCountKeys.roomService]: () => {
+        this.statusRooms[4].count = value
       },
       [RoomStateCountKeys.sucia]: () => {
+        this.statusRooms[5].count = value
       },
       [RoomStateCountKeys.mediaSucia]: () => {
+        this.statusRooms[6].count = value
       },
       [RoomStateCountKeys.enLimpieza]: () => {
+        this.statusRooms[7].count = value
       },
       [RoomStateCountKeys.enSupervision]: () => {
+        this.statusRooms[8].count = value
       },
       [RoomStateCountKeys.reservada]: () => {
+        this.statusRooms[9].count = value
       },
       [RoomStateCountKeys.reservadaPreparada]: () => {
+        this.statusRooms[10].count = value
       },
       [RoomStateCountKeys.bloqueada]: () => {
+        this.statusRooms[11].count = value
       },
       [RoomStateCountKeys.mantenimiento]: () => {
+        this.statusRooms[12].count = value
       },
       [RoomStateCountKeys.alertas]: () => {
+        this.statusRooms[13].count = value
       },
     }
     options[key] ? options[key]() : null;
