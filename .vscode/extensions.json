@@ -4,6 +4,7 @@
     "angular.ng-template",
     "alexiv.vscode-angular2-files",
     "moyu.snapcode",
-    "cyrilletuzi.angular-schematics"
+    "cyrilletuzi.angular-schematics",
+    "robbowen.synthwave-vscode"
   ]
 }

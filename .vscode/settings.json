@@ -2,7 +2,11 @@
     "cSpell.words": [
         "Arrat",
         "Encapsulation",
+        "habitacion",
         "Loader",
         "wine"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }
