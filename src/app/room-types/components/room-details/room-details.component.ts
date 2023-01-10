@@ -144,4 +144,8 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       this.router.navigate(['hotel', 'autorizacion']);
     });
   }
+
+  cancelarEntrada() {
+    
+  }
 }
