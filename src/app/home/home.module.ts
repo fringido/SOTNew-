@@ -19,7 +19,6 @@ import { SidebarModule } from '../sidebar/sidebar.module';
 import { EntradaHabitacionModule } from './inicio-habitaciones/entrada-habitacion/entrada-habitacion.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoutDirective } from './directives/logout/logout.directive';
-import { AuthComponent } from './components/auth/auth.component';
 
 
 @NgModule({
@@ -31,7 +30,6 @@ import { AuthComponent } from './components/auth/auth.component';
     LayoutComponent,
     DarEntradaHabitacionComponent,
     LogoutDirective,
-    AuthComponent,
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,10 @@ import { SessionStorageService } from 'src/app/core/services/sessionStorage/sess
 })
 export class RoomDetailsComponent implements OnInit, OnDestroy {
 
+  authMode = {
+    cancelarBloqueo: false
+  }
+
   readonly AvailableRoomStatus = RoomStatusEnum;
   display: boolean = false;
   public isCollapsed = {
@@ -25,6 +29,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     roomService: false
   };
 
+  // Variables provisionales la habitacion seleccionada se va a obtener por medio de los params en la ruta
   selectedRoom!: any;
   selectedRoomSubs!: Subscription;
 
@@ -140,12 +145,24 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       if(!confirmed) {
         return;
       }
-      this.sessionStorageService.setItem('authState', {prevRoute: '', data: 'prueba', successMessage: 'SE HA CANCELADO EL DESHABILITADO'})
-      this.router.navigate(['hotel', 'autorizacion']);
+      this.authMode.cancelarBloqueo = true;
     });
   }
 
-  cancelarEntrada() {
+  cancelarBloqueoAutenticado() {
+    this.authMode.cancelarBloqueo = false;
+    this.roomService.updateSelectedRoom({
+      ...this.selectedRoom,
+      status: RoomStatusEnum.LIBRE
+    })
+  }
+
+  cancelarHabitacion() {
+    this.router.navigate(['hotel', 'rentaHabitacion', 'cancelarHabitacion']);
     
+  }
+
+  cancelarEntrada() {
+
   }
 }
