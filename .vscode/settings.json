@@ -8,5 +8,6 @@
     ],
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
-    ]
+    ],
+    "angular.enable-strict-mode-prompt": false
 }

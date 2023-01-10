@@ -732,7 +732,7 @@ export const GetAllRoomsDocument = gql`
   })
   export class GetAllRoomsGQL extends Apollo.Query<GetAllRoomsQuery, GetAllRoomsQueryVariables> {
     override document = GetAllRoomsDocument;
-    
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -750,7 +750,7 @@ export const GetAllUsersDocument = gql`
   })
   export class GetAllUsersGQL extends Apollo.Query<GetAllUsersQuery, GetAllUsersQueryVariables> {
     override document = GetAllUsersDocument;
-    
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }

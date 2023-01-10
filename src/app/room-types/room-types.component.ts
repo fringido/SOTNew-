@@ -20,6 +20,8 @@ import { RoomStatusEnum } from './enums/room-status.enum';
 import { RoomTypesService } from './services/room-types/room-types.service';
 import { RoomService } from './services/room/room.service';
 import { ModoAppRoomState } from './state/modo-app-room.state';
+import { SuscripcionEstadoHabitacionService } from '../core/services/habitaciones/suscripcion-estado-habitacion.service';
+
 @Component({
   selector: 'app-room-types',
   templateUrl: './room-types.component.html',
@@ -828,25 +830,30 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.inicioDeVartiables()
+
+  }
+
+  inicioDeVartiables(){
     this.roomTypesService.updateRoomStateCount(this.roomsByType);
     this.isIpadMini = window.innerWidth <= 1025;
     this.isShowingSidenavSubs = this.homeService.showSidenav$.subscribe(
       (isShowing) => this.isShowingSidenav = isShowing
     )
     this.sidenavStateSubs = this.sidebarService.sidebarState$.subscribe((state) => {
-      if(state !== 'roomSelected' && this.selectedRoom) {
+      if (state !== 'roomSelected' && this.selectedRoom) {
         this.unselectRooms();
       }
     });
     this.isModoCambioHabitacionSubs = this.roomService.modoAppHabitacion$.subscribe((state) => {
       this.modoAppRoom = state;
-      if(state.cambio) {
-        return  this.filtrarRoomsLibresPorTipo()
+      if (state.cambio) {
+        return this.filtrarRoomsLibresPorTipo()
       }
-      if(!state.cambio) {
+      if (!state.cambio) {
         this.unselectLibresPorTipo();
       }
-      if(state.seleccionada) {
+      if (state.seleccionada) {
         return this.unselectRooms();
       }
     });
