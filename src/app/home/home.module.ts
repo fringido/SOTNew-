@@ -17,8 +17,9 @@ import { RoomTypesModule } from '../room-types/room-types.module';
 import { CutStringPipe } from '../core/pipes/cut-string/cut-string.pipe';
 import { SidebarModule } from '../sidebar/sidebar.module';
 import { EntradaHabitacionModule } from './inicio-habitaciones/entrada-habitacion/entrada-habitacion.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoutDirective } from './directives/logout/logout.directive';
+import { AuthComponent } from './components/auth/auth.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LogoutDirective } from './directives/logout/logout.directive';
     LayoutComponent,
     DarEntradaHabitacionComponent,
     LogoutDirective,
+    AuthComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { LogoutDirective } from './directives/logout/logout.directive';
     OverlayPanelModule,
     EntradaHabitacionModule,
     CutStringPipe,
+    ReactiveFormsModule,
     SidebarModule
   ],
   providers: [

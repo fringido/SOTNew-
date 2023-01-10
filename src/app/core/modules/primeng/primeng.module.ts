@@ -11,6 +11,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputMaskModule } from 'primeng/inputmask';
+import { PasswordModule } from 'primeng/password';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputNumberModule,
     CheckboxModule,
     InputTextareaModule,
-    InputMaskModule
+    InputMaskModule,
+    PasswordModule
   ]
 })
 export class PrimengModule { }

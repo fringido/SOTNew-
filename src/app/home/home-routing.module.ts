@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './components/auth/auth.component';
 import { DarEntradaHabitacionComponent } from './components/dar-entrada-habitacion/dar-entrada-habitacion.component';
 import { HomeComponent } from './home.component';
 const routes: Routes = [
@@ -34,7 +35,9 @@ const routes: Routes = [
       { path: 'reservacion',
         loadChildren: () => import('./inicio-habitaciones/reservacion/reservacion.module').then(m => m.ReservacionModule)
       },
-
+      { path: 'autorizacion',
+        component: AuthComponent
+      },
     ]
   },
 ];
