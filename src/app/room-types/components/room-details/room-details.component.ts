@@ -8,6 +8,7 @@ import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.servic
 import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { RoomService } from '../../services/room/room.service';
 import { ConfimModalMessageComponent } from '../../../core/components/confim-modal-message/confim-modal-message.component';
+import { SessionStorageService } from 'src/app/core/services/sessionStorage/session-storage.service';
 
 @Component({
   selector: 'app-room-details',
@@ -40,6 +41,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     private modalService: ModalService,
     private readonly sidebarService: SidebarService,
     private readonly roomService: RoomService,
+    private readonly sessionStorageService: SessionStorageService
   ) { }
 
   ngOnInit(): void {
@@ -127,4 +129,19 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     this.router.navigate([`hotel/${rute}`])
   }
 
+  cancelarBloqueo() {
+    const ref = this.dialogService.open(ConfimModalMessageComponent, {
+      data: {
+        message: '¿Estás seguro de querer cancelar el deshabilitado de la habitación?',
+      },
+    });
+
+    ref.onClose.subscribe(({confirmed}) => {
+      if(!confirmed) {
+        return;
+      }
+      this.sessionStorageService.setItem('authState', {prevRoute: '', data: 'prueba', successMessage: 'SE HA CANCELADO EL DESHABILITADO'})
+      this.router.navigate(['hotel', 'autorizacion']);
+    });
+  }
 }

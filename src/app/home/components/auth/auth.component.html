@@ -1,0 +1,31 @@
+<p-dialog header="JUNIOR VILLA 2" [(visible)]="visible" [closable]="false" [modal]="true" [draggable]="false">
+<form [formGroup]="form" class="formAuth">
+    <div class="icon-header" [class.acces]="form.valid">
+        <i class="icon-manita_fingerprint"></i>
+    </div>
+    <div class="auth_form">
+        <label>USUARIO</label>
+        <span class="p-input-icon-right">
+        <input formControlName="name" type="text" pInputText placeholder="Ingresa un Usuario">
+        </span>
+        <label>CONTRASEÑA</label>
+        <span class="p-input-icon-right">
+        <p-password formControlName="password" type="password" placeholder="Ingresa una Contraseña" [toggleMask]="true" [feedback]="false"></p-password>
+        </span>
+    </div>
+</form>
+<div class="modal-footer-content" >
+    <button class="button-modal button-descartar" (click)="cancelar()">
+        <div class="icon">
+        <i class="fa-solid fa-x"></i>
+        </div>
+        <div class="text">Cancelar</div>
+    </button>
+    <button  (click)="aceptar()" class="button-modal button-aceptar" [disabled]="form.invalid">
+        <div class="icon">
+        <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="text">Aceptar</div>
+    </button>
+</div>
+</p-dialog>
