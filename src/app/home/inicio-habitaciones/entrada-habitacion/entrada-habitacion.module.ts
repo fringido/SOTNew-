@@ -20,6 +20,9 @@ import {InputMaskModule} from 'primeng/inputmask';
 import { CobrarPendienteHabitacionComponent } from './cobrar-pendiente-habitacion/cobrar-pendiente-habitacion.component';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import { CambioHabitacionComponent } from './cambio-habitacion/cambio-habitacion.component';
+import { CancelarHabitacionComponent } from './cancelar-entrada/cancelar-habitacion.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { PrimengModule } from 'src/app/core/modules/primeng/primeng.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { CambioHabitacionComponent } from './cambio-habitacion/cambio-habitacion
     RentaHabitacionComponent,
     PagoRentaHabitacionComponent,
     RentaExtraHabitacionComponent,
+    CancelarHabitacionComponent,
     CobrarPendienteHabitacionComponent,
     CambioHabitacionComponent,
     PagoTarjetaComponent,
@@ -45,7 +49,9 @@ import { CambioHabitacionComponent } from './cambio-habitacion/cambio-habitacion
     CheckboxModule,
     InputTextareaModule,
     DialogModule,
-    InputMaskModule
+    InputMaskModule,
+    PrimengModule,
+    CoreModule
   ],
   providers: [],
   exports:[]

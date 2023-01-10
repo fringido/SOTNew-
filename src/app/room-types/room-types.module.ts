@@ -10,6 +10,7 @@ import { PrimengModule } from '../core/modules/primeng/primeng.module';
 import { BootstrapModule } from '../core/modules/bootstrap/bootstrap.module';
 import { MessageModalAutoclosableComponent } from '../core/components/message-modal-autoclosable/message-modal-autoclosable.component';
 import { RoomService } from './services/room/room.service';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RoomService } from './services/room/room.service';
     PrimengModule,
     BootstrapModule,
     MessageModalAutoclosableComponent,
+    CoreModule
   ],
   providers: [
     RoomService

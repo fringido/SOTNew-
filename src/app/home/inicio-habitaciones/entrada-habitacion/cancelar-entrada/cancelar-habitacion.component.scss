@@ -1,0 +1,26 @@
+@import '/src/library.scss';
+
+
+.container-component{
+  display       : flex;
+  flex-direction: column;
+  flex-wrap     : nowrap;
+  align-items: stretch;
+  font-family: $font-secundaria;
+  font-weight: 500;
+  max-width     : 400px;
+
+  & .titulo-component{
+    margin: 18px 0;
+    color: $color-title-grey;
+    padding: 0 26px;
+    font-size: 23px;
+  }
+
+  & .container_textarea {
+    margin-bottom: -10px;
+    textarea {
+      font-size: 12pt;
+    }
+  }
+}
