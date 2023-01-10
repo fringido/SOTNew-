@@ -221,8 +221,11 @@ export class SidebarHiddenComponent implements OnInit {
     this.roomService.updateFiltradoHabitacion(null);
   }
 
-  filtrarPorStatus(status: RoomStatusEnum) {
-    this.roomService.updateFiltradoHabitacion(status);
+  filtrarPorStatus(statusRoom: any) {
+    if(statusRoom.name === 'Alertas') {
+      return this.roomService.updateFiltradoHabitacion('expirada');  
+    }
+    this.roomService.updateFiltradoHabitacion((statusRoom.status as RoomStatusEnum));
   }
 
 }

@@ -1025,28 +1025,19 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     if(!status) {
       return this.unselectRooms();
     }
-    // TODO: filtrar correctamente las habitaciones expiradas
     this.unselectRooms();
     if(status === 'expirada') {
       this.roomsRef
       ?.toArray()
       .filter(roomEl => {
-        console.log(roomEl.nativeElement
-          .children[0]
-          .attributes
-          .getNamedItem('custom-expirada')
-          ?.nodeValue);
-        
         return roomEl.nativeElement
         .children[0]
         .attributes
         .getNamedItem('custom-expirada')
-        ?.nodeValue === 'expirada'}
-          
+        ?.nodeValue === 'no-expirada'}
       ).forEach((roomEl) => this.renderer.addClass(roomEl.nativeElement, 'no-filtro'));
       return;
     }
-
     this.roomsRef
     ?.toArray()
     .filter(roomEl =>

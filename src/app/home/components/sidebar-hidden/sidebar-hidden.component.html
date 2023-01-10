@@ -6,7 +6,7 @@
         *ngFor="let statusRoom of statusRooms"
         [ngClass]="statusRoom.color"
         class="text-light shadowed d-flex typeroom_button align-items-center justify-content-around my-1"
-        (click)="filtrarPorStatus(statusRoom.status)">
+        (click)="filtrarPorStatus(statusRoom)">
         <span class="ml-3">{{statusRoom.count}}</span>
             <span class="d-none wrelative toggable-text">{{statusRoom.name}}</span>
         <i [ngClass]="statusRoom.icon"></i>
