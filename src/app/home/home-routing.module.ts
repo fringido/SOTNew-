@@ -34,10 +34,13 @@ const routes: Routes = [
       { path: 'reservacion',
         loadChildren: () => import('./inicio-habitaciones/reservacion/reservacion.module').then(m => m.ReservacionModule)
       },
+      {
+        path: 'camaristasEnTurno',
+        loadChildren: () => import('./inicio-habitaciones/camaristas-en-turno/camaristas-en-turno.module').then(m => m.CamaristasEnTurnoModule)
+      }
     ]
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
