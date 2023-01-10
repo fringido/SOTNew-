@@ -150,6 +150,11 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   }
 
   cancelarBloqueoAutenticado() {
+    this.dialogService.open(MessageModalAutoclosableComponent, {
+      data: {
+        message: 'SE HA CANCELADO EL DESHABILITADO',
+      },
+    });
     this.authMode.cancelarBloqueo = false;
     this.roomService.updateSelectedRoom({
       ...this.selectedRoom,
