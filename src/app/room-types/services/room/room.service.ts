@@ -5,6 +5,7 @@ import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { Room } from '../../interfaces/room.interface';
 import { ModoAppRoomInitialState, ModoAppRoomState } from '../../state/modo-app-room.state';
 
+
 @Injectable()
 export class RoomService {
 
@@ -17,12 +18,12 @@ export class RoomService {
   private modoAppHabitacion = new BehaviorSubject<ModoAppRoomState>(ModoAppRoomInitialState);
   modoAppHabitacion$ = this.modoAppHabitacion.asObservable();
 
-  private filtradoHabitacion = new BehaviorSubject<RoomStatusEnum | null>(null);
+  private filtradoHabitacion = new BehaviorSubject<RoomStatusEnum | null | 'expirada'>(null);
   filtradoHabitacion$ = this.filtradoHabitacion.asObservable();
 
   constructor(
-    private readonly http: HttpClient
   ) { }
+
 
   // Manejo de estado
   updateModoAppHabitacion(state: Partial<ModoAppRoomState>) {
@@ -36,14 +37,14 @@ export class RoomService {
     this.selectedRoom.next(room)
   }
 
-  /** 
+  /**
    * Actualiza el valor de una habitación seleccionada
   */
-  updateSelectedRoom(room: any){ 
+  updateSelectedRoom(room: any){
     this.updatedRoom.next(room);
   }
 
-  updateFiltradoHabitacion(state: RoomStatusEnum | null) {
+  updateFiltradoHabitacion(state: RoomStatusEnum | null | 'expirada') {
     this.filtradoHabitacion.next(state);
   }
 
@@ -69,7 +70,7 @@ export class RoomService {
     })
     });
   }
-  
+
   finalizarRentaMediaSucia(roomNumber: number) {
     return new Promise((resolve, reject) => {
       resolve({
@@ -85,4 +86,6 @@ export class RoomService {
     })
     });
   }
+
 }
+

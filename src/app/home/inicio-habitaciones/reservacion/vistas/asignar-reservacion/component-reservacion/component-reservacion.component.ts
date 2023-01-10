@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import moment from 'moment';
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
 @Component({
   selector: 'app-component-reservacion',
