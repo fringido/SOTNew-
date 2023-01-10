@@ -18,7 +18,7 @@ export class RoomService {
   private modoAppHabitacion = new BehaviorSubject<ModoAppRoomState>(ModoAppRoomInitialState);
   modoAppHabitacion$ = this.modoAppHabitacion.asObservable();
 
-  private filtradoHabitacion = new BehaviorSubject<RoomStatusEnum | null>(null);
+  private filtradoHabitacion = new BehaviorSubject<RoomStatusEnum | null | 'expirada'>(null);
   filtradoHabitacion$ = this.filtradoHabitacion.asObservable();
 
   constructor(
@@ -44,7 +44,7 @@ export class RoomService {
     this.updatedRoom.next(room);
   }
 
-  updateFiltradoHabitacion(state: RoomStatusEnum | null) {
+  updateFiltradoHabitacion(state: RoomStatusEnum | null | 'expirada') {
     this.filtradoHabitacion.next(state);
   }
 

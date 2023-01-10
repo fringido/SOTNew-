@@ -12,6 +12,7 @@
                 <div #roomsRef *ngFor="let room of roomType.rooms" id="type_{{roomType.name}}__room_{{room.roomNumber}}">
                     <app-room
                     [attr.custom-status]="room.status"
+                    [attr.custom-expirada]="room.statusTimer > 3600 ? 'expirada' : 'no-expirada'"
                     [status]="room.status"
                     [statusTimer]="room.statusTimer"
                     [roomNumber]="room.roomNumber"
