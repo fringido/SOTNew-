@@ -1,8 +1,20 @@
 import {  Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { HomeService } from './services/home/home.service';
 import { Router } from '@angular/router';
-import { GetAllRoomsGQL, GetAllRoomsQuery } from '../core/graphQL/serviciosGraph';
+import { GetAllRoomsGQL, GetAllRoomsQuery ,Habitacion} from '../core/graphQL/serviciosGraph';
 import { map, Observable } from 'rxjs';
+import { ObtenerHabitacionesService } from '../core/services/habitaciones/obtener-habitaciones.service';
+import { SuscripcionEstadoHabitacionService } from '../core/services/habitaciones/suscripcion-estado-habitacion.service';
+import { Apollo, gql } from 'apollo-angular';
+
+const SISCRIPCION = gql`
+    subscription  checkHabitaciones {
+      checkHabitaciones{
+      numeroHabitacion
+    }
+  }
+
+`
 
 @Component({
   selector: 'app-home',
@@ -16,7 +28,8 @@ export class HomeComponent implements OnInit {
   showSidenav = this.homeService.showSidenav$;
 
 
-  habitaciones: Observable<GetAllRoomsQuery['habitaciones']> | undefined
+  habitaciones: any
+  idHabitacion: string = "5EB0DE9C-C687-ED11-A975-005056AFA94B"
 
   isShowingLogoutText:boolean = false;
   isLogoutFirstTap: boolean = false;
@@ -25,14 +38,21 @@ export class HomeComponent implements OnInit {
     private readonly router: Router,
     private readonly renderer: Renderer2,
     private homeService: HomeService,
-    private getAllRooms: GetAllRoomsGQL
+    private habitacionesService: ObtenerHabitacionesService,
+    apollo: Apollo
   ) {
+    apollo.subscribe({
+      query: SISCRIPCION
+    }).subscribe((result) => {
+      console.log(result)
+      this.habitaciones = result
+    })
   }
 
   ngOnInit(): void {
-    this.habitaciones = this.getAllRooms.watch().valueChanges.pipe(map(result => result.data.habitaciones))
-
     console.log(this.habitaciones)
+    this.habitacionesService.getHabitaciones();
+    this.habitacionesService.getHabitacio(this.idHabitacion);
   }
 
   showLogoutText() {

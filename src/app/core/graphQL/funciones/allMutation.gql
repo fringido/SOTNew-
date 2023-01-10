@@ -1,0 +1,3 @@
+mutation UpEstadoHabitacion($Id,$Estado) {
+    cambiar_estado(id:$id, estado:$Estado)
+}
