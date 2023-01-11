@@ -1,3 +1,6 @@
+@import '../../library.scss';
+
+
 h6 {
   font-weight: 600;
 }
@@ -10,6 +13,10 @@ h6 {
   /* Your container needs a fixed height, and it
   * needs to be taller than your tallest column. */
   height: 99vh;
+}
+
+.roomtype-title {
+  color: $grey-item;
 }
 
 .rooms-group {
