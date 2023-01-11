@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,6 @@ import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.servic
 import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { RoomService } from '../../services/room/room.service';
 import { ConfimModalMessageComponent } from '../../../core/components/confim-modal-message/confim-modal-message.component';
-import { SessionStorageService } from 'src/app/core/services/sessionStorage/session-storage.service';
 
 @Component({
   selector: 'app-room-details',
@@ -40,17 +39,15 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   isModalOpenSubs!: Subscription;
 
   constructor(
-    private readonly renderer: Renderer2,
     private readonly router: Router,
     public dialogService: DialogService,
     private modalService: ModalService,
     private readonly sidebarService: SidebarService,
     private readonly roomService: RoomService,
-    private readonly sessionStorageService: SessionStorageService
   ) { }
 
   ngOnInit(): void {
-    this.selectedRoomSubs = this.sidebarService.selectedRoom$.subscribe((room) => {
+    this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room
     });
     this.isModoCambioHabitacionSubs = this.roomService.modoAppHabitacion$.subscribe((state) => {
@@ -121,7 +118,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       if(!confirmed) {
         return;
       }
-      this.router.navigate(['/hotel/salida/enviar-limpieza'])
+      this.router.navigate(['/hotel/salida/enviarLimpieza'])
     });
 
   }

@@ -9,16 +9,11 @@ export class SidebarService {
   private sidebarState = new BehaviorSubject<SidebarState>('home');
   sidebarState$ = this.sidebarState.asObservable();
 
-  
   private roomService;
-  selectedRoom$!: Observable<any>;
-  
-  
   constructor(
     private readonly injector: Injector
     ) {
       this.roomService = this.injector.get(RoomService);
-      this.selectedRoom$ = this.roomService.selectedRoom$;
     }
 
   setSidebarState(state:  SidebarState, room: any = null) {
