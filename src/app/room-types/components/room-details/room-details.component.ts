@@ -137,7 +137,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   cancelarBloqueo() {
     const ref = this.dialogService.open(ConfimModalMessageComponent, {
       data: {
-        message: '¿Estás seguro de querer cancelar el deshabilitado de la habitación?',
+        message: '¿ESTÁS SEGURO DE QUERER CANCELAR EL DESHABILITADO?',
       },
     });
 

@@ -1,4 +1,49 @@
 <p-dialog header="CAMARISTAS EN TURNO" [(visible)]="visible" [closable]="false" [modal]="true" [draggable]="false"
   [showHeader]="true">
-    <p>parrafo</p>
+  <div class="row">
+    <div>
+      <div class="modal-body-2 overflow-hidden">
+        <span class="p-input-icon-right">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input [formControl]="filterText" type="text" pInputText placeholder="Buscar Camarista">
+        </span>
+        <div class="card text-center contenedor-supervisores mt-3 mx-4">
+          <div class="card-body ">
+            <div class="box_camarista__reportes">
+              <div *ngFor="let camarista of listaTodasCamaristas">
+                <div *ngIf="camarista.idHabitacion == null" class="camarista_componente">
+                  <div class="diplay">
+                    <div class="col-12">
+                      {{ camarista.nombre | uppercase}}
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="camarista.idHabitacion != null" class="camarista_componente-uso">
+                  <div class="diplay">
+                    <div class="col-7">
+                      {{ camarista.nombre | uppercase}}
+                    </div>
+                    <div class="col-5 txt-wine">
+                      <b>{{camarista.numeroHabitacion}}</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer-content">
+          <button (click)="salir()" class="button-modal button-salir">
+              <div class="icon">
+                  <i class="icon-icon-metro-exit"></i>
+              </div>
+              <div class="text">Salir</div>
+          </button>
+      </div>
+
+      </div>
+
+    </div>
+
+  </div>
 </p-dialog>

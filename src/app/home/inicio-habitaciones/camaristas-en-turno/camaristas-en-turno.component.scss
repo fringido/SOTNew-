@@ -1,0 +1,68 @@
+@import '../../../../library.scss';
+
+
+.box_camarista__reportes{
+    width: 100%;
+    overflow: auto;
+  }
+  
+  .diplay{
+    display: flex;
+    align-items: center;
+  }
+  
+  .camarista_componente{
+    font-family: $font-secundaria;
+    font-weight: 600;
+    padding: 5px;
+    margin: 8px;
+    box-shadow: 4px 3px 6px #d3d3d3, -6px -6px 5px #fff;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: $grey-item;
+    border: 1px solid #d3d2d2;
+  }
+  
+  .camarista_componente-uso{
+    font-family: $font-secundaria;
+    font-weight: 600;
+    padding: 5px;
+    margin: 8px;
+    box-shadow: 4px 3px 6px #d3d3d3, -6px -6px 5px #fff;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    color: $grey-item;
+    border: 1px solid #d3d2d2;
+  }
+  
+  .modal-body-2{
+    display: flex;
+    position: relative;
+    padding: 8px 10px 22px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  
+  .card {
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 15px;
+    min-width: 0;
+    width: 30vw;
+    height: 58vh;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid #00000020;
+    border-radius: 15px;
+  }
+  
+  .card-body {
+    display: flex;
+    padding: .25rem!important;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+  
