@@ -8,6 +8,8 @@ import { RoomService } from 'src/app/room-types/services/room/room.service';
 import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
 import { Room } from '../../../../home/interfaces/room.interface';
 import { take } from 'rxjs/operators';
+import { ComunicacionPagoService } from '../services/comunicacionPago.service';
+
 @Component({
   selector: 'app-pago-renta-habitacion',
   templateUrl: './pago-renta-habitacion.component.html',
@@ -17,7 +19,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
 
 //* Inicio de variables
   display = true
-  total: number = 1000;
+  total = this.pagoService.pago$;
   form!: FormGroup
   tipoDePago = new FormControl(null);
   tiposDePago = [
@@ -37,6 +39,8 @@ export class PagoRentaHabitacionComponent implements OnInit {
     public dialogService: DialogService,
     private router: Router,
     private readonly roomService: RoomService,
+    private pagoService: ComunicacionPagoService
+
   ) {
 
     this.formoCreate();

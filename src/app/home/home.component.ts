@@ -39,14 +39,9 @@ export class HomeComponent implements OnInit {
     private readonly renderer: Renderer2,
     private homeService: HomeService,
     private habitacionesService: ObtenerHabitacionesService,
-    apollo: Apollo
+    apollo: GetAllRoomsGQL
   ) {
-    apollo.subscribe({
-      query: SISCRIPCION
-    }).subscribe((result) => {
-      console.log(result)
-      this.habitaciones = result
-    })
+    this.habitaciones = apollo.watch().valueChanges.pipe(map(result => result.data.habitaciones))
   }
 
   ngOnInit(): void {

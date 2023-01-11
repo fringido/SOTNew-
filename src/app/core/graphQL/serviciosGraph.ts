@@ -705,6 +705,14 @@ export enum ValidEstadosHabitaciones {
   SupervisionMantenimiento = 'Supervision_Mantenimiento'
 }
 
+export type CambiarEstadoMutationVariables = Exact<{
+  id: Scalars['ID'];
+  estado: ValidEstadosHabitaciones;
+}>;
+
+
+export type CambiarEstadoMutation = { __typename?: 'Mutation', cambiar_estado: string };
+
 export type GetAllRoomsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -715,6 +723,22 @@ export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAllUsersQuery = { __typename?: 'Query', usuarios: Array<{ __typename?: 'UsuarioResponse', nombre: string }> };
 
+export const CambiarEstadoDocument = gql`
+    mutation CambiarEstado($id: ID!, $estado: ValidEstadosHabitaciones!) {
+  cambiar_estado(id: $id, estado: $estado)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CambiarEstadoGQL extends Apollo.Mutation<CambiarEstadoMutation, CambiarEstadoMutationVariables> {
+    override document = CambiarEstadoDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const GetAllRoomsDocument = gql`
     query getAllRooms {
   habitaciones {
