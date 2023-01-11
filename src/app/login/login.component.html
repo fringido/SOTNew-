@@ -72,12 +72,6 @@
 
     <div class="div-form-login">
         <form (ngSubmit)="login()" autocomplete="off" [formGroup]="loginForm" class="card shadow">
-            <div class="d-flex justify-content-center mb-4vh">
-                <div class="btn-gray d-flex justify-content-center finger-button-login shadow"
-                    [ngClass]="{'fingerButtonActive': isFingerScannerDetected}">
-                    <i [ngClass]="'icon-manita_fingerprint'"></i>
-                </div>
-            </div>
 
             <div class="d-flex justify-content-center mb-2vh" *ngIf=" mensajeResultadoLogin !== '' ">
                 <span class="text-danger font-2-5vh">
@@ -104,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="text-center p-3vh">
+            <div class="text-center p-3vh accept-button__container">
                 <button type="submit" data-dismiss="modal"
                     class="btn-modal-details btn-green">
                     <div class="font-3vh">

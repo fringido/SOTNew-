@@ -45,6 +45,9 @@ export class LimpiezaHabitacionComponent implements OnInit, OnDestroy {
 
     this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room;
+      if(!this.selectedRoom) {
+        return;
+      }
       if(
         this.selectedRoom.status === RoomStatusEnum.EN_SUPERVISION ||
         this.selectedRoom.status === RoomStatusEnum.SUPERVISION_MANTENIMIENTO
