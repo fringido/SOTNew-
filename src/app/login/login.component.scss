@@ -111,7 +111,7 @@
 
 .card {
     width: 24vw;
-    height: 59vh;
+    height: 43vh;
     padding: 25px;
     border: none;
 }
@@ -220,7 +220,12 @@
 .accept-button__icon {
     font-weight: 900;
     -webkit-text-stroke: 1.5px white;
+}
 
+.accept-button__container {
+    position: absolute;
+    left: 36%;
+    top: 71%;
 }
 
 // Ipad mini
@@ -236,7 +241,7 @@
 
     .card {
         width: 35vw;
-        height: 60vh;
+        height: 45vh;
         padding: 30px;
     }
 
