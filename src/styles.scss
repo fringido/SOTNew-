@@ -269,51 +269,7 @@ input:focus {
   outline: none;
 }
 
-// Rangos de z-index
-$lvl1 : 10;
-$lvl2 : 20;
-$lvl3 : 30;
-$lvl4 : 40;
-$lvl5 : 50;
-$lvl6 : 60;
-$lvl7 : 70;
-$lvl8 : 80;
-$lvl9 : 90;
-$lvl10: 100;
 
-
-//* Mixins para color de fondos
-@mixin bg-success {
-  background-color: $green-item;
-}
-
-@mixin bg-danger {
-  background-color: $red-danger;
-}
-
-@mixin bg-warn {
-  background-color: $yellow-warn;
-}
-
-@mixin bg-orange {
-  background-color: $orange-item;
-}
-
-@mixin bg-blue {
-  background-color: $blue-item;
-}
-
-@mixin bg-purple {
-  background-color: $purple-item;
-}
-
-@mixin bg-wine {
-  background-color: $wine;
-}
-
-@mixin bg-grey-item {
-  background-color: $grey-item;
-}
 
 //* Color de fondos
 .sot-bg-success {
@@ -346,40 +302,6 @@ $lvl10: 100;
 
 .sot-bg-grey-item {
   @include bg-grey-item;
-}
-
-//* mixins para color de textos
-// mixins para color de textos
-@mixin txt-wine {
-  color: $wine;
-}
-
-@mixin txt-success {
-  color: $green-item;
-}
-
-@mixin txt-danger {
-  color: $red-danger;
-}
-
-@mixin txt-warn {
-  color: $yellow-warn;
-}
-
-@mixin txt-orange {
-  color: $orange-item;
-}
-
-@mixin txt-blue {
-  color: $blue-item;
-}
-
-@mixin txt-purple {
-  color: $purple-item;
-}
-
-@mixin txt-grey-item {
-  color: $grey-item;
 }
 
 //* Color de textos
