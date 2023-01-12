@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -9,6 +9,9 @@ import { RoomStatusEnum } from 'src/app/room-types/enums/room-status.enum';
 import { Room } from '../../../../home/interfaces/room.interface';
 import { take } from 'rxjs/operators';
 import { ComunicacionPagoService } from '../services/comunicacionPago.service';
+import { CreateRentaInput } from 'src/app/core/graphQL/serviciosGraph';
+import { EntradaDeHabitacionService } from 'src/app/core/services/rentaHabitaicones/entradaDeHabitacion.service';
+
 
 @Component({
   selector: 'app-pago-renta-habitacion',
@@ -20,6 +23,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
 //* Inicio de variables
   display = true
   total = this.pagoService.pago$;
+  infoForm: any = this.pagoService.infoPago$
   form!: FormGroup
   tipoDePago = new FormControl(null);
   tiposDePago = [
@@ -39,8 +43,8 @@ export class PagoRentaHabitacionComponent implements OnInit {
     public dialogService: DialogService,
     private router: Router,
     private readonly roomService: RoomService,
-    private pagoService: ComunicacionPagoService
-
+    private pagoService: ComunicacionPagoService,
+    private entradaHabitacion: EntradaDeHabitacionService
   ) {
 
     this.formoCreate();
@@ -97,6 +101,20 @@ export class PagoRentaHabitacionComponent implements OnInit {
   }
 //* ------------------------------------------------------
 
+  sendEntrada(){
+    const pago = this.infoForm.getRawValue()
+    console.log(pago)
+    const sednPago :CreateRentaInput = {
+      tarifaId : pago.tarifa,
+      habitacionId: pago.habitacionId,
+      horasExtra: pago.horasEctra,
+      hospedajesExtra: pago.hospedajesExtra,
+      personasExtra: pago.personaExtra,
+      numeroServicio: '?'
+    }
+
+    this.entradaHabitacion.entradaHabitacion(sednPago);
+  }
 
 //* BOtones de modal
   aceptar() {
@@ -108,6 +126,7 @@ export class PagoRentaHabitacionComponent implements OnInit {
     if(this.selectedRoom.status === RoomStatusEnum.PREPARADA ) {
       const ref = genDialogMessage('ENTRADA GENERADA CON ÉXITO')
       return;
+      // this.sendEntrada()
     }
     if(this.roomService.isroomPorCobrar(this.selectedRoom.status) ) {
       const ref = genDialogMessage('PAGO REALIZADO CON ÉXITO')

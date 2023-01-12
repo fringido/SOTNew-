@@ -81,18 +81,18 @@
         <div class="titulo-rigth">
           <h1>HABITACIÓN</h1>
           <div class="info-habitacion">
-            <div class="number">601</div>
-            <div class="tipo">pool & spa</div>
+          <div class="number">{{habitacion.numeroHabitacion}}</div>
+          <div class="tipo">{{habitacion.tipoHabitacion.nombre}}</div>
           </div>
         </div>
         <div class="form-component">
           <label>Habitación</label>
           <div class="form-component_contador">
             <div class="divisor-form-l">
-              <p>$0.00</p>
+              <p>{{costoHabitacion | currency: '$'}}</p>
             </div>
             <div class="divisor-form-r">
-              <p>$0.00</p>
+              <p>{{costoHabitacion || 0 | currency: '$'}}</p>
             </div>
           </div>
         </div>
@@ -103,10 +103,10 @@
               <p-inputNumber formControlName="personaExtra" [showButtons]="true" [min]="0" [max]="maxPersonas" buttonLayout="horizontal"
                 spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
                 incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-              <p>$200.00</p>
+              <p>{{maxPersonasPrecio | currency: '$'}}</p>
             </div>
             <div class="divisor-form-r">
-              <p>{{200 * form.controls.personaExtra.value | currency: '$'}}</p>
+              <p>{{maxPersonasPrecio * form.controls.personaExtra.value | currency: '$'}}</p>
             </div>
           </div>
         </div>
@@ -117,10 +117,10 @@
               <p-inputNumber formControlName="hospedaje" [showButtons]="true" [min]="0" [max]="maxHospedaje" buttonLayout="horizontal"
                 spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
                 incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-              <p>$100.00</p>
+              <p>{{maxHospedajePrecio  | currency: '$'}}</p>
             </div>
             <div class="divisor-form-r">
-              <p>{{100 * form.controls.hospedaje.value | currency: '$'}}</p>
+              <p>{{maxHospedajePrecio * form.controls.hospedaje.value | currency: '$'}}</p>
             </div>
           </div>
         </div>
@@ -131,10 +131,10 @@
               <p-inputNumber formControlName="horasExtra" [showButtons]="true" [min]="0" [max]="maxHoras" buttonLayout="horizontal"
                 spinnerMode="horizontal" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
                 incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-              <p>$150.00</p>
+              <p>{{maxHorasPrecio | currency: '$'}}</p>
             </div>
             <div class="divisor-form-r">
-              <p>{{150 * form.controls.horasExtra.value | currency: '$'}}</p>
+              <p>{{maxHorasPrecio * form.controls.horasExtra.value | currency: '$'}}</p>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@
         </div>
         <div class="total">
           <div>Total:</div>
-          <div>$1,000</div>
+        <div>{{total | currency: '$'}}</div>
         </div>
       </div>
       <!--? ------------------- -->

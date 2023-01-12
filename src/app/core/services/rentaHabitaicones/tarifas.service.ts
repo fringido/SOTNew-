@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { take, tap, BehaviorSubject } from 'rxjs';
+import { Tarifa, TarifasQuery } from '../../graphQL/serviciosGraph';
 const GET_TARIFAS = gql`
   query {
   tarifas{
@@ -38,7 +39,7 @@ const GET_TARIFA = gql`
 })
 export class TarifasService {
 
-  private tarifasSubjext = new BehaviorSubject<any[]>([null])
+  private tarifasSubjext = new BehaviorSubject<TarifasQuery["tarifas"]>([])
   tarifa$ = this.tarifasSubjext.asObservable();
 
 
@@ -57,7 +58,6 @@ constructor(
         this.tarifasSubjext.next(tarifas)
       })
     ).subscribe()
-
   }
 
 }

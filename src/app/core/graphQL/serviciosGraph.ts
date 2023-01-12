@@ -26,6 +26,58 @@ export type Acceso = {
   nombre: Scalars['String'];
 };
 
+export type ArticuloRs = {
+  __typename?: 'ArticuloRs';
+  /** Campo que nos indica si la entidad Articulo Rs se encuentra activa */
+  activo: Scalars['Boolean'];
+  costo: Scalars['Float'];
+  /** UUID de la entidad Articulo Rs */
+  id: Scalars['ID'];
+  /** Nombre de la entidad Articulo Rs */
+  nombre: Scalars['String'];
+  precio: Scalars['Float'];
+};
+
+/** Objeto que contiene los campos que representan a la entidad Categoria Articulo Rs */
+export type CategoriaArticuloRs = {
+  __typename?: 'CategoriaArticuloRs';
+  /** Campo que nos indica si la entidad Categoria Articulo Rs se encuentra activa */
+  activo: Scalars['Boolean'];
+  /** UUID de la entidad Categoria Articulo Rs */
+  id: Scalars['ID'];
+  /** Nombre de la entidad Categoria Articulo Rs */
+  nombre: Scalars['String'];
+};
+
+export type CreateArticuloRsInput = {
+  /** Example field (placeholder) */
+  exampleField: Scalars['Int'];
+};
+
+/** Objeto que contiene todos los campos necesarios para crear una entidad Categoria Articulo Rs */
+export type CreateCategoriaArticuloRsInput = {
+  /** Nombre de la entidad Categoria Articulo Rs */
+  nombre: Scalars['String'];
+};
+
+/** Objeto que contiene los campos necesarios para crear una entidad Direccion Proveedor */
+export type CreateDireccionProveedorInput = {
+  /** Nombre de la calle de la entidad Direccion Proveedor */
+  calle: Scalars['String'];
+  /** Nombre de la ciudad de la entidad Direccion Proveedor */
+  ciudad: Scalars['String'];
+  /** Nombre de la colonia de la entidad Direccion Proveedor */
+  colonia: Scalars['String'];
+  /** Codigo postal de la entidad Direccion Proveedor */
+  cp: Scalars['String'];
+  /** Nombre del estado de la entidad Direccion Proveedor */
+  estado: Scalars['String'];
+  /** Numero exterior de la entidad Direccion Proveedor */
+  numeroExterior: Scalars['Int'];
+  /** Numero interior de la entidad Direccion Proveedor */
+  numeroInterior?: InputMaybe<Scalars['Int']>;
+};
+
 /** Campos necesarios para crear una entidad Estado Habitacion en la base de datos */
 export type CreateEstadoHabitacionInput = {
   /** Nombre de la entidad Estado Habitacion */
@@ -44,6 +96,30 @@ export type CreateHabitacionInput = {
   tipoHabitacionId: Scalars['ID'];
 };
 
+/** Objeto que contiene todos los campos necesarios para crear una entidad Proveedor */
+export type CreateProveedorInput = {
+  /** Apellido materno del contacto de la entidad Proveedor */
+  apellidoMContacto: Scalars['String'];
+  /** Apellido paterno del contacto de la entidad Proveedor */
+  apellidoPContacto: Scalars['String'];
+  /** Numero de dias que se tiene para pagar la deuda antes de empezar a generar intereces de la entidad Proveedor */
+  diasCredito: Scalars['Int'];
+  /** Objeto que contiene los campos necesarios para crear una entidad DireccionProveedor */
+  direccionProveedor: CreateDireccionProveedorInput;
+  /** Email de la entidad Proveedor */
+  email: Scalars['String'];
+  /** Nombre comercial de la entidad Proveedor */
+  nombreComercial: Scalars['String'];
+  /** Nombre(s) del contacto de la entidad Proveedor */
+  nombreContacto: Scalars['String'];
+  /** Nombre con el cual esta legalmente registrada la entidad Proveedor */
+  razonSocial: Scalars['String'];
+  /** RFC de la entidad Proveedor */
+  rfc: Scalars['String'];
+  /** Numero telefonico de la entidad Proveedor */
+  telefono: Scalars['String'];
+};
+
 /** Objeto que contiene los campos requeridos para crear una entidad Renta */
 export type CreateRentaInput = {
   /** UUID de la Habitacion a la cual pertenece la entidad Renta */
@@ -58,6 +134,14 @@ export type CreateRentaInput = {
   personasExtra: Scalars['Int'];
   /** UUID de la Tarifa a la cual pertenece la entidad Renta */
   tarifaId: Scalars['String'];
+};
+
+/** Objeto que contiene los campos necesarios para crear una entidad SubCategoria Articulo Rs */
+export type CreateSubcategoriaArticuloRsInput = {
+  categoriaArticuloRsId: Scalars['ID'];
+  editable: Scalars['Boolean'];
+  /** Nombre de la entidad SubCategoria Articulo Rs */
+  nombre: Scalars['String'];
 };
 
 /** Objecto que contiene los campo necesarios para crear una entidad Tarifa */
@@ -124,6 +208,34 @@ export type CreateTipoHabitacionInput = {
   nombre: Scalars['String'];
 };
 
+export type CreateUnidadMedidaInput = {
+  /** Unidad de la entidad Unidad Medida */
+  unidad: Scalars['String'];
+};
+
+/** Objeto que contiene los campos que representan a la entidad Direccion Proveedor */
+export type DireccionProveedor = {
+  __typename?: 'DireccionProveedor';
+  /** Campo que nos indica si la entidad Direccion Proveedor se encuentra activa */
+  activo: Scalars['Boolean'];
+  /** Nombre de la calle de la entidad Direccion Proveedor */
+  calle: Scalars['String'];
+  /** Nombre de la ciudad de la entidad Direccion Proveedor */
+  ciudad: Scalars['String'];
+  /** Nombre de la colonia de la entidad Direccion Proveedor */
+  colonia: Scalars['String'];
+  /** Codigo postal de la entidad Direccion Proveedor */
+  cp: Scalars['String'];
+  /** Nombre del estado de la entidad Direccion Proveedor */
+  estado: Scalars['String'];
+  /** UUID de la entidad Direccion Proveedor */
+  id: Scalars['ID'];
+  /** Numero exterior de la entidad Direccion Proveedor */
+  numeroExterior: Scalars['Int'];
+  /** Numero interior de la entidad Direccion Proveedor */
+  numeroInterior?: Maybe<Scalars['Int']>;
+};
+
 /** Objecto que contiene los campos que representan a la entidad Estado Habitacion */
 export type EstadoHabitacion = {
   __typename?: 'EstadoHabitacion';
@@ -156,38 +268,71 @@ export type Habitacion = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  actualizar_articulo_rs: ArticuloRs;
+  actualizar_categoria_articulo_rs: Scalars['String'];
+  actualizar_direccion_proveedor: Scalars['String'];
   /** Mutacion que actualiza la entidad EstadoHabitacion con los parametros ingresados */
-  actualizar_estado_habitacion: EstadoHabitacion;
+  actualizar_estado_habitacion: Scalars['String'];
   /** Actualiza la informacion de la entidad Habitacion indicada */
   actualizar_habitacion: Scalars['String'];
+  actualizar_proveedor: Scalars['String'];
   /** Mutacion que actualiza la entidad Renta con los parametros ingresados */
   actualizar_renta: Scalars['String'];
   /** Mutacion que actualiza la entidad Tarifa con los parametros proporcionados */
   actualizar_tarifa: Tarifa;
   /** Mutacion que actualiza la entidad TipoHabitacion con los parametros proporcionados */
   actualizar_tipo_habitacion: Scalars['String'];
+  actualizar_unidad_medida: UnidadMedida;
   /** Cambia el estado de la entidad Habitacion indicada */
   cambiar_estado: Scalars['String'];
+  crear_articulo_rs: Scalars['String'];
+  crear_categoria_articulo_rs: Scalars['String'];
+  crear_direccion_proveedor: Scalars['String'];
   /** Mutacion que crea una nueva entidad Estado Habitacion con los parametros ingresados */
   crear_estado_habitacion: Scalars['String'];
   /** Crea una nueva entidad Habitacion en la base de datos */
   crear_habitacion: Scalars['String'];
+  crear_proveedor: Scalars['String'];
   /** Mutacion que crea una entidad Renta con los parametros ingresados */
   crear_renta: Scalars['String'];
   /** Mutacion que crea una entidad Tarifa con los parametros proporcionados */
   crear_tarifa: Scalars['String'];
   /** Mutacion que crea una entidad TipoHabitacion con los parametros proporcionados */
   crear_tipo_habitacion: Scalars['String'];
+  crear_unidad_medida: Scalars['String'];
+  createSubcategoriaArticuloRs: Scalars['String'];
+  eliminar_articulo_rs: ArticuloRs;
+  eliminar_categoria_articulo_rs: Scalars['String'];
+  eliminar_direccion_proveedor: Scalars['String'];
   /** Mutacion que desactiva la entidad EstadoHabitacion */
-  eliminar_estado_habitacion: EstadoHabitacion;
+  eliminar_estado_habitacion: Scalars['String'];
   /** Mutacion que desactiva la entidad Habitacion */
   eliminar_habitacion: Scalars['String'];
+  eliminar_proveedor: Scalars['String'];
   /** Mutacion que desactiva la entidad Tarifa */
   eliminar_tarifa: Tarifa;
   /** Mutacion que desactiva la entidad TipoHabitacion */
   eliminar_tipo_habitacion: Scalars['String'];
+  eliminar_unidad_medida: Scalars['String'];
+  removeSubcategoriaArticuloRs: Scalars['String'];
   /** Actualiza la informacion del campo usuarioRevision de la entidad Habitacion */
   revisar_habitacion: Scalars['String'];
+  updateSubcategoriaArticuloRs: Scalars['String'];
+};
+
+
+export type MutationActualizar_Articulo_RsArgs = {
+  updateArticuloRsInput: UpdateArticuloRsInput;
+};
+
+
+export type MutationActualizar_Categoria_Articulo_RsArgs = {
+  updateCategoriaArticuloRsInput: UpdateCategoriaArticuloRsInput;
+};
+
+
+export type MutationActualizar_Direccion_ProveedorArgs = {
+  updateDireccionProveedorInput: UpdateDireccionProveedorInput;
 };
 
 
@@ -198,6 +343,11 @@ export type MutationActualizar_Estado_HabitacionArgs = {
 
 export type MutationActualizar_HabitacionArgs = {
   updateHabitacioneInput: UpdateHabitacionInput;
+};
+
+
+export type MutationActualizar_ProveedorArgs = {
+  updateProveedorInput: UpdateProveedorInput;
 };
 
 
@@ -216,9 +366,29 @@ export type MutationActualizar_Tipo_HabitacionArgs = {
 };
 
 
+export type MutationActualizar_Unidad_MedidaArgs = {
+  updateUnidadMedidaInput: UpdateUnidadMedidaInput;
+};
+
+
 export type MutationCambiar_EstadoArgs = {
   estado: ValidEstadosHabitaciones;
   id: Scalars['ID'];
+};
+
+
+export type MutationCrear_Articulo_RsArgs = {
+  createArticuloRsInput: CreateArticuloRsInput;
+};
+
+
+export type MutationCrear_Categoria_Articulo_RsArgs = {
+  createCategoriaArticuloRsInput: CreateCategoriaArticuloRsInput;
+};
+
+
+export type MutationCrear_Direccion_ProveedorArgs = {
+  createDireccionProveedorInput: CreateDireccionProveedorInput;
 };
 
 
@@ -228,7 +398,12 @@ export type MutationCrear_Estado_HabitacionArgs = {
 
 
 export type MutationCrear_HabitacionArgs = {
-  createHabitacioneInput: CreateHabitacionInput;
+  createHabitacionInput: CreateHabitacionInput;
+};
+
+
+export type MutationCrear_ProveedorArgs = {
+  createProveedorInput: CreateProveedorInput;
 };
 
 
@@ -247,6 +422,31 @@ export type MutationCrear_Tipo_HabitacionArgs = {
 };
 
 
+export type MutationCrear_Unidad_MedidaArgs = {
+  createUnidadMedidaInput: CreateUnidadMedidaInput;
+};
+
+
+export type MutationCreateSubcategoriaArticuloRsArgs = {
+  createSubcategoriaArticuloRsInput: CreateSubcategoriaArticuloRsInput;
+};
+
+
+export type MutationEliminar_Articulo_RsArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationEliminar_Categoria_Articulo_RsArgs = {
+  id: Scalars['String'];
+};
+
+
+export type MutationEliminar_Direccion_ProveedorArgs = {
+  id: Scalars['ID'];
+};
+
+
 export type MutationEliminar_Estado_HabitacionArgs = {
   id: Scalars['ID'];
 };
@@ -254,6 +454,11 @@ export type MutationEliminar_Estado_HabitacionArgs = {
 
 export type MutationEliminar_HabitacionArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationEliminar_ProveedorArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -267,9 +472,24 @@ export type MutationEliminar_Tipo_HabitacionArgs = {
 };
 
 
+export type MutationEliminar_Unidad_MedidaArgs = {
+  id: Scalars['String'];
+};
+
+
+export type MutationRemoveSubcategoriaArticuloRsArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type MutationRevisar_HabitacionArgs = {
   enRevision: Scalars['Boolean'];
   id: Scalars['ID'];
+};
+
+
+export type MutationUpdateSubcategoriaArticuloRsArgs = {
+  updateSubcategoriaArticuloRsInput: UpdateSubcategoriaArticuloRsInput;
 };
 
 /** Objecto que contiene los campos que representan a la entidad Permiso */
@@ -304,8 +524,43 @@ export type PermisoUsuarioResponse = {
   valor: Scalars['Boolean'];
 };
 
+/** Objeto que contiene los campos que representan a una entidad Proveedor */
+export type Proveedor = {
+  __typename?: 'Proveedor';
+  /** Indica si la entidad Proveedor esta activa, es decir, si ya se registro su eliminacion */
+  activo: Scalars['Boolean'];
+  /** Apellido materno del contacto de la entidad Proveedor */
+  apellidoMContacto: Scalars['String'];
+  /** Apellido paterno del contacto de la entidad Proveedor */
+  apellidoPContacto: Scalars['String'];
+  /** Numero de dias que se tiene para pagar la deuda antes de empezar a generar intereces de la entidad Proveedor */
+  diasCredito: Scalars['Int'];
+  /** Informacion de la Direccion Proveedor que pertenece a la entidad Proveedor */
+  direccionProveedor: DireccionProveedor;
+  /** Email de la entidad Proveedor */
+  email: Scalars['String'];
+  /** UUID de la entidad Proveedor */
+  id: Scalars['ID'];
+  /** Nombre comercial de la entidad Proveedor */
+  nombreComercial: Scalars['String'];
+  /** Nombre(s) del contacto de la entidad Proveedor */
+  nombreContacto: Scalars['String'];
+  /** Nombre con el cual esta legalmente registrada la entidad Proveedor */
+  razonSocial: Scalars['String'];
+  /** RFC de la entidad Proveedor */
+  rfc: Scalars['String'];
+  /** Numero telefonico de la entidad Proveedor */
+  telefono: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
+  articuloRs: ArticuloRs;
+  articulosRs: Array<ArticuloRs>;
+  categoriaArticuloRs: CategoriaArticuloRs;
+  categoriasArticulosRs: Array<CategoriaArticuloRs>;
+  direccionProveedor: DireccionProveedor;
+  direccionesProveedores: Array<DireccionProveedor>;
   /** Query que obtiene una entidad EstadoHabitacion que cumpla con los argumentos solicitados */
   estado_habitacion: EstadoHabitacion;
   /** Query que obtiene una lista de entidades EstadoHabitacion que cumplan con los argumentos solicitados */
@@ -318,6 +573,8 @@ export type Query = {
   permiso: Permiso;
   /** Query que obtiene una lista de entidades Permiso que cumplan con los argumentos de busqueda */
   permisos: Array<Permiso>;
+  proveedor: Proveedor;
+  proveedores: Array<Proveedor>;
   /** Query que obtiene una entidad Renta que cumpla con los argumentos de busqueda */
   renta: Renta;
   /** Query que obtiene una lista de entidades Renta que cumplan con los argumentos de busqueda */
@@ -326,6 +583,8 @@ export type Query = {
   rol: Rol;
   /** Query que obtiene una lista de entidades Rol que cumplan con los argumentos de busqueda */
   roles: Array<Rol>;
+  subcategoriaArticuloRs: SubCategoriaArticuloRs;
+  subcategoriasArticulosRs: Array<SubCategoriaArticuloRs>;
   /** Query que obtiene una entidad Tarifa que cumpla con los argumentos de busqueda */
   tarifa: Tarifa;
   /** Query que obtiene una lista de entidades Tarifa que cumplan con los argumentos de busqueda */
@@ -334,10 +593,39 @@ export type Query = {
   tipo_habitacion: TipoHabitacion;
   /** Query que obtiene una lista de entidades TipoHabitacion que cumplan con los argumentos de busqueda */
   tipos_habitaciones: Array<TipoHabitacion>;
+  unidadMedida: UnidadMedida;
+  unidadesMedida: Array<UnidadMedida>;
   /** Query que obtiene una entidad UsuarioResponse que cumpla con los argumentos de busqueda */
   usuario: UsuarioResponse;
   /** Query que obtiene una lista de entidades UsuarioResponse que cumpla con los argumentos de busqueda */
   usuarios: Array<UsuarioResponse>;
+};
+
+
+export type QueryArticuloRsArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type QueryCategoriaArticuloRsArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryDireccionProveedorArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryDireccionesProveedoresArgs = {
+  activo: Scalars['Boolean'];
+  calle: Scalars['String'];
+  ciudad: Scalars['String'];
+  colonia: Scalars['String'];
+  cp: Scalars['Int'];
+  estado: Scalars['String'];
+  numeroExterior: Scalars['Int'];
+  numeroInterior: Scalars['Int'];
 };
 
 
@@ -352,7 +640,7 @@ export type QueryEstados_HabitacionesArgs = {
 
 
 export type QueryHabitacionArgs = {
-  id: Scalars['ID'];
+  id_o_numero: Scalars['String'];
 };
 
 
@@ -372,6 +660,11 @@ export type QueryPermisosArgs = {
 };
 
 
+export type QueryProveedorArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type QueryRentaArgs = {
   id: Scalars['ID'];
 };
@@ -384,6 +677,11 @@ export type QueryRentasArgs = {
 
 export type QueryRolArgs = {
   id_o_nombre: Scalars['String'];
+};
+
+
+export type QuerySubcategoriaArticuloRsArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -403,6 +701,16 @@ export type QueryTipo_HabitacionArgs = {
 
 
 export type QueryTipos_HabitacionesArgs = {
+  activo?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryUnidadMedidaArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryUnidadesMedidaArgs = {
   activo?: InputMaybe<Scalars['Boolean']>;
 };
 
@@ -468,6 +776,20 @@ export type RolUsuarioResponse = {
   nombre: Scalars['String'];
   /** Lista de permisos de la entidad RolUsuarioResponse */
   permisos: Array<PermisoUsuarioResponse>;
+};
+
+export type SubCategoriaArticuloRs = {
+  __typename?: 'SubCategoriaArticuloRs';
+  /** Campo que nos indica si la entidad Sub Categoria Articulo Rs se encuentra activa */
+  activo: Scalars['Boolean'];
+  /** Campo que nos indica si la entidad Sub Categoria Articulo Rs ha sido eliminada */
+  categoriaArticuloRs: Scalars['Boolean'];
+  /** Campo que nos indica si la entidad Sub Categoria Articulo Rs se puede editar */
+  editable: Scalars['Boolean'];
+  /** UUID de la entidad SubCategoria Articulos Rs */
+  id: Scalars['ID'];
+  /** Nombre de la entidad Sub Categoria Articulo Rs */
+  nombre: Scalars['String'];
 };
 
 export type Subscription = {
@@ -550,6 +872,50 @@ export type TipoHabitacion = {
   nombre: Scalars['String'];
 };
 
+/** Objeto que contiene los campos que representan a la entidad Unidad Medida */
+export type UnidadMedida = {
+  __typename?: 'UnidadMedida';
+  /** Campo que nos indica si la entidad Unidad Medida se encuentra activa */
+  activo: Scalars['Boolean'];
+  /** UUID de la entidad Unidad Medida */
+  id: Scalars['ID'];
+  /** Unidad de la entidad Unidad Medida */
+  unidad: Scalars['String'];
+};
+
+export type UpdateArticuloRsInput = {
+  /** Example field (placeholder) */
+  exampleField?: InputMaybe<Scalars['Int']>;
+  id: Scalars['Int'];
+};
+
+export type UpdateCategoriaArticuloRsInput = {
+  /** UUID de la entidad Categoria Articulo Rs */
+  id: Scalars['ID'];
+  /** Nombre de la entidad Categoria Articulo Rs */
+  nombre?: InputMaybe<Scalars['String']>;
+};
+
+/** Objeto que contiene todos los campos que se pueden editar directamente de la entidad Direccion Proveedor */
+export type UpdateDireccionProveedorInput = {
+  /** Nombre de la calle de la entidad Direccion Proveedor */
+  calle?: InputMaybe<Scalars['String']>;
+  /** Nombre de la ciudad de la entidad Direccion Proveedor */
+  ciudad?: InputMaybe<Scalars['String']>;
+  /** Nombre de la colonia de la entidad Direccion Proveedor */
+  colonia?: InputMaybe<Scalars['String']>;
+  /** Codigo postal de la entidad Direccion Proveedor */
+  cp?: InputMaybe<Scalars['String']>;
+  /** Nombre del estado de la entidad Direccion Proveedor */
+  estado?: InputMaybe<Scalars['String']>;
+  /** UUID de la entidad Direccion Proveedor */
+  id: Scalars['ID'];
+  /** Numero exterior de la entidad Direccion Proveedor */
+  numeroExterior?: InputMaybe<Scalars['Int']>;
+  /** Numero interior de la entidad Direccion Proveedor */
+  numeroInterior?: InputMaybe<Scalars['Int']>;
+};
+
 /** Campos que pueden ser editados directamente de la entidad Estado Habitacion */
 export type UpdateEstadoHabitacionInput = {
   /** UUID de la entidad Estado Habitacion */
@@ -572,6 +938,30 @@ export type UpdateHabitacionInput = {
   tipoHabitacionId?: InputMaybe<Scalars['ID']>;
 };
 
+export type UpdateProveedorInput = {
+  /** Apellido materno del contacto de la entidad Proveedor */
+  apellidoMContacto?: InputMaybe<Scalars['String']>;
+  /** Apellido paterno del contacto de la entidad Proveedor */
+  apellidoPContacto?: InputMaybe<Scalars['String']>;
+  /** Numero de dias que se tiene para pagar la deuda antes de empezar a generar intereces de la entidad Proveedor */
+  diasCredito?: InputMaybe<Scalars['Int']>;
+  /** Objeto que contiene los campos necesarios para crear una entidad DireccionProveedor */
+  direccionProveedor?: InputMaybe<CreateDireccionProveedorInput>;
+  /** Email de la entidad Proveedor */
+  email?: InputMaybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** Nombre comercial de la entidad Proveedor */
+  nombreComercial?: InputMaybe<Scalars['String']>;
+  /** Nombre(s) del contacto de la entidad Proveedor */
+  nombreContacto?: InputMaybe<Scalars['String']>;
+  /** Nombre con el cual esta legalmente registrada la entidad Proveedor */
+  razonSocial?: InputMaybe<Scalars['String']>;
+  /** RFC de la entidad Proveedor */
+  rfc?: InputMaybe<Scalars['String']>;
+  /** Numero telefonico de la entidad Proveedor */
+  telefono?: InputMaybe<Scalars['String']>;
+};
+
 /** Objeto que contiene los campos que se pueden editar directamente de la entidad Renta */
 export type UpdateRentaInput = {
   /** Estado que se le dara a la habitacion cuando finalize la rente o haya un cambio de habitacion */
@@ -591,6 +981,14 @@ export type UpdateRentaInput = {
   personasExtra?: InputMaybe<Scalars['Int']>;
   /** UUID de la Tarifa a la cual pertenece la entidad Renta */
   tarifaId?: InputMaybe<Scalars['String']>;
+};
+
+export type UpdateSubcategoriaArticuloRsInput = {
+  categoriaArticuloRsId?: InputMaybe<Scalars['ID']>;
+  editable?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  /** Nombre de la entidad SubCategoria Articulo Rs */
+  nombre?: InputMaybe<Scalars['String']>;
 };
 
 /** Objecto que contiene todos los campos que se pueden editar directamente de la entidad Tarifa */
@@ -661,6 +1059,13 @@ export type UpdateTipoHabitacionInput = {
   nombre?: InputMaybe<Scalars['String']>;
 };
 
+export type UpdateUnidadMedidaInput = {
+  /** UUID de la entidad Unidad Medida */
+  id: Scalars['ID'];
+  /** Unidad de la entidad Unidad Medida */
+  unidad?: InputMaybe<Scalars['String']>;
+};
+
 /** Objeto que contiene los campos que representan a la entidad Usuario */
 export type Usuario = {
   __typename?: 'Usuario';
@@ -716,12 +1121,19 @@ export type CambiarEstadoMutation = { __typename?: 'Mutation', cambiar_estado: s
 export type GetAllRoomsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllRoomsQuery = { __typename?: 'Query', habitaciones: Array<{ __typename?: 'Habitacion', numeroHabitacion: number, piso: number, estadoHabitacion: { __typename?: 'EstadoHabitacion', nombre: string } }> };
+export type GetAllRoomsQuery = { __typename?: 'Query', habitaciones: Array<{ __typename?: 'Habitacion', id: string, numeroHabitacion: number, piso: number, estadoHabitacion: { __typename?: 'EstadoHabitacion', nombre: string } }> };
 
-export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
+export type HabitacionQueryVariables = Exact<{
+  num: Scalars['String'];
+}>;
 
 
-export type GetAllUsersQuery = { __typename?: 'Query', usuarios: Array<{ __typename?: 'UsuarioResponse', nombre: string }> };
+export type HabitacionQuery = { __typename?: 'Query', habitacion: { __typename?: 'Habitacion', id: string, numeroHabitacion: number, tipoHabitacion: { __typename?: 'TipoHabitacion', id: string, nombre: string } } };
+
+export type TarifasQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TarifasQuery = { __typename?: 'Query', tarifas: Array<{ __typename?: 'Tarifa', nombre: string, id: string, costoHabitacion: number, costoHoraExtra: number, costoHospedajeExtra: number, costoPersonaExtra: number, horasExtraMax: number, hospedajesExtraMax: number, personasExtraMax: number, tipoHabitacion: { __typename?: 'TipoHabitacion', nombre: string } }> };
 
 export const CambiarEstadoDocument = gql`
     mutation CambiarEstado($id: ID!, $estado: ValidEstadosHabitaciones!) {
@@ -734,7 +1146,7 @@ export const CambiarEstadoDocument = gql`
   })
   export class CambiarEstadoGQL extends Apollo.Mutation<CambiarEstadoMutation, CambiarEstadoMutationVariables> {
     override document = CambiarEstadoDocument;
-
+    
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -742,6 +1154,7 @@ export const CambiarEstadoDocument = gql`
 export const GetAllRoomsDocument = gql`
     query getAllRooms {
   habitaciones {
+    id
     numeroHabitacion
     piso
     estadoHabitacion {
@@ -756,15 +1169,20 @@ export const GetAllRoomsDocument = gql`
   })
   export class GetAllRoomsGQL extends Apollo.Query<GetAllRoomsQuery, GetAllRoomsQueryVariables> {
     override document = GetAllRoomsDocument;
-
+    
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
   }
-export const GetAllUsersDocument = gql`
-    query getAllUsers {
-  usuarios {
-    nombre
+export const HabitacionDocument = gql`
+    query Habitacion($num: String!) {
+  habitacion(id_o_numero: $num) {
+    id
+    numeroHabitacion
+    tipoHabitacion {
+      id
+      nombre
+    }
   }
 }
     `;
@@ -772,9 +1190,38 @@ export const GetAllUsersDocument = gql`
   @Injectable({
     providedIn: 'root'
   })
-  export class GetAllUsersGQL extends Apollo.Query<GetAllUsersQuery, GetAllUsersQueryVariables> {
-    override document = GetAllUsersDocument;
+  export class HabitacionGQL extends Apollo.Query<HabitacionQuery, HabitacionQueryVariables> {
+    override document = HabitacionDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const TarifasDocument = gql`
+    query Tarifas {
+  tarifas {
+    nombre
+    id
+    costoHabitacion
+    costoHoraExtra
+    costoHospedajeExtra
+    costoPersonaExtra
+    horasExtraMax
+    hospedajesExtraMax
+    personasExtraMax
+    tipoHabitacion {
+      nombre
+    }
+  }
+}
+    `;
 
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class TarifasGQL extends Apollo.Query<TarifasQuery, TarifasQueryVariables> {
+    override document = TarifasDocument;
+    
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }

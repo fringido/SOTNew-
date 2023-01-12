@@ -9,6 +9,10 @@ import { take } from 'rxjs/operators';
 import { controlHabitacion } from 'src/app/core/formsControl/controlHabitacion';
 import { TarifasService } from 'src/app/core/services/rentaHabitaicones/tarifas.service';
 import { ComunicacionPagoService } from '../services/comunicacionPago.service';
+import { ObtenerHabitacionesService } from 'src/app/core/services/habitaciones/obtener-habitaciones.service';
+import { ActivatedRoute } from '@angular/router'; // Importar
+
+
 
 @Component({
   selector: 'app-renta-habitacion',
@@ -42,51 +46,60 @@ export class RentaHabitacionComponent implements OnInit {
     public dialogService: DialogService,
     private fb: FormBuilder,
     private getTarifasQL: TarifasService,
-    private pagoService: ComunicacionPagoService
+    private pagoService: ComunicacionPagoService,
+    private habitacionService:ObtenerHabitacionesService,
+    private route: ActivatedRoute
   ) {
-    this.formCreate();
   }
 // *Crea las opciones de tarifa
   tarifas: any
+  habitacion:any
+
+  tarifas$ = this.getTarifasQL.tarifa$
+  habitacion$ = this.habitacionService.habitacion$
 //* --------------------------------
   tarifaSelect:any
-  tarifa$ = this.getTarifasQL.tarifa$
+
+  numHabitacion!:string
+  idHabitacion:string = ''
 
   ngOnInit(): void {
     // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
-    this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
-      this.selectedRoom = room!;
-    });
-    this.getTarifas()
+    // this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+    //   this.selectedRoom = room!;
+    // });
+    this.formCreate();
+    this.numHabitacion = String(this.route.snapshot.paramMap.get("roomNumber"));
+    this.getInfo(this.numHabitacion)
 
   }
 
-  getTarifas(){
-    this.getTarifasQL.getTarifas()
-    this.tarifa$.subscribe(data => {
-      this.tarifas = data
+  getInfo(numHabitacion:string){
+    this.habitacionService.getHabitacio(numHabitacion)
+    this.habitacion$.subscribe(data =>{
+      this.habitacion = data
     })
+    this.getTarifasQL.getTarifas()
+    this.tarifas$.subscribe(( data:any) =>{
+      this.tarifas = data
+      this.idHabitacion = data["id"]
+    }
+    )
+
+    this.form.patchValue({
+      habitacionId: this.idHabitacion
+    })
+
     this.form.get('personaExtra')?.disable()
     this.form.get('hospedaje')?.disable()
     this.form.get('horasExtra')?.disable()
   }
 
-  //* Inicia el Pago de extras
-  initPayExtra(){
-    this.form.get('tarifa')?.disable();
-    this.form.get('tarjetaLealtad')?.disable();
-    this.form.get('aPie')?.disable();
-    this.form.get('matricula')?.disable();
-    this.form.get('marca')?.disable();
-    this.form.get('modelo')?.disable();
-    this.form.get('color')?.disable();
-    this.form.get('comentario')?.disable();
 
-    this.form.addValidators(controlHabitacion.extrasControl)
-  }
 //* Inicia el formulario
   formCreate(){
     this.form = this.fb.group({
+      habitacionId: [''],
       tarifa: ['', [Validators.required]],
       tarjetaLealtad: [''],
       aPie: [false],
@@ -135,7 +148,6 @@ export class RentaHabitacionComponent implements OnInit {
       }
       if (this.form.get('tarifa')?.valid) {
         this.tarifaSelect = this.tarifas.filter((d: any) => d.id == this.form.get('tarifa')?.value)
-        console.log(this.tarifaSelect)
         this.maxPersonas = this.tarifaSelect[0].personasExtraMax;
         this.maxHospedaje = this.tarifaSelect[0].hospedajesExtraMax;
         this.maxHoras = this.tarifaSelect[0].horasExtraMax;
@@ -153,26 +165,23 @@ export class RentaHabitacionComponent implements OnInit {
     })
 
     this.form.get('personaExtra')?.valueChanges.subscribe((d: any) => {
-      this.total = (this.maxHorasPrecio * this.form.controls.horasExtra.value) +
-        (this.maxHospedajePrecio * this.form.controls.hospedaje.value) +
-        (this.maxPersonasPrecio * this.form.controls.personaExtra.value) +
-        this.costoHabitacion
+      this.sumTotal()
     })
     this.form.get('hospedaje')?.valueChanges.subscribe((d: any) => {
-      this.total = (this.maxHorasPrecio * this.form.controls.horasExtra.value) +
-        (this.maxHospedajePrecio * this.form.controls.hospedaje.value) +
-        (this.maxPersonasPrecio * this.form.controls.personaExtra.value) +
-        this.costoHabitacion
+      this.sumTotal()
     })
     this.form.get('horasExtra')?.valueChanges.subscribe((d: any) => {
-      this.total = (this.maxHorasPrecio * this.form.controls.horasExtra.value) +
-        (this.maxHospedajePrecio * this.form.controls.hospedaje.value) +
-        (this.maxPersonasPrecio * this.form.controls.personaExtra.value) +
-        this.costoHabitacion
+      this.sumTotal()
     })
   }
 //* --------------------------------
 
+  sumTotal() {
+    this.total = (this.maxHorasPrecio * this.form.controls.horasExtra.value) +
+      (this.maxHospedajePrecio * this.form.controls.hospedaje.value) +
+      (this.maxPersonasPrecio * this.form.controls.personaExtra.value) +
+      this.costoHabitacion
+  }
 
 //* Botones de modal
   salir(){
@@ -180,11 +189,13 @@ export class RentaHabitacionComponent implements OnInit {
   }
 
   aceptar(){
+
     this.pagoService.infoPago$ = this.form
     this.pagoService.pago$ = this.total
-    this.router.navigate([`/hotel/rentaHabitacion/pagoRenta`]);
+    this.router.navigate([`/hotel/rentaHabitacion/pagoRenta/${this.numHabitacion}`]);
 
   }
+
 
 //* --------------------------------
 }
