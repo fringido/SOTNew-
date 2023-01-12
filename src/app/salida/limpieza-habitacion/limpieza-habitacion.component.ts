@@ -16,9 +16,6 @@ import { RoomService } from 'src/app/room-types/services/room/room.service';
 export class LimpiezaHabitacionComponent implements OnInit, OnDestroy {
 
   display = true;
-  sucia = true
-  medioSucia = false;
-  retoque = false;
   limpiezaSeleccionada = false;
   
   camaristasDisponibles: any[]= [];
@@ -45,17 +42,6 @@ export class LimpiezaHabitacionComponent implements OnInit, OnDestroy {
 
     this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
       this.selectedRoom = room;
-      if(!this.selectedRoom) {
-        return;
-      }
-      if(
-        this.selectedRoom.status === RoomStatusEnum.EN_SUPERVISION ||
-        this.selectedRoom.status === RoomStatusEnum.SUPERVISION_MANTENIMIENTO
-      ) {
-        this.medioSucia = false;
-        this.sucia = false;
-        this.retoque = true;
-      }
     });
     this.search()
 
