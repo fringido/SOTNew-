@@ -55,7 +55,6 @@
           </button>
         <button 
             class="button-modal btn-normal limpieza-button"
-            *ngIf="sucia"
             (click)="seleccionarLimpieza(1)"
             (blur)="deseleccionarLimpieza(1)"
             [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' "
@@ -64,42 +63,6 @@
                 <i class="icon-limpieza"></i>
             </div>
             <div class="text">Normal</div>
-        </button>
-        <button 
-            class="button-modal btn-detallada limpieza-button" 
-            *ngIf="sucia"
-            (click)="seleccionarLimpieza(2)"
-            (blur)="deseleccionarLimpieza(1)"
-            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' "
-        >
-            <div class="icon">
-                <i class="icon-limpieza"></i>
-            </div>
-            <div class="text">Detallada</div>
-        </button>
-        <button 
-            class="button-modal btn-rapida limpieza-button"
-            *ngIf="medioSucia" 
-            (click)="seleccionarLimpieza(3)"
-            (blur)="deseleccionarLimpieza(1)"
-            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' "
-        >
-            <div class="icon">
-                <i class="icon-limpieza"></i>
-            </div>
-            <div class="text">Rapida</div>
-        </button>
-        <button 
-            class="button-modal btn-retoque limpieza-button"
-            *ngIf="retoque"
-            (click)="seleccionarLimpieza(4)"
-            (blur)="deseleccionarLimpieza(1)"
-            [attr.disabled]="camaristasSeleccionados.length > 0 ? null: '' " 
-        >
-            <div class="icon">
-                <i class="icon-limpieza"></i>
-            </div>
-            <div class="text">Retoque</div>
         </button>
         <button  
             (focus)="aceptar()"
