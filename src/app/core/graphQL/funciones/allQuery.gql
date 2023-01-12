@@ -1,5 +1,6 @@
 query getAllRooms {
-  habitaciones {
+ habitaciones {
+      id
       numeroHabitacion
       piso
       estadoHabitacion {
@@ -8,8 +9,30 @@ query getAllRooms {
     }
 }
 
-query getAllUsers{
-  usuarios{
+  query Habitacion($num:String!){
+  habitacion(id_o_numero: $num) {
+    id
+    numeroHabitacion
+    tipoHabitacion {
+      id
+      nombre
+    }
+  }
+}
+
+query Tarifas {
+  tarifas{
+  nombre
+  id
+  costoHabitacion
+  costoHoraExtra
+  costoHospedajeExtra
+  costoPersonaExtra
+  horasExtraMax
+  hospedajesExtraMax
+  personasExtraMax
+  tipoHabitacion {
     nombre
+  }
   }
 }

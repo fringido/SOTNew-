@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { take } from 'rxjs/operators';
 import { MessageModalAutoclosableComponent } from 'src/app/core/components/message-modal-autoclosable/message-modal-autoclosable.component';
@@ -27,10 +27,12 @@ export class CobrarPendienteHabitacionComponent implements OnInit {
     private readonly router: Router,
     private readonly roomService: RoomService,
     public dialogService: DialogService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.formCreate();
   }
+
   // *Crea las opciones de tarifa
   tarifas = [
     { name: 'New York', code: 'NY' },
@@ -41,11 +43,15 @@ export class CobrarPendienteHabitacionComponent implements OnInit {
   ];
   //* --------------------------------
 
+  numHabitacion!: string
+
   ngOnInit(): void {
     // TODO: se llamara al endpoint para asignar el valor a la habitacion seleccionada
-    this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
-      this.selectedRoom = room!;
-    });
+    // this.roomService.selectedRoom$.pipe(take(1)).subscribe((room) => {
+    //   this.selectedRoom = room!;
+    // });
+    this.numHabitacion = String(this.route.snapshot.paramMap.get("roomNumber"));
+
   }
   //* Inicia el formulario
   formCreate() {
@@ -76,7 +82,7 @@ export class CobrarPendienteHabitacionComponent implements OnInit {
   }
 
   aceptar() {
-    this.router.navigate([`/hotel/rentaHabitacion/pagoRenta`]);
+    this.router.navigate([`/hotel/rentaHabitacion/pagoRenta/${this.numHabitacion}`]);
   }
 
   //* --------------------------------

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReservacionComponent } from './reservacion.component';
 import { AsignarReservacionComponent } from './vistas/asignar-reservacion/asignar-reservacion.component';
 
-const routes: Routes = [{ path: '', component: AsignarReservacionComponent }];
+const routes: Routes = [{ path: ':roomNumber', component: AsignarReservacionComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

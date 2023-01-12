@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import moment from 'moment';
 
-
 @Component({
   selector: 'app-component-reservacion',
   templateUrl: './component-reservacion.component.html',

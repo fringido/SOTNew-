@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { gql } from 'apollo-angular';
+import { gql, Apollo } from 'apollo-angular';
 
-const UPVOTE_ESTADO_HABITACION = gql`
-  mutation UpEstadoHabitacion($id, $estado_habitacion)  {
-    upvotePost(id: $id, estado:$estado_habitacion)
-  }
-`
+const CambiarEstadoDocument = gql`
+    mutation CambiarEstado($id: ID!, $estado: ValidEstadosHabitaciones!) {
+  cambiar_estado(id: $id, estado: $estado)
+}
+    `;
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +13,28 @@ const UPVOTE_ESTADO_HABITACION = gql`
 
 export class MutarEstadoHabitacionService {
 
-  constructor() { }
+  constructor(
+    private apollo:Apollo
+  ) { }
+
+  cambiarEstado(id:string,estado:string){
+    this.apollo
+      .mutate({
+        mutation: CambiarEstadoDocument,
+        variables: {
+          id: id,
+          estado: estado
+        }
+      })
+      .subscribe(
+        ({ data }:any):any => {
+          console.log('got data', data)
+        },
+        (error: any) => {
+          console.log('there was an error sending the query', error)
+        }
+      )
+  }
+
+
 }

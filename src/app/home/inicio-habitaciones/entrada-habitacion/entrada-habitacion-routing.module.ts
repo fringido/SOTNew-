@@ -9,12 +9,11 @@ import { RentaHabitacionComponent } from './renta-habitacion/renta-habitacion.co
 
 
 const routes: Routes = [
-  {path: '', component:RentaHabitacionComponent},
-  {path: 'pagoRenta', component: PagoRentaHabitacionComponent},
-  {path: 'pagoExtraRenta', component: RentaExtraHabitacionComponent},
-  {path: 'cobroPendiente', component: CobrarPendienteHabitacionComponent},
-  {path: 'cambio', component: CambioHabitacionComponent},
-  {path: 'cancelarHabitacion', component: CancelarHabitacionComponent}
+  { path: ':roomNumber', component:RentaHabitacionComponent},
+  { path: 'pagoRenta/:roomNumber', component: PagoRentaHabitacionComponent},
+  { path: 'pagoExtraRenta/:roomNumber', component: RentaExtraHabitacionComponent},
+  { path: 'cobroPendiente/:roomNumber', component: CobrarPendienteHabitacionComponent},
+  { path: 'cambio/:roomNumber', component: CambioHabitacionComponent}
 ];
 
 @NgModule({

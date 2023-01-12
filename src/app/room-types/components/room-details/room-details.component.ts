@@ -8,6 +8,8 @@ import { SidebarService } from '../../../sidebar/services/sidebar/sidebar.servic
 import { RoomStatusEnum } from '../../enums/room-status.enum';
 import { RoomService } from '../../services/room/room.service';
 import { ConfimModalMessageComponent } from '../../../core/components/confim-modal-message/confim-modal-message.component';
+import { MutarEstadoHabitacionService } from 'src/app/core/services/habitaciones/mutar-estado-habitacion.service';
+import { SuscripcionEstadoHabitacionService } from 'src/app/core/services/habitaciones/suscripcion-estado-habitacion.service';
 
 @Component({
   selector: 'app-room-details',
@@ -44,7 +46,9 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     private modalService: ModalService,
     private readonly sidebarService: SidebarService,
     private readonly roomService: RoomService,
+    private mutarEstado: MutarEstadoHabitacionService,
   ) { }
+
 
   ngOnInit(): void {
     this.selectedRoomSubs = this.roomService.selectedRoom$.subscribe((room) => {
@@ -54,6 +58,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       this.isModoCambioHabitacion = state.cambio;
     });
     this.isModalOpenSubs = this.modalService.isModalOpen$.subscribe((isOpen) => this.isModalOpen = isOpen)
+
   }
 
   ngOnDestroy(): void {
@@ -83,6 +88,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   }
 
   entrada() {
+    const id = '5EB0DE9C-C687-ED11-A975-005056AFA94B'
+    const estado = 'Preparada'
+    this.mutarEstado.cambiarEstado(id,estado)
+
     const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
       data: {
         message: 'SE HA DADO ENTRADA DE FORMA EXITOSA'
@@ -128,8 +137,10 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   }
 
   openModal(rute: string){
-    this.router.navigate([`hotel/${rute}`])
+    this.router.navigate([`hotel/${rute}/${this.selectedRoom.roomNumber}`])
   }
+
+
 
   cancelarBloqueo() {
     const ref = this.dialogService.open(ConfimModalMessageComponent, {
@@ -161,7 +172,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
 
   cancelarHabitacion() {
     this.router.navigate(['hotel', 'rentaHabitacion', 'cancelarHabitacion']);
-    
+
   }
 
   abrirCamaristasEnTurno() {

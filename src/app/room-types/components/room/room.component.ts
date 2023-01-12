@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { SuscripcionEstadoHabitacionService } from 'src/app/core/services/habitaciones/suscripcion-estado-habitacion.service';
 import { BgColorEnum } from '../../enums/bg-color.enum';
 import { RoomIconsEnum } from '../../enums/icon.enum';
 import { RoomStatusEnum } from '../../enums/room-status.enum';
@@ -118,9 +119,13 @@ export class RoomComponent implements OnInit, OnChanges {
     }
   }
 
-  constructor() { }
+
+
+  constructor(
+  ) { }
 
   ngOnInit(): void {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {

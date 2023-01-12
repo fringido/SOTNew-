@@ -2,7 +2,7 @@
   [showHeader]="false">
   <form [formGroup]="form" class="form-content">
     <div class="total">
-      Total: $1,000
+      Total: {{total | currency: '$'}}
     </div>
     <div class="content-dropdown">
       <label>TARIFA</label>

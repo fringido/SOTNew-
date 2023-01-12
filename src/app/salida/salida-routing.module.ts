@@ -6,10 +6,10 @@ import { MandarLimpiezaHabitacionComponent } from './mandar-limpieza-habitacion/
 import { MandarSupervisarHabitacionComponent } from './mandar-supervisar-habitacion/mandar-supervisar-habitacion.component';
 
 const routes: Routes = [
-  {path: 'enviarLimpieza', component: MandarLimpiezaHabitacionComponent},
-  {path: 'limpieza', component: LimpiezaHabitacionComponent},
-  {path: 'supervisar', component: MandarSupervisarHabitacionComponent},
-  {path: 'liberar', component: LiberarHabitacionComponent}
+  { path: 'enviarLimpieza/:roomNumber', component: MandarLimpiezaHabitacionComponent},
+  { path: 'limpieza/:roomNumber', component: LimpiezaHabitacionComponent},
+  { path: 'supervisar/:roomNumber', component: MandarSupervisarHabitacionComponent},
+  { path: 'liberar/:roomNumber', component: LiberarHabitacionComponent}
 ];
 
 @NgModule({

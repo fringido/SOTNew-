@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql, QueryRef } from 'apollo-angular';
-import { take, tap } from 'rxjs';
+import { BehaviorSubject, take, tap } from 'rxjs';
 
 const GET_HABITAICONES = gql`
   query {
@@ -16,17 +16,16 @@ const GET_HABITAICONES = gql`
 `;
 
 const GET_HABITACION = gql`
-  query getHabitacion ($id: ID!){
-    habitacion(id: $id){
-      numeroHabitacion
-
-      tipoHabitacion{
-        id
-        clave
-        descripcion
-      }
+  query Habitacion($num:String!){
+  habitacion(id_o_numero: $num) {
+    id
+    numeroHabitacion
+    tipoHabitacion {
+      id
+      nombre
     }
   }
+}
 `
 
 @Injectable({
@@ -34,34 +33,27 @@ const GET_HABITACION = gql`
 })
 export class ObtenerHabitacionesService {
 
+  private habitacionSubjext = new BehaviorSubject<any[]>([null])
+  habitacion$ = this.habitacionSubjext.asObservable();
+
   constructor(
     private apollo: Apollo
   ) { }
 
-  getHabitaciones() {
-    this.apollo.watchQuery<any>({
-      query: GET_HABITAICONES
-    }).valueChanges.pipe(
-      take(1),
-      tap(res => {
-        console.log(res);
-      })
-    ).subscribe();
-  }
-
-
   getHabitacio(id:string){
-    this.apollo.watchQuery<any>({
+    this.apollo.watchQuery({
       query: GET_HABITACION,
       variables:{
-        id: id
+        num:id
       }
     }).valueChanges.pipe(
       take(1),
-      tap(res => {
-        console.log(res);
+      tap(({ data }) => {
+        const { habitacion }: any = data
+        this.habitacionSubjext.next(habitacion)
       })
-    ).subscribe();
+    ).subscribe()
+
   }
 }
 

@@ -466,6 +466,207 @@ type Habitacion {
 }
 
 """
+Objeto que contiene los campos que representan a la entidad Direccion Proveedor
+"""
+type DireccionProveedor {
+  """
+  UUID de la entidad Direccion Proveedor
+  """
+  id: ID!
+
+  """
+  Nombre de la calle de la entidad Direccion Proveedor
+  """
+  calle: String!
+
+  """
+  Nombre de la colonia de la entidad Direccion Proveedor
+  """
+  colonia: String!
+
+  """
+  Numero interior de la entidad Direccion Proveedor
+  """
+  numeroInterior: Int
+
+  """
+  Numero exterior de la entidad Direccion Proveedor
+  """
+  numeroExterior: Int!
+
+  """
+  Codigo postal de la entidad Direccion Proveedor
+  """
+  cp: String!
+
+  """
+  Nombre de la ciudad de la entidad Direccion Proveedor
+  """
+  ciudad: String!
+
+  """
+  Nombre del estado de la entidad Direccion Proveedor
+  """
+  estado: String!
+
+  """
+  Campo que nos indica si la entidad Direccion Proveedor se encuentra activa
+  """
+  activo: Boolean!
+}
+
+"""
+Objeto que contiene los campos que representan a una entidad Proveedor
+"""
+type Proveedor {
+  """
+  UUID de la entidad Proveedor
+  """
+  id: ID!
+
+  """
+  Nombre con el cual esta legalmente registrada la entidad Proveedor
+  """
+  razonSocial: String!
+
+  """
+  RFC de la entidad Proveedor
+  """
+  rfc: String!
+
+  """
+  Numero telefonico de la entidad Proveedor
+  """
+  telefono: String!
+
+  """
+  Email de la entidad Proveedor
+  """
+  email: String!
+
+  """
+  Numero de dias que se tiene para pagar la deuda antes de empezar a generar intereces de la entidad Proveedor
+  """
+  diasCredito: Int!
+
+  """
+  Nombre comercial de la entidad Proveedor
+  """
+  nombreComercial: String!
+
+  """
+  Informacion de la Direccion Proveedor que pertenece a la entidad Proveedor
+  """
+  direccionProveedor: DireccionProveedor!
+
+  """
+  Nombre(s) del contacto de la entidad Proveedor
+  """
+  nombreContacto: String!
+
+  """
+  Apellido paterno del contacto de la entidad Proveedor
+  """
+  apellidoPContacto: String!
+
+  """
+  Apellido materno del contacto de la entidad Proveedor
+  """
+  apellidoMContacto: String!
+
+  """
+  Indica si la entidad Proveedor esta activa, es decir, si ya se registro su eliminacion
+  """
+  activo: Boolean!
+}
+
+type ArticuloRs {
+  """
+  UUID de la entidad Articulo Rs
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Articulo Rs
+  """
+  nombre: String!
+  costo: Float!
+  precio: Float!
+
+  """
+  Campo que nos indica si la entidad Articulo Rs se encuentra activa
+  """
+  activo: Boolean!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad Categoria Articulo Rs
+"""
+type CategoriaArticuloRs {
+  """
+  UUID de la entidad Categoria Articulo Rs
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Categoria Articulo Rs
+  """
+  nombre: String!
+
+  """
+  Campo que nos indica si la entidad Categoria Articulo Rs se encuentra activa
+  """
+  activo: Boolean!
+}
+
+type SubCategoriaArticuloRs {
+  """
+  UUID de la entidad SubCategoria Articulos Rs
+  """
+  id: ID!
+
+  """
+  Nombre de la entidad Sub Categoria Articulo Rs
+  """
+  nombre: String!
+
+  """
+  Campo que nos indica si la entidad Sub Categoria Articulo Rs se encuentra activa
+  """
+  activo: Boolean!
+
+  """
+  Campo que nos indica si la entidad Sub Categoria Articulo Rs se puede editar
+  """
+  editable: Boolean!
+
+  """
+  Campo que nos indica si la entidad Sub Categoria Articulo Rs ha sido eliminada
+  """
+  categoriaArticuloRs: Boolean!
+}
+
+"""
+Objeto que contiene los campos que representan a la entidad Unidad Medida
+"""
+type UnidadMedida {
+  """
+  UUID de la entidad Unidad Medida
+  """
+  id: ID!
+
+  """
+  Unidad de la entidad Unidad Medida
+  """
+  unidad: String!
+
+  """
+  Campo que nos indica si la entidad Unidad Medida se encuentra activa
+  """
+  activo: Boolean!
+}
+
+"""
 Date custom scalar type
 """
 scalar Date
@@ -509,7 +710,7 @@ type Query {
   """
   Consulta la información de la entidad Habitacion que coincida con los argumentos de busqueda
   """
-  habitacion(id: ID!): Habitacion!
+  habitacion(id_o_numero: String!): Habitacion!
 
   """
   Query que obtiene una lista de entidades EstadoHabitacion que cumplan con los argumentos solicitados
@@ -550,13 +751,65 @@ type Query {
   Query que obtiene una entidad Tarifa que cumpla con los argumentos de busqueda
   """
   tarifa(id_o_nombre: String!): Tarifa!
+  subcategoriasArticulosRs: [SubCategoriaArticuloRs!]!
+  subcategoriaArticuloRs(id: Int!): SubCategoriaArticuloRs!
+  articulosRs: [ArticuloRs!]!
+  articuloRs(id: Int!): ArticuloRs!
+  categoriasArticulosRs: [CategoriaArticuloRs!]!
+  categoriaArticuloRs(id: String!): CategoriaArticuloRs!
+  unidadesMedida(activo: Boolean): [UnidadMedida!]!
+  unidadMedida(id: String!): UnidadMedida!
+  proveedores: [Proveedor!]!
+  proveedor(id: Int!): Proveedor!
+  direccionesProveedores(
+    """
+    Indica si la entidad Direccion Proveedor esta activa
+    """
+    activo: Boolean!
+
+    """
+    Nombre de la calle de la entidad Direccion Proveedor
+    """
+    calle: String!
+
+    """
+    Nombre de la colonia de la entidad Direccion Proveedor
+    """
+    colonia: String!
+
+    """
+    Numero interior de la entidad Direccion Proveedor
+    """
+    numeroInterior: Int!
+
+    """
+    Numero exterior de la entidad Direccion Proveedor
+    """
+    numeroExterior: Int!
+
+    """
+    Codigo postal de la entidad Direccion Proveedor
+    """
+    cp: Int!
+
+    """
+    Nombre de la ciudad de la entidad Direccion Proveedor
+    """
+    ciudad: String!
+
+    """
+    Nombre del estado de la entidad Direccion Proveedor
+    """
+    estado: String!
+  ): [DireccionProveedor!]!
+  direccionProveedor(id: ID!): DireccionProveedor!
 }
 
 type Mutation {
   """
   Crea una nueva entidad Habitacion en la base de datos
   """
-  crear_habitacion(createHabitacioneInput: CreateHabitacionInput!): String!
+  crear_habitacion(createHabitacionInput: CreateHabitacionInput!): String!
 
   """
   Actualiza la informacion de la entidad Habitacion indicada
@@ -590,12 +843,12 @@ type Mutation {
   """
   actualizar_estado_habitacion(
     updateEstadosHabitacioneInput: UpdateEstadoHabitacionInput!
-  ): EstadoHabitacion!
+  ): String!
 
   """
   Mutacion que desactiva la entidad EstadoHabitacion
   """
-  eliminar_estado_habitacion(id: ID!): EstadoHabitacion!
+  eliminar_estado_habitacion(id: ID!): String!
 
   """
   Mutacion que crea una entidad TipoHabitacion con los parametros proporcionados
@@ -640,6 +893,42 @@ type Mutation {
   Mutacion que desactiva la entidad Tarifa
   """
   eliminar_tarifa(id: ID!): Tarifa!
+  createSubcategoriaArticuloRs(
+    createSubcategoriaArticuloRsInput: CreateSubcategoriaArticuloRsInput!
+  ): String!
+  updateSubcategoriaArticuloRs(
+    updateSubcategoriaArticuloRsInput: UpdateSubcategoriaArticuloRsInput!
+  ): String!
+  removeSubcategoriaArticuloRs(id: Int!): String!
+  crear_articulo_rs(createArticuloRsInput: CreateArticuloRsInput!): String!
+  actualizar_articulo_rs(
+    updateArticuloRsInput: UpdateArticuloRsInput!
+  ): ArticuloRs!
+  eliminar_articulo_rs(id: Int!): ArticuloRs!
+  crear_categoria_articulo_rs(
+    createCategoriaArticuloRsInput: CreateCategoriaArticuloRsInput!
+  ): String!
+  actualizar_categoria_articulo_rs(
+    updateCategoriaArticuloRsInput: UpdateCategoriaArticuloRsInput!
+  ): String!
+  eliminar_categoria_articulo_rs(id: String!): String!
+  crear_unidad_medida(
+    createUnidadMedidaInput: CreateUnidadMedidaInput!
+  ): String!
+  actualizar_unidad_medida(
+    updateUnidadMedidaInput: UpdateUnidadMedidaInput!
+  ): UnidadMedida!
+  eliminar_unidad_medida(id: String!): String!
+  crear_proveedor(createProveedorInput: CreateProveedorInput!): String!
+  actualizar_proveedor(updateProveedorInput: UpdateProveedorInput!): String!
+  eliminar_proveedor(id: Int!): String!
+  crear_direccion_proveedor(
+    createDireccionProveedorInput: CreateDireccionProveedorInput!
+  ): String!
+  actualizar_direccion_proveedor(
+    updateDireccionProveedorInput: UpdateDireccionProveedorInput!
+  ): String!
+  eliminar_direccion_proveedor(id: ID!): String!
 }
 
 """
@@ -1128,6 +1417,277 @@ input UpdateTarifaInput {
 
   """
   UUID de la entidad Tarifa
+  """
+  id: ID!
+}
+
+"""
+Objeto que contiene los campos necesarios para crear una entidad SubCategoria Articulo Rs
+"""
+input CreateSubcategoriaArticuloRsInput {
+  """
+  Nombre de la entidad SubCategoria Articulo Rs
+  """
+  nombre: String!
+  editable: Boolean!
+  categoriaArticuloRsId: ID!
+}
+
+input UpdateSubcategoriaArticuloRsInput {
+  """
+  Nombre de la entidad SubCategoria Articulo Rs
+  """
+  nombre: String
+  editable: Boolean
+  categoriaArticuloRsId: ID
+  id: ID!
+}
+
+input CreateArticuloRsInput {
+  """
+  Example field (placeholder)
+  """
+  exampleField: Int!
+}
+
+input UpdateArticuloRsInput {
+  """
+  Example field (placeholder)
+  """
+  exampleField: Int
+  id: Int!
+}
+
+"""
+Objeto que contiene todos los campos necesarios para crear una entidad Categoria Articulo Rs
+"""
+input CreateCategoriaArticuloRsInput {
+  """
+  Nombre de la entidad Categoria Articulo Rs
+  """
+  nombre: String!
+}
+
+input UpdateCategoriaArticuloRsInput {
+  """
+  Nombre de la entidad Categoria Articulo Rs
+  """
+  nombre: String
+
+  """
+  UUID de la entidad Categoria Articulo Rs
+  """
+  id: ID!
+}
+
+input CreateUnidadMedidaInput {
+  """
+  Unidad de la entidad Unidad Medida
+  """
+  unidad: String!
+}
+
+input UpdateUnidadMedidaInput {
+  """
+  Unidad de la entidad Unidad Medida
+  """
+  unidad: String
+
+  """
+  UUID de la entidad Unidad Medida
+  """
+  id: ID!
+}
+
+"""
+Objeto que contiene todos los campos necesarios para crear una entidad Proveedor
+"""
+input CreateProveedorInput {
+  """
+  Nombre con el cual esta legalmente registrada la entidad Proveedor
+  """
+  razonSocial: String!
+
+  """
+  RFC de la entidad Proveedor
+  """
+  rfc: String!
+
+  """
+  Numero telefonico de la entidad Proveedor
+  """
+  telefono: String!
+
+  """
+  Email de la entidad Proveedor
+  """
+  email: String!
+
+  """
+  Numero de dias que se tiene para pagar la deuda antes de empezar a generar intereces de la entidad Proveedor
+  """
+  diasCredito: Int!
+
+  """
+  Nombre comercial de la entidad Proveedor
+  """
+  nombreComercial: String!
+
+  """
+  Objeto que contiene los campos necesarios para crear una entidad DireccionProveedor
+  """
+  direccionProveedor: CreateDireccionProveedorInput!
+
+  """
+  Nombre(s) del contacto de la entidad Proveedor
+  """
+  nombreContacto: String!
+
+  """
+  Apellido paterno del contacto de la entidad Proveedor
+  """
+  apellidoPContacto: String!
+
+  """
+  Apellido materno del contacto de la entidad Proveedor
+  """
+  apellidoMContacto: String!
+}
+
+"""
+Objeto que contiene los campos necesarios para crear una entidad Direccion Proveedor
+"""
+input CreateDireccionProveedorInput {
+  """
+  Nombre de la calle de la entidad Direccion Proveedor
+  """
+  calle: String!
+
+  """
+  Nombre de la colonia de la entidad Direccion Proveedor
+  """
+  colonia: String!
+
+  """
+  Numero interior de la entidad Direccion Proveedor
+  """
+  numeroInterior: Int
+
+  """
+  Numero exterior de la entidad Direccion Proveedor
+  """
+  numeroExterior: Int!
+
+  """
+  Codigo postal de la entidad Direccion Proveedor
+  """
+  cp: String!
+
+  """
+  Nombre de la ciudad de la entidad Direccion Proveedor
+  """
+  ciudad: String!
+
+  """
+  Nombre del estado de la entidad Direccion Proveedor
+  """
+  estado: String!
+}
+
+input UpdateProveedorInput {
+  """
+  Nombre con el cual esta legalmente registrada la entidad Proveedor
+  """
+  razonSocial: String
+
+  """
+  RFC de la entidad Proveedor
+  """
+  rfc: String
+
+  """
+  Numero telefonico de la entidad Proveedor
+  """
+  telefono: String
+
+  """
+  Email de la entidad Proveedor
+  """
+  email: String
+
+  """
+  Numero de dias que se tiene para pagar la deuda antes de empezar a generar intereces de la entidad Proveedor
+  """
+  diasCredito: Int
+
+  """
+  Nombre comercial de la entidad Proveedor
+  """
+  nombreComercial: String
+
+  """
+  Objeto que contiene los campos necesarios para crear una entidad DireccionProveedor
+  """
+  direccionProveedor: CreateDireccionProveedorInput
+
+  """
+  Nombre(s) del contacto de la entidad Proveedor
+  """
+  nombreContacto: String
+
+  """
+  Apellido paterno del contacto de la entidad Proveedor
+  """
+  apellidoPContacto: String
+
+  """
+  Apellido materno del contacto de la entidad Proveedor
+  """
+  apellidoMContacto: String
+  id: Int!
+}
+
+"""
+Objeto que contiene todos los campos que se pueden editar directamente de la entidad Direccion Proveedor
+"""
+input UpdateDireccionProveedorInput {
+  """
+  Nombre de la calle de la entidad Direccion Proveedor
+  """
+  calle: String
+
+  """
+  Nombre de la colonia de la entidad Direccion Proveedor
+  """
+  colonia: String
+
+  """
+  Numero interior de la entidad Direccion Proveedor
+  """
+  numeroInterior: Int
+
+  """
+  Numero exterior de la entidad Direccion Proveedor
+  """
+  numeroExterior: Int
+
+  """
+  Codigo postal de la entidad Direccion Proveedor
+  """
+  cp: String
+
+  """
+  Nombre de la ciudad de la entidad Direccion Proveedor
+  """
+  ciudad: String
+
+  """
+  Nombre del estado de la entidad Direccion Proveedor
+  """
+  estado: String
+
+  """
+  UUID de la entidad Direccion Proveedor
   """
   id: ID!
 }

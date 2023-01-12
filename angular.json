@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/sotnew",
             "index": "src/index.html",
-            "allowedCommonJsDependencies": ["moment","subscriptions-transport-ws","fast-json-stable-stringify","graphql-tag"],
+            "allowedCommonJsDependencies": ["moment","fast-json-stable-stringify","graphql-tag"],
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
