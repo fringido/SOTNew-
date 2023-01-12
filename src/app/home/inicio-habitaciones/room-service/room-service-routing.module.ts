@@ -5,9 +5,9 @@ import { LiberarPagarRoomServiceComponent } from './vistas/liberar-pagar-room-se
 import { PagoComandasComponent } from './vistas/pago-comandas/pago-comandas.component';
 
 const routes: Routes = [
-  { path: '', component: CrearComandaRoomserviceComponent },
-  {path: 'comandas',component:LiberarPagarRoomServiceComponent },
-  {path: 'pago', component:PagoComandasComponent}
+  { path: ':roomNumber', component: CrearComandaRoomserviceComponent },
+  { path: 'comandas/:roomNumber',component:LiberarPagarRoomServiceComponent },
+  { path: 'pago/:roomNumber', component:PagoComandasComponent}
 ];
 
 @NgModule({

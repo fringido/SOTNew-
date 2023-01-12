@@ -53,6 +53,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       this.isModoCambioHabitacion = state.cambio;
     });
     this.isModalOpenSubs = this.modalService.isModalOpen$.subscribe((isOpen) => this.isModalOpen = isOpen)
+
   }
 
   ngOnDestroy(): void {
@@ -131,7 +132,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   }
 
   openModal(rute: string){
-    this.router.navigate([`hotel/${rute}`])
+    this.router.navigate([`hotel/${rute}/${this.selectedRoom.roomNumber}`])
   }
 
 }
