@@ -170,10 +170,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     })
   }
 
-  cancelarHabitacion() {
-    this.router.navigate(['hotel', 'rentaHabitacion', 'cancelarHabitacion']);
 
-  }
 
   abrirCamaristasEnTurno() {
     this.router.navigate(['hotel', 'camaristasEnTurno']);
