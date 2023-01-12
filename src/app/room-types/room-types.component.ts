@@ -817,8 +817,8 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     }
   ]
 
-  habitaciones$:any
-  habitaciones:any
+  habitaciones$ = this.subHabitacion.habitaciones$
+  habitacionesWs: any
   constructor(
     private readonly renderer: Renderer2,
     private readonly router: Router,
@@ -828,13 +828,14 @@ export class RoomTypesComponent implements OnInit, OnDestroy {
     private readonly sidebarService: SidebarService,
     private readonly roomTypesService: RoomTypesService,
     private readonly cambioHabitacionService: CambioHabitacionService,
-    private habitacionesSuscripcion:SuscripcionEstadoHabitacionService
+    private subHabitacion: SuscripcionEstadoHabitacionService
   ) { }
 
   ngOnInit(): void {
-    this.habitacionesSuscripcion.getHabitacionesSuscri()
-
+    this.subHabitacion.getHabitaciones()
+    this.subHabitacion.getHabitacionesSuscri()
     this.inicioDeVartiables()
+    console.log(this.habitaciones$)
   }
 
   inicioDeVartiables(){
