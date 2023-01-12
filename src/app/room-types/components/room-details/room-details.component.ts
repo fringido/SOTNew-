@@ -127,7 +127,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       if(!confirmed) {
         return;
       }
-      this.router.navigate(['/hotel/salida/enviarLimpieza'])
+      this.router.navigate([`/hotel/salida/enviarLimpieza/${this.selectedRoom.roomNumber}`])
     });
 
   }

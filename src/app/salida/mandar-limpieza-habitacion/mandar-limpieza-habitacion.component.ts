@@ -33,7 +33,7 @@ export class MandarLimpiezaHabitacionComponent implements OnInit, OnDestroy{
     this.selectedRoomSubs.unsubscribe();
   }
 
-  
+
 
   enviarLimpieza() {
     const ref = this.dialogService.open(MessageModalAutoclosableComponent, {
@@ -49,8 +49,9 @@ export class MandarLimpiezaHabitacionComponent implements OnInit, OnDestroy{
     this.roomService.finalizarRentaSucia(this.selectedRoom.roomNumber).then((room) => {
       this.roomService.updateSelectedRoom(room);
     });
+
   }
-  
+
   enviarLimpiezaMediaSucia() {
     this.enviarLimpieza();
     this.roomService.finalizarRentaMediaSucia(this.selectedRoom.roomNumber).then((room) => {
